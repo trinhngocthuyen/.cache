@@ -1,0 +1,6 @@
+framework module KingfisherWebP_ObjC {
+  umbrella header "KingfisherWebP-ObjC-umbrella.h"
+
+  export *
+  module * { export * }
+}

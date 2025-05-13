@@ -1,0 +1,6 @@
+framework module GoogleUtilities_NSData {
+  umbrella header "GoogleUtilities-NSData-umbrella.h"
+
+  export *
+  module * { export * }
+}

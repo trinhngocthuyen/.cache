@@ -1,0 +1,6 @@
+framework module AppboyUI {
+  umbrella header "AppboyUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

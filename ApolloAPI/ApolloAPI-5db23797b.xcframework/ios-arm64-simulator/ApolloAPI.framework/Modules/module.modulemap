@@ -1,0 +1,6 @@
+framework module ApolloAPI {
+  umbrella header "ApolloAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}

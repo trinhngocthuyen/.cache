@@ -1,0 +1,6 @@
+framework module FirebaseAnalyticsWrapper {
+  umbrella header "FirebaseAnalyticsWrapper-umbrella.h"
+
+  export *
+  module * { export * }
+}

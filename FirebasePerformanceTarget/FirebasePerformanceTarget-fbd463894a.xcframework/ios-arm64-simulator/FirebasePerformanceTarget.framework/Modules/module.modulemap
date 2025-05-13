@@ -1,0 +1,6 @@
+framework module FirebasePerformanceTarget {
+  umbrella header "FirebasePerformanceTarget-umbrella.h"
+
+  export *
+  module * { export * }
+}

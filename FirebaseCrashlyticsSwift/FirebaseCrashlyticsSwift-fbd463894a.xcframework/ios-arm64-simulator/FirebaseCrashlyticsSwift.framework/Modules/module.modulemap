@@ -1,0 +1,6 @@
+framework module FirebaseCrashlyticsSwift {
+  umbrella header "FirebaseCrashlyticsSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

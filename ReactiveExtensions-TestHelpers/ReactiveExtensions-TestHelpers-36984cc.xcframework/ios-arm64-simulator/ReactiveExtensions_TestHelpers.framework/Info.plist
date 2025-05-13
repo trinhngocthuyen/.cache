@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AvailableLibraries</key>
+	<array>
+		<dict>
+			<key>BinaryPath</key>
+			<string>ReactiveExtensions_TestHelpers.framework/ReactiveExtensions_TestHelpers</string>
+			<key>LibraryPath</key>
+			<string>ReactiveExtensions_TestHelpers.framework</string>
+		</dict>
+	</array>
+  <key>CFBundleExecutable</key>
+	<string>ReactiveExtensions_TestHelpers</string>
+  <key>CFBundleName</key>
+  <string>ReactiveExtensions_TestHelpers</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.xccache.ReactiveExtensions_TestHelpers</string>
+	<key>CFBundlePackageType</key>
+	<string>XFWK</string>
+	<key>XCFrameworkFormatVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>

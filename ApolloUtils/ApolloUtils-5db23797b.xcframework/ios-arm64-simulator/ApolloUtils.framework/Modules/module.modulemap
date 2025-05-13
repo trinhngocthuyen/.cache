@@ -1,0 +1,6 @@
+framework module ApolloUtils {
+  umbrella header "ApolloUtils-umbrella.h"
+
+  export *
+  module * { export * }
+}

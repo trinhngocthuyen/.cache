@@ -1,0 +1,1 @@
+#include <SnapshotTesting/SnapshotTesting-Swift.h>

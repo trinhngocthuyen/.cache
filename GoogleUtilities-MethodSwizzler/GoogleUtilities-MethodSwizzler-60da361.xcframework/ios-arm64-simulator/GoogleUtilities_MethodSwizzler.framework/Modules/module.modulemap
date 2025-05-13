@@ -1,0 +1,6 @@
+framework module GoogleUtilities_MethodSwizzler {
+  umbrella header "GoogleUtilities-MethodSwizzler-umbrella.h"
+
+  export *
+  module * { export * }
+}

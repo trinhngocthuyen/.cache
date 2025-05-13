@@ -1,0 +1,1 @@
+#include <FirebasePerformanceTarget/dummy.h>

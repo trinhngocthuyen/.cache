@@ -1,0 +1,1 @@
+#include <FirebaseCrashlyticsSwift/FirebaseCrashlyticsSwift-Swift.h>

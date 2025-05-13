@@ -1,0 +1,15 @@
+#include <FBSDKLoginKit/FBSDKCoreKitImport.h>
+#include <FBSDKLoginKit/FBSDKDeviceLoginCodeInfo.h>
+#include <FBSDKLoginKit/FBSDKDeviceLoginManager.h>
+#include <FBSDKLoginKit/FBSDKDeviceLoginManagerResult.h>
+#include <FBSDKLoginKit/FBSDKLoginButton.h>
+#include <FBSDKLoginKit/FBSDKLoginConfiguration.h>
+#include <FBSDKLoginKit/FBSDKLoginConstants.h>
+#include <FBSDKLoginKit/FBSDKLoginKit.h>
+#include <FBSDKLoginKit/FBSDKLoginManager.h>
+#include <FBSDKLoginKit/FBSDKLoginManagerLoginResult.h>
+#include <FBSDKLoginKit/FBSDKLoginTooltipView.h>
+#include <FBSDKLoginKit/FBSDKReferralCode.h>
+#include <FBSDKLoginKit/FBSDKReferralManager.h>
+#include <FBSDKLoginKit/FBSDKReferralManagerResult.h>
+#include <FBSDKLoginKit/FBSDKTooltipView.h>

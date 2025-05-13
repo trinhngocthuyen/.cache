@@ -1,0 +1,1 @@
+#include <FirebaseCoreInternal/FirebaseCoreInternal-Swift.h>

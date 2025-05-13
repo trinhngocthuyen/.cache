@@ -1,0 +1,1 @@
+#include <KingfisherWebP/KingfisherWebP-Swift.h>

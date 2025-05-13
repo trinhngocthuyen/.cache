@@ -1,0 +1,1 @@
+#include <AlamofireImage/AlamofireImage-Swift.h>

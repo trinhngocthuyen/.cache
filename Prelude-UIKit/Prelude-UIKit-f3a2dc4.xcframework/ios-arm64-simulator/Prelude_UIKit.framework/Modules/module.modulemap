@@ -1,0 +1,6 @@
+framework module Prelude_UIKit {
+  umbrella header "Prelude-UIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

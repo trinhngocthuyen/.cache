@@ -1,0 +1,6 @@
+framework module ReactiveExtensions_TestHelpers {
+  umbrella header "ReactiveExtensions-TestHelpers-umbrella.h"
+
+  export *
+  module * { export * }
+}

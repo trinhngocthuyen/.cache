@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AvailableLibraries</key>
+	<array>
+		<dict>
+			<key>BinaryPath</key>
+			<string>FirebaseCore.framework/FirebaseCore</string>
+			<key>LibraryPath</key>
+			<string>FirebaseCore.framework</string>
+		</dict>
+	</array>
+  <key>CFBundleExecutable</key>
+	<string>FirebaseCore</string>
+  <key>CFBundleName</key>
+  <string>FirebaseCore</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.xccache.FirebaseCore</string>
+	<key>CFBundlePackageType</key>
+	<string>XFWK</string>
+	<key>XCFrameworkFormatVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>

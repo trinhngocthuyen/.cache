@@ -1,0 +1,6 @@
+framework module GoogleUtilities_AppDelegateSwizzler {
+  umbrella header "GoogleUtilities-AppDelegateSwizzler-umbrella.h"
+
+  export *
+  module * { export * }
+}

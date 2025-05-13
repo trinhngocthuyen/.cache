@@ -1,0 +1,6 @@
+framework module GoogleUtilities_Network {
+  umbrella header "GoogleUtilities-Network-umbrella.h"
+
+  export *
+  module * { export * }
+}

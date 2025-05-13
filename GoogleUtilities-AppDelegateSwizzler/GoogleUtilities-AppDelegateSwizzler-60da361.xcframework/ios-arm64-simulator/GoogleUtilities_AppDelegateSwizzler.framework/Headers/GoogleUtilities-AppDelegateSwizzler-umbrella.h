@@ -1,0 +1,3 @@
+#include <GoogleUtilities_AppDelegateSwizzler/GULAppDelegateSwizzler.h>
+#include <GoogleUtilities_AppDelegateSwizzler/GULApplication.h>
+#include <GoogleUtilities_AppDelegateSwizzler/GULSceneDelegateSwizzler.h>

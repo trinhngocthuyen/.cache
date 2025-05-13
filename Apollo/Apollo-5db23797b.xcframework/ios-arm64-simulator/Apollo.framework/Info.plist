@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AvailableLibraries</key>
+	<array>
+		<dict>
+			<key>BinaryPath</key>
+			<string>Apollo.framework/Apollo</string>
+			<key>LibraryPath</key>
+			<string>Apollo.framework</string>
+		</dict>
+	</array>
+  <key>CFBundleExecutable</key>
+	<string>Apollo</string>
+  <key>CFBundleName</key>
+  <string>Apollo</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.xccache.Apollo</string>
+	<key>CFBundlePackageType</key>
+	<string>XFWK</string>
+	<key>XCFrameworkFormatVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>

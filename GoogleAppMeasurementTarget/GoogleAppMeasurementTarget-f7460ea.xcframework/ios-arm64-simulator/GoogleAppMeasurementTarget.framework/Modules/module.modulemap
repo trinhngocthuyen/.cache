@@ -1,0 +1,6 @@
+framework module GoogleAppMeasurementTarget {
+  umbrella header "GoogleAppMeasurementTarget-umbrella.h"
+
+  export *
+  module * { export * }
+}

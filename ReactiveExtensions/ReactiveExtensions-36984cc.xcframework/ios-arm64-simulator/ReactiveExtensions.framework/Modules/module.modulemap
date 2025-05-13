@@ -1,0 +1,6 @@
+framework module ReactiveExtensions {
+  umbrella header "ReactiveExtensions-umbrella.h"
+
+  export *
+  module * { export * }
+}

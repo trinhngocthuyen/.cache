@@ -1,0 +1,6 @@
+framework module AppboyKit {
+  umbrella header "AppboyKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

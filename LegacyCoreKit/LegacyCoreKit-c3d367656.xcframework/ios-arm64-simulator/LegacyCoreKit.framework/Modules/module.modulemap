@@ -1,0 +1,6 @@
+framework module LegacyCoreKit {
+  umbrella header "LegacyCoreKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
