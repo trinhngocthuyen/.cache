@@ -1,0 +1,1473 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name Lottie -package-name lottie_ios -module-alias Module___Lottie=Lottie -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___QuartzCore=QuartzCore -module-alias Module___UIKit=UIKit -module-alias Module___SwiftUI=SwiftUI -module-alias Module___zlib=zlib -module-alias Module___Compression=Compression -module-alias Module___CoreFoundation=CoreFoundation -module-alias Module___CoreGraphics=CoreGraphics -module-alias Module___CoreText=CoreText -module-alias Module___Combine=Combine
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___Combine
+import Module___Compression
+import Module___CoreFoundation
+import Module___CoreGraphics
+import Module___CoreText
+import Foundation
+import Module___QuartzCore
+import Swift
+import Module___SwiftUI
+import Module___UIKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+import Module___zlib
+@_hasMissingDesignatedInitializers public class Asset : Swift.Codable {
+  required public init(from decoder: any Swift.Decoder) throws
+  final public let id: Swift.String
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension Module___Lottie.Asset : @unchecked Swift.Sendable {
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class ImageAsset : Module___Lottie.Asset {
+  final public let name: Swift.String
+  final public let directory: Swift.String
+  final public let width: Swift.Double
+  final public let height: Swift.Double
+  override final public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+extension Module___Lottie.ImageAsset : @unchecked Swift.Sendable {
+}
+public enum DotLottieError : Swift.Error {
+  case noDataLoaded
+  case assetNotFound(name: Swift.String, bundle: Foundation.Bundle?)
+  case loadingFromAssetNotSupported
+  @available(*, deprecated, message: "Unused")
+  case invalidFileFormat
+  @available(*, deprecated, message: "Unused")
+  case invalidData
+  @available(*, deprecated, message: "Unused")
+  case animationNotAvailable
+}
+public enum LayerType : Swift.Int, Swift.Codable {
+  case precomp
+  case solid
+  case image
+  case null
+  case shape
+  case text
+  case unknown
+  public init(from decoder: any Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum MatteType : Swift.Int, Swift.Codable {
+  case none
+  case add
+  case invert
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum BlendMode : Swift.Int, Swift.Codable {
+  case normal
+  case multiply
+  case screen
+  case overlay
+  case darken
+  case lighten
+  case colorDodge
+  case colorBurn
+  case hardLight
+  case softLight
+  case difference
+  case exclusion
+  case hue
+  case saturation
+  case color
+  case luminosity
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension Module___QuartzCore.CALayer {
+  @nonobjc public func logLayerTree(withIndent: Swift.Int = 0)
+}
+infix operator +| : DefaultPrecedence
+infix operator +- : DefaultPrecedence
+public typealias LottieCompletionBlock = (_ completed: Swift.Bool) -> Swift.Void
+public enum LottieAnimationSource : Swift.Sendable {
+  case lottieAnimation(Module___Lottie.LottieAnimation)
+  case dotLottieFile(Module___Lottie.DotLottieFile)
+}
+extension Module___Lottie.LottieAnimation {
+  final public var animationSource: Module___Lottie.LottieAnimationSource {
+    get
+  }
+}
+extension Module___Lottie.DotLottieFile {
+  final public var animationSource: Module___Lottie.LottieAnimationSource {
+    get
+  }
+}
+extension Module___Lottie.LottieColor : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension Module___Lottie.LottieVector1D : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct LottieVector2D : Swift.Codable, Swift.Hashable, Swift.Sendable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: Module___Lottie.LottieVector2D, b: Module___Lottie.LottieVector2D) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___Lottie.LottieVector3D : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension Module___Lottie.LottieVector3D {
+  public var pointValue: Module___CoreFoundation.CGPoint {
+    get
+  }
+  public var sizeValue: Module___CoreFoundation.CGSize {
+    get
+  }
+}
+public enum CoordinateSpace : Swift.Int, Swift.Codable, Swift.Sendable {
+  case type2d
+  case type3d
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+final public class LottieAnimation : Swift.Codable, Swift.Sendable {
+  required public init(from decoder: any Swift.Decoder) throws
+  public init(dictionary: [Swift.String : Any]) throws
+  final public let startFrame: Module___Lottie.AnimationFrameTime
+  final public let endFrame: Module___Lottie.AnimationFrameTime
+  final public let framerate: Swift.Double
+  final public var markerNames: [Swift.String] {
+    get
+  }
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+}
+extension Module___Lottie.LottieAnimation {
+  public typealias DownloadClosure = (Module___Lottie.LottieAnimation?) -> Swift.Void
+  final public var duration: Foundation.TimeInterval {
+    get
+  }
+  final public var bounds: Module___CoreFoundation.CGRect {
+    get
+  }
+  final public var size: Module___CoreFoundation.CGSize {
+    get
+  }
+  public static func named(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared) -> Module___Lottie.LottieAnimation?
+  public static func filepath(_ filepath: Swift.String, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared) -> Module___Lottie.LottieAnimation?
+  public static func asset(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared) -> Module___Lottie.LottieAnimation?
+  public static func from(data: Foundation.Data, strategy: Module___Lottie.DecodingStrategy = LottieConfiguration.shared.decodingStrategy) throws -> Module___Lottie.LottieAnimation
+  public static func loadedFrom(url: Foundation.URL, session: Foundation.URLSession = .shared, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared) async -> Module___Lottie.LottieAnimation?
+  public static func loadedFrom(url: Foundation.URL, session: Foundation.URLSession = .shared, closure: @escaping Module___Lottie.LottieAnimation.DownloadClosure, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared)
+  final public func progressTime(forMarker named: Swift.String) -> Module___Lottie.AnimationProgressTime?
+  final public func frameTime(forMarker named: Swift.String) -> Module___Lottie.AnimationFrameTime?
+  final public func durationFrameTime(forMarker named: Swift.String) -> Module___Lottie.AnimationFrameTime?
+  final public func progressTime(forFrame frameTime: Module___Lottie.AnimationFrameTime, clamped: Swift.Bool = true) -> Module___Lottie.AnimationProgressTime
+  final public func frameTime(forProgress progressTime: Module___Lottie.AnimationProgressTime) -> Module___Lottie.AnimationFrameTime
+  final public func time(forFrame frameTime: Module___Lottie.AnimationFrameTime) -> Foundation.TimeInterval
+  final public func frameTime(forTime time: Foundation.TimeInterval) -> Module___Lottie.AnimationFrameTime
+}
+extension Foundation.Bundle : @unchecked Swift.Sendable {
+}
+@objc @_hasMissingDesignatedInitializers public class LottieAnimationLayer : Module___QuartzCore.CALayer {
+  public init(animation: Module___Lottie.LottieAnimation?, imageProvider: (any Module___Lottie.AnimationImageProvider)? = nil, textProvider: any Module___Lottie.AnimationKeypathTextProvider = DefaultTextProvider(), fontProvider: any Module___Lottie.AnimationFontProvider = DefaultFontProvider(), configuration: Module___Lottie.LottieConfiguration = .shared, logger: Module___Lottie.LottieLogger = .shared)
+  public init(dotLottie: Module___Lottie.DotLottieFile?, animationId: Swift.String? = nil, textProvider: any Module___Lottie.AnimationKeypathTextProvider = DefaultTextProvider(), fontProvider: any Module___Lottie.AnimationFontProvider = DefaultFontProvider(), configuration: Module___Lottie.LottieConfiguration = .shared, logger: Module___Lottie.LottieLogger = .shared)
+  public init(configuration: Module___Lottie.LottieConfiguration = .shared, logger: Module___Lottie.LottieLogger = .shared)
+  open func play(completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func play(fromProgress: Module___Lottie.AnimationProgressTime? = nil, toProgress: Module___Lottie.AnimationProgressTime, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func play(fromFrame: Module___Lottie.AnimationFrameTime? = nil, toFrame: Module___Lottie.AnimationFrameTime, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func play(fromMarker: Swift.String? = nil, toMarker: Swift.String, playEndMarkerFrame: Swift.Bool = true, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func play(marker: Swift.String, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func play(markers: [Swift.String], completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func stop()
+  open func pause()
+  open func pause(at state: Module___Lottie.LottiePlaybackMode.PausedState)
+  @available(*, deprecated, renamed: "setPlaybackMode(_:completion:)", message: "Will be removed in a future major release.")
+  open func play(_ playbackMode: Module___Lottie.LottiePlaybackMode, animationCompletionHandler: Module___Lottie.LottieCompletionBlock? = nil)
+  open func setPlaybackMode(_ playbackMode: Module___Lottie.LottiePlaybackMode, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  open func play(_ playbackMode: Module___Lottie.LottiePlaybackMode.PlaybackMode, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  public var currentPlaybackMode: Module___Lottie.LottiePlaybackMode? {
+    get
+  }
+  public var valueProviders: [Module___Lottie.AnimationKeypath : any Module___Lottie.AnyValueProvider] {
+    get
+  }
+  public var animationLayerDidLoad: ((_ animationLayer: Module___Lottie.LottieAnimationLayer, _ renderingEngine: Module___Lottie.RenderingEngineOption) -> Swift.Void)?
+  public var configuration: Module___Lottie.LottieConfiguration {
+    get
+    set
+  }
+  public var animationLayer: Module___QuartzCore.CALayer? {
+    get
+  }
+  public var screenScale: Module___CoreFoundation.CGFloat {
+    get
+    set
+  }
+  public var backgroundBehavior: Module___Lottie.LottieBackgroundBehavior {
+    get
+    set
+  }
+  public var animation: Module___Lottie.LottieAnimation? {
+    get
+    set
+  }
+  public var animationLoaded: ((_ animationLayer: Module___Lottie.LottieAnimationLayer, _ animation: Module___Lottie.LottieAnimation) -> Swift.Void)? {
+    get
+    set
+  }
+  public var imageProvider: any Module___Lottie.AnimationImageProvider {
+    get
+    set
+  }
+  public var textProvider: any Module___Lottie.AnimationKeypathTextProvider {
+    get
+    set
+  }
+  public var fontProvider: any Module___Lottie.AnimationFontProvider {
+    get
+    set
+  }
+  public var maskAnimationToBounds: Swift.Bool {
+    get
+    set
+  }
+  public var isAnimationPlaying: Swift.Bool {
+    get
+  }
+  public var loopMode: Module___Lottie.LottieLoopMode {
+    get
+    set
+  }
+  public var shouldRasterizeWhenIdle: Swift.Bool {
+    get
+    set
+  }
+  public var currentProgress: Module___Lottie.AnimationProgressTime {
+    get
+    set
+  }
+  public var currentTime: Foundation.TimeInterval {
+    get
+    set
+  }
+  public var currentFrame: Module___Lottie.AnimationFrameTime {
+    get
+    set
+  }
+  public var realtimeAnimationFrame: Module___Lottie.AnimationFrameTime {
+    get
+  }
+  public var realtimeAnimationProgress: Module___Lottie.AnimationProgressTime {
+    get
+  }
+  public var animationSpeed: Module___CoreFoundation.CGFloat {
+    get
+    set
+  }
+  public var respectAnimationFrameRate: Swift.Bool {
+    get
+    set
+  }
+  public var currentRenderingEngine: Module___Lottie.RenderingEngine? {
+    get
+  }
+  public var mainThreadRenderingEngineShouldForceDisplayUpdateOnEachFrame: Swift.Bool {
+    get
+    set
+  }
+  public func loadAnimation(_ animationId: Swift.String? = nil, from dotLottieFile: Module___Lottie.DotLottieFile)
+  public func loadAnimation(atIndex index: Swift.Int, from dotLottieFile: Module___Lottie.DotLottieFile)
+  public func reloadImages()
+  public func forceDisplayUpdate()
+  public func setValueProvider(_ valueProvider: any Module___Lottie.AnyValueProvider, keypath: Module___Lottie.AnimationKeypath)
+  public func removeValueProvider(for keypath: Module___Lottie.AnimationKeypath)
+  public func getValue(for keypath: Module___Lottie.AnimationKeypath, atFrame: Module___Lottie.AnimationFrameTime?) -> Any?
+  public func getOriginalValue(for keypath: Module___Lottie.AnimationKeypath, atFrame: Module___Lottie.AnimationFrameTime?) -> Any?
+  public func logHierarchyKeypaths()
+  public func allHierarchyKeypaths() -> [Swift.String]
+  public func convert(_ rect: Module___CoreFoundation.CGRect, toLayerAt keypath: Module___Lottie.AnimationKeypath?) -> Module___CoreFoundation.CGRect?
+  public func convert(_ point: Module___CoreFoundation.CGPoint, toLayerAt keypath: Module___Lottie.AnimationKeypath?) -> Module___CoreFoundation.CGPoint?
+  public func setNodeIsEnabled(isEnabled: Swift.Bool, keypath: Module___Lottie.AnimationKeypath)
+  public func progressTime(forMarker named: Swift.String) -> Module___Lottie.AnimationProgressTime?
+  public func frameTime(forMarker named: Swift.String) -> Module___Lottie.AnimationFrameTime?
+  public func durationFrameTime(forMarker named: Swift.String) -> Module___Lottie.AnimationFrameTime?
+  public func updateAnimationForBackgroundState()
+  public func updateAnimationForForegroundState(wasWaitingToPlayAnimation: Swift.Bool)
+  @objc deinit
+}
+public enum LottieBackgroundBehavior {
+  case stop
+  case pause
+  case pauseAndRestore
+  case forceFinish
+  case continuePlaying
+  public static func `default`(for renderingEngine: Module___Lottie.RenderingEngine) -> Module___Lottie.LottieBackgroundBehavior
+  public static func == (a: Module___Lottie.LottieBackgroundBehavior, b: Module___Lottie.LottieBackgroundBehavior) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum LottieLoopMode : Swift.Hashable {
+  case playOnce
+  case loop
+  case autoReverse
+  case `repeat`(Swift.Float)
+  case repeatBackwards(Swift.Float)
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___Lottie.LottieLoopMode : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.LottieLoopMode, rhs: Module___Lottie.LottieLoopMode) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @Module____Concurrency.MainActor @preconcurrency open class LottieAnimationView : Module___Lottie.LottieAnimationViewBase {
+  @Module____Concurrency.MainActor @preconcurrency public init(animation: Module___Lottie.LottieAnimation?, imageProvider: (any Module___Lottie.AnimationImageProvider)? = nil, textProvider: any Module___Lottie.AnimationKeypathTextProvider = DefaultTextProvider(), fontProvider: any Module___Lottie.AnimationFontProvider = DefaultFontProvider(), configuration: Module___Lottie.LottieConfiguration = .shared, logger: Module___Lottie.LottieLogger = .shared)
+  @Module____Concurrency.MainActor @preconcurrency public init(dotLottie: Module___Lottie.DotLottieFile?, animationId: Swift.String? = nil, textProvider: any Module___Lottie.AnimationKeypathTextProvider = DefaultTextProvider(), fontProvider: any Module___Lottie.AnimationFontProvider = DefaultFontProvider(), configuration: Module___Lottie.LottieConfiguration = .shared, logger: Module___Lottie.LottieLogger = .shared)
+  @Module____Concurrency.MainActor @preconcurrency public init(configuration: Module___Lottie.LottieConfiguration = .shared, logger: Module___Lottie.LottieLogger = .shared)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: Module___CoreFoundation.CGRect)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency open func play(_ mode: Module___Lottie.LottiePlaybackMode.PlaybackMode, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func play(completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func play(fromProgress: Module___Lottie.AnimationProgressTime? = nil, toProgress: Module___Lottie.AnimationProgressTime, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func play(fromFrame: Module___Lottie.AnimationFrameTime? = nil, toFrame: Module___Lottie.AnimationFrameTime, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func play(fromMarker: Swift.String? = nil, toMarker: Swift.String, playEndMarkerFrame: Swift.Bool = true, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func play(marker: Swift.String, loopMode: Module___Lottie.LottieLoopMode? = nil, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func play(markers: [Swift.String], completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func stop()
+  @Module____Concurrency.MainActor @preconcurrency open func pause()
+  @available(*, deprecated, renamed: "setPlaybackMode(_:completion:)", message: "Will be removed in a future major release.")
+  @Module____Concurrency.MainActor @preconcurrency open func play(_ playbackMode: Module___Lottie.LottiePlaybackMode, animationCompletionHandler: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency open func setPlaybackMode(_ playbackMode: Module___Lottie.LottiePlaybackMode, completion: Module___Lottie.LottieCompletionBlock? = nil)
+  @Module____Concurrency.MainActor @preconcurrency public var animateLayoutChangesWithCurrentCoreAnimationContext: Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency public var configuration: Module___Lottie.LottieConfiguration {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var valueProviders: [Module___Lottie.AnimationKeypath : any Module___Lottie.AnyValueProvider] {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var backgroundBehavior: Module___Lottie.LottieBackgroundBehavior {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var animation: Module___Lottie.LottieAnimation? {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var animationLoaded: ((_ animationView: Module___Lottie.LottieAnimationView, _ animation: Module___Lottie.LottieAnimation) -> Swift.Void)? {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var imageProvider: any Module___Lottie.AnimationImageProvider {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var textProvider: any Module___Lottie.AnimationKeypathTextProvider {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var fontProvider: any Module___Lottie.AnimationFontProvider {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var maskAnimationToBounds: Swift.Bool {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var isAnimationPlaying: Swift.Bool {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var isAnimationQueued: Swift.Bool {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var loopMode: Module___Lottie.LottieLoopMode {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var shouldRasterizeWhenIdle: Swift.Bool {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var currentProgress: Module___Lottie.AnimationProgressTime {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var currentTime: Foundation.TimeInterval {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var currentFrame: Module___Lottie.AnimationFrameTime {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var realtimeAnimationFrame: Module___Lottie.AnimationFrameTime {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var realtimeAnimationProgress: Module___Lottie.AnimationProgressTime {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var animationSpeed: Module___CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var respectAnimationFrameRate: Swift.Bool {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var viewportFrame: Module___CoreFoundation.CGRect? {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var intrinsicContentSize: Module___CoreFoundation.CGSize {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var currentRenderingEngine: Module___Lottie.RenderingEngine? {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var currentPlaybackMode: Module___Lottie.LottiePlaybackMode? {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var mainThreadRenderingEngineShouldForceDisplayUpdateOnEachFrame: Swift.Bool {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func loadAnimation(_ animationId: Swift.String? = nil, from dotLottieFile: Module___Lottie.DotLottieFile)
+  @Module____Concurrency.MainActor @preconcurrency public func loadAnimation(atIndex index: Swift.Int, from dotLottieFile: Module___Lottie.DotLottieFile)
+  @Module____Concurrency.MainActor @preconcurrency public func reloadImages()
+  @Module____Concurrency.MainActor @preconcurrency public func forceDisplayUpdate()
+  @Module____Concurrency.MainActor @preconcurrency public func setValueProvider(_ valueProvider: any Module___Lottie.AnyValueProvider, keypath: Module___Lottie.AnimationKeypath)
+  @Module____Concurrency.MainActor @preconcurrency public func removeValueProvider(for keypath: Module___Lottie.AnimationKeypath)
+  @Module____Concurrency.MainActor @preconcurrency public func getValue(for keypath: Module___Lottie.AnimationKeypath, atFrame: Module___Lottie.AnimationFrameTime?) -> Any?
+  @Module____Concurrency.MainActor @preconcurrency public func getOriginalValue(for keypath: Module___Lottie.AnimationKeypath, atFrame: Module___Lottie.AnimationFrameTime?) -> Any?
+  @Module____Concurrency.MainActor @preconcurrency public func logHierarchyKeypaths()
+  @Module____Concurrency.MainActor @preconcurrency public func allHierarchyKeypaths() -> [Swift.String]
+  @Module____Concurrency.MainActor @preconcurrency public func addSubview(_ subview: Module___Lottie.AnimationSubview, forLayerAt keypath: Module___Lottie.AnimationKeypath)
+  @Module____Concurrency.MainActor @preconcurrency public func convert(_ rect: Module___CoreFoundation.CGRect, toLayerAt keypath: Module___Lottie.AnimationKeypath?) -> Module___CoreFoundation.CGRect?
+  @Module____Concurrency.MainActor @preconcurrency public func convert(_ point: Module___CoreFoundation.CGPoint, toLayerAt keypath: Module___Lottie.AnimationKeypath?) -> Module___CoreFoundation.CGPoint?
+  @Module____Concurrency.MainActor @preconcurrency public func setNodeIsEnabled(isEnabled: Swift.Bool, keypath: Module___Lottie.AnimationKeypath)
+  @Module____Concurrency.MainActor @preconcurrency public func progressTime(forMarker named: Swift.String) -> Module___Lottie.AnimationProgressTime?
+  @Module____Concurrency.MainActor @preconcurrency public func frameTime(forMarker named: Swift.String) -> Module___Lottie.AnimationFrameTime?
+  @Module____Concurrency.MainActor @preconcurrency public func durationFrameTime(forMarker named: Swift.String) -> Module___Lottie.AnimationFrameTime?
+  @objc deinit
+}
+extension Module___Lottie.LottieAnimationView {
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, imageProvider: (any Module___Lottie.AnimationImageProvider)? = nil, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(filePath: Swift.String, imageProvider: (any Module___Lottie.AnimationImageProvider)? = nil, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(url: Foundation.URL, imageProvider: (any Module___Lottie.AnimationImageProvider)? = nil, session: Foundation.URLSession = .shared, closure: @escaping Module___Lottie.LottieAnimationView.DownloadClosure, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(asset name: Swift.String, bundle: Foundation.Bundle = Bundle.main, imageProvider: (any Module___Lottie.AnimationImageProvider)? = nil, animationCache: (any Module___Lottie.AnimationCacheProvider)? = LottieAnimationCache.shared, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(dotLottieName name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, animationId: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, configuration: Module___Lottie.LottieConfiguration = .shared, completion: ((Module___Lottie.LottieAnimationView, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(dotLottieFilePath filePath: Swift.String, animationId: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, configuration: Module___Lottie.LottieConfiguration = .shared, completion: ((Module___Lottie.LottieAnimationView, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(dotLottieUrl url: Foundation.URL, animationId: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, configuration: Module___Lottie.LottieConfiguration = .shared, session: Foundation.URLSession = .shared, completion: ((Module___Lottie.LottieAnimationView, (any Swift.Error)?) -> Swift.Void)? = nil)
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(dotLottieAsset name: Swift.String, bundle: Foundation.Bundle = Bundle.main, animationId: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, configuration: Module___Lottie.LottieConfiguration = .shared, completion: ((Module___Lottie.LottieAnimationView, (any Swift.Error)?) -> Swift.Void)? = nil)
+  public typealias DownloadClosure = ((any Swift.Error)?) -> Swift.Void
+}
+public enum LottiePlaybackMode : Swift.Hashable {
+  case paused(at: Module___Lottie.LottiePlaybackMode.PausedState)
+  case playing(_: Module___Lottie.LottiePlaybackMode.PlaybackMode)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.paused(at:)", message: "Will be removed in a future major release.")
+  case progress(_: Module___Lottie.AnimationProgressTime)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.paused(at:)", message: "Will be removed in a future major release.")
+  case frame(_: Module___Lottie.AnimationFrameTime)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.paused(at:)", message: "Will be removed in a future major release.")
+  case time(_: Foundation.TimeInterval)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.paused(at:)", message: "Will be removed in a future major release.")
+  case pause
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  case fromProgress(_: Module___Lottie.AnimationProgressTime?, toProgress: Module___Lottie.AnimationProgressTime, loopMode: Module___Lottie.LottieLoopMode)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  case fromFrame(_: Module___Lottie.AnimationFrameTime?, toFrame: Module___Lottie.AnimationFrameTime, loopMode: Module___Lottie.LottieLoopMode)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  case fromMarker(_: Swift.String?, toMarker: Swift.String, playEndMarkerFrame: Swift.Bool = true, loopMode: Module___Lottie.LottieLoopMode)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  case marker(_: Swift.String, loopMode: Module___Lottie.LottieLoopMode)
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  case markers(_: [Swift.String])
+  public enum PausedState : Swift.Hashable {
+    case currentFrame
+    case progress(_: Module___Lottie.AnimationProgressTime)
+    case frame(_: Module___Lottie.AnimationFrameTime)
+    case time(_: Foundation.TimeInterval)
+    case marker(_: Swift.String, position: Module___Lottie.LottieMarkerPosition = .start)
+    public static func == (a: Module___Lottie.LottiePlaybackMode.PausedState, b: Module___Lottie.LottiePlaybackMode.PausedState) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum PlaybackMode : Swift.Hashable {
+    case fromProgress(_: Module___Lottie.AnimationProgressTime?, toProgress: Module___Lottie.AnimationProgressTime, loopMode: Module___Lottie.LottieLoopMode)
+    case fromFrame(_: Module___Lottie.AnimationFrameTime?, toFrame: Module___Lottie.AnimationFrameTime, loopMode: Module___Lottie.LottieLoopMode)
+    case fromMarker(_: Swift.String?, toMarker: Swift.String, playEndMarkerFrame: Swift.Bool = true, loopMode: Module___Lottie.LottieLoopMode)
+    case marker(_: Swift.String, loopMode: Module___Lottie.LottieLoopMode)
+    case markers(_: [Swift.String])
+    public static func == (a: Module___Lottie.LottiePlaybackMode.PlaybackMode, b: Module___Lottie.LottiePlaybackMode.PlaybackMode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func == (a: Module___Lottie.LottiePlaybackMode, b: Module___Lottie.LottiePlaybackMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___Lottie.LottiePlaybackMode {
+  public static var paused: Module___Lottie.LottiePlaybackMode {
+    get
+  }
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  public static func toProgress(_ toProgress: Module___Lottie.AnimationProgressTime, loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottiePlaybackMode
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  public static func toFrame(_ toFrame: Module___Lottie.AnimationFrameTime, loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottiePlaybackMode
+  @available(*, deprecated, renamed: "LottiePlaybackMode.playing(_:)", message: "Will be removed in a future major release.")
+  public static func toMarker(_ toMarker: Swift.String, playEndMarkerFrame: Swift.Bool = true, loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottiePlaybackMode
+}
+extension Module___Lottie.LottiePlaybackMode.PlaybackMode {
+  public static func toProgress(_ toProgress: Module___Lottie.AnimationProgressTime, loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottiePlaybackMode.PlaybackMode
+  public static func toFrame(_ toFrame: Module___Lottie.AnimationFrameTime, loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottiePlaybackMode.PlaybackMode
+  public static func toMarker(_ toMarker: Swift.String, playEndMarkerFrame: Swift.Bool = true, loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottiePlaybackMode.PlaybackMode
+}
+public enum LottieMarkerPosition : Swift.Hashable {
+  case start
+  case end
+  public static func == (a: Module___Lottie.LottieMarkerPosition, b: Module___Lottie.LottieMarkerPosition) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@Module____Concurrency.MainActor @preconcurrency public struct LottieView<Placeholder> where Placeholder : SwiftUICore.View {
+  @Module____Concurrency.MainActor @preconcurrency public init(animation: Module___Lottie.LottieAnimation?) where Placeholder == SwiftUICore.EmptyView
+  @Module____Concurrency.MainActor @preconcurrency public init(dotLottieFile: Module___Lottie.DotLottieFile?) where Placeholder == SwiftUICore.EmptyView
+  @Module____Concurrency.MainActor @preconcurrency public init(_ loadAnimation: @escaping () async throws -> Module___Lottie.LottieAnimation?) where Placeholder == SwiftUICore.EmptyView
+  @Module____Concurrency.MainActor @preconcurrency public init(_ loadAnimation: @escaping () async throws -> Module___Lottie.LottieAnimation?, @SwiftUICore.ViewBuilder placeholder: @escaping () -> Placeholder)
+  @Module____Concurrency.MainActor @preconcurrency public init(_ loadDotLottieFile: @escaping () async throws -> Module___Lottie.DotLottieFile?) where Placeholder == SwiftUICore.EmptyView
+  @Module____Concurrency.MainActor @preconcurrency public init(_ loadDotLottieFile: @escaping () async throws -> Module___Lottie.DotLottieFile?, @SwiftUICore.ViewBuilder placeholder: @escaping () -> Placeholder)
+  @Module____Concurrency.MainActor @preconcurrency public init(_ loadAnimation: @escaping () async throws -> Module___Lottie.LottieAnimationSource?) where Placeholder == SwiftUICore.EmptyView
+  @Module____Concurrency.MainActor @preconcurrency public init(_ loadAnimation: @escaping () async throws -> Module___Lottie.LottieAnimationSource?, @SwiftUICore.ViewBuilder placeholder: @escaping () -> Placeholder)
+  @Module____Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func configure<Property>(_ property: Swift.ReferenceWritableKeyPath<Module___Lottie.LottieAnimationView, Property>, to value: Property) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func configure<Property>(_ property: Swift.ReferenceWritableKeyPath<Module___Lottie.LottieAnimationView, Property>, to value: Property) -> Module___Lottie.LottieView<Placeholder> where Property : Swift.Equatable
+  @Module____Concurrency.MainActor @preconcurrency public func configure(_ configure: @escaping (Module___Lottie.LottieAnimationView) -> Swift.Void) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func resizable() -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func intrinsicSize() -> Module___Lottie.LottieView<Placeholder>
+  @available(*, deprecated, renamed: "playing()", message: "Will be removed in a future major release.")
+  @Module____Concurrency.MainActor @preconcurrency public func play() -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func looping() -> Module___Lottie.LottieView<Placeholder>
+  @available(*, deprecated, renamed: "playing(_:)", message: "Will be removed in a future major release.")
+  @Module____Concurrency.MainActor @preconcurrency public func play(loopMode: Module___Lottie.LottieLoopMode = .playOnce) -> Module___Lottie.LottieView<Placeholder>
+  @available(*, deprecated, renamed: "playbackMode(_:)", message: "Will be removed in a future major release.")
+  @Module____Concurrency.MainActor @preconcurrency public func play(_ playbackMode: Module___Lottie.LottiePlaybackMode) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func playing(_ mode: Module___Lottie.LottiePlaybackMode.PlaybackMode) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func playing(loopMode: Module___Lottie.LottieLoopMode) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func playing() -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func paused(at state: Module___Lottie.LottiePlaybackMode.PausedState = .currentFrame) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func playbackMode(_ playbackMode: Module___Lottie.LottiePlaybackMode) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func animationSpeed(_ animationSpeed: Swift.Double) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func animationDidLoad(_ animationDidLoad: @escaping (Module___Lottie.LottieAnimationSource) -> Swift.Void) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func animationDidFinish(_ animationCompletionHandler: Module___Lottie.LottieCompletionBlock?) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func backgroundBehavior(_ value: Module___Lottie.LottieBackgroundBehavior) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func accessibilityLabel(_ accessibilityLabel: Swift.String?) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func configuration(_ configuration: Module___Lottie.LottieConfiguration) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func logger(_ logger: Module___Lottie.LottieLogger) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func imageProvider<ImageProvider>(_ imageProvider: ImageProvider) -> Module___Lottie.LottieView<Placeholder> where ImageProvider : Module___Lottie.AnimationImageProvider, ImageProvider : Swift.Equatable
+  @Module____Concurrency.MainActor @preconcurrency public func textProvider<TextProvider>(_ textProvider: TextProvider) -> Module___Lottie.LottieView<Placeholder> where TextProvider : Module___Lottie.AnimationKeypathTextProvider, TextProvider : Swift.Equatable
+  @Module____Concurrency.MainActor @preconcurrency public func fontProvider<FontProvider>(_ fontProvider: FontProvider) -> Module___Lottie.LottieView<Placeholder> where FontProvider : Module___Lottie.AnimationFontProvider, FontProvider : Swift.Equatable
+  @Module____Concurrency.MainActor @preconcurrency public func valueProvider<ValueProvider>(_ valueProvider: ValueProvider, for keypath: Module___Lottie.AnimationKeypath) -> Module___Lottie.LottieView<Placeholder> where ValueProvider : Module___Lottie.AnyValueProvider, ValueProvider : Swift.Equatable
+  @Module____Concurrency.MainActor @preconcurrency public func currentProgress(_ currentProgress: Module___Lottie.AnimationProgressTime?) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func currentFrame(_ currentFrame: Module___Lottie.AnimationFrameTime?) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func currentTime(_ currentTime: Foundation.TimeInterval?) -> Module___Lottie.LottieView<Placeholder>
+  @Module____Concurrency.MainActor @preconcurrency public func reloadAnimationTrigger(_ value: some Equatable, showPlaceholder: Swift.Bool = true) -> Module___Lottie.LottieView<Placeholder>
+  @available(iOS 15.0, tvOS 15.0, macOS 12.0, *)
+  @Module____Concurrency.MainActor @preconcurrency public func getRealtimeAnimationProgress(_ realtimeAnimationProgress: SwiftUICore.Binding<Module___Lottie.AnimationProgressTime>?) -> some SwiftUICore.View
+  
+  @available(iOS 15.0, tvOS 15.0, macOS 12.0, *)
+  @Module____Concurrency.MainActor @preconcurrency public func getRealtimeAnimationFrame(_ realtimeAnimationFrame: SwiftUICore.Binding<Module___Lottie.AnimationFrameTime>?) -> some SwiftUICore.View
+  
+  @Module____Concurrency.MainActor @preconcurrency public func dotLottieConfigurationComponents(_ dotLottieConfigurationComponents: Module___Lottie.DotLottieConfigurationComponents) -> Module___Lottie.LottieView<Placeholder>
+  public typealias Body = @_opaqueReturnTypeOf("$s6Lottie0A4ViewV4bodyQrvp", 0) __<Placeholder>
+}
+public protocol AnimationCacheProvider : AnyObject, Swift.Sendable {
+  func animation(forKey: Swift.String) -> Module___Lottie.LottieAnimation?
+  func setAnimation(_ animation: Module___Lottie.LottieAnimation, forKey: Swift.String)
+  func clearCache()
+}
+public class DefaultAnimationCache : Module___Lottie.AnimationCacheProvider {
+  public init()
+  public static let sharedCache: Module___Lottie.DefaultAnimationCache
+  public var cacheSize: Swift.Int {
+    get
+    set
+  }
+  public func clearCache()
+  public func animation(forKey key: Swift.String) -> Module___Lottie.LottieAnimation?
+  public func setAnimation(_ animation: Module___Lottie.LottieAnimation, forKey key: Swift.String)
+  @objc deinit
+}
+extension Module___Lottie.DefaultAnimationCache : @unchecked Swift.Sendable {
+}
+@available(*, deprecated, message: "Use DefaultAnimationCache instead, which is thread-safe and automatically responds to memory pressure.")
+public typealias LRUAnimationCache = Module___Lottie.DefaultAnimationCache
+public enum LottieAnimationCache {
+  public static var shared: (any Module___Lottie.AnimationCacheProvider)?
+}
+public enum DecodingStrategy : Swift.Hashable {
+  case legacyCodable
+  case dictionaryBased
+  public static func == (a: Module___Lottie.DecodingStrategy, b: Module___Lottie.DecodingStrategy) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LottieConfiguration : Swift.Hashable {
+  public init(renderingEngine: Module___Lottie.RenderingEngineOption = .automatic, decodingStrategy: Module___Lottie.DecodingStrategy = .dictionaryBased, colorSpace: Module___CoreGraphics.CGColorSpace = CGColorSpaceCreateDeviceRGB(), reducedMotionOption: Module___Lottie.ReducedMotionOption = .systemReducedMotionToggle)
+  public static var shared: Module___Lottie.LottieConfiguration
+  public var renderingEngine: Module___Lottie.RenderingEngineOption
+  public var decodingStrategy: Module___Lottie.DecodingStrategy
+  public var reducedMotionOption: Module___Lottie.ReducedMotionOption
+  public var colorSpace: Module___CoreGraphics.CGColorSpace
+  public static func == (a: Module___Lottie.LottieConfiguration, b: Module___Lottie.LottieConfiguration) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ReducedMotionOption {
+  case specific(Module___Lottie.ReducedMotionMode)
+  case dynamic(any Module___Lottie.ReducedMotionOptionProvider, dataID: Swift.AnyHashable)
+}
+extension Module___Lottie.ReducedMotionOption {
+  public static var standardMotion: Module___Lottie.ReducedMotionOption {
+    get
+  }
+  public static var reducedMotion: Module___Lottie.ReducedMotionOption {
+    get
+  }
+  public static var systemReducedMotionToggle: Module___Lottie.ReducedMotionOption {
+    get
+  }
+}
+extension Module___Lottie.ReducedMotionOption {
+  public var currentReducedMotionMode: Module___Lottie.ReducedMotionMode {
+    get
+  }
+}
+extension Module___Lottie.ReducedMotionOption : Swift.Hashable {
+  public static func == (lhs: Module___Lottie.ReducedMotionOption, rhs: Module___Lottie.ReducedMotionOption) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ReducedMotionMode : Swift.Hashable {
+  case standardMotion
+  case reducedMotion
+  public static func == (a: Module___Lottie.ReducedMotionMode, b: Module___Lottie.ReducedMotionMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ReducedMotionOptionProvider {
+  var currentReducedMotionMode: Module___Lottie.ReducedMotionMode { get }
+}
+public struct SystemReducedMotionOptionProvider : Module___Lottie.ReducedMotionOptionProvider {
+  public init()
+  public var currentReducedMotionMode: Module___Lottie.ReducedMotionMode {
+    get
+  }
+}
+public enum RenderingEngineOption : Swift.Hashable {
+  case automatic
+  case specific(Module___Lottie.RenderingEngine)
+  public static var mainThread: Module___Lottie.RenderingEngineOption {
+    get
+  }
+  public static var coreAnimation: Module___Lottie.RenderingEngineOption {
+    get
+  }
+}
+public enum RenderingEngine : Swift.Hashable {
+  case mainThread
+  case coreAnimation
+}
+extension Module___Lottie.RenderingEngineOption : Swift.RawRepresentable, Swift.CustomStringConvertible {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
+extension Module___Lottie.RenderingEngine : Swift.RawRepresentable, Swift.CustomStringConvertible {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency open class AnimatedButton : Module___Lottie.AnimatedControl {
+  @Module____Concurrency.MainActor @preconcurrency override public init(animation: Module___Lottie.LottieAnimation?, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func beginTracking(_ touch: Module___UIKit.UITouch, with event: Module___UIKit.UIEvent?) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func endTracking(_ touch: Module___UIKit.UITouch?, with event: Module___UIKit.UIEvent?)
+  @Module____Concurrency.MainActor @preconcurrency public var performAction: (() -> Swift.Void)?
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var accessibilityTraits: Module___UIKit.UIAccessibilityTraits {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func setPlayRange(fromProgress: Module___Lottie.AnimationProgressTime, toProgress: Module___Lottie.AnimationProgressTime, event: Module___Lottie.LottieControlEvent)
+  @Module____Concurrency.MainActor @preconcurrency public func setPlayRange(fromMarker fromName: Swift.String, toMarker toName: Swift.String, event: Module___Lottie.LottieControlEvent)
+  @objc deinit
+}
+@objc @Module____Concurrency.MainActor @preconcurrency open class AnimatedControl : Module___Lottie.LottieControlType {
+  @Module____Concurrency.MainActor @preconcurrency public init(animation: Module___Lottie.LottieAnimation?, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public init()
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: Module___CoreFoundation.CGSize {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func beginTracking(_ touch: Module___UIKit.UITouch, with event: Module___UIKit.UIEvent?) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func continueTracking(_ touch: Module___UIKit.UITouch, with event: Module___UIKit.UIEvent?) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func endTracking(_ touch: Module___UIKit.UITouch?, with event: Module___UIKit.UIEvent?)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func cancelTracking(with event: Module___UIKit.UIEvent?)
+  @Module____Concurrency.MainActor @preconcurrency open func animationDidSet()
+  @Module____Concurrency.MainActor @preconcurrency final public let animationView: Module___Lottie.LottieAnimationView
+  @Module____Concurrency.MainActor @preconcurrency public var animation: Module___Lottie.LottieAnimation? {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var animationSpeed: Module___CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func setLayer(named: Swift.String, forState: Module___Lottie.LottieControlState)
+  @Module____Concurrency.MainActor @preconcurrency public func setValueProvider(_ valueProvider: any Module___Lottie.AnyValueProvider, keypath: Module___Lottie.AnimationKeypath)
+  @Module____Concurrency.MainActor @preconcurrency public func removeValueProvider(for keypath: Module___Lottie.AnimationKeypath)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency open class AnimatedSwitch : Module___Lottie.AnimatedControl {
+  @Module____Concurrency.MainActor @preconcurrency override public init(animation: Module___Lottie.LottieAnimation?, configuration: Module___Lottie.LottieConfiguration = .shared)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency override open func animationDidSet()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func endTracking(_ touch: Module___UIKit.UITouch?, with event: Module___UIKit.UIEvent?)
+  public enum CancelBehavior {
+    case reverse
+    case none
+    public static func == (a: Module___Lottie.AnimatedSwitch.CancelBehavior, b: Module___Lottie.AnimatedSwitch.CancelBehavior) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var cancelBehavior: Module___Lottie.AnimatedSwitch.CancelBehavior
+  @Module____Concurrency.MainActor @preconcurrency public var animateUpdateWhenChangingAnimation: Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency public var stateUpdated: ((_ isOn: Swift.Bool) -> Swift.Void)?
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var accessibilityTraits: Module___UIKit.UIAccessibilityTraits {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var isOn: Swift.Bool {
+    get
+    set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func setIsOn(_ isOn: Swift.Bool, animated: Swift.Bool, shouldFireHaptics: Swift.Bool = true)
+  @Module____Concurrency.MainActor @preconcurrency public func setProgressForState(fromProgress: Module___Lottie.AnimationProgressTime, toProgress: Module___Lottie.AnimationProgressTime, forOnState: Swift.Bool)
+  @objc deinit
+}
+@Module____Concurrency.MainActor @preconcurrency public struct LottieButton {
+  @Module____Concurrency.MainActor @preconcurrency public init(animation: Module___Lottie.LottieAnimation?, action: @escaping () -> Swift.Void)
+  @Module____Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func configure(_ configure: @escaping (Module___Lottie.AnimatedButton) -> Swift.Void) -> Module___Lottie.LottieButton
+  @Module____Concurrency.MainActor @preconcurrency public func configuration(_ configuration: Module___Lottie.LottieConfiguration) -> Module___Lottie.LottieButton
+  @Module____Concurrency.MainActor @preconcurrency public func animate(fromProgress: Module___Lottie.AnimationProgressTime, toProgress: Module___Lottie.AnimationProgressTime, on event: Module___Lottie.LottieControlEvent) -> Module___Lottie.LottieButton
+  @Module____Concurrency.MainActor @preconcurrency public func animate(fromMarker: Swift.String, toMarker: Swift.String, on event: Module___Lottie.LottieControlEvent) -> Module___Lottie.LottieButton
+  @Module____Concurrency.MainActor @preconcurrency public func valueProvider<ValueProvider>(_ valueProvider: ValueProvider, for keypath: Module___Lottie.AnimationKeypath) -> Module___Lottie.LottieButton where ValueProvider : Module___Lottie.AnyValueProvider, ValueProvider : Swift.Equatable
+  public typealias Body = @_opaqueReturnTypeOf("$s6Lottie0A6ButtonV4bodyQrvp", 0) __
+}
+@Module____Concurrency.MainActor @preconcurrency public struct LottieSwitch {
+  @Module____Concurrency.MainActor @preconcurrency public init(animation: Module___Lottie.LottieAnimation?)
+  @Module____Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public func configure(_ configure: @escaping (Module___Lottie.AnimatedSwitch) -> Swift.Void) -> Module___Lottie.LottieSwitch
+  @Module____Concurrency.MainActor @preconcurrency public func configuration(_ configuration: Module___Lottie.LottieConfiguration) -> Module___Lottie.LottieSwitch
+  @Module____Concurrency.MainActor @preconcurrency public func isOn(_ binding: SwiftUICore.Binding<Swift.Bool>) -> Module___Lottie.LottieSwitch
+  @Module____Concurrency.MainActor @preconcurrency public func onAnimation(fromProgress onStartProgress: Module___Lottie.AnimationProgressTime, toProgress onEndProgress: Module___Lottie.AnimationProgressTime) -> Module___Lottie.LottieSwitch
+  @Module____Concurrency.MainActor @preconcurrency public func offAnimation(fromProgress offStartProgress: Module___Lottie.AnimationProgressTime, toProgress offEndProgress: Module___Lottie.AnimationProgressTime) -> Module___Lottie.LottieSwitch
+  @Module____Concurrency.MainActor @preconcurrency public func valueProvider<ValueProvider>(_ valueProvider: ValueProvider, for keypath: Module___Lottie.AnimationKeypath) -> Module___Lottie.LottieSwitch where ValueProvider : Module___Lottie.AnyValueProvider, ValueProvider : Swift.Equatable
+  public typealias Body = @_opaqueReturnTypeOf("$s6Lottie0A6SwitchV4bodyQrvp", 0) __
+}
+public typealias LottieControlType = Module___UIKit.UIControl
+public typealias LottieControlState = Module___UIKit.UIControl.State
+public typealias LottieControlEvent = Module___UIKit.UIControl.Event
+public class DotLottieCache : Module___Lottie.DotLottieCacheProvider {
+  public init()
+  public static let sharedCache: Module___Lottie.DotLottieCache
+  public var cacheSize: Swift.Int {
+    get
+    set
+  }
+  public func clearCache()
+  public func file(forKey key: Swift.String) -> Module___Lottie.DotLottieFile?
+  public func setFile(_ lottie: Module___Lottie.DotLottieFile, forKey key: Swift.String)
+  @objc deinit
+}
+extension Module___Lottie.DotLottieCache : @unchecked Swift.Sendable {
+}
+public protocol DotLottieCacheProvider : Swift.Sendable {
+  func file(forKey: Swift.String) -> Module___Lottie.DotLottieFile?
+  func setFile(_ lottie: Module___Lottie.DotLottieFile, forKey: Swift.String)
+  func clearCache()
+}
+public struct DotLottieConfiguration {
+  public var id: Swift.String
+  public var loopMode: Module___Lottie.LottieLoopMode
+  public var speed: Swift.Double
+  public var imageProvider: (any Module___Lottie.AnimationImageProvider)? {
+    get
+  }
+}
+public struct DotLottieConfigurationComponents : Swift.OptionSet {
+  public init(rawValue: Swift.Int)
+  public static let imageProvider: Module___Lottie.DotLottieConfigurationComponents
+  public static let loopMode: Module___Lottie.DotLottieConfigurationComponents
+  public static let animationSpeed: Module___Lottie.DotLottieConfigurationComponents
+  public static let all: Module___Lottie.DotLottieConfigurationComponents
+  public static let none: Module___Lottie.DotLottieConfigurationComponents
+  public let rawValue: Swift.Int
+  public typealias ArrayLiteralElement = Module___Lottie.DotLottieConfigurationComponents
+  public typealias Element = Module___Lottie.DotLottieConfigurationComponents
+  public typealias RawValue = Swift.Int
+}
+@_hasMissingDesignatedInitializers final public class DotLottieFile {
+  public struct Animation {
+    public let animation: Module___Lottie.LottieAnimation
+    public let configuration: Module___Lottie.DotLottieConfiguration
+  }
+  final public var animations: [Module___Lottie.DotLottieFile.Animation] {
+    get
+  }
+  @objc deinit
+}
+extension Module___Lottie.DotLottieFile : @unchecked Swift.Sendable {
+}
+extension Module___Lottie.DotLottieFile {
+  public enum SynchronouslyBlockingCurrentThread {
+    public static func loadedFrom(filepath: Swift.String, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache) -> Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>
+    public static func named(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache) -> Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>
+    public static func loadedFrom(data: Foundation.Data, filename: Swift.String) -> Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>
+  }
+  public static func named(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache) async throws -> Module___Lottie.DotLottieFile
+  public static func named(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, dispatchQueue: Dispatch.DispatchQueue = .dotLottie, handleResult: @escaping (Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>) -> Swift.Void)
+  public static func loadedFrom(filepath: Swift.String, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache) async throws -> Module___Lottie.DotLottieFile
+  public static func loadedFrom(filepath: Swift.String, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, dispatchQueue: Dispatch.DispatchQueue = .dotLottie, handleResult: @escaping (Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>) -> Swift.Void)
+  public static func asset(named name: Swift.String, bundle: Foundation.Bundle = Bundle.main, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache) async throws -> Module___Lottie.DotLottieFile
+  public static func asset(named name: Swift.String, bundle: Foundation.Bundle = Bundle.main, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, dispatchQueue: Dispatch.DispatchQueue = .dotLottie, handleResult: @escaping (Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>) -> Swift.Void)
+  public static func loadedFrom(url: Foundation.URL, session: Foundation.URLSession = .shared, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache) async throws -> Module___Lottie.DotLottieFile
+  public static func loadedFrom(url: Foundation.URL, session: Foundation.URLSession = .shared, dotLottieCache: (any Module___Lottie.DotLottieCacheProvider)? = DotLottieCache.sharedCache, handleResult: @escaping (Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>) -> Swift.Void)
+  public static func loadedFrom(data: Foundation.Data, filename: Swift.String, dispatchQueue: Dispatch.DispatchQueue = .dotLottie, handleResult: @escaping (Swift.Result<Module___Lottie.DotLottieFile, any Swift.Error>) -> Swift.Void)
+  public static func loadedFrom(data: Foundation.Data, filename: Swift.String, dispatchQueue: Dispatch.DispatchQueue = .dotLottie) async throws -> Module___Lottie.DotLottieFile
+}
+extension Dispatch.DispatchQueue {
+  public static let dotLottie: Dispatch.DispatchQueue
+}
+public struct AnimationKeypath : Swift.Hashable, Swift.ExpressibleByStringLiteral {
+  public init(keypath: Swift.String)
+  public init(stringLiteral: Swift.String)
+  public init(keys: [Swift.String])
+  public var keys: [Swift.String] {
+    get
+  }
+  public var string: Swift.String {
+    get
+  }
+  public static func == (a: Module___Lottie.AnimationKeypath, b: Module___Lottie.AnimationKeypath) -> Swift.Bool
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol AnyValueProvider {
+  var valueType: any Any.Type { get }
+  var typeErasedStorage: Module___Lottie.AnyValueProviderStorage { get }
+  func hasUpdate(frame: Module___Lottie.AnimationFrameTime) -> Swift.Bool
+}
+extension Module___Lottie.AnyValueProvider {
+  public func value(frame: Module___Lottie.AnimationFrameTime) -> Any
+}
+public enum ValueProviderStorage<T> where T : Module___Lottie.AnyInterpolatable {
+  case singleValue(T)
+  case keyframes([Module___Lottie.Keyframe<T>])
+  case closure((Module___Lottie.AnimationFrameTime) -> T)
+}
+public enum AnyValueProviderStorage {
+  case singleValue(Any)
+  case keyframes([Module___Lottie.Keyframe<Any>], interpolate: (Module___Lottie.AnimationFrameTime) -> Any)
+  case closure((Module___Lottie.AnimationFrameTime) -> Any)
+}
+final public class ColorValueProvider {
+  public init(block: @escaping Module___Lottie.ColorValueProvider.ColorValueBlock)
+  public init(_ color: Module___Lottie.LottieColor)
+  public init(_ keyframes: [Module___Lottie.Keyframe<Module___Lottie.LottieColor>])
+  public typealias ColorValueBlock = (Module___CoreFoundation.CGFloat) -> Module___Lottie.LottieColor
+  final public var color: Module___Lottie.LottieColor {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: Module___Lottie.ValueProviderStorage<Module___Lottie.LottieColor> {
+    get
+  }
+  final public func hasUpdate(frame _: Module___CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension Module___Lottie.ColorValueProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.ColorValueProvider, rhs: Module___Lottie.ColorValueProvider) -> Swift.Bool
+}
+final public class FloatValueProvider {
+  public init(block: @escaping Module___Lottie.FloatValueProvider.CGFloatValueBlock)
+  public init(_ float: Module___CoreFoundation.CGFloat)
+  public typealias CGFloatValueBlock = (Module___CoreFoundation.CGFloat) -> Module___CoreFoundation.CGFloat
+  final public var float: Module___CoreFoundation.CGFloat {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: Module___Lottie.ValueProviderStorage<Module___Lottie.LottieVector1D> {
+    get
+  }
+  final public func hasUpdate(frame _: Module___CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension Module___Lottie.FloatValueProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.FloatValueProvider, rhs: Module___Lottie.FloatValueProvider) -> Swift.Bool
+}
+final public class GradientValueProvider {
+  public init(block: @escaping Module___Lottie.GradientValueProvider.ColorsValueBlock, locations: Module___Lottie.GradientValueProvider.ColorLocationsBlock? = nil)
+  public init(_ colors: [Module___Lottie.LottieColor], locations: [Swift.Double] = [])
+  public typealias ColorsValueBlock = (Module___CoreFoundation.CGFloat) -> [Module___Lottie.LottieColor]
+  public typealias ColorLocationsBlock = (Module___CoreFoundation.CGFloat) -> [Swift.Double]
+  final public var colors: [Module___Lottie.LottieColor] {
+    get
+    set
+  }
+  final public var locations: [Swift.Double] {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: Module___Lottie.ValueProviderStorage<[Swift.Double]> {
+    get
+  }
+  final public func hasUpdate(frame _: Module___CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension Module___Lottie.GradientValueProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.GradientValueProvider, rhs: Module___Lottie.GradientValueProvider) -> Swift.Bool
+}
+final public class PointValueProvider {
+  public init(block: @escaping Module___Lottie.PointValueProvider.PointValueBlock)
+  public init(_ point: Module___CoreFoundation.CGPoint)
+  public typealias PointValueBlock = (Module___CoreFoundation.CGFloat) -> Module___CoreFoundation.CGPoint
+  final public var point: Module___CoreFoundation.CGPoint {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: Module___Lottie.ValueProviderStorage<Module___Lottie.LottieVector3D> {
+    get
+  }
+  final public func hasUpdate(frame _: Module___CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension Module___Lottie.PointValueProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.PointValueProvider, rhs: Module___Lottie.PointValueProvider) -> Swift.Bool
+}
+final public class SizeValueProvider {
+  public init(block: @escaping Module___Lottie.SizeValueProvider.SizeValueBlock)
+  public init(_ size: Module___CoreFoundation.CGSize)
+  public typealias SizeValueBlock = (Module___CoreFoundation.CGFloat) -> Module___CoreFoundation.CGSize
+  final public var size: Module___CoreFoundation.CGSize {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: Module___Lottie.ValueProviderStorage<Module___Lottie.LottieVector3D> {
+    get
+  }
+  final public func hasUpdate(frame _: Module___CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension Module___Lottie.SizeValueProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.SizeValueProvider, rhs: Module___Lottie.SizeValueProvider) -> Swift.Bool
+}
+public protocol AnimationFontProvider {
+  func fontFor(family: Swift.String, size: Module___CoreFoundation.CGFloat) -> Module___CoreText.CTFont?
+}
+final public class DefaultFontProvider : Module___Lottie.AnimationFontProvider {
+  public init()
+  final public func fontFor(family: Swift.String, size: Module___CoreFoundation.CGFloat) -> Module___CoreText.CTFont?
+  @objc deinit
+}
+extension Module___Lottie.DefaultFontProvider : Swift.Equatable {
+  public static func == (_: Module___Lottie.DefaultFontProvider, _: Module___Lottie.DefaultFontProvider) -> Swift.Bool
+}
+public protocol AnimationImageProvider {
+  var cacheEligible: Swift.Bool { get }
+  func imageForAsset(asset: Module___Lottie.ImageAsset) -> Module___CoreGraphics.CGImage?
+  func contentsGravity(for asset: Module___Lottie.ImageAsset) -> Module___QuartzCore.CALayerContentsGravity
+}
+extension Module___Lottie.AnimationImageProvider {
+  public var cacheEligible: Swift.Bool {
+    get
+  }
+  public func contentsGravity(for _: Module___Lottie.ImageAsset) -> Module___QuartzCore.CALayerContentsGravity
+}
+public protocol Interpolatable : Module___Lottie.AnyInterpolatable {
+  func interpolate(to: Self, amount: Module___CoreFoundation.CGFloat) -> Self
+}
+public protocol SpatialInterpolatable : Module___Lottie.AnyInterpolatable {
+  func interpolate(to: Self, amount: Module___CoreFoundation.CGFloat, spatialOutTangent: Module___CoreFoundation.CGPoint?, spatialInTangent: Module___CoreFoundation.CGPoint?) -> Self
+}
+public protocol AnyInterpolatable {
+  func _interpolate(to: Self, amount: Module___CoreFoundation.CGFloat, spatialOutTangent: Module___CoreFoundation.CGPoint?, spatialInTangent: Module___CoreFoundation.CGPoint?) -> Self
+}
+extension Module___Lottie.Interpolatable {
+  public func _interpolate(to: Self, amount: Module___CoreFoundation.CGFloat, spatialOutTangent _: Module___CoreFoundation.CGPoint?, spatialInTangent _: Module___CoreFoundation.CGPoint?) -> Self
+}
+extension Module___Lottie.SpatialInterpolatable {
+  public func interpolate(to: Self, amount: Module___CoreFoundation.CGFloat) -> Self
+  public func _interpolate(to: Self, amount: Module___CoreFoundation.CGFloat, spatialOutTangent: Module___CoreFoundation.CGPoint?, spatialInTangent: Module___CoreFoundation.CGPoint?) -> Self
+}
+extension Swift.Double : Module___Lottie.Interpolatable {
+}
+extension Module___CoreFoundation.CGFloat : Module___Lottie.Interpolatable {
+}
+extension Swift.Float : Module___Lottie.Interpolatable {
+}
+extension Module___Lottie.Interpolatable where Self : Swift.BinaryFloatingPoint {
+  public func interpolate(to: Self, amount: Module___CoreFoundation.CGFloat) -> Self
+}
+extension Module___CoreFoundation.CGRect : Module___Lottie.Interpolatable {
+  public func interpolate(to: Module___CoreFoundation.CGRect, amount: Module___CoreFoundation.CGFloat) -> Module___CoreFoundation.CGRect
+}
+extension Module___CoreFoundation.CGSize : Module___Lottie.Interpolatable {
+  public func interpolate(to: Module___CoreFoundation.CGSize, amount: Module___CoreFoundation.CGFloat) -> Module___CoreFoundation.CGSize
+}
+extension Module___CoreFoundation.CGPoint : Module___Lottie.SpatialInterpolatable {
+  public func interpolate(to: Module___CoreFoundation.CGPoint, amount: Module___CoreFoundation.CGFloat, spatialOutTangent: Module___CoreFoundation.CGPoint?, spatialInTangent: Module___CoreFoundation.CGPoint?) -> Module___CoreFoundation.CGPoint
+}
+extension Module___Lottie.LottieColor : Module___Lottie.Interpolatable {
+  public func interpolate(to: Module___Lottie.LottieColor, amount: Module___CoreFoundation.CGFloat) -> Module___Lottie.LottieColor
+}
+extension Module___Lottie.LottieVector1D : Module___Lottie.Interpolatable {
+  public func interpolate(to: Module___Lottie.LottieVector1D, amount: Module___CoreFoundation.CGFloat) -> Module___Lottie.LottieVector1D
+}
+extension Module___Lottie.LottieVector2D : Module___Lottie.SpatialInterpolatable {
+  public func interpolate(to: Module___Lottie.LottieVector2D, amount: Module___CoreFoundation.CGFloat, spatialOutTangent: Module___CoreFoundation.CGPoint?, spatialInTangent: Module___CoreFoundation.CGPoint?) -> Module___Lottie.LottieVector2D
+}
+extension Module___Lottie.LottieVector3D : Module___Lottie.SpatialInterpolatable {
+  public func interpolate(to: Module___Lottie.LottieVector3D, amount: Module___CoreFoundation.CGFloat, spatialOutTangent: Module___CoreFoundation.CGPoint?, spatialInTangent: Module___CoreFoundation.CGPoint?) -> Module___Lottie.LottieVector3D
+}
+extension Swift.Array : Module___Lottie.Interpolatable, Module___Lottie.AnyInterpolatable where Element : Module___Lottie.Interpolatable {
+  public func interpolate(to: [Element], amount: Module___CoreFoundation.CGFloat) -> [Element]
+}
+extension Swift.Optional : Module___Lottie.Interpolatable, Module___Lottie.AnyInterpolatable where Wrapped : Module___Lottie.Interpolatable {
+  public func interpolate(to: Wrapped?, amount: Module___CoreFoundation.CGFloat) -> Wrapped?
+}
+final public class Keyframe<T> {
+  public init(_ value: T, spatialInTangent: Module___Lottie.LottieVector3D? = nil, spatialOutTangent: Module___Lottie.LottieVector3D? = nil)
+  public init(value: T, time: Module___Lottie.AnimationFrameTime, isHold: Swift.Bool = false, inTangent: Module___Lottie.LottieVector2D? = nil, outTangent: Module___Lottie.LottieVector2D? = nil, spatialInTangent: Module___Lottie.LottieVector3D? = nil, spatialOutTangent: Module___Lottie.LottieVector3D? = nil)
+  final public let value: T
+  final public let time: Module___Lottie.AnimationFrameTime
+  final public let isHold: Swift.Bool
+  final public let inTangent: Module___Lottie.LottieVector2D?
+  final public let outTangent: Module___Lottie.LottieVector2D?
+  final public let spatialInTangent: Module___Lottie.LottieVector3D?
+  final public let spatialOutTangent: Module___Lottie.LottieVector3D?
+  @objc deinit
+}
+extension Module___Lottie.Keyframe : Swift.Equatable where T : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.Keyframe<T>, rhs: Module___Lottie.Keyframe<T>) -> Swift.Bool
+}
+extension Module___Lottie.Keyframe : Swift.Hashable where T : Swift.Hashable {
+  final public func hash(into hasher: inout Swift.Hasher)
+  final public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___Lottie.Keyframe : Swift.Sendable where T : Swift.Sendable {
+}
+final public class LottieLogger {
+  public init(assert: @escaping Module___Lottie.LottieLogger.Assert = { condition, message, file, line in
+       
+       
+       
+      Swift.assert(condition(), message(), file: file, line: line)
+    }, assertionFailure: @escaping Module___Lottie.LottieLogger.AssertionFailure = { message, file, line in
+       
+       
+       
+       
+      Swift.assertionFailure(message(), file: file, line: line)
+    }, warn: @escaping Module___Lottie.LottieLogger.Warn = { message, _, _ in
+       
+      print(message())
+    }, info: @escaping Module___Lottie.LottieLogger.Info = { message in
+       
+      print(message())
+    })
+  public typealias Assert = (_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String, _ fileID: Swift.StaticString, _ line: Swift.UInt) -> Swift.Void
+  public typealias AssertionFailure = (_ message: @autoclosure () -> Swift.String, _ fileID: Swift.StaticString, _ line: Swift.UInt) -> Swift.Void
+  public typealias Warn = (_ message: @autoclosure () -> Swift.String, _ fileID: Swift.StaticString, _ line: Swift.UInt) -> Swift.Void
+  public typealias Info = (_ message: @autoclosure () -> Swift.String) -> Swift.Void
+  public static var shared: Module___Lottie.LottieLogger
+  final public func assert(_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String = String(), fileID: Swift.StaticString = #fileID, line: Swift.UInt = #line)
+  final public func assertionFailure(_ message: @autoclosure () -> Swift.String = String(), fileID: Swift.StaticString = #fileID, line: Swift.UInt = #line)
+  final public func warn(_ message: @autoclosure () -> Swift.String = String(), fileID: Swift.StaticString = #fileID, line: Swift.UInt = #line)
+  final public func info(_ message: @autoclosure () -> Swift.String = String())
+  @objc deinit
+}
+extension Module___Lottie.LottieLogger {
+  public static var printToConsole: Module___Lottie.LottieLogger {
+    get
+  }
+}
+public typealias AnimationFrameTime = Module___CoreFoundation.CGFloat
+public typealias AnimationProgressTime = Module___CoreFoundation.CGFloat
+public enum ColorFormatDenominator : Swift.Hashable {
+  case One
+  case OneHundred
+  case TwoFiftyFive
+  public static func == (a: Module___Lottie.ColorFormatDenominator, b: Module___Lottie.ColorFormatDenominator) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LottieColor : Swift.Hashable {
+  public var r: Swift.Double
+  public var g: Swift.Double
+  public var b: Swift.Double
+  public var a: Swift.Double
+  public init(r: Swift.Double, g: Swift.Double, b: Swift.Double, a: Swift.Double, denominator: Module___Lottie.ColorFormatDenominator = .One)
+  public static func == (a: Module___Lottie.LottieColor, b: Module___Lottie.LottieColor) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LottieVector1D : Swift.Hashable, Swift.Sendable {
+  public init(_ value: Swift.Double)
+  public let value: Swift.Double
+  public static func == (a: Module___Lottie.LottieVector1D, b: Module___Lottie.LottieVector1D) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LottieVector3D : Swift.Hashable, Swift.Sendable {
+  public let x: Swift.Double
+  public let y: Swift.Double
+  public let z: Swift.Double
+  public init(x: Swift.Double, y: Swift.Double, z: Swift.Double)
+  public static func == (a: Module___Lottie.LottieVector3D, b: Module___Lottie.LottieVector3D) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol AnimationKeypathTextProvider : AnyObject {
+  func text(for keypath: Module___Lottie.AnimationKeypath, sourceText: Swift.String) -> Swift.String?
+}
+@available(*, deprecated, message: "`AnimationKeypathTextProvider` has been deprecated and renamed to `LegacyAnimationTextProvider`. Instead, conform to `AnimationKeypathTextProvider` instead or conform to `LegacyAnimationTextProvider` explicitly.")
+public typealias AnimationTextProvider = Module___Lottie.LegacyAnimationTextProvider
+public protocol LegacyAnimationTextProvider : Module___Lottie.AnimationKeypathTextProvider {
+  func textFor(keypathName: Swift.String, sourceText: Swift.String) -> Swift.String
+}
+extension Module___Lottie.LegacyAnimationTextProvider {
+  public func text(for _: Module___Lottie.AnimationKeypath, sourceText _: Swift.String) -> Swift.String?
+}
+public protocol TextContentsScaleProvider : Module___Lottie.AnimationKeypathTextProvider {
+  func contentsScale(for keypath: Module___Lottie.AnimationKeypath) -> Module___CoreFoundation.CGFloat?
+}
+final public class DictionaryTextProvider : Module___Lottie.AnimationKeypathTextProvider, Module___Lottie.LegacyAnimationTextProvider {
+  public init(_ values: [Swift.String : Swift.String])
+  final public func text(for keypath: Module___Lottie.AnimationKeypath, sourceText: Swift.String) -> Swift.String?
+  final public func textFor(keypathName: Swift.String, sourceText: Swift.String) -> Swift.String
+  @objc deinit
+}
+extension Module___Lottie.DictionaryTextProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.DictionaryTextProvider, rhs: Module___Lottie.DictionaryTextProvider) -> Swift.Bool
+}
+final public class DefaultTextProvider : Module___Lottie.AnimationKeypathTextProvider, Module___Lottie.LegacyAnimationTextProvider {
+  public init()
+  final public func textFor(keypathName _: Swift.String, sourceText: Swift.String) -> Swift.String
+  final public func text(for _: Module___Lottie.AnimationKeypath, sourceText: Swift.String) -> Swift.String
+  @objc deinit
+}
+extension Module___Lottie.DefaultTextProvider : Swift.Equatable {
+  public static func == (_: Module___Lottie.DefaultTextProvider, _: Module___Lottie.DefaultTextProvider) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency final public class AnimationSubview : Module___UIKit.UIView {
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: Module___CoreFoundation.CGRect)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public class BundleImageProvider : Module___Lottie.AnimationImageProvider {
+  public init(bundle: Foundation.Bundle, searchPath: Swift.String?, contentsGravity: Module___QuartzCore.CALayerContentsGravity = .resize)
+  public func imageForAsset(asset: Module___Lottie.ImageAsset) -> Module___CoreGraphics.CGImage?
+  public func contentsGravity(for _: Module___Lottie.ImageAsset) -> Module___QuartzCore.CALayerContentsGravity
+  @objc deinit
+}
+extension Module___Lottie.BundleImageProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.BundleImageProvider, rhs: Module___Lottie.BundleImageProvider) -> Swift.Bool
+}
+@objc final public class CompatibleAnimationKeypath : ObjectiveC.NSObject {
+  @objc public init(keypath: Swift.String)
+  @objc public init(keys: [Swift.String])
+  final public let animationKeypath: Module___Lottie.AnimationKeypath
+  @objc deinit
+}
+@objc final public class CompatibleAnimation : ObjectiveC.NSObject {
+  @objc public init(name: Swift.String, subdirectory: Swift.String? = nil, bundle: Foundation.Bundle = Bundle.main)
+  @objc deinit
+}
+@objc public enum CompatibleRenderingEngineOption : Swift.Int {
+  case shared
+  case defaultEngine
+  case automatic
+  case mainThread
+  case coreAnimation
+  public static func generateLottieConfiguration(_ configuration: Module___Lottie.CompatibleRenderingEngineOption) -> Module___Lottie.LottieConfiguration
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CompatibleBackgroundBehavior : Swift.Int {
+  case stop
+  case pause
+  case pauseAndRestore
+  case forceFinish
+  case continuePlaying
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @Module____Concurrency.MainActor @preconcurrency final public class CompatibleAnimationView : Module___UIKit.UIView {
+  @objc @Module____Concurrency.MainActor @preconcurrency convenience public init(compatibleAnimation: Module___Lottie.CompatibleAnimation)
+  @objc @Module____Concurrency.MainActor @preconcurrency public init(compatibleAnimation: Module___Lottie.CompatibleAnimation, compatibleRenderingEngineOption: Module___Lottie.CompatibleRenderingEngineOption)
+  @objc @Module____Concurrency.MainActor @preconcurrency convenience public init(url: Foundation.URL)
+  @objc @Module____Concurrency.MainActor @preconcurrency public init(url: Foundation.URL, compatibleRenderingEngineOption: Module___Lottie.CompatibleRenderingEngineOption)
+  @objc @Module____Concurrency.MainActor @preconcurrency convenience public init(data: Foundation.Data)
+  @objc @Module____Concurrency.MainActor @preconcurrency public init(data: Foundation.Data, compatibleRenderingEngineOption: Module___Lottie.CompatibleRenderingEngineOption)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: Module___CoreFoundation.CGRect)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var compatibleAnimation: Module___Lottie.CompatibleAnimation? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var loopAnimationCount: Module___CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var compatibleDictionaryTextProvider: Module___Lottie.CompatibleDictionaryTextProvider? {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override final public var contentMode: Module___UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var shouldRasterizeWhenIdle: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var currentProgress: Module___CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var duration: Module___CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var currentTime: Foundation.TimeInterval {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var currentFrame: Module___CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var realtimeAnimationFrame: Module___CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var realtimeAnimationProgress: Module___CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var animationSpeed: Module___CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var respectAnimationFrameRate: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var isAnimationPlaying: Swift.Bool {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public var backgroundMode: Module___Lottie.CompatibleBackgroundBehavior {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func play()
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func play(completion: ((Swift.Bool) -> Swift.Void)?)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func play(fromProgress: Module___CoreFoundation.CGFloat, toProgress: Module___CoreFoundation.CGFloat, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func play(fromFrame: Module___CoreFoundation.CGFloat, toFrame: Module___CoreFoundation.CGFloat, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func play(fromMarker: Swift.String, toMarker: Swift.String, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func play(marker: Swift.String, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func stop()
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func pause()
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func reloadImages()
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func forceDisplayUpdate()
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func getValue(for keypath: Module___Lottie.CompatibleAnimationKeypath, atFrame: Module___CoreFoundation.CGFloat) -> Any?
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func logHierarchyKeypaths()
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func setColorValue(_ color: Module___UIKit.UIColor, forKeypath keypath: Module___Lottie.CompatibleAnimationKeypath)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func getColorValue(for keypath: Module___Lottie.CompatibleAnimationKeypath, atFrame: Module___CoreFoundation.CGFloat) -> Module___UIKit.UIColor?
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func addSubview(_ subview: Module___Lottie.AnimationSubview, forLayerAt keypath: Module___Lottie.CompatibleAnimationKeypath)
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func convert(rect: Module___CoreFoundation.CGRect, toLayerAt keypath: Module___Lottie.CompatibleAnimationKeypath?) -> Module___CoreFoundation.CGRect
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func convert(point: Module___CoreFoundation.CGPoint, toLayerAt keypath: Module___Lottie.CompatibleAnimationKeypath?) -> Module___CoreFoundation.CGPoint
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func progressTime(forMarker named: Swift.String) -> Module___CoreFoundation.CGFloat
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func frameTime(forMarker named: Swift.String) -> Module___CoreFoundation.CGFloat
+  @objc @Module____Concurrency.MainActor @preconcurrency final public func durationFrameTime(forMarker named: Swift.String) -> Module___CoreFoundation.CGFloat
+  @objc deinit
+}
+@objc final public class CompatibleDictionaryTextProvider : ObjectiveC.NSObject {
+  @objc public init(values: [Swift.String : Swift.String])
+  @objc deinit
+}
+public class FilepathImageProvider : Module___Lottie.AnimationImageProvider {
+  public init(filepath: Swift.String, contentsGravity: Module___QuartzCore.CALayerContentsGravity = .resize)
+  public init(filepath: Foundation.URL, contentsGravity: Module___QuartzCore.CALayerContentsGravity = .resize)
+  public func imageForAsset(asset: Module___Lottie.ImageAsset) -> Module___CoreGraphics.CGImage?
+  public func contentsGravity(for _: Module___Lottie.ImageAsset) -> Module___QuartzCore.CALayerContentsGravity
+  @objc deinit
+}
+extension Module___Lottie.FilepathImageProvider : Swift.Equatable {
+  public static func == (lhs: Module___Lottie.FilepathImageProvider, rhs: Module___Lottie.FilepathImageProvider) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency open class LottieAnimationViewBase : Module___UIKit.UIView {
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var contentMode: Module___UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToWindow()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: Module___CoreFoundation.CGRect)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Module___UIKit.UIColor {
+  public var lottieColorValue: Module___Lottie.LottieColor {
+    get
+  }
+}
+extension Module___Lottie.LayerType : Swift.Equatable {}
+extension Module___Lottie.LayerType : Swift.Hashable {}
+extension Module___Lottie.LayerType : Swift.RawRepresentable {}
+extension Module___Lottie.MatteType : Swift.Equatable {}
+extension Module___Lottie.MatteType : Swift.Hashable {}
+extension Module___Lottie.MatteType : Swift.RawRepresentable {}
+extension Module___Lottie.BlendMode : Swift.Equatable {}
+extension Module___Lottie.BlendMode : Swift.Hashable {}
+extension Module___Lottie.BlendMode : Swift.RawRepresentable {}
+extension Module___Lottie.CoordinateSpace : Swift.Equatable {}
+extension Module___Lottie.CoordinateSpace : Swift.Hashable {}
+extension Module___Lottie.CoordinateSpace : Swift.RawRepresentable {}
+extension Module___Lottie.LottieBackgroundBehavior : Swift.Equatable {}
+extension Module___Lottie.LottieBackgroundBehavior : Swift.Hashable {}
+extension Module___Lottie.LottieView : SwiftUICore.View {}
+extension Module___Lottie.LottieView : Swift.Sendable {}
+extension Module___Lottie.AnimatedSwitch.CancelBehavior : Swift.Equatable {}
+extension Module___Lottie.AnimatedSwitch.CancelBehavior : Swift.Hashable {}
+extension Module___Lottie.LottieButton : SwiftUICore.View {}
+extension Module___Lottie.LottieButton : Swift.Sendable {}
+extension Module___Lottie.LottieSwitch : SwiftUICore.View {}
+extension Module___Lottie.LottieSwitch : Swift.Sendable {}
+extension Module___Lottie.ColorValueProvider : Module___Lottie.AnyValueProvider {}
+extension Module___Lottie.FloatValueProvider : Module___Lottie.AnyValueProvider {}
+extension Module___Lottie.GradientValueProvider : Module___Lottie.AnyValueProvider {}
+extension Module___Lottie.PointValueProvider : Module___Lottie.AnyValueProvider {}
+extension Module___Lottie.SizeValueProvider : Module___Lottie.AnyValueProvider {}
+extension Module___Lottie.CompatibleRenderingEngineOption : Swift.Equatable {}
+extension Module___Lottie.CompatibleRenderingEngineOption : Swift.Hashable {}
+extension Module___Lottie.CompatibleRenderingEngineOption : Swift.RawRepresentable {}
+extension Module___Lottie.CompatibleBackgroundBehavior : Swift.Equatable {}
+extension Module___Lottie.CompatibleBackgroundBehavior : Swift.Hashable {}
+extension Module___Lottie.CompatibleBackgroundBehavior : Swift.RawRepresentable {}

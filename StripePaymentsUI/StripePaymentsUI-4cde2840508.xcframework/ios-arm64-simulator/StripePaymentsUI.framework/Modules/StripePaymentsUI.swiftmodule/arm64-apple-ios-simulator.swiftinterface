@@ -1,0 +1,402 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name StripePaymentsUI -module-alias Module___StripePaymentsUI=StripePaymentsUI -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___StripeCore=StripeCore -module-alias Module___StripePayments=StripePayments -module-alias Module___StripeUICore=StripeUICore -module-alias Module___UIKit=UIKit -module-alias Module___SafariServices=SafariServices -module-alias Module___WebKit=WebKit -module-alias Module___SwiftUI=SwiftUI
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Foundation
+import Module___SafariServices
+@_exported import Module___StripeCore
+@_exported import Module___StripePayments
+import Module___StripeUICore
+import Swift
+import Module___SwiftUI
+import Module___UIKit
+import Module___WebKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+extension Module___StripePaymentsUI.STPCardFormViewStyle : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class STPImageLibrary : ObjectiveC.NSObject {
+  @objc public class func applePayCardImage() -> Module___UIKit.UIImage
+  @objc public class func amexCardImage() -> Module___UIKit.UIImage
+  @objc public class func dinersClubCardImage() -> Module___UIKit.UIImage
+  @objc public class func discoverCardImage() -> Module___UIKit.UIImage
+  @objc public class func jcbCardImage() -> Module___UIKit.UIImage
+  @objc public class func mastercardCardImage() -> Module___UIKit.UIImage
+  @objc public class func unionPayCardImage() -> Module___UIKit.UIImage
+  @objc public class func visaCardImage() -> Module___UIKit.UIImage
+  @objc public class func unknownCardCardImage() -> Module___UIKit.UIImage
+  @objc(brandImageForCardBrand:) public class func cardBrandImage(for brand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage
+  @objc(cardBrandChoiceImage) public class func cardBrandChoiceImage() -> Module___UIKit.UIImage
+  @objc(templatedBrandImageForCardBrand:) public class func templatedBrandImage(for brand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage
+  @objc(cvcImageForCardBrand:) public class func cvcImage(for brand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage
+  @objc(errorImageForCardBrand:) public class func errorImage(for brand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol STPAUBECSDebitFormViewDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func auBECSDebitForm(_ form: Module___StripePaymentsUI.STPAUBECSDebitFormView, didChangeToStateComplete complete: Swift.Bool)
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency public class STPAUBECSDebitFormView : Module___StripePaymentsUI.STPMultiFormTextField, Module___UIKit.UITextViewDelegate {
+  @objc(initWithCompanyName:) @Module____Concurrency.MainActor @preconcurrency required public init(companyName: Swift.String)
+  @objc @Module____Concurrency.MainActor @preconcurrency public var formBackgroundColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency weak public var becsDebitFormDelegate: (any Module___StripePaymentsUI.STPAUBECSDebitFormViewDelegate)?
+  @objc @Module____Concurrency.MainActor @preconcurrency public var paymentMethodParams: Module___StripePayments.STPPaymentMethodParams? {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func systemLayoutSizeFitting(_ targetSize: CoreFoundation.CGSize, withHorizontalFittingPriority horizontalFittingPriority: Module___UIKit.UILayoutPriority, verticalFittingPriority: Module___UIKit.UILayoutPriority) -> CoreFoundation.CGSize
+  @Module____Concurrency.MainActor @preconcurrency @objc public func textView(_ textView: Module___UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange, interaction: Module___UIKit.UITextItemInteraction) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override public var formFont: Module___UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override public var formTextColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension Module___StripePaymentsUI.STPCardFormView {
+  @Module____Concurrency.MainActor @preconcurrency public struct Representable : Module___SwiftUI.UIViewRepresentable {
+    @Module____Concurrency.MainActor @preconcurrency public init(_ style: Module___StripePaymentsUI.STPCardFormViewStyle = .standard, paymentMethodParams: SwiftUICore.Binding<Module___StripePayments.STPPaymentMethodParams>, isComplete: SwiftUICore.Binding<Swift.Bool>)
+    @Module____Concurrency.MainActor @preconcurrency public func makeCoordinator() -> Module___StripePaymentsUI.STPCardFormView.Coordinator
+    @Module____Concurrency.MainActor @preconcurrency public func makeUIView(context: Module___StripePaymentsUI.STPCardFormView.Representable.Context) -> Module___StripePaymentsUI.STPCardFormView
+    @Module____Concurrency.MainActor @preconcurrency public func updateUIView(_ cardFormView: Module___StripePaymentsUI.STPCardFormView, context: Module___StripePaymentsUI.STPCardFormView.Representable.Context)
+    public typealias Body = Swift.Never
+    public typealias Coordinator = Module___StripePaymentsUI.STPCardFormView.Coordinator
+    public typealias UIViewType = Module___StripePaymentsUI.STPCardFormView
+  }
+  @objc @_hasMissingDesignatedInitializers public class Coordinator : ObjectiveC.NSObject, Module___StripePaymentsUI.STPCardFormViewDelegate {
+    @objc public func cardFormView(_ form: Module___StripePaymentsUI.STPCardFormView, didChangeToStateComplete complete: Swift.Bool)
+    @objc deinit
+  }
+}
+@objc public enum STPCardFormViewStyle : Swift.Int {
+  case standard
+  case borderless
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol STPCardFormViewDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func cardFormView(_ form: Module___StripePaymentsUI.STPCardFormView, didChangeToStateComplete complete: Swift.Bool)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPCardFormView : Module___StripePaymentsUI.STPFormView {
+  @objc @Module____Concurrency.MainActor @preconcurrency weak public var delegate: (any Module___StripePaymentsUI.STPCardFormViewDelegate)?
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var backgroundColor: Module___UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency public var disabledBackgroundColor: Module___UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency public var cardParams: Module___StripePayments.STPPaymentMethodParams? {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency convenience public init(style: Module___StripePaymentsUI.STPCardFormViewStyle = .standard)
+  @Module____Concurrency.MainActor @preconcurrency open var preferredNetworks: [Module___StripePayments.STPCardBrand]? {
+    get
+    set
+  }
+  @available(swift, obsoleted: 1.0)
+  @objc(preferredNetworks) @Module____Concurrency.MainActor @preconcurrency open func preferredNetworks_objc() -> [Foundation.NSNumber]?
+  @available(swift, obsoleted: 1.0)
+  @objc(setPreferredNetworks:) @Module____Concurrency.MainActor @preconcurrency open func setPreferredNetworks_objc(preferredNetworks: [Foundation.NSNumber]?)
+  @Module____Concurrency.MainActor @preconcurrency public var onBehalfOf: Swift.String? {
+    get
+    set
+  }
+  @objc deinit
+}
+@objc public protocol STPFormTextFieldContainer : ObjectiveC.NSObjectProtocol {
+  @objc dynamic var formFont: Module___UIKit.UIFont { get set }
+  @objc dynamic var formTextColor: Module___UIKit.UIColor { get set }
+  @objc dynamic var formTextErrorColor: Module___UIKit.UIColor { get set }
+  @objc dynamic var formPlaceholderColor: Module___UIKit.UIColor { get set }
+  @objc dynamic var formCursorColor: Module___UIKit.UIColor { get set }
+  @objc dynamic var formKeyboardAppearance: Module___UIKit.UIKeyboardAppearance { get set }
+}
+@objc @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPFormView : Module___UIKit.UIView {
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var canResignFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func resignFirstResponder() -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var isFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var canBecomeFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func becomeFirstResponder() -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency public class STPMultiFormTextField : Module___UIKit.UIView, Module___StripePaymentsUI.STPFormTextFieldContainer, Module___UIKit.UITextFieldDelegate {
+  @Module____Concurrency.MainActor @preconcurrency @objc public func textField(_ textField: Module___UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @objc @Module____Concurrency.MainActor @preconcurrency public func focusNextForm()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var canResignFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func resignFirstResponder() -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var isFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var canBecomeFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func becomeFirstResponder() -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc public func textFieldDidEndEditing(_ textField: Module___UIKit.UITextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func textFieldDidBeginEditing(_ textField: Module___UIKit.UITextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func textFieldShouldReturn(_ textField: Module___UIKit.UITextField) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc public var formFont: Module___UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc public var formTextColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc public var formTextErrorColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc public var formPlaceholderColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc public var formCursorColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc public var formKeyboardAppearance: Module___UIKit.UIKeyboardAppearance {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Module___StripePaymentsUI.STPPaymentCardTextField {
+  @Module____Concurrency.MainActor @preconcurrency public struct Representable : Module___SwiftUI.UIViewRepresentable {
+    @Module____Concurrency.MainActor @preconcurrency public init(paymentMethodParams: SwiftUICore.Binding<Module___StripePayments.STPPaymentMethodParams?>)
+    @Module____Concurrency.MainActor @preconcurrency public func makeCoordinator() -> Module___StripePaymentsUI.STPPaymentCardTextField.Representable.Coordinator
+    @Module____Concurrency.MainActor @preconcurrency public func makeUIView(context: Module___StripePaymentsUI.STPPaymentCardTextField.Representable.Context) -> Module___StripePaymentsUI.STPPaymentCardTextField
+    @Module____Concurrency.MainActor @preconcurrency public func updateUIView(_ paymentCardField: Module___StripePaymentsUI.STPPaymentCardTextField, context: Module___StripePaymentsUI.STPPaymentCardTextField.Representable.Context)
+    @objc @_hasMissingDesignatedInitializers public class Coordinator : ObjectiveC.NSObject, Module___StripePaymentsUI.STPPaymentCardTextFieldDelegate {
+      @objc public func paymentCardTextFieldDidChange(_ cardField: Module___StripePaymentsUI.STPPaymentCardTextField)
+      @objc deinit
+    }
+    public typealias Body = Swift.Never
+    public typealias UIViewType = Module___StripePaymentsUI.STPPaymentCardTextField
+  }
+}
+@_inheritsConvenienceInitializers @IBDesignable @objc(STPPaymentCardTextField) @Module____Concurrency.MainActor @preconcurrency open class STPPaymentCardTextField : Module___UIKit.UIControl, Module___UIKit.UIKeyInput {
+  @Module____Concurrency.MainActor @preconcurrency @objc open func textField(_ textField: Module___UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @objc @IBOutlet @Module____Concurrency.MainActor @preconcurrency weak open var delegate: (any Module___StripePaymentsUI.STPPaymentCardTextFieldDelegate)?
+  @objc @Module____Concurrency.MainActor @preconcurrency open var font: Module___UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var textColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var textErrorColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var placeholderColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @Module____Concurrency.MainActor @preconcurrency open var numberPlaceholder: Swift.String? {
+    @objc get
+    @objc set(numberPlaceholder)
+  }
+  @objc @IBInspectable @Module____Concurrency.MainActor @preconcurrency open var expirationPlaceholder: Swift.String? {
+    @objc get
+    @objc set(expirationPlaceholder)
+  }
+  @objc @IBInspectable @Module____Concurrency.MainActor @preconcurrency open var cvcPlaceholder: Swift.String? {
+    @objc get
+    @objc set(cvcPlaceholder)
+  }
+  @objc @IBInspectable @Module____Concurrency.MainActor @preconcurrency open var postalCodePlaceholder: Swift.String? {
+    @objc get
+    @objc set(postalCodePlaceholder)
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var cursorColor: Module___UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var borderColor: Module___UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var borderWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var cornerRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc open var keyboardAppearance: Module___UIKit.UIKeyboardAppearance {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var inputView: Module___UIKit.UIView? {
+    @objc get
+    @objc set(inputView)
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var inputAccessoryView: Module___UIKit.UIView? {
+    @objc get
+    @objc set(inputAccessoryView)
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var brandImage: Module___UIKit.UIImage? {
+    get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency dynamic open var isValid: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var isEnabled: Swift.Bool {
+    @objc get
+    @objc set(enabled)
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var cardNumber: Swift.String? {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var expirationMonth: Swift.Int {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var formattedExpirationMonth: Swift.String? {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var expirationYear: Swift.Int {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var formattedExpirationYear: Swift.String? {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var cvc: Swift.String? {
+    @objc get
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var postalCode: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var postalCodeEntryEnabled: Swift.Bool {
+    @objc get
+    @objc set(postalCodeEntryEnabled)
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var countryCode: Swift.String? {
+    @objc get
+    @objc set(cCode)
+  }
+  @available(*, deprecated, message: "Use .paymentMethodParams instead. If you must access the STPPaymentMethodCardParams, use .paymentMethodParams.card.")
+  @objc @Module____Concurrency.MainActor @preconcurrency open var cardParams: Module___StripePayments.STPPaymentMethodCardParams {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency open var paymentMethodParams: Module___StripePayments.STPPaymentMethodParams {
+    @objc get
+    @objc set(callersCardParams)
+  }
+  @discardableResult
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func becomeFirstResponder() -> Swift.Bool
+  @discardableResult
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func resignFirstResponder() -> Swift.Bool
+  @objc @Module____Concurrency.MainActor @preconcurrency open func clear()
+  @objc(cvcImageForCardBrand:) @Module____Concurrency.MainActor @preconcurrency open class func cvcImage(for cardBrand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage?
+  @objc(cardBrandChoiceImage) @Module____Concurrency.MainActor @preconcurrency open class func cardBrandChoiceImage() -> Module___UIKit.UIImage?
+  @objc(brandImageForCardBrand:) @Module____Concurrency.MainActor @preconcurrency open class func brandImage(for cardBrand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage?
+  @objc(errorImageForCardBrand:) @Module____Concurrency.MainActor @preconcurrency open class func errorImage(for cardBrand: Module___StripePayments.STPCardBrand) -> Module___UIKit.UIImage?
+  @objc(brandImageRectForBounds:) @Module____Concurrency.MainActor @preconcurrency open func brandImageRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @objc(fieldsRectForBounds:) @Module____Concurrency.MainActor @preconcurrency open func fieldsRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func menuAttachmentPoint(for configuration: Module___UIKit.UIContextMenuConfiguration) -> CoreFoundation.CGPoint
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func contextMenuInteraction(_ interaction: Module___UIKit.UIContextMenuInteraction, configurationForMenuAtLocation location: CoreFoundation.CGPoint) -> Module___UIKit.UIContextMenuConfiguration?
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: Module___UIKit.UITraitCollection?)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var backgroundColor: Module___UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var contentVerticalAlignment: Module___UIKit.UIControl.ContentVerticalAlignment {
+    @objc get
+    @objc set(contentVerticalAlignment)
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var isFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var canBecomeFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var canResignFirstResponder: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+  @Module____Concurrency.MainActor @preconcurrency @objc open func textFieldShouldBeginEditing(_ textField: Module___UIKit.UITextField) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc open func textFieldDidBeginEditing(_ textField: Module___UIKit.UITextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc open func textFieldShouldEndEditing(_ textField: Module___UIKit.UITextField) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc open func textFieldDidEndEditing(_ textField: Module___UIKit.UITextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc open func textFieldShouldReturn(_ textField: Module___UIKit.UITextField) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc open var hasText: Swift.Bool {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc open func insertText(_ text: Swift.String)
+  @Module____Concurrency.MainActor @preconcurrency @objc open func deleteBackward()
+  @objc @Module____Concurrency.MainActor @preconcurrency open class func keyPathsForValuesAffectingIsValid() -> Swift.Set<Swift.String>
+  @Module____Concurrency.MainActor @preconcurrency open var preferredNetworks: [Module___StripePayments.STPCardBrand]? {
+    get
+    set
+  }
+  @available(swift, obsoleted: 1.0)
+  @objc(preferredNetworks) @Module____Concurrency.MainActor @preconcurrency open func preferredNetworks_objc() -> [Foundation.NSNumber]?
+  @available(swift, obsoleted: 1.0)
+  @objc(setPreferredNetworks:) @Module____Concurrency.MainActor @preconcurrency open func setPreferredNetworks_objc(preferredNetworks: [Foundation.NSNumber]?)
+  @Module____Concurrency.MainActor @preconcurrency public var onBehalfOf: Swift.String? {
+    get
+    set
+  }
+  @objc deinit
+}
+@objc public protocol STPPaymentCardTextFieldDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func paymentCardTextFieldDidChange(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidBeginEditing(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldWillEndEditing(forReturn textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidEndEditing(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidBeginEditingNumber(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidEndEditingNumber(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidBeginEditingCVC(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidEndEditingCVC(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidBeginEditingExpiration(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidEndEditingExpiration(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidBeginEditingPostalCode(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @objc optional func paymentCardTextFieldDidEndEditingPostalCode(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+}
+extension Module___StripePaymentsUI.STPCardFormViewStyle : Swift.Equatable {}
+extension Module___StripePaymentsUI.STPCardFormViewStyle : Swift.Hashable {}
+extension Module___StripePaymentsUI.STPCardFormViewStyle : Swift.RawRepresentable {}
+extension Module___StripePaymentsUI.STPCardFormView.Representable : Swift.Sendable {}
+extension Module___StripePaymentsUI.STPPaymentCardTextField : Module___UIKit.UITextFieldDelegate {}
+extension Module___StripePaymentsUI.STPPaymentCardTextField.Representable : Swift.Sendable {}

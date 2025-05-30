@@ -1,0 +1,245 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name StripeCore -module-alias Module___StripeCore=StripeCore -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___UIKit=UIKit -module-alias Module___PassKit=PassKit -module-alias Module___CoreTelephony=CoreTelephony -module-alias Module___SystemConfiguration=SystemConfiguration -module-alias Module___AVFoundation=AVFoundation
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___AVFoundation
+import Module___CoreTelephony
+import Foundation
+import Module___PassKit
+import Swift
+import Module___SystemConfiguration
+import Module___UIKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+@_inheritsConvenienceInitializers @objc public class STPAPIClient : ObjectiveC.NSObject {
+  @objc public static let STPSDKVersion: Swift.String
+  @objc(sharedClient) public static let shared: Module___StripeCore.STPAPIClient
+  @objc public var publishableKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc public var stripeAccount: Swift.String?
+  @objc public var appInfo: Module___StripeCore.STPAppInfo?
+  @objc public static let apiVersion: Swift.String
+  @objc override dynamic public init()
+  @objc(initWithPublishableKey:) convenience public init(publishableKey: Swift.String)
+  @objc deinit
+}
+@objc public class STPAppInfo : ObjectiveC.NSObject {
+  @objc public init(name: Swift.String, partnerId: Swift.String?, version: Swift.String?, url: Swift.String?)
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var partnerId: Swift.String? {
+    get
+  }
+  @objc public var version: Swift.String? {
+    get
+  }
+  @objc public var url: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class StripeAPI : ObjectiveC.NSObject {
+  @objc public static var defaultPublishableKey: Swift.String?
+  @objc public func setDefaultPublishableKey(_ publishableKey: Swift.String)
+  @objc public static var advancedFraudSignalsEnabled: Swift.Bool
+  @objc public static var maxRetries: Swift.Int
+  @objc public class var jcbPaymentNetworkSupported: Swift.Bool {
+    @objc get
+    @objc set(JCBPaymentNetworkSupported)
+  }
+  @objc public static var additionalEnabledApplePayNetworks: [Module___PassKit.PKPaymentNetwork] {
+    @objc get
+    @objc set
+  }
+  @objc public class func canSubmitPaymentRequest(_ paymentRequest: Module___PassKit.PKPaymentRequest) -> Swift.Bool
+  @objc public class func deviceSupportsApplePay() -> Swift.Bool
+  @objc(paymentRequestWithMerchantIdentifier:country:currency:) public class func paymentRequest(withMerchantIdentifier merchantIdentifier: Swift.String, country countryCode: Swift.String, currency currencyCode: Swift.String) -> Module___PassKit.PKPaymentRequest
+  @discardableResult
+  @objc(handleStripeURLCallbackWithURL:) public static func handleURLCallback(with url: Foundation.URL) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Module___StripeCore.STPErrorCode : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Swift.Array where Element == Swift.String {
+  public func caseInsensitiveContains(_ other: Swift.String) -> Swift.Bool
+}
+extension Swift.Array where Element : Swift.Equatable {
+  @discardableResult
+  public mutating func remove(_ element: Element) -> Element?
+}
+public protocol UnknownFieldsDecodable : Swift.Decodable {
+  var _allResponseFieldsStorage: Module___StripeCore.NonEncodableParameters? { get set }
+}
+public protocol UnknownFieldsEncodable : Swift.Encodable {
+  var _additionalParametersStorage: Module___StripeCore.NonEncodableParameters? { get set }
+}
+public protocol SafeEnumDecodable : Swift.Decodable {
+  static var unparsable: Self { get }
+}
+public protocol SafeEnumCodable : Module___StripeCore.SafeEnumDecodable, Swift.Encodable {
+}
+extension Module___StripeCore.UnknownFieldsDecodable {
+  public var allResponseFields: [Swift.String : Any] {
+    get
+  }
+}
+extension Module___StripeCore.UnknownFieldsEncodable {
+  public var additionalParameters: [Swift.String : Any] {
+    get
+    set
+  }
+}
+public protocol UnknownFieldsCodable : Module___StripeCore.UnknownFieldsDecodable, Module___StripeCore.UnknownFieldsEncodable {
+}
+public struct NonEncodableParameters {
+}
+extension Module___StripeCore.NonEncodableParameters : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension Module___StripeCore.NonEncodableParameters : Swift.Encodable {
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension Module___StripeCore.NonEncodableParameters : Swift.Equatable {
+  public static func == (lhs: Module___StripeCore.NonEncodableParameters, rhs: Module___StripeCore.NonEncodableParameters) -> Swift.Bool
+}
+extension Module___StripeCore.NonEncodableParameters : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible, Swift.CustomLeafReflectable {
+  public var customMirror: Swift.Mirror {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+public struct FinancialConnectionsEvent {
+  public enum Name : Swift.String {
+    case open
+    case manualEntryInitiated
+    case consentAcquired
+    case searchInitiated
+    case institutionSelected
+    case institutionAuthorized
+    case accountsSelected
+    case success
+    case error
+    case cancel
+    case flowLaunchedInBrowser
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public struct Metadata {
+    public let dictionary: [Swift.String : Any]
+    public var manualEntry: Swift.Bool? {
+      get
+    }
+    public var institutionName: Swift.String? {
+      get
+    }
+    public var errorCode: Module___StripeCore.FinancialConnectionsEvent.ErrorCode? {
+      get
+    }
+  }
+  public enum ErrorCode : Swift.String {
+    case accountNumbersUnavailable
+    case accountsUnavailable
+    case noDebitableAccount
+    case authorizationFailed
+    case institutionUnavailablePlanned
+    case institutionUnavailableUnplanned
+    case institutionTimeout
+    case unexpectedError
+    case sessionExpired
+    case failedBotDetection
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public let name: Module___StripeCore.FinancialConnectionsEvent.Name
+  public let metadata: Module___StripeCore.FinancialConnectionsEvent.Metadata
+}
+@objc public enum STPErrorCode : Swift.Int {
+  @objc(STPConnectionError) case connectionError = 40
+  @objc(STPInvalidRequestError) case invalidRequestError = 50
+  @objc(STPAuthenticationError) case authenticationError = 51
+  @objc(STPAPIError) case apiError = 60
+  @objc(STPCardError) case cardError = 70
+  @objc(STPCancellationError) case cancellationError = 80
+  @objc(STPEphemeralKeyDecodingError) case ephemeralKeyDecodingError = 1000
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class STPError : ObjectiveC.NSObject {
+  @objc public static let stripeDomain: Swift.String
+  @objc public static let STPPaymentHandlerErrorDomain: Swift.String
+  @objc public static let errorMessageKey: Swift.String
+  @objc public static let hintKey: Swift.String
+  @objc public static let cardErrorCodeKey: Swift.String
+  @objc public static let errorParameterKey: Swift.String
+  @objc public static let stripeErrorCodeKey: Swift.String
+  @objc public static let stripeErrorTypeKey: Swift.String
+  @objc public static let stripeDeclineCodeKey: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Foundation.NSError {
+  @objc(stp_errorFromStripeResponse:) public static func stp_error(fromStripeResponse jsonDictionary: [Swift.AnyHashable : Any]?) -> Foundation.NSError?
+}
+public enum STPCardErrorCode : Swift.String {
+  case invalidNumber
+  case invalidExpMonth
+  case invalidExpYear
+  case invalidCVC
+  case incorrectNumber
+  case expiredCard
+  case cardDeclined
+  case incorrectCVC
+  case processingError
+  case incorrectZip
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc extension Module___StripeCore.STPError {
+  @objc public static let invalidNumber: Swift.String
+  @objc public static let invalidExpMonth: Swift.String
+  @objc public static let invalidExpYear: Swift.String
+  @objc public static let invalidCVC: Swift.String
+  @objc public static let incorrectNumber: Swift.String
+  @objc public static let expiredCard: Swift.String
+  @objc public static let cardDeclined: Swift.String
+  @objc public static let processingError: Swift.String
+  @objc public static let incorrectCVC: Swift.String
+  @objc public static let incorrectZip: Swift.String
+}
+extension Module___StripeCore.STPErrorCode : Swift.Equatable {}
+extension Module___StripeCore.STPErrorCode : Swift.Hashable {}
+extension Module___StripeCore.STPErrorCode : Swift.RawRepresentable {}
+extension Module___StripeCore.FinancialConnectionsEvent.Name : Swift.Equatable {}
+extension Module___StripeCore.FinancialConnectionsEvent.Name : Swift.Hashable {}
+extension Module___StripeCore.FinancialConnectionsEvent.Name : Swift.RawRepresentable {}
+extension Module___StripeCore.FinancialConnectionsEvent.ErrorCode : Swift.Equatable {}
+extension Module___StripeCore.FinancialConnectionsEvent.ErrorCode : Swift.Hashable {}
+extension Module___StripeCore.FinancialConnectionsEvent.ErrorCode : Swift.RawRepresentable {}
+extension Module___StripeCore.STPCardErrorCode : Swift.Equatable {}
+extension Module___StripeCore.STPCardErrorCode : Swift.Hashable {}
+extension Module___StripeCore.STPCardErrorCode : Swift.RawRepresentable {}

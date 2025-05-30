@@ -1,0 +1,39 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name KingfisherWebP -module-alias Module___KingfisherWebP=KingfisherWebP -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___Kingfisher=Kingfisher -module-alias Module___CoreGraphics=CoreGraphics -module-alias Module___KingfisherWebP_ObjC=KingfisherWebP_ObjC -module-alias Module___UIKit=UIKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___CoreGraphics
+import Foundation
+import Module___Kingfisher
+import Module___KingfisherWebP_ObjC
+import Swift
+import Module___UIKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+extension Module___Kingfisher.KingfisherWrapper where Base : Module___UIKit.UIImage {
+  public func webpRepresentation(isLossy: Swift.Bool = false, quality: Swift.Float = 75.0) -> Foundation.Data?
+}
+extension Module___Kingfisher.KingfisherWrapper where Base : Module___UIKit.UIImage {
+  public static func image(webpData: Foundation.Data, scale: CoreFoundation.CGFloat, onlyFirstFrame: Swift.Bool) -> Module___Kingfisher.KFCrossPlatformImage?
+  public static func image(webpData: Foundation.Data, options: Module___Kingfisher.ImageCreatingOptions) -> Module___Kingfisher.KFCrossPlatformImage?
+}
+extension Foundation.Data {
+  public var isWebPFormat: Swift.Bool {
+    get
+  }
+}
+public struct WebPProcessor : Module___Kingfisher.ImageProcessor {
+  public static let `default`: Module___KingfisherWebP.WebPProcessor
+  public let identifier: Swift.String
+  public init()
+  public func process(item: Module___Kingfisher.ImageProcessItem, options: Module___Kingfisher.KingfisherParsedOptionsInfo) -> Module___Kingfisher.KFCrossPlatformImage?
+}
+public struct WebPSerializer : Module___Kingfisher.CacheSerializer {
+  public static let `default`: Module___KingfisherWebP.WebPSerializer
+  public var isLossy: Swift.Bool
+  public var compressionQuality: CoreFoundation.CGFloat
+  public var originalDataUsed: Swift.Bool
+  public func data(with image: Module___Kingfisher.KFCrossPlatformImage, original: Foundation.Data?) -> Foundation.Data?
+  public func image(with data: Foundation.Data, options: Module___Kingfisher.KingfisherParsedOptionsInfo) -> Module___Kingfisher.KFCrossPlatformImage?
+}

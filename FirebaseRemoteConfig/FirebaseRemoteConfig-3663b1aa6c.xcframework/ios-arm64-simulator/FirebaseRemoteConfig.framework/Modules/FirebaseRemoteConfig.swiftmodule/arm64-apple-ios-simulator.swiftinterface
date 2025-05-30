@@ -1,0 +1,74 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name FirebaseRemoteConfig -package-name firebase_ios_sdk -module-alias Module___FirebaseRemoteConfig=FirebaseRemoteConfig -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___FirebaseRemoteConfigInternal=FirebaseRemoteConfigInternal -module-alias Module___FirebaseSharedSwift=FirebaseSharedSwift -module-alias Module___SwiftUI=SwiftUI -module-alias Module___FirebaseCore=FirebaseCore
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___FirebaseCore
+@_exported import Module___FirebaseRemoteConfigInternal
+import Module___FirebaseSharedSwift
+import Foundation
+import Swift
+import Module___SwiftUI
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+public enum RemoteConfigValueCodableError : Swift.Error {
+  case unsupportedType(Swift.String)
+}
+extension Module___FirebaseRemoteConfigInternal.RemoteConfigValue {
+  public func decoded<Value>(asType: Value.Type = Value.self) throws -> Value where Value : Swift.Decodable
+}
+public enum RemoteConfigCodableError : Swift.Error {
+  case invalidSetDefaultsInput(Swift.String)
+}
+extension Module___FirebaseRemoteConfigInternal.RemoteConfig {
+  public func decoded<Value>(asType: Value.Type = Value.self) throws -> Value where Value : Swift.Decodable
+  public func setDefaults<Value>(from value: Value) throws where Value : Swift.Encodable
+}
+public struct CustomSignalValue {
+  public static func string(_ string: Swift.String) -> Module___FirebaseRemoteConfig.CustomSignalValue
+  public static func integer(_ integer: Swift.Int) -> Module___FirebaseRemoteConfig.CustomSignalValue
+  public static func double(_ double: Swift.Double) -> Module___FirebaseRemoteConfig.CustomSignalValue
+}
+extension Module___FirebaseRemoteConfig.CustomSignalValue : Swift.ExpressibleByStringInterpolation {
+  public init(stringLiteral value: Swift.String)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringInterpolation = Swift.DefaultStringInterpolation
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+}
+extension Module___FirebaseRemoteConfig.CustomSignalValue : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.Int)
+  public typealias IntegerLiteralType = Swift.Int
+}
+extension Module___FirebaseRemoteConfig.CustomSignalValue : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.Double)
+  public typealias FloatLiteralType = Swift.Double
+}
+@available(iOS 13, tvOS 13, macOS 10.15, macCatalyst 13, watchOS 7, *)
+extension Module___FirebaseRemoteConfigInternal.RemoteConfig {
+  public func setCustomSignals(_ customSignals: [Swift.String : Module___FirebaseRemoteConfig.CustomSignalValue?]) async throws
+}
+@available(iOS 14.0, macOS 11.0, macCatalyst 14.0, tvOS 14.0, watchOS 7.0, *)
+@propertyWrapper @Module____Concurrency.MainActor @preconcurrency public struct RemoteConfigProperty<T> : SwiftUICore.DynamicProperty where T : Swift.Decodable {
+  @Module____Concurrency.MainActor @preconcurrency public let key: Swift.String
+  @Module____Concurrency.MainActor @preconcurrency public var wrappedValue: T {
+    get
+  }
+  @Module____Concurrency.MainActor @preconcurrency public init(key: Swift.String, fallback: T)
+}
+@available(*, unavailable)
+@objc extension Module___FirebaseRemoteConfigInternal.RemoteConfig {
+  @objc public static var __no_op: () -> Swift.Void {
+    @objc get
+  }
+}
+extension Module___FirebaseRemoteConfigInternal.RemoteConfig {
+  public subscript<T>(decodedValue key: Swift.String) -> T? where T : Swift.Decodable {
+    get
+  }
+  public subscript(jsonValue key: Swift.String) -> [Swift.String : Swift.AnyHashable]? {
+    get
+  }
+}
+@available(iOS 14.0, macOS 11.0, macCatalyst 14.0, tvOS 14.0, watchOS 7.0, *)
+extension Module___FirebaseRemoteConfig.RemoteConfigProperty : Swift.Sendable {}

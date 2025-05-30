@@ -1,0 +1,368 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name ReactiveExtensions -module-alias Module___ReactiveExtensions=ReactiveExtensions -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___ReactiveSwift=ReactiveSwift -module-alias Module___UIKit=UIKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Foundation
+import Module___ReactiveSwift
+import Swift
+import Module___UIKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.NSLayoutConstraint {
+  public var constant: Module___ReactiveSwift.Signal<CoreFoundation.CGFloat, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : ObjectiveC.NSObject {
+  public var accessibilityElementsHidden: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var accessibilityHint: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var accessibilityLabel: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var accessibilityTraits: Module___ReactiveSwift.Signal<Module___UIKit.UIAccessibilityTraits, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var accessibilityValue: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var isAccessibilityElement: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+public struct Rac<Object> where Object : Module___ReactiveExtensions.RacObject {
+  public let object: Object
+}
+public protocol RacObject {
+}
+extension Module___ReactiveExtensions.RacObject {
+  public typealias Object = Self
+  public var rac: Module___ReactiveExtensions.Rac<Self.Object> {
+    get
+  }
+}
+extension ObjectiveC.NSObject : Module___ReactiveExtensions.RacObject {
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIActivityIndicatorView {
+  public var animating: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIBarButtonItem {
+  public var enabled: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIButton {
+  public var title: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var attributedTitle: Module___ReactiveSwift.Signal<Foundation.NSAttributedString, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIControl {
+  public var enabled: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var selected: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UILabel {
+  public var attributedText: Module___ReactiveSwift.Signal<Foundation.NSAttributedString, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var text: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var font: Module___ReactiveSwift.Signal<Module___UIKit.UIFont, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var textColor: Module___ReactiveSwift.Signal<Module___UIKit.UIColor, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UINavigationItem {
+  public var title: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIRefreshControl {
+  public var refreshing: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIResponder {
+  public var becomeFirstResponder: Module___ReactiveSwift.Signal<(), Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var isFirstResponder: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIStackView {
+  public var axis: Module___ReactiveSwift.Signal<Module___UIKit.NSLayoutConstraint.Axis, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var alignment: Module___ReactiveSwift.Signal<Module___UIKit.UIStackView.Alignment, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIStepper {
+  public var maximumValue: Module___ReactiveSwift.Signal<Swift.Double, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var minimumValue: Module___ReactiveSwift.Signal<Swift.Double, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var stepValue: Module___ReactiveSwift.Signal<Swift.Double, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var value: Module___ReactiveSwift.Signal<Swift.Double, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UISwitch {
+  public var on: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UITextField {
+  public var attributedPlaceholder: Module___ReactiveSwift.Signal<Foundation.NSAttributedString, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var text: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var textColor: Module___ReactiveSwift.Signal<Module___UIKit.UIColor?, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UITextView {
+  public var text: Module___ReactiveSwift.Signal<Swift.String, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+extension Module___ReactiveExtensions.Rac where Object : Module___UIKit.UIView {
+  public var alpha: Module___ReactiveSwift.Signal<CoreFoundation.CGFloat, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var backgroundColor: Module___ReactiveSwift.Signal<Module___UIKit.UIColor, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var endEditing: Module___ReactiveSwift.Signal<(), Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var hidden: Module___ReactiveSwift.Signal<Swift.Bool, Swift.Never> {
+    get
+    nonmutating set
+  }
+  public var tintColor: Module___ReactiveSwift.Signal<Module___UIKit.UIColor, Swift.Never> {
+    get
+    nonmutating set
+  }
+}
+public func lazyMutableProperty<T>(_ host: Swift.AnyObject, key: Swift.UnsafeRawPointer, setter: @escaping (T) -> Swift.Void, getter: @escaping () -> T) -> Module___ReactiveSwift.MutableProperty<T>
+extension Module___ReactiveSwift.SignalProducer {
+  public func allValues() -> [Value]
+}
+extension Module___ReactiveSwift.Signal {
+  public static func concat<Seq>(_ signals: Seq) -> Module___ReactiveSwift.Signal<Value, Error> where Seq : Swift.Sequence, Seq.Element == Module___ReactiveSwift.Signal<Value, Error>
+  public static func concat(_ signals: Module___ReactiveSwift.Signal<Value, Error>...) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public static func concat<Seq>(_ producers: Seq) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Seq : Swift.Sequence, Seq.Element == Module___ReactiveSwift.SignalProducer<Value, Error>
+  public static func concat(_ producers: Module___ReactiveSwift.SignalProducer<Value, Error>...) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func concatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func concatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func concatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func concatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func demoteErrors(replaceErrorWith value: Value? = nil) -> Module___ReactiveSwift.Signal<Value, Swift.Never>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func demoteErrors(replaceErrorWith value: Value? = nil) -> Module___ReactiveSwift.SignalProducer<Value, Swift.Never>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func enumerated() -> Module___ReactiveSwift.Signal<(idx: Swift.Int, value: Value), Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.EventProtocol, Error == Swift.Never {
+  final public func errors() -> Module___ReactiveSwift.Signal<Value.Error, Swift.Never>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.EventProtocol, Error == Swift.Never {
+  public func errors() -> Module___ReactiveSwift.SignalProducer<Value.Error, Swift.Never>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func liftSubduedError<T, E>() -> Module___ReactiveSwift.Signal<T, E> where Value == Swift.Result<T, E>, Error == Swift.Never, E : Swift.Error
+  final public func subdueError() -> Module___ReactiveSwift.Signal<Swift.Result<Value, Error>, Swift.Never>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func liftSubduedError<T, E>() -> Module___ReactiveSwift.SignalProducer<T, E> where Value == Swift.Result<T, E>, Error == Swift.Never, E : Swift.Error
+  public func subdueError() -> Module___ReactiveSwift.SignalProducer<Swift.Result<Value, Error>, Swift.Never>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func filterWhenLatestFrom<U>(_ other: Module___ReactiveSwift.Signal<U, Error>, satisfies: @escaping (U) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func flatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func flatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func flatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func flatMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func ignoreValues() -> Module___ReactiveSwift.Signal<Swift.Void, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func ignoreValues() -> Module___ReactiveSwift.SignalProducer<Swift.Void, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func ksr_debounce(_ interval: @autoclosure @escaping () -> Dispatch.DispatchTimeInterval, on scheduler: @autoclosure @escaping () -> any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func ksr_debounce(_ interval: @autoclosure @escaping () -> Dispatch.DispatchTimeInterval, on scheduler: @autoclosure @escaping () -> any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func ksr_delay(_ interval: @autoclosure @escaping () -> Dispatch.DispatchTimeInterval, on scheduler: @autoclosure @escaping () -> any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func ksr_delay(_ interval: @autoclosure @escaping () -> Dispatch.DispatchTimeInterval, on scheduler: @autoclosure @escaping () -> any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func mapConst<U>(_ value: U) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func mapConst<U>(_ value: U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func mergeMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func mergeMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func mergeMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func mergeMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func mergeWith(_ other: Module___ReactiveSwift.Signal<Value, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func mergeWith(_ other: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func observeForUI() -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func observeForControllerAction() -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func observeForUI() -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func scan(_ combine: @escaping (Value, Value) -> Value) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func slidingWindow(max: Swift.Int, min: Swift.Int) -> Module___ReactiveSwift.Signal<[Value], Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func slidingWindow(max: Swift.Int, min: Swift.Int) -> Module___ReactiveSwift.SignalProducer<[Value], Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Swift.Sequence, Value.Element : Swift.Comparable {
+  final public func sort() -> Module___ReactiveSwift.Signal<[Value.Iterator.Element], Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Swift.Sequence {
+  final public func sort(_ isOrderedBefore: @escaping (Value.Iterator.Element, Value.Iterator.Element) -> Swift.Bool) -> Module___ReactiveSwift.Signal<[Value.Iterator.Element], Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Swift.Sequence, Value.Element : Swift.Comparable {
+  public func sort() -> Module___ReactiveSwift.SignalProducer<[Value.Iterator.Element], Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Swift.Sequence {
+  public func sort(_ isOrderedBefore: @escaping (Value.Iterator.Element, Value.Iterator.Element) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<[Value.Iterator.Element], Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func switchMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func switchMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func switchMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func switchMap<U>(_ f: @escaping (Value) -> Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func takeUntil(_ predicate: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func takeUntil(_ predicate: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func takeWhen<U>(_ other: Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func takePairWhen<U>(_ other: Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<(Value, U), Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func takeWhen<U>(_ other: Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  public func takePairWhen<U>(_ other: Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<(Value, U), Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Swift.Sequence {
+  final public func uncollect() -> Module___ReactiveSwift.Signal<Value.Iterator.Element, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Swift.Sequence {
+  public func uncollect() -> Module___ReactiveSwift.SignalProducer<Value.Iterator.Element, Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.EventProtocol, Error == Swift.Never {
+  final public func values() -> Module___ReactiveSwift.Signal<Value.Value, Swift.Never>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.EventProtocol, Error == Swift.Never {
+  public func values() -> Module___ReactiveSwift.SignalProducer<Value.Value, Swift.Never>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func withLatestFrom<U, OtherError>(_ other: Module___ReactiveSwift.Signal<U, OtherError>) -> Module___ReactiveSwift.Signal<(Value, U), OtherError> where OtherError : Swift.Error
+  final public func withLatestFrom<U, OtherError>(_ other: Module___ReactiveSwift.SignalProducer<U, OtherError>) -> Module___ReactiveSwift.Signal<(Value, U), OtherError> where OtherError : Swift.Error
+}
+extension Module___ReactiveSwift.Signal {
+  final public func wrapInOptional() -> Module___ReactiveSwift.Signal<Value?, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func wrapInOptional() -> Module___ReactiveSwift.SignalProducer<Value?, Error>
+}

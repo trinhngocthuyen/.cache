@@ -1,0 +1,446 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name AlamofireImage -package-name alamofireimage -module-alias Module___AlamofireImage=AlamofireImage -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___Alamofire=Alamofire -module-alias Module___UIKit=UIKit -module-alias Module___CoreGraphics=CoreGraphics -module-alias Module___CoreImage=CoreImage
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___Alamofire
+import Module___CoreGraphics
+import Module___CoreImage
+import Foundation
+import Swift
+import Module___UIKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+public enum AFIError : Swift.Error {
+  case requestCancelled
+  case imageSerializationFailed
+  case alamofireError(Module___Alamofire.AFError)
+}
+extension Module___AlamofireImage.AFIError {
+  public var isRequestCancelledError: Swift.Bool {
+    get
+  }
+  public var isImageSerializationFailedError: Swift.Bool {
+    get
+  }
+  public var isAlamofireError: Swift.Bool {
+    get
+  }
+}
+extension Module___AlamofireImage.AFIError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public typealias Image = Module___UIKit.UIImage
+public protocol ImageCache {
+  func add(_ image: Module___AlamofireImage.Image, withIdentifier identifier: Swift.String)
+  func removeImage(withIdentifier identifier: Swift.String) -> Swift.Bool
+  @discardableResult
+  func removeAllImages() -> Swift.Bool
+  func image(withIdentifier identifier: Swift.String) -> Module___AlamofireImage.Image?
+}
+public protocol ImageRequestCache : Module___AlamofireImage.ImageCache {
+  func add(_ image: Module___AlamofireImage.Image, for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?)
+  func removeImage(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Swift.Bool
+  func image(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Module___AlamofireImage.Image?
+}
+open class AutoPurgingImageCache : Module___AlamofireImage.ImageRequestCache {
+  open var memoryUsage: Swift.UInt64 {
+    get
+  }
+  final public let memoryCapacity: Swift.UInt64
+  final public let preferredMemoryUsageAfterPurge: Swift.UInt64
+  public init(memoryCapacity: Swift.UInt64 = 100_000_000, preferredMemoryUsageAfterPurge: Swift.UInt64 = 60_000_000)
+  @objc deinit
+  open func add(_ image: Module___AlamofireImage.Image, for request: Foundation.URLRequest, withIdentifier identifier: Swift.String? = nil)
+  open func add(_ image: Module___AlamofireImage.Image, withIdentifier identifier: Swift.String)
+  @discardableResult
+  open func removeImage(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Swift.Bool
+  @discardableResult
+  open func removeImages(matching request: Foundation.URLRequest) -> Swift.Bool
+  @discardableResult
+  open func removeImage(withIdentifier identifier: Swift.String) -> Swift.Bool
+  @discardableResult
+  @objc open func removeAllImages() -> Swift.Bool
+  open func image(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String? = nil) -> Module___AlamofireImage.Image?
+  open func image(withIdentifier identifier: Swift.String) -> Module___AlamofireImage.Image?
+  open func imageCacheKey(for request: Foundation.URLRequest, withIdentifier identifier: Swift.String?) -> Swift.String
+}
+public typealias AFIDataResponse<T> = Module___Alamofire.DataResponse<T, Module___AlamofireImage.AFIError>
+public typealias AFIResult<T> = Swift.Result<T, Module___AlamofireImage.AFIError>
+@_hasMissingDesignatedInitializers open class RequestReceipt {
+  final public let request: Module___Alamofire.DataRequest
+  final public let receiptID: Swift.String
+  @objc deinit
+}
+open class ImageDownloader {
+  public typealias CompletionHandler = (Module___AlamofireImage.AFIDataResponse<Module___AlamofireImage.Image>) -> Swift.Void
+  public typealias ProgressHandler = Module___Alamofire.DataRequest.ProgressHandler
+  public enum DownloadPrioritization {
+    case fifo, lifo
+    public static func == (a: Module___AlamofireImage.ImageDownloader.DownloadPrioritization, b: Module___AlamofireImage.ImageDownloader.DownloadPrioritization) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let imageCache: (any Module___AlamofireImage.ImageRequestCache)?
+  open var credential: Foundation.URLCredential? {
+    get
+  }
+  public var imageResponseSerializer: Module___AlamofireImage.ImageResponseSerializer
+  final public let session: Module___Alamofire.Session
+  public static let `default`: Module___AlamofireImage.ImageDownloader
+  open class func defaultURLSessionConfiguration() -> Foundation.URLSessionConfiguration
+  open class func defaultURLCache() -> Foundation.URLCache
+  public init(configuration: Foundation.URLSessionConfiguration = ImageDownloader.defaultURLSessionConfiguration(), downloadPrioritization: Module___AlamofireImage.ImageDownloader.DownloadPrioritization = .fifo, maximumActiveDownloads: Swift.Int = 4, imageCache: (any Module___AlamofireImage.ImageRequestCache)? = AutoPurgingImageCache())
+  public init(session: Module___Alamofire.Session, downloadPrioritization: Module___AlamofireImage.ImageDownloader.DownloadPrioritization = .fifo, maximumActiveDownloads: Swift.Int = 4, imageCache: (any Module___AlamofireImage.ImageRequestCache)? = AutoPurgingImageCache())
+  open func addAuthentication(user: Swift.String, password: Swift.String, persistence: Foundation.URLCredential.Persistence = .forSession)
+  open func addAuthentication(usingCredential credential: Foundation.URLCredential)
+  @discardableResult
+  open func download(_ urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, receiptID: Swift.String = UUID().uuidString, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: Module___AlamofireImage.ImageDownloader.CompletionHandler? = nil) -> Module___AlamofireImage.RequestReceipt?
+  @discardableResult
+  open func download(_ urlRequests: [any Module___Alamofire.URLRequestConvertible], filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: Module___AlamofireImage.ImageDownloader.CompletionHandler? = nil) -> [Module___AlamofireImage.RequestReceipt]
+  open func cancelRequest(with requestReceipt: Module___AlamofireImage.RequestReceipt)
+  @objc deinit
+}
+public protocol ImageFilter {
+  var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image { get }
+  var identifier: Swift.String { get }
+}
+extension Module___AlamofireImage.ImageFilter {
+  public var identifier: Swift.String {
+    get
+  }
+}
+public protocol Sizable {
+  var size: CoreFoundation.CGSize { get }
+}
+extension Module___AlamofireImage.ImageFilter where Self : Module___AlamofireImage.Sizable {
+  public var identifier: Swift.String {
+    get
+  }
+}
+public protocol Roundable {
+  var radius: CoreFoundation.CGFloat { get }
+}
+extension Module___AlamofireImage.ImageFilter where Self : Module___AlamofireImage.Roundable {
+  public var identifier: Swift.String {
+    get
+  }
+}
+public struct DynamicImageFilter : Module___AlamofireImage.ImageFilter {
+  public let identifier: Swift.String
+  public let filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image
+  public init(_ identifier: Swift.String, filter: @escaping (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image)
+}
+public protocol CompositeImageFilter : Module___AlamofireImage.ImageFilter {
+  var filters: [any Module___AlamofireImage.ImageFilter] { get }
+}
+extension Module___AlamofireImage.CompositeImageFilter {
+  public var identifier: Swift.String {
+    get
+  }
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+}
+public struct DynamicCompositeImageFilter : Module___AlamofireImage.CompositeImageFilter {
+  public let filters: [any Module___AlamofireImage.ImageFilter]
+  public init(_ filters: [any Module___AlamofireImage.ImageFilter])
+  public init(_ filters: any Module___AlamofireImage.ImageFilter...)
+}
+public struct ScaledToSizeFilter : Module___AlamofireImage.ImageFilter, Module___AlamofireImage.Sizable {
+  public let size: CoreFoundation.CGSize
+  public init(size: CoreFoundation.CGSize)
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+}
+public struct AspectScaledToFitSizeFilter : Module___AlamofireImage.ImageFilter, Module___AlamofireImage.Sizable {
+  public let size: CoreFoundation.CGSize
+  public init(size: CoreFoundation.CGSize)
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+}
+public struct AspectScaledToFillSizeFilter : Module___AlamofireImage.ImageFilter, Module___AlamofireImage.Sizable {
+  public let size: CoreFoundation.CGSize
+  public init(size: CoreFoundation.CGSize)
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+}
+public struct RoundedCornersFilter : Module___AlamofireImage.ImageFilter, Module___AlamofireImage.Roundable {
+  public let radius: CoreFoundation.CGFloat
+  public let divideRadiusByImageScale: Swift.Bool
+  public init(radius: CoreFoundation.CGFloat, divideRadiusByImageScale: Swift.Bool = false)
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+  public var identifier: Swift.String {
+    get
+  }
+}
+public struct CircleFilter : Module___AlamofireImage.ImageFilter {
+  public init()
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+}
+public protocol CoreImageFilter : Module___AlamofireImage.ImageFilter {
+  var filterName: Swift.String { get }
+  var parameters: [Swift.String : Any] { get }
+}
+extension Module___AlamofireImage.ImageFilter where Self : Module___AlamofireImage.CoreImageFilter {
+  public var filter: (Module___AlamofireImage.Image) -> Module___AlamofireImage.Image {
+    get
+  }
+  public var identifier: Swift.String {
+    get
+  }
+}
+public struct BlurFilter : Module___AlamofireImage.ImageFilter, Module___AlamofireImage.CoreImageFilter {
+  public let filterName: Swift.String
+  public let parameters: [Swift.String : Any]
+  public init(blurRadius: Swift.UInt = 10)
+}
+public struct ScaledToSizeWithRoundedCornersFilter : Module___AlamofireImage.CompositeImageFilter {
+  public init(size: CoreFoundation.CGSize, radius: CoreFoundation.CGFloat, divideRadiusByImageScale: Swift.Bool = false)
+  public let filters: [any Module___AlamofireImage.ImageFilter]
+}
+public struct AspectScaledToFillSizeWithRoundedCornersFilter : Module___AlamofireImage.CompositeImageFilter {
+  public init(size: CoreFoundation.CGSize, radius: CoreFoundation.CGFloat, divideRadiusByImageScale: Swift.Bool = false)
+  public let filters: [any Module___AlamofireImage.ImageFilter]
+}
+public struct ScaledToSizeCircleFilter : Module___AlamofireImage.CompositeImageFilter {
+  public init(size: CoreFoundation.CGSize)
+  public let filters: [any Module___AlamofireImage.ImageFilter]
+}
+public struct AspectScaledToFillSizeCircleFilter : Module___AlamofireImage.CompositeImageFilter {
+  public init(size: CoreFoundation.CGSize)
+  public let filters: [any Module___AlamofireImage.ImageFilter]
+}
+open class ImageResponseSerializer : Module___Alamofire.ResponseSerializer {
+  public static var deviceScreenScale: CoreFoundation.CGFloat {
+    get
+  }
+  final public let imageScale: CoreFoundation.CGFloat
+  final public let inflateResponseImage: Swift.Bool
+  final public let emptyResponseCodes: Swift.Set<Swift.Int>
+  final public let emptyRequestMethods: Swift.Set<Module___Alamofire.HTTPMethod>
+  public static var acceptableImageContentTypes: Swift.Set<Swift.String> {
+    get
+  }
+  public init(imageScale: CoreFoundation.CGFloat = ImageResponseSerializer.deviceScreenScale, inflateResponseImage: Swift.Bool = true, emptyResponseCodes: Swift.Set<Swift.Int> = ImageResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<Module___Alamofire.HTTPMethod> = ImageResponseSerializer.defaultEmptyRequestMethods)
+  open func serialize(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) throws -> Module___AlamofireImage.Image
+  open func serializeImage(from data: Foundation.Data) throws -> Module___AlamofireImage.Image
+  public class func addAcceptableImageContentTypes(_ contentTypes: Swift.Set<Swift.String>)
+  public func validateContentType(for request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?) throws
+  public typealias SerializedObject = Module___AlamofireImage.Image
+  @objc deinit
+}
+extension Module___Alamofire.DataRequest {
+  public class var imageScale: CoreFoundation.CGFloat {
+    get
+  }
+}
+extension Module___Alamofire.DataRequest {
+  @discardableResult
+  public func responseImage(imageScale: CoreFoundation.CGFloat = DataRequest.imageScale, inflateResponseImage: Swift.Bool = true, queue: Dispatch.DispatchQueue = .main, completionHandler: @escaping (Module___Alamofire.AFDataResponse<Module___AlamofireImage.Image>) -> Swift.Void) -> Self
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, *)
+extension Module___Alamofire.DataRequest {
+  public func publishImage(queue: Dispatch.DispatchQueue = .main, imageScale: CoreFoundation.CGFloat = DataRequest.imageScale, inflateResponseImage: Swift.Bool = true, emptyResponseCodes: Swift.Set<Swift.Int> = ImageResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<Module___Alamofire.HTTPMethod> = ImageResponseSerializer.defaultEmptyRequestMethods) -> Module___Alamofire.DataResponsePublisher<Module___AlamofireImage.Image>
+}
+@available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+extension Module___Alamofire.DataRequest {
+  public func serializingImage(automaticallyCancelling shouldAutomaticallyCancel: Swift.Bool = true, imageScale: CoreFoundation.CGFloat = DataRequest.imageScale, inflateResponseImage: Swift.Bool = true, emptyResponseCodes: Swift.Set<Swift.Int> = ImageResponseSerializer.defaultEmptyResponseCodes, emptyRequestMethods: Swift.Set<Module___Alamofire.HTTPMethod> = ImageResponseSerializer.defaultEmptyRequestMethods) -> Module___Alamofire.DataTask<Module___AlamofireImage.Image>
+}
+public typealias ControlState = Module___UIKit.UIControl.State
+extension Module___UIKit.UIButton : Module___Alamofire.AlamofireExtended {
+  @available(iOS 2.0, *)
+  public typealias ExtendedType = Module___UIKit.UIButton
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIButton {
+  public var imageDownloader: Module___AlamofireImage.ImageDownloader? {
+    get
+    nonmutating set
+  }
+  public static var sharedImageDownloader: Module___AlamofireImage.ImageDownloader {
+    get
+    set
+  }
+  public func setImage(for state: Module___AlamofireImage.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func setImage(for state: Module___AlamofireImage.ControlState, urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func cancelImageRequest(for state: Module___AlamofireImage.ControlState)
+  public func setBackgroundImage(for state: Module___AlamofireImage.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func setBackgroundImage(for state: Module___AlamofireImage.ControlState, urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func cancelBackgroundImageRequest(for state: Module___AlamofireImage.ControlState)
+}
+extension Module___UIKit.UIButton {
+  @available(*, deprecated, message: "Replaced by `button.af.imageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public var af_imageDownloader: Module___AlamofireImage.ImageDownloader? {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public class var af_sharedImageDownloader: Module___AlamofireImage.ImageDownloader {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_setImage(for state: Module___AlamofireImage.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_setImage(for state: Module___AlamofireImage.ControlState, urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  @Module____Concurrency.MainActor @preconcurrency public func af_cancelImageRequest(for state: Module___AlamofireImage.ControlState)
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_setBackgroundImage(for state: Module___AlamofireImage.ControlState, url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `button.af.sharedImageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_setBackgroundImage(for state: Module___AlamofireImage.ControlState, urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  @Module____Concurrency.MainActor @preconcurrency public func af_cancelBackgroundImageRequest(for state: Module___AlamofireImage.ControlState)
+}
+extension Module___UIKit.UIImage : Module___Alamofire.AlamofireExtended {
+  @available(iOS 2.0, *)
+  public typealias ExtendedType = Module___UIKit.UIImage
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImage {
+  public static func threadSafeImage(with data: Foundation.Data) -> Module___UIKit.UIImage?
+  public static func threadSafeImage(with data: Foundation.Data, scale: CoreFoundation.CGFloat) -> Module___UIKit.UIImage?
+}
+extension Module___UIKit.UIImage {
+  @available(*, deprecated, message: "Replaced by `UIImage.af.threadSafeImage(with:)`")
+  public static func af_threadSafeImage(with data: Foundation.Data) -> Module___UIKit.UIImage?
+  @available(*, deprecated, message: "Replaced by `UIImage.af.threadSafeImage(with:scale:)`")
+  public static func af_threadSafeImage(with data: Foundation.Data, scale: CoreFoundation.CGFloat) -> Module___UIKit.UIImage?
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImage {
+  public var isInflated: Swift.Bool {
+    get
+    nonmutating set
+  }
+  public func inflate()
+}
+extension Module___UIKit.UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.isInflated`")
+  public var af_inflated: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Replaced by `image.af.inflate()`")
+  public func af_inflate()
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImage {
+  public var containsAlphaComponent: Swift.Bool {
+    get
+  }
+  public var isOpaque: Swift.Bool {
+    get
+  }
+}
+extension Module___UIKit.UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.containsAlphaComponent`")
+  public var af_containsAlphaComponent: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Replaced by `image.af.isOpaque`")
+  public var af_isOpaque: Swift.Bool {
+    get
+  }
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImage {
+  public func imageScaled(to size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat? = nil) -> Module___UIKit.UIImage
+  public func imageAspectScaled(toFit size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat? = nil) -> Module___UIKit.UIImage
+  public func imageAspectScaled(toFill size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat? = nil) -> Module___UIKit.UIImage
+}
+extension Module___UIKit.UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.imageScale(to:scale:)`")
+  public func af_imageScaled(to size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat? = nil) -> Module___UIKit.UIImage
+  @available(*, deprecated, message: "Replaced by `image.af.imageAspectScale(toFit:scale:)`")
+  public func af_imageAspectScaled(toFit size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat? = nil) -> Module___UIKit.UIImage
+  @available(*, deprecated, message: "Replaced by `image.af.imageAspectScale(toFill:scale:)`")
+  public func af_imageAspectScaled(toFill size: CoreFoundation.CGSize, scale: CoreFoundation.CGFloat? = nil) -> Module___UIKit.UIImage
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImage {
+  public func imageRounded(withCornerRadius radius: CoreFoundation.CGFloat, divideRadiusByImageScale: Swift.Bool = false) -> Module___UIKit.UIImage
+  public func imageRoundedIntoCircle() -> Module___UIKit.UIImage
+}
+extension Module___UIKit.UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.imageRounded(withCornerRadius:divideRadiusByImageScale:)`")
+  public func af_imageRounded(withCornerRadius radius: CoreFoundation.CGFloat, divideRadiusByImageScale: Swift.Bool = false) -> Module___UIKit.UIImage
+  @available(*, deprecated, message: "Replaced by `image.af.imageRoundedIntoCircle()`")
+  public func af_imageRoundedIntoCircle() -> Module___UIKit.UIImage
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImage {
+  public func imageFiltered(withCoreImageFilter name: Swift.String, parameters: [Swift.String : Any]? = nil) -> Module___UIKit.UIImage?
+}
+extension Module___UIKit.UIImage {
+  @available(*, deprecated, message: "Replaced by `image.af.imageFiltered(withCoreImageFilter:parameters:)`")
+  public func af_imageFiltered(withCoreImageFilter name: Swift.String, parameters: [Swift.String : Any]? = nil) -> Module___UIKit.UIImage?
+}
+public typealias AnimationOptions = Module___UIKit.UIView.AnimationOptions
+extension Module___UIKit.UIImageView {
+  public enum ImageTransition {
+    case noTransition
+    case crossDissolve(Foundation.TimeInterval)
+    case curlDown(Foundation.TimeInterval)
+    case curlUp(Foundation.TimeInterval)
+    case flipFromBottom(Foundation.TimeInterval)
+    case flipFromLeft(Foundation.TimeInterval)
+    case flipFromRight(Foundation.TimeInterval)
+    case flipFromTop(Foundation.TimeInterval)
+    case custom(duration: Foundation.TimeInterval, animationOptions: Module___UIKit.UIView.AnimationOptions, animations: (Module___UIKit.UIImageView, Module___AlamofireImage.Image) -> Swift.Void, completion: ((Swift.Bool) -> Swift.Void)?)
+    public var duration: Foundation.TimeInterval {
+      get
+    }
+    public var animationOptions: Module___UIKit.UIView.AnimationOptions {
+      get
+    }
+    public var animations: (Module___UIKit.UIImageView, Module___AlamofireImage.Image) -> Swift.Void {
+      get
+    }
+    public var completion: ((Swift.Bool) -> Swift.Void)? {
+      get
+    }
+  }
+}
+extension Module___UIKit.UIImageView : Module___Alamofire.AlamofireExtended {
+  @available(iOS 2.0, *)
+  public typealias ExtendedType = Module___UIKit.UIImageView
+}
+extension Module___Alamofire.AlamofireExtension where ExtendedType : Module___UIKit.UIImageView {
+  public var imageDownloader: Module___AlamofireImage.ImageDownloader? {
+    get
+    nonmutating set(downloader)
+  }
+  public static var sharedImageDownloader: Module___AlamofireImage.ImageDownloader {
+    get
+    set
+  }
+  public func setImage(withURL url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: Module___UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func setImage(withURLRequest urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: Module___UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  public func cancelImageRequest()
+  public func run(_ imageTransition: Module___UIKit.UIImageView.ImageTransition, with image: Module___AlamofireImage.Image)
+}
+extension Module___UIKit.UIImageView {
+  @available(*, deprecated, message: "Replaced by `imageView.af.imageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public var af_imageDownloader: Module___AlamofireImage.ImageDownloader? {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `imageView.af.sharedImageDownloader`")
+  @Module____Concurrency.MainActor @preconcurrency public class var af_sharedImageDownloader: Module___AlamofireImage.ImageDownloader {
+    get
+    set
+  }
+  @available(*, deprecated, message: "Replaced by `imageView.af.setImage(withURL: ...)`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_setImage(withURL url: Foundation.URL, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: Module___UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `imageView.af.setImage(withURLRequest: ...)`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_setImage(withURLRequest urlRequest: any Module___Alamofire.URLRequestConvertible, cacheKey: Swift.String? = nil, placeholderImage: Module___UIKit.UIImage? = nil, serializer: Module___AlamofireImage.ImageResponseSerializer? = nil, filter: (any Module___AlamofireImage.ImageFilter)? = nil, progress: Module___AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: Module___UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((Module___AlamofireImage.AFIDataResponse<Module___UIKit.UIImage>) -> Swift.Void)? = nil)
+  @available(*, deprecated, message: "Replaced by `imageView.af.cancelImageRequest()`")
+  @Module____Concurrency.MainActor @preconcurrency public func af_cancelImageRequest()
+  @available(*, deprecated, message: "Replaced by `imageView.af.run(_:with:)`")
+  @Module____Concurrency.MainActor @preconcurrency public func run(_ imageTransition: Module___UIKit.UIImageView.ImageTransition, with image: Module___AlamofireImage.Image)
+}
+extension Module___AlamofireImage.ImageDownloader.DownloadPrioritization : Swift.Equatable {}
+extension Module___AlamofireImage.ImageDownloader.DownloadPrioritization : Swift.Hashable {}

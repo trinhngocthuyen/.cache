@@ -1,8 +1,21 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "NO_MODULE",
-    "printedName": "NO_MODULE",
+    "name": "FBSDKCoreKit",
+    "printedName": "FBSDKCoreKit",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "FacebookCore",
+        "printedName": "FacebookCore",
+        "declKind": "Import",
+        "moduleName": "FBSDKCoreKit",
+        "declAttributes": [
+          "Exported",
+          "RawDocComment"
+        ]
+      }
+    ],
     "json_format_version": 8
   },
   "ConstValues": []

@@ -1,0 +1,60 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name ReactiveExtensions_TestHelpers -module-alias Module___ReactiveExtensions_TestHelpers=ReactiveExtensions_TestHelpers -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___ReactiveSwift=ReactiveSwift -module-alias Module___XCTest=XCTest
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___ReactiveSwift
+import Swift
+import Module___XCTest
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+final public class TestObserver<Value, Error> where Error : Swift.Error {
+  final public var events: [Module___ReactiveSwift.Signal<Value, Error>.Event] {
+    get
+  }
+  final public var observer: Module___ReactiveSwift.Signal<Value, Error>.Observer! {
+    get
+  }
+  public init()
+  final public var values: [Value] {
+    get
+  }
+  final public var lastValue: Value? {
+    get
+  }
+  final public var didEmitValue: Swift.Bool {
+    get
+  }
+  final public var failedError: Error? {
+    get
+  }
+  final public var didFail: Swift.Bool {
+    get
+  }
+  final public var didComplete: Swift.Bool {
+    get
+  }
+  final public var didInterrupt: Swift.Bool {
+    get
+  }
+  final public func assertDidComplete(_ message: Swift.String = "Should have completed.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidFail(_ message: Swift.String = "Should have failed.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidNotFail(_ message: Swift.String = "Should not have failed.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidInterrupt(_ message: Swift.String = "Should have failed.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidNotInterrupt(_ message: Swift.String = "Should not have failed.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidNotComplete(_ message: Swift.String = "Should not have completed", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidEmitValue(_ message: Swift.String = "Should have emitted at least one value.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidNotEmitValue(_ message: Swift.String = "Should not have emitted any values.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidTerminate(_ message: Swift.String = "Should have terminated, i.e. completed/failed/interrupted.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertDidNotTerminate(_ message: Swift.String = "Should not have terminated, i.e. completed/failed/interrupted.", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertValueCount(_ count: Swift.Int, _ message: Swift.String? = nil, file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  @objc deinit
+}
+extension Module___ReactiveExtensions_TestHelpers.TestObserver where Value : Swift.Equatable {
+  final public func assertValue(_ value: Value, _ message: Swift.String? = nil, file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertLastValue(_ value: Value, _ message: Swift.String? = nil, file: Swift.StaticString = #file, line: Swift.UInt = #line)
+  final public func assertValues(_ values: [Value], _ message: Swift.String = "", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+}
+extension Module___ReactiveExtensions_TestHelpers.TestObserver where Error : Swift.Equatable {
+  final public func assertFailed(_ expectedError: Error, message: Swift.String = "", file: Swift.StaticString = #file, line: Swift.UInt = #line)
+}

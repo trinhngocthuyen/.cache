@@ -1,0 +1,34 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name FacebookLogin -module-alias Module___FacebookLogin=FacebookLogin -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___FacebookCore=FacebookCore -module-alias Module___FBSDKLoginKit=FBSDKLoginKit -module-alias Module___FBSDKCoreKit=FBSDKCoreKit -module-alias Module___UIKit=UIKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___FBSDKCoreKit
+@_exported import Module___FBSDKLoginKit
+@_exported import Module___FacebookCore
+import Swift
+import Module___UIKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+@available(tvOS, unavailable)
+extension Module___FBSDKLoginKit.FBLoginButton {
+  @Module____Concurrency.MainActor @preconcurrency convenience public init(frame: CoreFoundation.CGRect = .zero, permissions: [Module___FacebookCore.Permission] = [.publicProfile])
+}
+extension Module___FBSDKLoginKit.LoginConfiguration {
+  convenience public init?(permissions: Swift.Set<Module___FacebookCore.Permission> = [], tracking: Module___FBSDKLoginKit.LoginTracking = .enabled, nonce: Swift.String = UUID().uuidString)
+}
+@available(tvOS, unavailable)
+public typealias LoginResultBlock = (Module___FacebookLogin.LoginResult) -> Swift.Void
+@available(tvOS, unavailable)
+public enum LoginResult {
+  case success(granted: Swift.Set<Module___FacebookCore.Permission>, declined: Swift.Set<Module___FacebookCore.Permission>, token: LegacyCoreKit.AccessToken?)
+  case cancelled
+  case failed(any Swift.Error)
+}
+@available(tvOS, unavailable)
+extension Module___FBSDKLoginKit.LoginManager {
+  convenience public init(defaultAudience: Module___FBSDKLoginKit.DefaultAudience = .friends)
+  public func logIn(permissions: [Module___FacebookCore.Permission] = [.publicProfile], viewController: Module___UIKit.UIViewController? = nil, completion: Module___FacebookLogin.LoginResultBlock? = nil)
+  public func logIn(viewController: Module___UIKit.UIViewController? = nil, configuration: Module___FBSDKLoginKit.LoginConfiguration, completion: @escaping Module___FacebookLogin.LoginResultBlock)
+  public func logIn(configuration: Module___FBSDKLoginKit.LoginConfiguration, completion: @escaping Module___FacebookLogin.LoginResultBlock)
+}

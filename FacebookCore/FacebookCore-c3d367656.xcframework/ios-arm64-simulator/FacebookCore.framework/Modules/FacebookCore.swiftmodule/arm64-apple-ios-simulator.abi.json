@@ -1,9 +1,2534 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "NO_MODULE",
-    "printedName": "NO_MODULE",
+    "name": "FacebookCore",
+    "printedName": "FacebookCore",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "LegacyCoreKit",
+        "printedName": "LegacyCoreKit",
+        "declKind": "Import",
+        "moduleName": "FacebookCore",
+        "declAttributes": [
+          "Exported"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Accelerate",
+        "printedName": "Accelerate",
+        "declKind": "Import",
+        "moduleName": "FacebookCore",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FacebookCore"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FacebookCore",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Permission",
+        "printedName": "Permission",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "publicProfile",
+            "printedName": "publicProfile",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO13publicProfileyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO13publicProfileyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userFriends",
+            "printedName": "userFriends",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO11userFriendsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO11userFriendsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "email",
+            "printedName": "email",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO5emailyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO5emailyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userAboutMe",
+            "printedName": "userAboutMe",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO11userAboutMeyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO11userAboutMeyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userActionsBooks",
+            "printedName": "userActionsBooks",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO16userActionsBooksyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO16userActionsBooksyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userActionsFitness",
+            "printedName": "userActionsFitness",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO18userActionsFitnessyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO18userActionsFitnessyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userActionsMusic",
+            "printedName": "userActionsMusic",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO16userActionsMusicyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO16userActionsMusicyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userActionsNews",
+            "printedName": "userActionsNews",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO15userActionsNewsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO15userActionsNewsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userActionsVideo",
+            "printedName": "userActionsVideo",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO16userActionsVideoyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO16userActionsVideoyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userBirthday",
+            "printedName": "userBirthday",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO12userBirthdayyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO12userBirthdayyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userEducationHistory",
+            "printedName": "userEducationHistory",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO20userEducationHistoryyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO20userEducationHistoryyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userEvents",
+            "printedName": "userEvents",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO10userEventsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO10userEventsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userGamesActivity",
+            "printedName": "userGamesActivity",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO17userGamesActivityyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO17userGamesActivityyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userGender",
+            "printedName": "userGender",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO10userGenderyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO10userGenderyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userHometown",
+            "printedName": "userHometown",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO12userHometownyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO12userHometownyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userLikes",
+            "printedName": "userLikes",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO9userLikesyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO9userLikesyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userLocation",
+            "printedName": "userLocation",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO12userLocationyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO12userLocationyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userManagedGroups",
+            "printedName": "userManagedGroups",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO17userManagedGroupsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO17userManagedGroupsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userPhotos",
+            "printedName": "userPhotos",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO10userPhotosyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO10userPhotosyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userPosts",
+            "printedName": "userPosts",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO9userPostsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO9userPostsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userRelationships",
+            "printedName": "userRelationships",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO17userRelationshipsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO17userRelationshipsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userRelationshipDetails",
+            "printedName": "userRelationshipDetails",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO23userRelationshipDetailsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO23userRelationshipDetailsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userReligionPolitics",
+            "printedName": "userReligionPolitics",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO20userReligionPoliticsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO20userReligionPoliticsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userTaggedPlaces",
+            "printedName": "userTaggedPlaces",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO16userTaggedPlacesyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO16userTaggedPlacesyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userVideos",
+            "printedName": "userVideos",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO10userVideosyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO10userVideosyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userWebsite",
+            "printedName": "userWebsite",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO11userWebsiteyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO11userWebsiteyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userWorkHistory",
+            "printedName": "userWorkHistory",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO15userWorkHistoryyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO15userWorkHistoryyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "readCustomFriendlists",
+            "printedName": "readCustomFriendlists",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO21readCustomFriendlistsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO21readCustomFriendlistsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "readInsights",
+            "printedName": "readInsights",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO12readInsightsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO12readInsightsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "readAudienceNetworkInsights",
+            "printedName": "readAudienceNetworkInsights",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO27readAudienceNetworkInsightsyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO27readAudienceNetworkInsightsyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "readPageMailboxes",
+            "printedName": "readPageMailboxes",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO17readPageMailboxesyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO17readPageMailboxesyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pagesShowList",
+            "printedName": "pagesShowList",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO13pagesShowListyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO13pagesShowListyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pagesManageCta",
+            "printedName": "pagesManageCta",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO14pagesManageCtayA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO14pagesManageCtayA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "pagesManageInstantArticles",
+            "printedName": "pagesManageInstantArticles",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO26pagesManageInstantArticlesyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO26pagesManageInstantArticlesyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "adsRead",
+            "printedName": "adsRead",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO7adsReadyA2CmF",
+            "mangledName": "$s12FacebookCore10PermissionO7adsReadyA2CmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "custom",
+            "printedName": "custom",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FacebookCore.Permission.Type) -> (Swift.String) -> FacebookCore.Permission",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> FacebookCore.Permission",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FacebookCore.Permission.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12FacebookCore10PermissionO6customyACSScACmF",
+            "mangledName": "$s12FacebookCore10PermissionO6customyACSScACmF",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(stringLiteral:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Permission",
+                "printedName": "FacebookCore.Permission",
+                "usr": "s:12FacebookCore10PermissionO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:12FacebookCore10PermissionO13stringLiteralACSS_tcfc",
+            "mangledName": "$s12FacebookCore10PermissionO13stringLiteralACSS_tcfc",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "name",
+            "printedName": "name",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FacebookCore10PermissionO4nameSSvp",
+            "mangledName": "$s12FacebookCore10PermissionO4nameSSvp",
+            "moduleName": "FacebookCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FacebookCore10PermissionO4nameSSvg",
+                "mangledName": "$s12FacebookCore10PermissionO4nameSSvg",
+                "moduleName": "FacebookCore",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12FacebookCore10PermissionO9hashValueSivp",
+            "mangledName": "$s12FacebookCore10PermissionO9hashValueSivp",
+            "moduleName": "FacebookCore",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12FacebookCore10PermissionO9hashValueSivg",
+                "mangledName": "$s12FacebookCore10PermissionO9hashValueSivg",
+                "moduleName": "FacebookCore",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FacebookCore10PermissionO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s12FacebookCore10PermissionO4hash4intoys6HasherVz_tF",
+            "moduleName": "FacebookCore",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Permission",
+                "printedName": "FacebookCore.Permission",
+                "usr": "s:12FacebookCore10PermissionO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Permission",
+                "printedName": "FacebookCore.Permission",
+                "usr": "s:12FacebookCore10PermissionO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12FacebookCore10PermissionO2eeoiySbAC_ACtFZ",
+            "mangledName": "$s12FacebookCore10PermissionO2eeoiySbAC_ACtFZ",
+            "moduleName": "FacebookCore",
+            "static": true,
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:12FacebookCore10PermissionO",
+        "mangledName": "$s12FacebookCore10PermissionO",
+        "moduleName": "FacebookCore",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByStringLiteral",
+            "printedName": "ExpressibleByStringLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "StringLiteralType",
+                "printedName": "StringLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s26ExpressibleByStringLiteralP",
+            "mangledName": "$ss26ExpressibleByStringLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "printedName": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ExtendedGraphemeClusterLiteralType",
+                "printedName": "ExtendedGraphemeClusterLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s43ExpressibleByExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss43ExpressibleByExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByUnicodeScalarLiteral",
+            "printedName": "ExpressibleByUnicodeScalarLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "UnicodeScalarLiteralType",
+                "printedName": "UnicodeScalarLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s33ExpressibleByUnicodeScalarLiteralP",
+            "mangledName": "$ss33ExpressibleByUnicodeScalarLiteralP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FacebookCore"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AccessToken",
+        "printedName": "AccessToken",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "permissions",
+            "printedName": "permissions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Set",
+                "printedName": "Swift.Set<FacebookCore.Permission>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  }
+                ],
+                "usr": "s:Sh"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE11permissionsShyAC10PermissionOGvp",
+            "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE11permissionsShyAC10PermissionOGvp",
+            "moduleName": "FacebookCore",
+            "isOpen": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Set",
+                    "printedName": "Swift.Set<FacebookCore.Permission>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ],
+                    "usr": "s:Sh"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE11permissionsShyAC10PermissionOGvg",
+                "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE11permissionsShyAC10PermissionOGvg",
+                "moduleName": "FacebookCore",
+                "isOpen": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "declinedPermissions",
+            "printedName": "declinedPermissions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Set",
+                "printedName": "Swift.Set<FacebookCore.Permission>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  }
+                ],
+                "usr": "s:Sh"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE19declinedPermissionsShyAC10PermissionOGvp",
+            "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE19declinedPermissionsShyAC10PermissionOGvp",
+            "moduleName": "FacebookCore",
+            "isOpen": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Set",
+                    "printedName": "Swift.Set<FacebookCore.Permission>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ],
+                    "usr": "s:Sh"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE19declinedPermissionsShyAC10PermissionOGvg",
+                "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE19declinedPermissionsShyAC10PermissionOGvg",
+                "moduleName": "FacebookCore",
+                "isOpen": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "expiredPermissions",
+            "printedName": "expiredPermissions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Set",
+                "printedName": "Swift.Set<FacebookCore.Permission>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Permission",
+                    "printedName": "FacebookCore.Permission",
+                    "usr": "s:12FacebookCore10PermissionO"
+                  }
+                ],
+                "usr": "s:Sh"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE18expiredPermissionsShyAC10PermissionOGvp",
+            "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE18expiredPermissionsShyAC10PermissionOGvp",
+            "moduleName": "FacebookCore",
+            "isOpen": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Set",
+                    "printedName": "Swift.Set<FacebookCore.Permission>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Permission",
+                        "printedName": "FacebookCore.Permission",
+                        "usr": "s:12FacebookCore10PermissionO"
+                      }
+                    ],
+                    "usr": "s:Sh"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE18expiredPermissionsShyAC10PermissionOGvg",
+                "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE18expiredPermissionsShyAC10PermissionOGvg",
+                "moduleName": "FacebookCore",
+                "isOpen": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "hasGranted",
+            "printedName": "hasGranted(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Permission",
+                "printedName": "FacebookCore.Permission",
+                "usr": "s:12FacebookCore10PermissionO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:So16FBSDKAccessTokenC12FacebookCoreE10hasGrantedySbAC10PermissionOF",
+            "mangledName": "$sSo16FBSDKAccessTokenC12FacebookCoreE10hasGrantedySbAC10PermissionOF",
+            "moduleName": "FacebookCore",
+            "isOpen": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)FBSDKAccessToken",
+        "moduleName": "LegacyCoreKit",
+        "isOpen": true,
+        "objc_name": "FBSDKAccessToken",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Settings",
+        "printedName": "Settings",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "loggingBehaviors",
+            "printedName": "loggingBehaviors",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Set",
+                "printedName": "Swift.Set<LegacyCoreKit.LoggingBehavior>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LoggingBehavior",
+                    "printedName": "LegacyCoreKit.LoggingBehavior",
+                    "usr": "c:FBSDKLoggingBehavior.h@T@FBSDKLoggingBehavior"
+                  }
+                ],
+                "usr": "s:Sh"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:So13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvpZ",
+            "mangledName": "$sSo13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvpZ",
+            "moduleName": "FacebookCore",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Set",
+                    "printedName": "Swift.Set<LegacyCoreKit.LoggingBehavior>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LoggingBehavior",
+                        "printedName": "LegacyCoreKit.LoggingBehavior",
+                        "usr": "c:FBSDKLoggingBehavior.h@T@FBSDKLoggingBehavior"
+                      }
+                    ],
+                    "usr": "s:Sh"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvgZ",
+                "mangledName": "$sSo13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvgZ",
+                "moduleName": "FacebookCore",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Set",
+                    "printedName": "Swift.Set<LegacyCoreKit.LoggingBehavior>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LoggingBehavior",
+                        "printedName": "LegacyCoreKit.LoggingBehavior",
+                        "usr": "c:FBSDKLoggingBehavior.h@T@FBSDKLoggingBehavior"
+                      }
+                    ],
+                    "usr": "s:Sh"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvsZ",
+                "mangledName": "$sSo13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvsZ",
+                "moduleName": "FacebookCore",
+                "static": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:So13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvMZ",
+                "mangledName": "$sSo13FBSDKSettingsC12FacebookCoreE16loggingBehaviorsShySo20FBSDKLoggingBehavioraGvMZ",
+                "moduleName": "FacebookCore",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)FBSDKSettings",
+        "moduleName": "LegacyCoreKit",
+        "isOpen": true,
+        "objc_name": "FBSDKSettings",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
     "json_format_version": 8
   },
-  "ConstValues": []
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8536,
+      "length": 16,
+      "value": "\"public_profile\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8574,
+      "length": 14,
+      "value": "\"user_friends\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8604,
+      "length": 7,
+      "value": "\"email\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8633,
+      "length": 15,
+      "value": "\"user_about_me\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8675,
+      "length": 20,
+      "value": "\"user_actions.books\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8724,
+      "length": 21,
+      "value": "\"user_action.fitness\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8772,
+      "length": 20,
+      "value": "\"user_actions.music\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8818,
+      "length": 19,
+      "value": "\"user_actions.news\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8864,
+      "length": 20,
+      "value": "\"user_actions.video\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8907,
+      "length": 15,
+      "value": "\"user_birthday\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8953,
+      "length": 24,
+      "value": "\"user_education_history\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 8998,
+      "length": 13,
+      "value": "\"user_events\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9039,
+      "length": 21,
+      "value": "\"user_games_activity\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9081,
+      "length": 13,
+      "value": "\"user_gender\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9117,
+      "length": 15,
+      "value": "\"user_hometown\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9152,
+      "length": 12,
+      "value": "\"user_likes\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9187,
+      "length": 15,
+      "value": "\"user_location\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9230,
+      "length": 21,
+      "value": "\"user_managed_groups\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9272,
+      "length": 13,
+      "value": "\"user_photos\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9305,
+      "length": 12,
+      "value": "\"user_posts\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9345,
+      "length": 20,
+      "value": "\"user_relationships\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9399,
+      "length": 27,
+      "value": "\"user_relationship_details\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9457,
+      "length": 24,
+      "value": "\"user_religion_politics\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9508,
+      "length": 20,
+      "value": "\"user_tagged_places\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9549,
+      "length": 13,
+      "value": "\"user_videos\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9584,
+      "length": 14,
+      "value": "\"user_website\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9624,
+      "length": 19,
+      "value": "\"user_work_history\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9675,
+      "length": 25,
+      "value": "\"read_custom_friendlists\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9723,
+      "length": 15,
+      "value": "\"read_insights\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9776,
+      "length": 32,
+      "value": "\"read_audience_network_insights\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9836,
+      "length": 21,
+      "value": "\"read_page_mailboxes\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9881,
+      "length": 17,
+      "value": "\"pages_show_list\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9923,
+      "length": 18,
+      "value": "\"pages_manage_cta\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 9978,
+      "length": 31,
+      "value": "\"pages_manage_instant_articles\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/facebook-ios-sdk\/Sources\/FacebookCore\/Swift\/Permission.swift",
+      "kind": "StringLiteral",
+      "offset": 10027,
+      "length": 10,
+      "value": "\"ads_read\""
+    }
+  ]
 }

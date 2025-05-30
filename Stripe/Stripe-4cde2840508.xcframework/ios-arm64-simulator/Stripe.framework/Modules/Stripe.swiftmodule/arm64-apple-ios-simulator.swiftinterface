@@ -1,0 +1,661 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name Stripe -module-alias Module___Stripe=Stripe -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___SwiftUI=SwiftUI -module-alias Module___ObjectiveC=ObjectiveC -module-alias Module___PassKit=PassKit -module-alias Module___StripeCore=StripeCore -module-alias Module___StripePayments=StripePayments -module-alias Module___StripePaymentsUI=StripePaymentsUI -module-alias Module___StripeUICore=StripeUICore -module-alias Module___UIKit=UIKit -module-alias Module___Contacts=Contacts -module-alias Module___CoreLocation=CoreLocation -module-alias Module___StripeApplePay=StripeApplePay -module-alias Module___AVFoundation=AVFoundation -module-alias Module___Vision=Vision
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___AVFoundation
+import Module___Contacts
+import Module___CoreLocation
+import Foundation
+import Module___ObjectiveC
+import Module___PassKit
+@_exported import Module___StripeApplePay
+@_exported import Module___StripeCore
+@_exported import Module___StripePayments
+@_exported import Module___StripePaymentsUI
+import Module___StripeUICore
+import Swift
+import Module___SwiftUI
+import Module___UIKit
+import Module___Vision
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+extension Module___Stripe.STPBankSelectionMethod : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Module___Stripe.STPBillingAddressFields : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Module___Stripe.STPShippingStatus : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Module___Stripe.STPShippingType : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Module___StripeCore.STPAPIClient {
+  @available(*, deprecated, message: "This initializer previously configured publishableKey and stripeAccount via the STPPaymentConfiguration instance. This behavior is deprecated; set the STPAPIClient configuration, publishableKey, and stripeAccount properties directly on the STPAPIClient instead.")
+  convenience public init(configuration: Module___Stripe.STPPaymentConfiguration)
+}
+extension Module___StripeCore.STPAPIClient {
+  @objc dynamic public var configuration: Module___Stripe.STPPaymentConfiguration {
+    @objc get
+    @objc set
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPAddCardViewController : Module___Stripe.STPCoreTableViewController, Module___StripePaymentsUI.STPPaymentCardTextFieldDelegate, Module___UIKit.UITableViewDelegate, Module___UIKit.UITableViewDataSource {
+  @Module____Concurrency.MainActor @preconcurrency @objc convenience dynamic public init()
+  @objc(initWithConfiguration:theme:) @Module____Concurrency.MainActor @preconcurrency public init(configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme)
+  @objc @Module____Concurrency.MainActor @preconcurrency weak public var delegate: (any Module___Stripe.STPAddCardViewControllerDelegate)?
+  @objc @Module____Concurrency.MainActor @preconcurrency public var prefilledInformation: Module___Stripe.STPUserInformation? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency public var customFooterView: Module___UIKit.UIView? {
+    @objc get
+    @objc set(footerView)
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var apiClient: Module___StripeCore.STPAPIClient
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, estimatedHeightForRowAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGFloat
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLayoutSubviews()
+  @Module____Concurrency.MainActor @preconcurrency @objc public func updateAppearance()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func handleCancelTapped(_ sender: Any?)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func paymentCardTextFieldDidChange(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func paymentCardTextFieldWillEndEditing(forReturn textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func paymentCardTextFieldDidBeginEditingCVC(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func paymentCardTextFieldDidEndEditingCVC(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func paymentCardTextFieldDidBeginEditing(_ textField: Module___StripePaymentsUI.STPPaymentCardTextField)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func numberOfSections(in tableView: Module___UIKit.UITableView) -> Swift.Int
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> Module___UIKit.UITableViewCell
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, willDisplay cell: Module___UIKit.UITableViewCell, forRowAt indexPath: Foundation.IndexPath)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, heightForFooterInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @Module____Concurrency.MainActor @preconcurrency @objc override public func tableView(_ tableView: Module___UIKit.UITableView, heightForHeaderInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, viewForHeaderInSection section: Swift.Int) -> Module___UIKit.UIView?
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, viewForFooterInSection section: Swift.Int) -> Module___UIKit.UIView?
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any Module___UIKit.UIViewControllerTransitionCoordinator)
+  @objc deinit
+}
+@objc public protocol STPAddCardViewControllerDelegate : Module___ObjectiveC.NSObjectProtocol {
+  @objc func addCardViewControllerDidCancel(_ addCardViewController: Module___Stripe.STPAddCardViewController)
+  @objc func addCardViewController(_ addCardViewController: Module___Stripe.STPAddCardViewController, didCreatePaymentMethod paymentMethod: Module___StripePayments.STPPaymentMethod, completion: @escaping Module___StripePayments.STPErrorBlock)
+  @available(*, deprecated, renamed: "addCardViewController(_:didCreatePaymentMethod:completion:)", message: "Use addCardViewController(_:didCreatePaymentMethod:completion:) instead and migrate your integration to PaymentIntents. See https://stripe.com/docs/payments/payment-intents/migration/charges#read")
+  @objc optional func addCardViewController(_ addCardViewController: Module___Stripe.STPAddCardViewController, didCreateToken token: Module___StripePayments.STPToken, completion: ((any Swift.Error)?) -> Swift.Void)
+  @available(*, deprecated, renamed: "addCardViewController(_:didCreatePaymentMethod:completion:)", message: "Use addCardViewController(_:didCreatePaymentMethod:completion:) instead and migrate your integration to PaymentIntents. See https://stripe.com/docs/payments/payment-intents/migration/charges#read")
+  @objc optional func addCardViewController(_ addCardViewController: Module___Stripe.STPAddCardViewController, didCreateSource source: Module___StripePayments.STPSource, completion: ((any Swift.Error)?) -> Swift.Void)
+}
+@objc public enum STPBillingAddressFields : Swift.UInt {
+  case none
+  case postalCode
+  case full
+  case name
+  @available(*, deprecated, message: "Use STPBillingAddressFields.postalCode instead")
+  case zip
+  public init?(rawValue: Swift.UInt)
+  public typealias RawValue = Swift.UInt
+  public var rawValue: Swift.UInt {
+    get
+  }
+}
+extension Module___StripePayments.STPAddress {
+  @objc dynamic public func containsRequiredFields(_ requiredFields: Module___Stripe.STPBillingAddressFields) -> Swift.Bool
+  @objc(containsContentForBillingAddressFields:) dynamic public func containsContent(for desiredFields: Module___Stripe.STPBillingAddressFields) -> Swift.Bool
+  @objc dynamic public func containsRequiredShippingAddressFields(_ requiredFields: Swift.Set<Module___StripePayments.STPContactField>?) -> Swift.Bool
+  @objc dynamic public func containsContent(forShippingAddressFields desiredFields: Swift.Set<Module___StripePayments.STPContactField>?) -> Swift.Bool
+  @objc(applePayContactFieldsFromBillingAddressFields:) dynamic public class func applePayContactFields(from billingAddressFields: Module___Stripe.STPBillingAddressFields) -> Swift.Set<Module___PassKit.PKContactField>
+  @objc dynamic public class func pkContactFields(fromStripeContactFields contactFields: Swift.Set<Module___StripePayments.STPContactField>?) -> Swift.Set<Module___PassKit.PKContactField>?
+}
+@objc public protocol STPApplePayContextDelegate : Module___StripeApplePay._stpinternal_STPApplePayContextDelegateBase {
+  @objc(applePayContext:didCreatePaymentMethod:paymentInformation:completion:) func applePayContext(_ context: Module___StripeApplePay.STPApplePayContext, didCreatePaymentMethod paymentMethod: Module___StripePayments.STPPaymentMethod, paymentInformation: Module___PassKit.PKPayment, completion: @escaping Module___StripeApplePay.STPIntentClientSecretCompletionBlock)
+  @objc(applePayContext:didCompleteWithStatus:error:) func applePayContext(_ context: Module___StripeApplePay.STPApplePayContext, didCompleteWith status: Module___StripePayments.STPPaymentStatus, error: (any Swift.Error)?)
+}
+@_inheritsConvenienceInitializers @objc public class STPApplePayPaymentOption : Module___ObjectiveC.NSObject, Module___Stripe.STPPaymentOption {
+  @objc public var image: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc public var templateImage: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc public var label: Swift.String {
+    @objc get
+  }
+  @objc public var isReusable: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public var hash: Swift.Int {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol STPBackendAPIAdapter : Module___ObjectiveC.NSObjectProtocol {
+  @objc func retrieveCustomer(_ completion: Module___StripePayments.STPCustomerCompletionBlock?)
+  @objc func listPaymentMethodsForCustomer(completion: Module___StripePayments.STPPaymentMethodsCompletionBlock?)
+  @objc func attachPaymentMethod(toCustomer paymentMethod: Module___StripePayments.STPPaymentMethod, completion: Module___StripePayments.STPErrorBlock?)
+  @objc optional func detachPaymentMethod(fromCustomer paymentMethod: Module___StripePayments.STPPaymentMethod, completion: Module___StripePayments.STPErrorBlock?)
+  @objc optional func updateCustomer(withShippingAddress shipping: Module___StripePayments.STPAddress, completion: Module___StripePayments.STPErrorBlock?)
+}
+@objc public enum STPBankSelectionMethod : Swift.Int {
+  case FPX
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPBankSelectionViewController : Module___Stripe.STPCoreTableViewController, Module___UIKit.UITableViewDataSource, Module___UIKit.UITableViewDelegate {
+  @objc @Module____Concurrency.MainActor @preconcurrency convenience public init(bankMethod: Module___Stripe.STPBankSelectionMethod)
+  @Module____Concurrency.MainActor @preconcurrency @objc convenience required public init(theme: Module___Stripe.STPTheme?)
+  @objc @Module____Concurrency.MainActor @preconcurrency public init(bankMethod: Module___Stripe.STPBankSelectionMethod, configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme)
+  @objc @Module____Concurrency.MainActor @preconcurrency weak public var delegate: (any Module___Stripe.STPBankSelectionViewControllerDelegate)?
+  @Module____Concurrency.MainActor @preconcurrency public var apiClient: Module___StripeCore.STPAPIClient
+  @objc deinit
+  @Module____Concurrency.MainActor @preconcurrency @objc public func numberOfSections(in tableView: Module___UIKit.UITableView) -> Swift.Int
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> Module___UIKit.UITableViewCell
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, willDisplay cell: Module___UIKit.UITableViewCell, forRowAt indexPath: Foundation.IndexPath)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, heightForFooterInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, shouldHighlightRowAt indexPath: Foundation.IndexPath) -> Swift.Bool
+  @Module____Concurrency.MainActor @preconcurrency @objc public func tableView(_ tableView: Module___UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+@objc public protocol STPBankSelectionViewControllerDelegate : Module___ObjectiveC.NSObjectProtocol {
+  @objc(bankSelectionViewController:didCreatePaymentMethodParams:) func bankSelectionViewController(_ bankViewController: Module___Stripe.STPBankSelectionViewController, didCreatePaymentMethodParams paymentMethodParams: Module___StripePayments.STPPaymentMethodParams)
+}
+@objc public enum STPShippingType : Swift.Int {
+  case shipping
+  case delivery
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum STPShippingStatus : Swift.Int {
+  case valid
+  case invalid
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public typealias STPShippingMethodsCompletionBlock = (Module___Stripe.STPShippingStatus, (any Swift.Error)?, [Module___PassKit.PKShippingMethod]?, Module___PassKit.PKShippingMethod?) -> Swift.Void
+extension Module___StripePayments.STPCard : Module___Stripe.STPPaymentOption {
+  @objc dynamic public var image: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var templateImage: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var label: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var isReusable: Swift.Bool {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency public class STPCoreScrollViewController : Module___Stripe.STPCoreViewController {
+  @objc @Module____Concurrency.MainActor @preconcurrency public var scrollView: Module___UIKit.UIScrollView {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLayoutSubviews()
+  @Module____Concurrency.MainActor @preconcurrency @objc required public init(theme: Module___Stripe.STPTheme?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency public class STPCoreTableViewController : Module___Stripe.STPCoreScrollViewController {
+  @objc @Module____Concurrency.MainActor @preconcurrency public var tableView: Module___UIKit.UITableView? {
+    @objc get
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @objc @Module____Concurrency.MainActor @preconcurrency public func tableView(_ tableView: Module___UIKit.UITableView, heightForHeaderInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @Module____Concurrency.MainActor @preconcurrency @objc required public init(theme: Module___Stripe.STPTheme?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency public class STPCoreViewController : Module___UIKit.UIViewController {
+  @Module____Concurrency.MainActor @preconcurrency @objc convenience dynamic public init()
+  @objc @Module____Concurrency.MainActor @preconcurrency required public init(theme: Module___Stripe.STPTheme?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var preferredStatusBarStyle: Module___UIKit.UIStatusBarStyle {
+    @objc get
+  }
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers open class STPCustomerContext : Module___ObjectiveC.NSObject, Module___Stripe.STPBackendAPIAdapter {
+  @objc(initWithKeyProvider:) convenience public init(keyProvider: any Module___Stripe.STPCustomerEphemeralKeyProvider)
+  @objc(initWithKeyProvider:apiClient:) convenience public init(keyProvider: (any Module___Stripe.STPCustomerEphemeralKeyProvider)?, apiClient: Module___StripeCore.STPAPIClient)
+  @objc public func clearCache()
+  @objc public var includeApplePayPaymentMethods: Swift.Bool {
+    @objc get
+    @objc set(includeApplePayMethods)
+  }
+  @objc public func retrieveCustomer(_ completion: Module___StripePayments.STPCustomerCompletionBlock? = nil)
+  @objc public func updateCustomer(withShippingAddress shipping: Module___StripePayments.STPAddress, completion: Module___StripePayments.STPErrorBlock?)
+  @objc public func attachPaymentMethodToCustomer(paymentMethodId: Swift.String, completion: Module___StripePayments.STPErrorBlock?)
+  @objc public func attachPaymentMethod(toCustomer paymentMethod: Module___StripePayments.STPPaymentMethod, completion: Module___StripePayments.STPErrorBlock?)
+  @objc public func detachPaymentMethodFromCustomer(paymentMethodId: Swift.String, completion: Module___StripePayments.STPErrorBlock?)
+  @objc public func detachPaymentMethod(fromCustomer paymentMethod: Module___StripePayments.STPPaymentMethod, completion: Module___StripePayments.STPErrorBlock?)
+  @objc public func listPaymentMethodsForCustomer(completion: Module___StripePayments.STPPaymentMethodsCompletionBlock? = nil)
+  @objc deinit
+}
+@objc public protocol STPCustomerEphemeralKeyProvider : Module___ObjectiveC.NSObjectProtocol {
+  @objc(createCustomerKeyWithAPIVersion:completion:) func createCustomerKey(withAPIVersion apiVersion: Swift.String, completion: @escaping Module___StripePayments.STPJSONResponseCompletionBlock)
+}
+@objc public protocol STPIssuingCardEphemeralKeyProvider : Module___ObjectiveC.NSObjectProtocol {
+  @objc(createIssuingCardKeyWithAPIVersion:completion:) func createIssuingCardKey(withAPIVersion apiVersion: Swift.String, completion: @escaping Module___StripePayments.STPJSONResponseCompletionBlock)
+}
+@available(*, deprecated, message: "use `STPCustomerEphemeralKeyProvider` or `STPIssuingCardEphemeralKeyProvider` depending on the type of key that will be fetched.")
+@objc public protocol STPEphemeralKeyProvider : Module___Stripe.STPCustomerEphemeralKeyProvider {
+}
+@objc @_inheritsConvenienceInitializers @Module____Concurrency.MainActor @preconcurrency public class STPFakeAddPaymentPassViewController : Module___UIKit.UIViewController {
+  @objc @Module____Concurrency.MainActor @preconcurrency public class func canAddPaymentPass() -> Swift.Bool
+  @objc(initWithRequestConfiguration:delegate:) @Module____Concurrency.MainActor @preconcurrency required public init?(requestConfiguration configuration: Module___PassKit.PKAddPaymentPassRequestConfiguration, delegate: (any Module___PassKit.PKAddPaymentPassViewControllerDelegate)?)
+  @objc @Module____Concurrency.MainActor @preconcurrency weak public var delegate: (any Module___PassKit.PKAddPaymentPassViewControllerDelegate)?
+  @Module____Concurrency.MainActor @preconcurrency @objc convenience override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @Module____Concurrency.MainActor @preconcurrency @objc required convenience dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPPaymentActivityIndicatorView : Module___UIKit.UIView {
+  @objc @Module____Concurrency.MainActor @preconcurrency public func setAnimating(_ animating: Swift.Bool, animated: Swift.Bool)
+  @objc @Module____Concurrency.MainActor @preconcurrency public var animating: Swift.Bool {
+    @objc get
+    @objc set(animating)
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency public var hidesWhenStopped: Swift.Bool {
+    @objc get
+    @objc set(hidesWhenStopped)
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public var tintColor: Module___UIKit.UIColor! {
+    @objc get
+    @objc set(tintColor)
+  }
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class STPPaymentConfiguration : Module___ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc(sharedConfiguration) public static var shared: Module___Stripe.STPPaymentConfiguration
+  @objc public var applePayEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc public var fpxEnabled: Swift.Bool
+  @objc public var requiredBillingAddressFields: Module___Stripe.STPBillingAddressFields
+  @objc public var requiredShippingAddressFields: Swift.Set<Module___StripePayments.STPContactField>?
+  @objc public var verifyPrefilledShippingAddress: Swift.Bool
+  @objc public var shippingType: Module___Stripe.STPShippingType
+  @objc public var availableCountries: Swift.Set<Swift.String>
+  @objc public var companyName: Swift.String
+  @objc public var appleMerchantIdentifier: Swift.String?
+  @objc public var canDeletePaymentOptions: Swift.Bool
+  @objc public var cardScanningEnabled: Swift.Bool
+  @available(*, deprecated, message: "additionalPaymentOptions has been removed. Set applePayEnabled and fpxEnabled on STPPaymentConfiguration instead.")
+  @objc public var additionalPaymentOptions: Swift.Int
+  @available(*, deprecated, message: "If you used STPPaymentConfiguration.shared.publishableKey, use STPAPIClient.shared.publishableKey instead. If you passed a STPPaymentConfiguration instance to an SDK component, create an STPAPIClient, set publishableKey on it, and set the SDK component's APIClient property.")
+  @objc public var publishableKey: Swift.String? {
+    @objc get
+    @objc set(publishableKey)
+  }
+  @available(*, deprecated, message: "If you used STPPaymentConfiguration.shared.stripeAccount, use STPAPIClient.shared.stripeAccount instead. If you passed a STPPaymentConfiguration instance to an SDK component, create an STPAPIClient, set stripeAccount on it, and set the SDK component's APIClient property.")
+  @objc public var stripeAccount: Swift.String? {
+    @objc get
+    @objc set(stripeAccount)
+  }
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc public func copy(with zone: Module___ObjectiveC.NSZone? = nil) -> Any
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(STPPaymentContext) public class STPPaymentContext : Module___ObjectiveC.NSObject, Module___StripePayments.STPAuthenticationContext, Module___Stripe.STPPaymentOptionsViewControllerDelegate, Module___Stripe.STPShippingAddressViewControllerDelegate {
+  @objc convenience public init(customerContext: Module___Stripe.STPCustomerContext)
+  @objc convenience public init(customerContext: Module___Stripe.STPCustomerContext, configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme)
+  @objc convenience public init(apiAdapter: any Module___Stripe.STPBackendAPIAdapter)
+  @objc public init(apiAdapter: any Module___Stripe.STPBackendAPIAdapter, configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme)
+  @objc public var apiAdapter: any Module___Stripe.STPBackendAPIAdapter {
+    get
+  }
+  @objc public var configuration: Module___Stripe.STPPaymentConfiguration {
+    get
+  }
+  @objc public var theme: Module___Stripe.STPTheme {
+    get
+  }
+  @objc public var prefilledInformation: Module___Stripe.STPUserInformation? {
+    @objc get
+    @objc set(prefilledInformation)
+  }
+  @objc weak public var hostViewController: Module___UIKit.UIViewController? {
+    @objc get
+    @objc set(hostViewController)
+  }
+  @objc weak public var delegate: (any Module___Stripe.STPPaymentContextDelegate)? {
+    @objc get
+    @objc set(delegate)
+  }
+  @objc public var loading: Swift.Bool {
+    @objc get
+  }
+  @objc public var defaultPaymentMethod: Swift.String?
+  @objc public var selectedPaymentOption: (any Module___Stripe.STPPaymentOption)? {
+    @objc get
+  }
+  @objc public var paymentOptions: [any Module___Stripe.STPPaymentOption]? {
+    @objc get
+  }
+  @objc public var selectedShippingMethod: Module___PassKit.PKShippingMethod? {
+    get
+  }
+  @objc public var shippingMethods: [Module___PassKit.PKShippingMethod]? {
+    @objc get
+  }
+  @objc public var shippingAddress: Module___StripePayments.STPAddress? {
+    get
+  }
+  @objc public var paymentAmount: Swift.Int {
+    @objc get
+    @objc set(paymentAmount)
+  }
+  @objc public var paymentCurrency: Swift.String
+  @objc public var paymentCountry: Swift.String
+  @objc public var paymentSummaryItems: [Module___PassKit.PKPaymentSummaryItem] {
+    @objc get
+    @objc set(paymentSummaryItems)
+  }
+  @available(macOS 14.0, iOS 17.0, *)
+  @objc public var applePayLaterAvailability: Module___PassKit.PKApplePayLaterAvailability {
+    @objc get
+    @objc set
+  }
+  @objc public var modalPresentationStyle: Module___UIKit.UIModalPresentationStyle
+  @objc public var largeTitleDisplayMode: Module___UIKit.UINavigationItem.LargeTitleDisplayMode
+  @objc public var paymentOptionsViewControllerFooterView: Module___UIKit.UIView?
+  @objc public var addCardViewControllerFooterView: Module___UIKit.UIView?
+  public var apiClient: Module___StripeCore.STPAPIClient {
+    get
+    set
+  }
+  @objc public func retryLoading()
+  @objc public func presentPaymentOptionsViewController()
+  @objc public func pushPaymentOptionsViewController()
+  @objc public func presentShippingViewController()
+  @objc public func pushShippingViewController()
+  @objc public func requestPayment()
+  @objc public func paymentOptionsViewController(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController, didSelect paymentOption: any Module___Stripe.STPPaymentOption)
+  @objc public func paymentOptionsViewControllerDidFinish(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController)
+  @objc public func paymentOptionsViewControllerDidCancel(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController)
+  @objc public func paymentOptionsViewController(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController, didFailToLoadWithError error: any Swift.Error)
+  @objc public func shippingAddressViewControllerDidCancel(_ addressViewController: Module___Stripe.STPShippingAddressViewController)
+  @objc public func shippingAddressViewController(_ addressViewController: Module___Stripe.STPShippingAddressViewController, didEnter address: Module___StripePayments.STPAddress, completion: @escaping Module___Stripe.STPShippingMethodsCompletionBlock)
+  @objc public func shippingAddressViewController(_ addressViewController: Module___Stripe.STPShippingAddressViewController, didFinishWith address: Module___StripePayments.STPAddress, shippingMethod method: Module___PassKit.PKShippingMethod?)
+  @objc public func authenticationPresentingViewController() -> Module___UIKit.UIViewController
+  @objc public func prepare(forPresentation completion: @escaping Module___StripePayments.STPVoidBlock)
+  @objc deinit
+}
+@objc public protocol STPPaymentContextDelegate : Module___ObjectiveC.NSObjectProtocol {
+  @objc func paymentContext(_ paymentContext: Module___Stripe.STPPaymentContext, didFailToLoadWithError error: any Swift.Error)
+  @objc func paymentContextDidChange(_ paymentContext: Module___Stripe.STPPaymentContext)
+  @objc func paymentContext(_ paymentContext: Module___Stripe.STPPaymentContext, didCreatePaymentResult paymentResult: Module___Stripe.STPPaymentResult, completion: @escaping Module___StripePayments.STPPaymentStatusBlock)
+  @objc func paymentContext(_ paymentContext: Module___Stripe.STPPaymentContext, didFinishWith status: Module___StripePayments.STPPaymentStatus, error: (any Swift.Error)?)
+  @objc optional func paymentContext(_ paymentContext: Module___Stripe.STPPaymentContext, didUpdateShippingAddress address: Module___StripePayments.STPAddress, completion: @escaping Module___Stripe.STPShippingMethodsCompletionBlock)
+}
+extension Module___StripePayments.STPPaymentIntentParams {
+  @objc dynamic public func configure(with paymentResult: Module___Stripe.STPPaymentResult)
+}
+extension Module___StripePayments.STPPaymentMethod : Module___Stripe.STPPaymentOption {
+  @objc dynamic public var image: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var templateImage: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var label: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var isReusable: Swift.Bool {
+    @objc get
+  }
+}
+extension Module___StripePayments.STPPaymentMethodParams : Module___Stripe.STPPaymentOption {
+  @objc dynamic public var image: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var templateImage: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var isReusable: Swift.Bool {
+    @objc get
+  }
+}
+@objc public protocol STPPaymentOption : Module___ObjectiveC.NSObjectProtocol {
+  @objc var image: Module___UIKit.UIImage { get }
+  @objc var templateImage: Module___UIKit.UIImage { get }
+  @objc var label: Swift.String { get }
+  @objc var isReusable: Swift.Bool { get }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPPaymentOptionsViewController : Module___Stripe.STPCoreViewController, Module___Stripe.STPAddCardViewControllerDelegate {
+  @objc(initWithPaymentContext:) @Module____Concurrency.MainActor @preconcurrency convenience public init(paymentContext: Module___Stripe.STPPaymentContext)
+  @objc(initWithConfiguration:theme:customerContext:delegate:) @Module____Concurrency.MainActor @preconcurrency convenience public init(configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme, customerContext: Module___Stripe.STPCustomerContext, delegate: any Module___Stripe.STPPaymentOptionsViewControllerDelegate)
+  @objc(initWithConfiguration:theme:apiAdapter:delegate:) @Module____Concurrency.MainActor @preconcurrency public init(configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme, apiAdapter: any Module___Stripe.STPBackendAPIAdapter, delegate: any Module___Stripe.STPPaymentOptionsViewControllerDelegate)
+  @objc @Module____Concurrency.MainActor @preconcurrency public var prefilledInformation: Module___Stripe.STPUserInformation? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency public var defaultPaymentMethod: Swift.String?
+  @objc @Module____Concurrency.MainActor @preconcurrency public var paymentOptionsViewControllerFooterView: Module___UIKit.UIView? {
+    @objc get
+    @objc set
+  }
+  @objc @Module____Concurrency.MainActor @preconcurrency public var addCardViewControllerFooterView: Module___UIKit.UIView? {
+    @objc get
+    @objc set
+  }
+  @Module____Concurrency.MainActor @preconcurrency public var apiClient: Module___StripeCore.STPAPIClient
+  @objc(dismissWithCompletion:) @Module____Concurrency.MainActor @preconcurrency public func dismiss(withCompletion completion: Module___StripePayments.STPVoidBlock?)
+  @available(*, unavailable, message: "Use one of the initializers declared in this interface instead.")
+  @Module____Concurrency.MainActor @preconcurrency @objc required public init(theme: Module___Stripe.STPTheme?)
+  @available(*, unavailable, message: "Use one of the initializers declared in this interface instead.")
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @available(*, unavailable, message: "Use one of the initializers declared in this interface instead.")
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLayoutSubviews()
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func addCardViewControllerDidCancel(_ addCardViewController: Module___Stripe.STPAddCardViewController)
+  @Module____Concurrency.MainActor @preconcurrency @objc public func addCardViewController(_ addCardViewController: Module___Stripe.STPAddCardViewController, didCreatePaymentMethod paymentMethod: Module___StripePayments.STPPaymentMethod, completion: @escaping Module___StripePayments.STPErrorBlock)
+  @objc deinit
+}
+@objc public protocol STPPaymentOptionsViewControllerDelegate : Module___ObjectiveC.NSObjectProtocol {
+  @objc func paymentOptionsViewController(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController, didFailToLoadWithError error: any Swift.Error)
+  @objc func paymentOptionsViewControllerDidFinish(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController)
+  @objc func paymentOptionsViewControllerDidCancel(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController)
+  @objc(paymentOptionsViewController:didSelectPaymentOption:) optional func paymentOptionsViewController(_ paymentOptionsViewController: Module___Stripe.STPPaymentOptionsViewController, didSelect paymentOption: any Module___Stripe.STPPaymentOption)
+}
+@objc public class STPPaymentResult : Module___ObjectiveC.NSObject {
+  @objc public var paymentMethod: Module___StripePayments.STPPaymentMethod? {
+    get
+  }
+  @objc public var paymentMethodParams: Module___StripePayments.STPPaymentMethodParams? {
+    get
+  }
+  @objc weak public var paymentOption: (any Module___Stripe.STPPaymentOption)? {
+    @objc get
+  }
+  @objc public init(paymentOption: (any Module___Stripe.STPPaymentOption)?)
+  @objc deinit
+}
+@objc @available(iOS, deprecated: 100000.0, message: "Please use Issuing Elements instead: https://stripe.com/docs/issuing/elements")
+public class STPPinManagementService : Module___ObjectiveC.NSObject {
+  public var apiClient: Module___StripeCore.STPAPIClient
+  @objc public init(keyProvider: any Module___Stripe.STPIssuingCardEphemeralKeyProvider)
+  @objc public func retrievePin(_ cardId: Swift.String, verificationId: Swift.String, oneTimeCode: Swift.String, completion: @escaping Module___StripePayments.STPPinCompletionBlock)
+  @objc public func updatePin(_ cardId: Swift.String, newPin: Swift.String, verificationId: Swift.String, oneTimeCode: Swift.String, completion: @escaping Module___StripePayments.STPPinCompletionBlock)
+  @objc deinit
+}
+@objc public class STPPushProvisioningContext : Module___ObjectiveC.NSObject {
+  public var apiClient: Module___StripeCore.STPAPIClient
+  @available(*, deprecated, renamed: "requestConfiguration(withName:description:last4:brand:primaryAccountIdentifier:)", message: "Use `requestConfiguration(withName:description:last4:brand:primaryAccountIdentifier:)` instead.")
+  @objc public class func requestConfiguration(withName name: Swift.String, description: Swift.String?, last4: Swift.String?, brand: Module___StripePayments.STPCardBrand) -> Module___PassKit.PKAddPaymentPassRequestConfiguration
+  @objc public class func requestConfiguration(withName name: Swift.String, description: Swift.String?, last4: Swift.String?, brand: Module___StripePayments.STPCardBrand, primaryAccountIdentifier: Swift.String?) -> Module___PassKit.PKAddPaymentPassRequestConfiguration
+  @objc public init(keyProvider: any Module___Stripe.STPIssuingCardEphemeralKeyProvider)
+  @objc public func addPaymentPassViewController(_ controller: Module___PassKit.PKAddPaymentPassViewController, generateRequestWithCertificateChain certificates: [Foundation.Data], nonce: Foundation.Data, nonceSignature: Foundation.Data, completionHandler handler: @escaping (Module___PassKit.PKAddPaymentPassRequest) -> Swift.Void)
+  @objc deinit
+}
+@objc public class STPPushProvisioningDetailsParams : Module___ObjectiveC.NSObject {
+  @objc public var cardId: Swift.String {
+    get
+  }
+  @objc public var certificates: [Foundation.Data] {
+    get
+  }
+  @objc public var nonce: Foundation.Data {
+    get
+  }
+  @objc public var nonceSignature: Foundation.Data {
+    get
+  }
+  @objc public var certificatesBase64: [Swift.String] {
+    @objc get
+  }
+  @objc public var nonceHex: Swift.String {
+    @objc get
+  }
+  @objc public var nonceSignatureHex: Swift.String {
+    @objc get
+  }
+  @objc required public init(cardId: Swift.String, certificates: [Foundation.Data], nonce: Foundation.Data, nonceSignature: Foundation.Data)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @Module____Concurrency.MainActor @preconcurrency public class STPShippingAddressViewController : Module___Stripe.STPCoreTableViewController {
+  @Module____Concurrency.MainActor @preconcurrency @objc convenience dynamic public init()
+  @objc(initWithPaymentContext:) @Module____Concurrency.MainActor @preconcurrency convenience public init(paymentContext: Module___Stripe.STPPaymentContext)
+  @objc(initWithConfiguration:theme:currency:shippingAddress:selectedShippingMethod:prefilledInformation:) @Module____Concurrency.MainActor @preconcurrency public init(configuration: Module___Stripe.STPPaymentConfiguration, theme: Module___Stripe.STPTheme, currency: Swift.String?, shippingAddress: Module___StripePayments.STPAddress?, selectedShippingMethod: Module___PassKit.PKShippingMethod?, prefilledInformation: Module___Stripe.STPUserInformation?)
+  @objc @Module____Concurrency.MainActor @preconcurrency weak public var delegate: (any Module___Stripe.STPShippingAddressViewControllerDelegate)?
+  @objc(dismissWithCompletion:) @Module____Concurrency.MainActor @preconcurrency public func dismiss(withCompletion completion: Module___StripePayments.STPVoidBlock?)
+  @available(*, unavailable, message: "Use one of the initializers declared in this interface instead.")
+  @Module____Concurrency.MainActor @preconcurrency @objc required public init(theme: Module___Stripe.STPTheme?)
+  @available(*, unavailable, message: "Use one of the initializers declared in this interface instead.")
+  @Module____Concurrency.MainActor @preconcurrency @objc required dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @Module____Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @Module____Concurrency.MainActor @preconcurrency @objc override public func tableView(_ tableView: Module___UIKit.UITableView, heightForHeaderInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @objc deinit
+}
+@objc public protocol STPShippingAddressViewControllerDelegate : Module___ObjectiveC.NSObjectProtocol {
+  @objc func shippingAddressViewControllerDidCancel(_ addressViewController: Module___Stripe.STPShippingAddressViewController)
+  @objc(shippingAddressViewController:didEnterAddress:completion:) func shippingAddressViewController(_ addressViewController: Module___Stripe.STPShippingAddressViewController, didEnter address: Module___StripePayments.STPAddress, completion: @escaping Module___Stripe.STPShippingMethodsCompletionBlock)
+  @objc(shippingAddressViewController:didFinishWithAddress:shippingMethod:) func shippingAddressViewController(_ addressViewController: Module___Stripe.STPShippingAddressViewController, didFinishWith address: Module___StripePayments.STPAddress, shippingMethod method: Module___PassKit.PKShippingMethod?)
+}
+extension Module___Stripe.STPShippingAddressViewController : Module___UIKit.UITableViewDelegate, Module___UIKit.UITableViewDataSource {
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func numberOfSections(in tableView: Module___UIKit.UITableView) -> Swift.Int
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: Module___UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: Module___UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> Module___UIKit.UITableViewCell
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: Module___UIKit.UITableView, willDisplay cell: Module___UIKit.UITableViewCell, forRowAt indexPath: Foundation.IndexPath)
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: Module___UIKit.UITableView, heightForFooterInSection section: Swift.Int) -> CoreFoundation.CGFloat
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: Module___UIKit.UITableView, viewForFooterInSection section: Swift.Int) -> Module___UIKit.UIView?
+  @Module____Concurrency.MainActor @preconcurrency @objc dynamic public func tableView(_ tableView: Module___UIKit.UITableView, viewForHeaderInSection section: Swift.Int) -> Module___UIKit.UIView?
+}
+extension Module___StripePayments.STPSource : Module___Stripe.STPPaymentOption {
+  @objc dynamic public var image: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var templateImage: Module___UIKit.UIImage {
+    @objc get
+  }
+  @objc dynamic public var label: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var isReusable: Swift.Bool {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class STPTheme : Module___ObjectiveC.NSObject {
+  @objc public static let defaultTheme: Module___Stripe.STPTheme
+  @available(*, deprecated, renamed: "defaultTheme", message: "Use defaultTheme instead")
+  public static func `default`() -> Module___Stripe.STPTheme
+  @objc final public var primaryBackgroundColor: Module___UIKit.UIColor
+  @objc final public var secondaryBackgroundColor: Module___UIKit.UIColor
+  @objc final public var tertiaryBackgroundColor: Module___UIKit.UIColor {
+    @objc get
+  }
+  @objc final public var quaternaryBackgroundColor: Module___UIKit.UIColor {
+    @objc get
+  }
+  @objc final public var primaryForegroundColor: Module___UIKit.UIColor
+  @objc final public var secondaryForegroundColor: Module___UIKit.UIColor
+  @objc final public var tertiaryForegroundColor: Module___UIKit.UIColor {
+    @objc get
+  }
+  @objc final public var accentColor: Module___UIKit.UIColor
+  @objc final public var errorColor: Module___UIKit.UIColor
+  @objc final public var font: Module___UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc final public var emphasisFont: Module___UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc final public var barStyle: Module___UIKit.UIBarStyle {
+    @objc get
+    @objc set
+  }
+  @objc final public var translucentNavigationBar: Swift.Bool
+  @objc final public var smallFont: Module___UIKit.UIFont {
+    @objc get
+  }
+  @objc final public var largeFont: Module___UIKit.UIFont {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Module___Stripe.STPTheme : Foundation.NSCopying {
+  @objc final public func copy(with zone: Module___ObjectiveC.NSZone? = nil) -> Any
+}
+@objc @_inheritsConvenienceInitializers public class STPUserInformation : Module___ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc public var billingAddress: Module___StripePayments.STPAddress?
+  @objc public var shippingAddress: Module___StripePayments.STPAddress?
+  @objc(setBillingAddressWithBillingDetails:) public func setBillingAddress(with billingDetails: Module___StripePayments.STPPaymentMethodBillingDetails)
+  @objc public func copy(with zone: Module___ObjectiveC.NSZone? = nil) -> Any
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Module___UIKit.UINavigationBar {
+  @available(*, deprecated, message: "Use the `stp_theme` property instead")
+  @objc @Module____Concurrency.MainActor @preconcurrency dynamic public func stp_setTheme(_ theme: Module___Stripe.STPTheme)
+  @objc @Module____Concurrency.MainActor @preconcurrency dynamic public var stp_theme: Module___Stripe.STPTheme? {
+    @objc get
+    @objc set(theme)
+  }
+}
+extension Module___Stripe.STPBankSelectionMethod : Swift.Equatable {}
+extension Module___Stripe.STPBankSelectionMethod : Swift.Hashable {}
+extension Module___Stripe.STPBankSelectionMethod : Swift.RawRepresentable {}
+extension Module___Stripe.STPBillingAddressFields : Swift.Equatable {}
+extension Module___Stripe.STPBillingAddressFields : Swift.Hashable {}
+extension Module___Stripe.STPBillingAddressFields : Swift.RawRepresentable {}
+extension Module___Stripe.STPShippingStatus : Swift.Equatable {}
+extension Module___Stripe.STPShippingStatus : Swift.Hashable {}
+extension Module___Stripe.STPShippingStatus : Swift.RawRepresentable {}
+extension Module___Stripe.STPShippingType : Swift.Equatable {}
+extension Module___Stripe.STPShippingType : Swift.Hashable {}
+extension Module___Stripe.STPShippingType : Swift.RawRepresentable {}

@@ -1,0 +1,2051 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name SwiftSoup -package-name swiftsoup -module-alias Module___SwiftSoup=SwiftSoup -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Foundation
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+open class Attribute {
+  @usableFromInline
+  internal var key: [Swift.UInt8]
+  @usableFromInline
+  internal var value: [Swift.UInt8]
+  public init(key: [Swift.UInt8], value: [Swift.UInt8]) throws
+  convenience public init(key: Swift.String, value: Swift.String) throws
+  open func getKey() -> Swift.String
+  open func getKeyUTF8() -> [Swift.UInt8]
+  open func setKey(key: [Swift.UInt8]) throws
+  open func setKey(key: Swift.String) throws
+  open func getValue() -> Swift.String
+  open func getValueUTF8() -> [Swift.UInt8]
+  @discardableResult
+  open func setValue(value: [Swift.UInt8]) -> [Swift.UInt8]
+  public func html() -> Swift.String
+  @inlinable public func html(accum: Module___SwiftSoup.StringBuilder, out: Module___SwiftSoup.OutputSettings) {
+        accum.append(key)
+        if (!shouldCollapseAttribute(out: out)) {
+            accum.append(UTF8Arrays.attributeEqualsQuoteMark)
+            Entities.escape(&accum.buffer, value, out, true, false, false)
+            accum.append(UTF8Arrays.quoteMark)
+        }
+    }
+  open func toString() -> Swift.String
+  public static func createFromEncoded(unencodedKey: [Swift.UInt8], encodedValue: [Swift.UInt8]) throws -> Module___SwiftSoup.Attribute
+  public func isDataAttribute() -> Swift.Bool
+  final public func shouldCollapseAttribute(out: Module___SwiftSoup.OutputSettings) -> Swift.Bool
+  public func isBooleanAttribute() -> Swift.Bool
+  public func hashCode() -> Swift.Int
+  public func clone() -> Module___SwiftSoup.Attribute
+  @objc deinit
+}
+extension Module___SwiftSoup.Attribute : Swift.Equatable {
+  public static func == (lhs: Module___SwiftSoup.Attribute, rhs: Module___SwiftSoup.Attribute) -> Swift.Bool
+}
+open class Attributes : Foundation.NSCopying {
+  public static var dataPrefix: [Swift.UInt8]
+  @usableFromInline
+  internal var attributes: [Module___SwiftSoup.Attribute]
+  @usableFromInline
+  internal var lowercasedKeysCache: [[Swift.UInt8]]?
+  public init()
+  @usableFromInline
+  internal func updateLowercasedKeysCache()
+  @usableFromInline
+  internal func invalidateLowercasedKeysCache()
+  open func get(key: Swift.String) -> Swift.String
+  open func get(key: [Swift.UInt8]) -> [Swift.UInt8]
+  open func getIgnoreCase(key: Swift.String) throws -> Swift.String
+  open func getIgnoreCase(key: [Swift.UInt8]) throws -> [Swift.UInt8]
+  @inlinable open func put(_ key: [Swift.UInt8], _ value: [Swift.UInt8]) throws {
+        let attr = try Attribute(key: key, value: value)
+        put(attribute: attr)
+    }
+  @inlinable open func put(_ key: Swift.String, _ value: Swift.String) throws {
+        return try put(key.utf8Array, value.utf8Array)
+    }
+  @inlinable open func put(_ key: [Swift.UInt8], _ value: Swift.Bool) throws {
+        if (value) {
+            try put(attribute: BooleanAttribute(key: key))
+        } else {
+            try remove(key: key)
+        }
+    }
+  @inlinable open func put(attribute: Module___SwiftSoup.Attribute) {
+        let key = attribute.getKeyUTF8()
+        if let ix = attributes.firstIndex(where: { $0.getKeyUTF8() == key }) {
+            attributes[ix] = attribute
+        } else {
+            attributes.append(attribute)
+        }
+        invalidateLowercasedKeysCache()
+    }
+  open func remove(key: Swift.String) throws
+  open func remove(key: [Swift.UInt8]) throws
+  open func removeIgnoreCase(key: [Swift.UInt8]) throws
+  open func hasKey(key: Swift.String) -> Swift.Bool
+  open func hasKey(key: [Swift.UInt8]) -> Swift.Bool
+  @inlinable open func hasKeyIgnoreCase(key: Swift.String) -> Swift.Bool {
+        return hasKeyIgnoreCase(key: key.utf8Array)
+    }
+  open func hasKeyIgnoreCase<T>(key: T) -> Swift.Bool where T : Swift.Collection, T.Element == Swift.UInt8
+  open func size() -> Swift.Int
+  open func addAll(incoming: Module___SwiftSoup.Attributes?)
+  @inlinable open func asList() -> [Module___SwiftSoup.Attribute] {
+        return attributes
+    }
+  open func dataset() -> [Swift.String : Swift.String]
+  open func html() throws -> Swift.String
+  open func htmlUTF8() throws -> [Swift.UInt8]
+  @inlinable public func html(accum: Module___SwiftSoup.StringBuilder, out: Module___SwiftSoup.OutputSettings) throws {
+        for attr in attributes {
+            accum.append(UTF8Arrays.whitespace)
+            attr.html(accum: accum, out: out)
+        }
+    }
+  open func toString() throws -> Swift.String
+  open func equals(o: Swift.AnyObject?) -> Swift.Bool
+  open func lowercaseAllKeys()
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  open func clone() -> Module___SwiftSoup.Attributes
+  @objc deinit
+}
+extension Module___SwiftSoup.Attributes : Swift.Sequence {
+  public func makeIterator() -> Swift.AnyIterator<Module___SwiftSoup.Attribute>
+  public typealias Element = Module___SwiftSoup.Attribute
+  public typealias Iterator = Swift.AnyIterator<Module___SwiftSoup.Attribute>
+}
+open class BooleanAttribute : Module___SwiftSoup.Attribute {
+  @usableFromInline
+  internal init(key: [Swift.UInt8]) throws
+  override public func isBooleanAttribute() -> Swift.Bool
+  @objc deinit
+}
+extension Swift.Character {
+  public static let space: Swift.Character
+  public static let BackslashT: Swift.Character
+  public static let BackslashN: Swift.Character
+  public static let BackslashF: Swift.Character
+  public static let BackslashR: Swift.Character
+  public static let BackshashRBackslashN: Swift.Character
+  public static let MIN_SUPPLEMENTARY_CODE_POINT: Swift.UInt32
+}
+final public class CharacterReader {
+  public static let EOF: Swift.UnicodeScalar
+  final public let input: [Swift.UInt8]
+  final public var pos: Swift.Array<Swift.UInt8>.Index
+  final public let end: Swift.Array<Swift.UInt8>.Index
+  public init(_ input: [Swift.UInt8])
+  convenience public init(_ input: Swift.String)
+  final public func getPos() -> Swift.Int
+  final public func isEmpty() -> Swift.Bool
+  final public func current() -> Swift.UnicodeScalar
+  final public func currentUTF8() -> Swift.ArraySlice<Swift.UInt8>
+  @discardableResult
+  final public func consume() -> Swift.UnicodeScalar
+  final public func unconsume()
+  final public func advance()
+  final public func markPos()
+  final public func rewindToMark()
+  final public func consumeAsString() -> Swift.String
+  @inlinable final public func consumeToAny(_ chars: Module___SwiftSoup.ParsingStrings) -> Swift.String {
+        return String(decoding: consumeToAny(chars), as: UTF8.self)
+    }
+  @inlinable final public func consumeToAny(_ chars: Module___SwiftSoup.ParsingStrings) -> Swift.ArraySlice<Swift.UInt8> {
+        let start = pos
+        
+        while pos < end {
+             
+            if input[pos] & 0b11000000 == 0b10000000 {
+                pos += 1
+                continue
+            }
+            
+            let charLen = input[pos] < 0x80 ? 1 : input[pos] < 0xE0 ? 2 : input[pos] < 0xF0 ? 3 : 4
+            
+             
+            if chars.contains(input[pos..<min(pos + charLen, end)]) {
+                return input[start..<pos]
+            }
+            
+            pos += charLen
+        }
+        
+        return input[start..<pos]
+    }
+  final public func consumeTo(_ c: Swift.UnicodeScalar) -> Swift.ArraySlice<Swift.UInt8>
+  final public func consumeTo(_ seq: Swift.String) -> Swift.String
+  final public func consumeTo(_ seq: [Swift.UInt8]) -> Swift.ArraySlice<Swift.UInt8>
+  final public func consumeToEnd() -> Swift.String
+  final public func consumeToEndUTF8() -> Swift.ArraySlice<Swift.UInt8>
+  final public func consumeLetterSequence() -> Swift.ArraySlice<Swift.UInt8>
+  final public func consumeLetterThenDigitSequence() -> Swift.ArraySlice<Swift.UInt8>
+  final public func consumeHexSequence() -> Swift.ArraySlice<Swift.UInt8>
+  final public func consumeDigitSequence() -> Swift.ArraySlice<Swift.UInt8>
+  final public func matches(_ c: Swift.UnicodeScalar) -> Swift.Bool
+  final public func matches(_ seq: Swift.String, ignoreCase: Swift.Bool = false, consume: Swift.Bool = false) -> Swift.Bool
+  final public func matches(_ seq: [Swift.UInt8], ignoreCase: Swift.Bool = false, consume: Swift.Bool = false) -> Swift.Bool
+  final public func matchesIgnoreCase(_ seq: [Swift.UInt8]) -> Swift.Bool
+  final public func matchesIgnoreCase(_ seq: Swift.String) -> Swift.Bool
+  final public func matchesAny(_ seq: Module___SwiftSoup.ParsingStrings) -> Swift.Bool
+  final public func matchesAny(_ seq: Swift.UnicodeScalar...) -> Swift.Bool
+  final public func matchesAny(_ seq: [Swift.UnicodeScalar]) -> Swift.Bool
+  final public func matchesAny(_ seq: [Swift.UInt8]...) -> Swift.Bool
+  final public func matchesAny(_ seq: [[Swift.UInt8]]) -> Swift.Bool
+  final public func matchesLetter() -> Swift.Bool
+  final public func matchesDigit() -> Swift.Bool
+  @discardableResult
+  final public func matchConsume(_ seq: [Swift.UInt8]) -> Swift.Bool
+  @discardableResult
+  final public func matchConsumeIgnoreCase(_ seq: [Swift.UInt8]) -> Swift.Bool
+  final public func containsIgnoreCase(_ seq: [Swift.UInt8]) -> Swift.Bool
+  final public func containsIgnoreCase(_ seq: Swift.String) -> Swift.Bool
+  final public func toString() -> Swift.String
+  final public func nextIndexOf(_ c: Swift.UnicodeScalar) -> Swift.String.UTF8View.Index?
+  final public func nextIndexOf(_ seq: Swift.String) -> Swift.String.UTF8View.Index?
+  final public func nextIndexOf(_ targetUtf8: [Swift.UInt8]) -> Swift.Array<Swift.UInt8>.Index?
+  public static let dataTerminators: Module___SwiftSoup.ParsingStrings
+  @inlinable final public func consumeData() -> Swift.ArraySlice<Swift.UInt8> {
+        return consumeToAny(CharacterReader.dataTerminators)
+    }
+  public static let tagNameTerminators: Module___SwiftSoup.ParsingStrings
+  @inlinable final public func consumeTagName() -> Swift.ArraySlice<Swift.UInt8> {
+        return consumeToAny(CharacterReader.tagNameTerminators)
+    }
+  @objc deinit
+}
+extension Module___SwiftSoup.CharacterReader : Swift.CustomDebugStringConvertible {
+  final public var debugDescription: Swift.String {
+    get
+  }
+}
+open class Cleaner {
+  public init(headWhitelist: Module___SwiftSoup.Whitelist?, bodyWhitelist: Module___SwiftSoup.Whitelist)
+  public func clean(_ dirtyDocument: Module___SwiftSoup.Document) throws -> Module___SwiftSoup.Document
+  public func isValid(_ dirtyDocument: Module___SwiftSoup.Document) throws -> Swift.Bool
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Collector {
+  public static func collect(_ eval: Module___SwiftSoup.Evaluator, _ root: Module___SwiftSoup.Element) throws -> Module___SwiftSoup.Elements
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class CombiningEvaluator : Module___SwiftSoup.Evaluator {
+  public var evaluators: Swift.Array<Module___SwiftSoup.Evaluator> {
+    get
+  }
+  override public init()
+  public init(_ evaluators: Swift.Array<Module___SwiftSoup.Evaluator>)
+  public init(_ evaluators: Module___SwiftSoup.Evaluator...)
+  final public class And : Module___SwiftSoup.CombiningEvaluator {
+    override public init(_ evaluators: [Module___SwiftSoup.Evaluator])
+    override public init(_ evaluators: Module___SwiftSoup.Evaluator...)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ node: Module___SwiftSoup.Element) -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class Or : Module___SwiftSoup.CombiningEvaluator {
+    override public init(_ evaluators: [Module___SwiftSoup.Evaluator])
+    final public func add(_ evaluator: Module___SwiftSoup.Evaluator)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ node: Module___SwiftSoup.Element) -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @objc deinit
+}
+public class Comment : Module___SwiftSoup.Node {
+  public init(_ data: [Swift.UInt8], _ baseUri: [Swift.UInt8])
+  override public func nodeNameUTF8() -> [Swift.UInt8]
+  override public func nodeName() -> Swift.String
+  public func getData() -> Swift.String
+  public func getDataUTF8() -> [Swift.UInt8]
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class CssSelector {
+  public static func select(_ query: Swift.String, _ root: Module___SwiftSoup.Element) throws -> Module___SwiftSoup.Elements
+  public static func select(_ evaluator: Module___SwiftSoup.Evaluator, _ root: Module___SwiftSoup.Element) throws -> Module___SwiftSoup.Elements
+  public static func select(_ query: Swift.String, _ roots: Swift.Array<Module___SwiftSoup.Element>) throws -> Module___SwiftSoup.Elements
+  @objc deinit
+}
+open class DataNode : Module___SwiftSoup.Node {
+  public init(_ data: [Swift.UInt8], _ baseUri: [Swift.UInt8])
+  override open func nodeNameUTF8() -> [Swift.UInt8]
+  override open func nodeName() -> Swift.String
+  open func getWholeData() -> Swift.String
+  open func getWholeDataUTF8() -> [Swift.UInt8]
+  @discardableResult
+  open func setWholeData(_ data: Swift.String) -> Module___SwiftSoup.DataNode
+  public static func createFromEncoded(_ encodedData: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.DataNode
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+open class Document : Module___SwiftSoup.Element {
+  public enum QuirksMode {
+    case noQuirks, quirks, limitedQuirks
+    public static func == (a: Module___SwiftSoup.Document.QuirksMode, b: Module___SwiftSoup.Document.QuirksMode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(_ baseUri: [Swift.UInt8])
+  public init(_ baseUri: Swift.String)
+  public static func createShell(_ baseUri: Swift.String) -> Module___SwiftSoup.Document
+  public static func createShell(_ baseUri: [Swift.UInt8]) -> Module___SwiftSoup.Document
+  public func location() -> Swift.String
+  public func head() -> Module___SwiftSoup.Element?
+  public func body() -> Module___SwiftSoup.Element?
+  public func title() throws -> Swift.String
+  public func title(_ title: Swift.String) throws
+  public func createElement(_ tagName: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func normalise() throws -> Module___SwiftSoup.Document
+  override open func outerHtml() throws -> Swift.String
+  @discardableResult
+  override public func text(_ text: Swift.String) throws -> Module___SwiftSoup.Element
+  override public func nodeNameUTF8() -> [Swift.UInt8]
+  override public func nodeName() -> Swift.String
+  public func charset(_ charset: Swift.String.Encoding) throws
+  public func charset() -> Swift.String.Encoding
+  public func updateMetaCharsetElement(_ update: Swift.Bool)
+  public func updateMetaCharsetElement() -> Swift.Bool
+  public func outputSettings() -> Module___SwiftSoup.OutputSettings
+  @discardableResult
+  public func outputSettings(_ outputSettings: Module___SwiftSoup.OutputSettings) -> Module___SwiftSoup.Document
+  public func quirksMode() -> Module___SwiftSoup.Document.QuirksMode
+  @discardableResult
+  public func quirksMode(_ quirksMode: Module___SwiftSoup.Document.QuirksMode) -> Module___SwiftSoup.Document
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+public class OutputSettings : Foundation.NSCopying {
+  public enum Syntax {
+    case html, xml
+    public static func == (a: Module___SwiftSoup.OutputSettings.Syntax, b: Module___SwiftSoup.OutputSettings.Syntax) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @usableFromInline
+  internal var _escapeMode: Module___SwiftSoup.Entities.EscapeMode
+  @usableFromInline
+  internal var _encoder: Swift.String.Encoding
+  public init()
+  @inlinable public func escapeMode() -> Module___SwiftSoup.Entities.EscapeMode {
+        return _escapeMode
+    }
+  @discardableResult
+  @inlinable public func escapeMode(_ escapeMode: Module___SwiftSoup.Entities.EscapeMode) -> Module___SwiftSoup.OutputSettings {
+        self._escapeMode = escapeMode
+        return self
+    }
+  @inlinable public func encoder() -> Swift.String.Encoding {
+        return _encoder
+    }
+  @inlinable public func charset() -> Swift.String.Encoding {
+        return _encoder
+    }
+  @discardableResult
+  public func encoder(_ encoder: Swift.String.Encoding) -> Module___SwiftSoup.OutputSettings
+  @discardableResult
+  public func charset(_ e: Swift.String.Encoding) -> Module___SwiftSoup.OutputSettings
+  public func syntax() -> Module___SwiftSoup.OutputSettings.Syntax
+  @discardableResult
+  public func syntax(syntax: Module___SwiftSoup.OutputSettings.Syntax) -> Module___SwiftSoup.OutputSettings
+  public func prettyPrint() -> Swift.Bool
+  @discardableResult
+  public func prettyPrint(pretty: Swift.Bool) -> Module___SwiftSoup.OutputSettings
+  public func outline() -> Swift.Bool
+  @discardableResult
+  public func outline(outlineMode: Swift.Bool) -> Module___SwiftSoup.OutputSettings
+  public func indentAmount() -> Swift.UInt
+  @discardableResult
+  public func indentAmount(indentAmount: Swift.UInt) -> Module___SwiftSoup.OutputSettings
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+public class DocumentType : Module___SwiftSoup.Node {
+  convenience public init(_ name: Swift.String, _ publicId: Swift.String, _ systemId: Swift.String, _ baseUri: Swift.String)
+  public init(_ name: [Swift.UInt8], _ publicId: [Swift.UInt8], _ systemId: [Swift.UInt8], _ baseUri: [Swift.UInt8])
+  public init(_ name: [Swift.UInt8], _ pubSysKey: [Swift.UInt8]?, _ publicId: [Swift.UInt8], _ systemId: [Swift.UInt8], _ baseUri: [Swift.UInt8])
+  override public func nodeNameUTF8() -> [Swift.UInt8]
+  override public func nodeName() -> Swift.String
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+open class Element : Module___SwiftSoup.Node {
+  convenience public init(_ tag: Module___SwiftSoup.Tag, _ baseUri: Swift.String, _ attributes: Module___SwiftSoup.Attributes)
+  public init(_ tag: Module___SwiftSoup.Tag, _ baseUri: [Swift.UInt8], _ attributes: Module___SwiftSoup.Attributes)
+  convenience public init(_ tag: Module___SwiftSoup.Tag, _ baseUri: Swift.String)
+  public init(_ tag: Module___SwiftSoup.Tag, _ baseUri: [Swift.UInt8])
+  override public func nodeNameUTF8() -> [Swift.UInt8]
+  override public func nodeName() -> Swift.String
+  open func tagNameUTF8() -> [Swift.UInt8]
+  open func tagNameNormalUTF8() -> [Swift.UInt8]
+  open func tagName() -> Swift.String
+  open func tagNameNormal() -> Swift.String
+  @discardableResult
+  public func tagName(_ tagName: [Swift.UInt8]) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func tagName(_ tagName: Swift.String) throws -> Module___SwiftSoup.Element
+  open func tag() -> Module___SwiftSoup.Tag
+  open func isBlock() -> Swift.Bool
+  open func isEmpty() -> Swift.Bool
+  open func id() -> Swift.String
+  @discardableResult
+  override open func attr(_ attributeKey: [Swift.UInt8], _ attributeValue: [Swift.UInt8]) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  override open func attr(_ attributeKey: Swift.String, _ attributeValue: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  open func attr(_ attributeKey: [Swift.UInt8], _ attributeValue: Swift.Bool) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  open func attr(_ attributeKey: Swift.String, _ attributeValue: Swift.Bool) throws -> Module___SwiftSoup.Element
+  open func dataset() -> Swift.Dictionary<Swift.String, Swift.String>
+  override open func parent() -> Module___SwiftSoup.Element?
+  open func parents() -> Module___SwiftSoup.Elements
+  open func child(_ index: Swift.Int) -> Module___SwiftSoup.Element
+  open func children() -> Module___SwiftSoup.Elements
+  open func textNodes() -> Swift.Array<Module___SwiftSoup.TextNode>
+  open func dataNodes() -> Swift.Array<Module___SwiftSoup.DataNode>
+  public func select(_ cssQuery: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func iS(_ cssQuery: Swift.String) throws -> Swift.Bool
+  public func iS(_ evaluator: Module___SwiftSoup.Evaluator) throws -> Swift.Bool
+  @discardableResult
+  public func appendChild(_ child: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func prependChild(_ child: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func insertChildren(_ index: Swift.Int, _ children: Swift.Array<Module___SwiftSoup.Node>) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func appendElement(_ tagName: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func prependElement(_ tagName: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func appendText(_ text: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func prependText(_ text: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func append(_ html: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func prepend(_ html: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  override open func before(_ html: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  override open func before(_ node: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  override open func after(_ html: Swift.String) throws -> Module___SwiftSoup.Element
+  override open func after(_ node: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func empty() -> Module___SwiftSoup.Element
+  @discardableResult
+  override open func wrap(_ html: Swift.String) throws -> Module___SwiftSoup.Element
+  public func cssSelector() throws -> Swift.String
+  public func siblingElements() -> Module___SwiftSoup.Elements
+  public func nextElementSibling() throws -> Module___SwiftSoup.Element?
+  public func previousElementSibling() throws -> Module___SwiftSoup.Element?
+  public func firstElementSibling() -> Module___SwiftSoup.Element?
+  public func elementSiblingIndex() throws -> Swift.Int
+  public func lastElementSibling() -> Module___SwiftSoup.Element?
+  @inlinable public func getElementsByTag(_ tagName: Swift.String) throws -> Module___SwiftSoup.Elements {
+        return try getElementsByTag(tagName.utf8Array)
+    }
+  @inlinable public func getElementsByTag(_ tagName: [Swift.UInt8]) throws -> Module___SwiftSoup.Elements {
+        try Validate.notEmpty(string: tagName)
+        let normalizedTagName = tagName.lowercased().trim()
+        
+        if isQueryIndexDirty || normalizedTagNameIndex == nil {
+            rebuildQueryIndexesForAllTags()
+            isQueryIndexDirty = false
+        }
+        
+        let weakElements = normalizedTagNameIndex?[normalizedTagName] ?? []
+        return Elements(weakElements.compactMap { $0.value })
+    }
+  @inlinable public func getElementById(_ id: Swift.String) throws -> Module___SwiftSoup.Element? {
+        try Validate.notEmpty(string: id.utf8Array)
+
+        let elements: Elements = try Collector.collect(Evaluator.Id(id), self)
+        if (elements.array().count > 0) {
+            return elements.get(0)
+        } else {
+            return nil
+        }
+    }
+  @inlinable public func getElementsByClass(_ className: Swift.String) throws -> Module___SwiftSoup.Elements {
+        try Validate.notEmpty(string: className.utf8Array)
+
+        return try Collector.collect(Evaluator.Class(className), self)
+    }
+  @inlinable public func getElementsByAttribute(_ key: Swift.String) throws -> Module___SwiftSoup.Elements {
+        try Validate.notEmpty(string: key.utf8Array)
+        let key = key.trim()
+        return try Collector.collect(Evaluator.Attribute(key), self)
+    }
+  public func getElementsByAttributeStarting(_ keyPrefix: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValue(_ key: Swift.String, _ value: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValueNot(_ key: Swift.String, _ value: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValueStarting(_ key: Swift.String, _ valuePrefix: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValueEnding(_ key: Swift.String, _ valueSuffix: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValueContaining(_ key: Swift.String, _ match: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValueMatching(_ key: Swift.String, _ pattern: Module___SwiftSoup.Pattern) throws -> Module___SwiftSoup.Elements
+  public func getElementsByAttributeValueMatching(_ key: Swift.String, _ regex: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsByIndexLessThan(_ index: Swift.Int) throws -> Module___SwiftSoup.Elements
+  public func getElementsByIndexGreaterThan(_ index: Swift.Int) throws -> Module___SwiftSoup.Elements
+  public func getElementsByIndexEquals(_ index: Swift.Int) throws -> Module___SwiftSoup.Elements
+  public func getElementsContainingText(_ searchText: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsContainingOwnText(_ searchText: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsMatchingText(_ pattern: Module___SwiftSoup.Pattern) throws -> Module___SwiftSoup.Elements
+  public func getElementsMatchingText(_ regex: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getElementsMatchingOwnText(_ pattern: Module___SwiftSoup.Pattern) throws -> Module___SwiftSoup.Elements
+  public func getElementsMatchingOwnText(_ regex: Swift.String) throws -> Module___SwiftSoup.Elements
+  public func getAllElements() throws -> Module___SwiftSoup.Elements
+  public func text(trimAndNormaliseWhitespace: Swift.Bool = true) throws -> Swift.String
+  public func textUTF8(trimAndNormaliseWhitespace: Swift.Bool = true) throws -> [Swift.UInt8]
+  public func ownText() -> Swift.String
+  public func ownTextUTF8() -> [Swift.UInt8]
+  @discardableResult
+  public func text(_ text: Swift.String) throws -> Module___SwiftSoup.Element
+  public func hasText() -> Swift.Bool
+  public func data() -> Swift.String
+  public func className() throws -> Swift.String
+  public func classNameUTF8() throws -> [Swift.UInt8]
+  public func classNames() throws -> Module___SwiftSoup.OrderedSet<Swift.String>
+  @discardableResult
+  public func classNames(_ classNames: Module___SwiftSoup.OrderedSet<Swift.String>) throws -> Module___SwiftSoup.Element
+  public func hasClass(_ className: Swift.String) -> Swift.Bool
+  @discardableResult
+  public func addClass(_ className: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func removeClass(_ className: Swift.String) throws -> Module___SwiftSoup.Element
+  @discardableResult
+  public func toggleClass(_ className: Swift.String) throws -> Module___SwiftSoup.Element
+  public func val() throws -> Swift.String
+  @discardableResult
+  public func val(_ value: Swift.String) throws -> Module___SwiftSoup.Element
+  public func html() throws -> Swift.String
+  public func htmlUTF8() throws -> [Swift.UInt8]
+  override open func html(_ appendable: Module___SwiftSoup.StringBuilder) throws -> Module___SwiftSoup.StringBuilder
+  @discardableResult
+  public func html(_ html: Swift.String) throws -> Module___SwiftSoup.Element
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  public static func == (lhs: Module___SwiftSoup.Element, rhs: Module___SwiftSoup.Element) -> Swift.Bool
+  override public func hash(into hasher: inout Swift.Hasher)
+  @objc deinit
+}
+open class Elements : Foundation.NSCopying {
+  public init()
+  public init(_ a: Swift.Array<Module___SwiftSoup.Element>)
+  public init(_ a: Module___SwiftSoup.OrderedSet<Module___SwiftSoup.Element>)
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  open func attr(_ attributeKey: Swift.String) throws -> Swift.String
+  open func hasAttr(_ attributeKey: Swift.String) -> Swift.Bool
+  @discardableResult
+  open func attr(_ attributeKey: Swift.String, _ attributeValue: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func removeAttr(_ attributeKey: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func addClass(_ className: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func removeClass(_ className: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func toggleClass(_ className: Swift.String) throws -> Module___SwiftSoup.Elements
+  open func hasClass(_ className: Swift.String) -> Swift.Bool
+  open func val() throws -> Swift.String
+  @discardableResult
+  open func val(_ value: Swift.String) throws -> Module___SwiftSoup.Elements
+  open func text(trimAndNormaliseWhitespace: Swift.Bool = true) throws -> Swift.String
+  open func hasText() -> Swift.Bool
+  public func eachText() throws -> Swift.Array<Swift.String>
+  open func html() throws -> Swift.String
+  open func outerHtml() throws -> Swift.String
+  open func toString() throws -> Swift.String
+  @discardableResult
+  open func tagName(_ tagName: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func html(_ html: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func prepend(_ html: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func append(_ html: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func before(_ html: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func after(_ html: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func wrap(_ html: Swift.String) throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func unwrap() throws -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func empty() -> Module___SwiftSoup.Elements
+  @discardableResult
+  open func remove() throws -> Module___SwiftSoup.Elements
+  open func select(_ query: Swift.String) throws -> Module___SwiftSoup.Elements
+  open func not(_ query: Swift.String) throws -> Module___SwiftSoup.Elements
+  open func eq(_ index: Swift.Int) -> Module___SwiftSoup.Elements
+  open func iS(_ query: Swift.String) throws -> Swift.Bool
+  open func parents() -> Module___SwiftSoup.Elements
+  open func first() -> Module___SwiftSoup.Element?
+  open func isEmpty() -> Swift.Bool
+  open func size() -> Swift.Int
+  open func last() -> Module___SwiftSoup.Element?
+  @discardableResult
+  open func traverse(_ nodeVisitor: any Module___SwiftSoup.NodeVisitor) throws -> Module___SwiftSoup.Elements
+  open func forms() -> Swift.Array<Module___SwiftSoup.FormElement>
+  open func add(_ e: Module___SwiftSoup.Element)
+  open func add(_ index: Swift.Int, _ element: Module___SwiftSoup.Element)
+  open func get(_ i: Swift.Int) -> Module___SwiftSoup.Element
+  open func array() -> Swift.Array<Module___SwiftSoup.Element>
+  @objc deinit
+}
+extension Module___SwiftSoup.Elements : Swift.Equatable {
+  public static func == (lhs: Module___SwiftSoup.Elements, rhs: Module___SwiftSoup.Elements) -> Swift.Bool
+}
+extension Module___SwiftSoup.Elements : Swift.RandomAccessCollection {
+  public subscript(position: Swift.Int) -> Module___SwiftSoup.Element {
+    get
+  }
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public var count: Swift.Int {
+    get
+  }
+  public typealias Element = Module___SwiftSoup.Element
+  public typealias Index = Swift.Int
+  public typealias Indices = Swift.Range<Swift.Int>
+  public typealias Iterator = Module___SwiftSoup.ElementsIterator
+  public typealias SubSequence = Swift.Slice<Module___SwiftSoup.Elements>
+}
+public struct ElementsIterator : Swift.IteratorProtocol {
+  public mutating func next() -> Module___SwiftSoup.Element?
+  public typealias Element = Module___SwiftSoup.Element
+}
+extension Module___SwiftSoup.Elements : Swift.Sequence {
+  public func makeIterator() -> Module___SwiftSoup.ElementsIterator
+}
+@_hasMissingDesignatedInitializers public class Entities {
+  @_hasMissingDesignatedInitializers public class EscapeMode : Swift.Equatable {
+    public static let xhtml: Module___SwiftSoup.Entities.EscapeMode
+    public static let base: Module___SwiftSoup.Entities.EscapeMode
+    public static let extended: Module___SwiftSoup.Entities.EscapeMode
+    public static func == (left: Module___SwiftSoup.Entities.EscapeMode, right: Module___SwiftSoup.Entities.EscapeMode) -> Swift.Bool
+    public func codepointForName(_ name: [Swift.UInt8]) -> Swift.UnicodeScalar?
+    public func codepointForName(_ name: Swift.ArraySlice<Swift.UInt8>) -> Swift.UnicodeScalar?
+    public func codepointForName(_ name: Swift.String) -> Swift.UnicodeScalar?
+    public func nameForCodepoint(_ codepoint: Swift.UnicodeScalar) -> Swift.String?
+    public func nameForCodepoint(_ codepoint: [Swift.UInt8]) -> [Swift.UInt8]?
+    @objc deinit
+  }
+  public static func isNamedEntity(_ name: Swift.ArraySlice<Swift.UInt8>) -> Swift.Bool
+  public static func isBaseNamedEntity(_ name: Swift.ArraySlice<Swift.UInt8>) -> Swift.Bool
+  public static func getByName(name: Swift.String) -> Swift.String?
+  public static func getByName(name: Swift.ArraySlice<Swift.UInt8>) -> Swift.String?
+  public static func codepointsForName(_ name: Swift.ArraySlice<Swift.UInt8>) -> [Swift.UnicodeScalar]?
+  public static func escape(_ string: Swift.String, _ encode: Swift.String.Encoding = .utf8) -> Swift.String
+  public static func escape(_ string: Swift.String, _ out: Module___SwiftSoup.OutputSettings) -> Swift.String
+  @usableFromInline
+  internal static func escape(_ accum: inout [Swift.UInt8], _ string: [Swift.UInt8], _ out: Module___SwiftSoup.OutputSettings, _ inAttribute: Swift.Bool, _ normaliseWhite: Swift.Bool, _ stripLeadingWhite: Swift.Bool)
+  @inlinable internal static func appendEncoded(accum: inout [Swift.UInt8], escapeMode: Module___SwiftSoup.Entities.EscapeMode, bytes: [Swift.UInt8]) {
+        if let name = escapeMode.nameForCodepoint(bytes) {
+            accum.append(0x26)  
+            accum.append(contentsOf: name)
+            accum.append(0x3B)  
+        } else {
+            guard let scalar = String(bytes: bytes, encoding: .utf8)?.unicodeScalars.first else {
+                accum.append(contentsOf: [0x26, 0x23, 0x78])  
+                for b in bytes { accum.append(contentsOf: String.toHexString(n: Int(b)).utf8Array) }
+                accum.append(0x3B)
+                return
+            }
+            accum.append(contentsOf: [0x26, 0x23, 0x78])
+            accum.append(contentsOf: String.toHexString(n: Int(scalar.value)).utf8Array)
+            accum.append(0x3B)
+        }
+    }
+  public static func unescape(_ string: [Swift.UInt8]) throws -> [Swift.UInt8]
+  public static func unescape(_ string: Swift.String) throws -> Swift.String
+  public static func unescape(string: Swift.String, strict: Swift.Bool) throws -> Swift.String
+  public static func unescape(string: [Swift.UInt8], strict: Swift.Bool) throws -> [Swift.UInt8]
+  @inlinable internal static func canEncode(bytes: [Swift.UInt8], encoder: Swift.String.Encoding) -> Swift.Bool {
+        switch encoder {
+        case .ascii:
+             
+            return bytes.allSatisfy { $0 < 0x80 }
+        case .utf8:
+             
+            return true
+        case .utf16, .unicode:
+             
+            return true
+        default:
+             
+            return String(bytes: bytes, encoding: encoder) != nil
+        }
+    }
+  @objc deinit
+}
+open class Evaluator {
+  public init()
+  open func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+  open func toString() -> Swift.String
+  public class Tag : Module___SwiftSoup.Evaluator {
+    final public let tagNameNormal: [Swift.UInt8]
+    public init(_ tagName: Swift.String)
+    public init(_ tagName: [Swift.UInt8])
+    @inlinable override open func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool {
+            return element.tagNameNormalUTF8() == tagNameNormal
+        }
+    override open func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class TagEndsWith : Module___SwiftSoup.Evaluator {
+    public init(_ tagName: Swift.String)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class Id : Module___SwiftSoup.Evaluator {
+    public init(_ id: Swift.String)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class Class : Module___SwiftSoup.Evaluator {
+    public init(_ className: Swift.String)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class Attribute : Module___SwiftSoup.Evaluator {
+    public init(_ key: Swift.String)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class AttributeStarting : Module___SwiftSoup.Evaluator {
+    public init(_ keyPrefix: [Swift.UInt8]) throws
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class AttributeWithValue : Module___SwiftSoup.Evaluator.AttributeKeyPair {
+    override public init(_ key: Swift.String, _ value: Swift.String) throws
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class AttributeWithValueNot : Module___SwiftSoup.Evaluator.AttributeKeyPair {
+    override public init(_ key: Swift.String, _ value: Swift.String) throws
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class AttributeWithValueStarting : Module___SwiftSoup.Evaluator.AttributeKeyPair {
+    override public init(_ key: Swift.String, _ value: Swift.String) throws
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class AttributeWithValueEnding : Module___SwiftSoup.Evaluator.AttributeKeyPair {
+    override public init(_ key: Swift.String, _ value: Swift.String) throws
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class AttributeWithValueContaining : Module___SwiftSoup.Evaluator.AttributeKeyPair {
+    override public init(_ key: Swift.String, _ value: Swift.String) throws
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class AttributeWithValueMatching : Module___SwiftSoup.Evaluator {
+    public init(_ key: Swift.String, _ pattern: Module___SwiftSoup.Pattern)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  public class AttributeKeyPair : Module___SwiftSoup.Evaluator {
+    public init(_ key: Swift.String, _ value2: Swift.String) throws
+    override open func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class AllElements : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IndexLessThan : Module___SwiftSoup.Evaluator.IndexEvaluator {
+    override public init(_ index: Swift.Int)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IndexGreaterThan : Module___SwiftSoup.Evaluator.IndexEvaluator {
+    override public init(_ index: Swift.Int)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IndexEquals : Module___SwiftSoup.Evaluator.IndexEvaluator {
+    override public init(_ index: Swift.Int)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IsLastChild : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  final public class IsFirstOfType : Module___SwiftSoup.Evaluator.IsNthOfType {
+    public init()
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class IsLastOfType : Module___SwiftSoup.Evaluator.IsNthLastOfType {
+    public init()
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  public class CssNthEvaluator : Module___SwiftSoup.Evaluator {
+    final public let a: Swift.Int
+    final public let b: Swift.Int
+    public init(_ a: Swift.Int, _ b: Swift.Int)
+    public init(_ b: Swift.Int)
+    override open func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override open func toString() -> Swift.String
+    open func getPseudoClass() -> Swift.String
+    open func calculatePosition(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Int
+    @objc deinit
+  }
+  final public class IsNthChild : Module___SwiftSoup.Evaluator.CssNthEvaluator {
+    override public init(_ a: Swift.Int, _ b: Swift.Int)
+    override final public func calculatePosition(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Int
+    override final public func getPseudoClass() -> Swift.String
+    @objc deinit
+  }
+  final public class IsNthLastChild : Module___SwiftSoup.Evaluator.CssNthEvaluator {
+    override public init(_ a: Swift.Int, _ b: Swift.Int)
+    override final public func calculatePosition(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Int
+    override final public func getPseudoClass() -> Swift.String
+    @objc deinit
+  }
+  public class IsNthOfType : Module___SwiftSoup.Evaluator.CssNthEvaluator {
+    override public init(_ a: Swift.Int, _ b: Swift.Int)
+    override open func calculatePosition(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) -> Swift.Int
+    override open func getPseudoClass() -> Swift.String
+    @objc deinit
+  }
+  public class IsNthLastOfType : Module___SwiftSoup.Evaluator.CssNthEvaluator {
+    override public init(_ a: Swift.Int, _ b: Swift.Int)
+    override open func calculatePosition(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Int
+    override open func getPseudoClass() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IsFirstChild : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IsRoot : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IsOnlyChild : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IsOnlyOfType : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers final public class IsEmpty : Module___SwiftSoup.Evaluator {
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    override public init()
+    @objc deinit
+  }
+  public class IndexEvaluator : Module___SwiftSoup.Evaluator {
+    public init(_ index: Swift.Int)
+    @objc deinit
+  }
+  final public class ContainsText : Module___SwiftSoup.Evaluator {
+    public init(_ searchText: Swift.String)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class ContainsOwnText : Module___SwiftSoup.Evaluator {
+    public init(_ searchText: Swift.String)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class Matches : Module___SwiftSoup.Evaluator {
+    public init(_ pattern: Module___SwiftSoup.Pattern)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  final public class MatchesOwn : Module___SwiftSoup.Evaluator {
+    public init(_ pattern: Module___SwiftSoup.Pattern)
+    override final public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override final public func toString() -> Swift.String
+    @objc deinit
+  }
+  @objc deinit
+}
+public enum ExceptionType {
+  case IllegalArgumentException
+  case IOException
+  case XmlDeclaration
+  case MalformedURLException
+  case CloneNotSupportedException
+  case SelectorParseException
+  public static func == (a: Module___SwiftSoup.ExceptionType, b: Module___SwiftSoup.ExceptionType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum Exception : Swift.Error {
+  case Error(type: Module___SwiftSoup.ExceptionType, Message: Swift.String)
+}
+@_inheritsConvenienceInitializers public class FormElement : Module___SwiftSoup.Element {
+  override public init(_ tag: Module___SwiftSoup.Tag, _ baseUri: [Swift.UInt8], _ attributes: Module___SwiftSoup.Attributes)
+  override public init(_ tag: Module___SwiftSoup.Tag, _ baseUri: [Swift.UInt8])
+  public func elements() -> Module___SwiftSoup.Elements
+  @discardableResult
+  public func addElement(_ element: Module___SwiftSoup.Element) -> Module___SwiftSoup.FormElement
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+@usableFromInline
+final internal class Weak<T> where T : AnyObject {
+  @usableFromInline
+  weak final internal var value: T?
+  @usableFromInline
+  internal init(_ value: T)
+  @objc @usableFromInline
+  deinit
+}
+open class Node : Swift.Equatable, Swift.Hashable {
+  @usableFromInline
+  weak internal var parentNode: Module___SwiftSoup.Node? {
+    get
+    set
+  }
+  @usableFromInline
+  internal var childNodes: [Module___SwiftSoup.Node] {
+    get
+    set
+  }
+  @usableFromInline
+  internal var normalizedTagNameIndex: [[Swift.UInt8] : [Module___SwiftSoup.Weak<Module___SwiftSoup.Element>]]?
+  @usableFromInline
+  internal var isQueryIndexDirty: Swift.Bool
+  public var siblingIndex: Swift.Int {
+    get
+  }
+  public init(_ baseUri: [Swift.UInt8], _ attributes: Module___SwiftSoup.Attributes)
+  public init(_ baseUri: [Swift.UInt8])
+  public init()
+  public func nodeName() -> Swift.String
+  public func nodeNameUTF8() -> [Swift.UInt8]
+  open func attr(_ attributeKey: [Swift.UInt8]) throws -> [Swift.UInt8]
+  open func attr(_ attributeKey: Swift.String) throws -> Swift.String
+  open func getAttributes() -> Module___SwiftSoup.Attributes?
+  @discardableResult
+  open func attr(_ attributeKey: [Swift.UInt8], _ attributeValue: [Swift.UInt8]) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func attr(_ attributeKey: Swift.String, _ attributeValue: Swift.String) throws -> Module___SwiftSoup.Node
+  open func hasAttr(_ attributeKey: Swift.String) -> Swift.Bool
+  open func hasAttr(_ attributeKey: [Swift.UInt8]) -> Swift.Bool
+  @discardableResult
+  open func removeAttr(_ attributeKey: [Swift.UInt8]) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func removeAttr(_ attributeKey: Swift.String) throws -> Module___SwiftSoup.Node
+  open func getBaseUri() -> Swift.String
+  open func getBaseUriUTF8() -> [Swift.UInt8]
+  open func setBaseUri(_ baseUri: Swift.String) throws
+  open func setBaseUri(_ baseUri: [Swift.UInt8]) throws
+  open func absUrl(_ attributeKey: Swift.String) throws -> Swift.String
+  open func absUrl<T>(_ attributeKey: T) throws -> [Swift.UInt8] where T : Swift.Collection, T.Element == Swift.UInt8
+  @inline(__always) open func childNode(_ index: Swift.Int) -> Module___SwiftSoup.Node
+  @inline(__always) open func getChildNodes() -> Swift.Array<Module___SwiftSoup.Node>
+  open func childNodesCopy() -> Swift.Array<Module___SwiftSoup.Node>
+  @inline(__always) public func childNodeSize() -> Swift.Int
+  @inline(__always) public func hasChildNodes() -> Swift.Bool
+  @inline(__always) open func parent() -> Module___SwiftSoup.Node?
+  open func ownerDocument() -> Module___SwiftSoup.Document?
+  open func remove() throws
+  @discardableResult
+  open func before(_ html: Swift.String) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func before(_ html: [Swift.UInt8]) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func before(_ node: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func after(_ html: Swift.String) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func after(_ node: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func after(html: Swift.String) throws -> Module___SwiftSoup.Node
+  @discardableResult
+  open func after(node: Module___SwiftSoup.Node) throws -> Module___SwiftSoup.Node
+  open func addSiblingHtml(index: Swift.Int, _ html: Swift.String) throws
+  @discardableResult
+  open func wrap(_ html: Swift.String) throws -> Module___SwiftSoup.Node?
+  @discardableResult
+  open func unwrap() throws -> Module___SwiftSoup.Node?
+  @inlinable public func replaceWith(_ input: Module___SwiftSoup.Node) throws {
+        try Validate.notNull(obj: input)
+        try Validate.notNull(obj: parentNode)
+        try parentNode?.replaceChild(self, input)
+    }
+  @inlinable public func setParentNode(_ parentNode: Module___SwiftSoup.Node) throws {
+        if (self.parentNode != nil) {
+            try self.parentNode?.removeChild(self)
+        }
+        self.parentNode = parentNode
+    }
+  @inlinable public func replaceChild(_ out: Module___SwiftSoup.Node, _ input: Module___SwiftSoup.Node) throws {
+        try Validate.isTrue(val: out.parentNode === self)
+        try Validate.notNull(obj: input)
+        if (input.parentNode != nil) {
+            try input.parentNode?.removeChild(input)
+        }
+        
+        let index: Int = out.siblingIndex
+        childNodes[index] = input
+        input.parentNode = self
+        input.setSiblingIndex(index)
+        out.parentNode = nil
+    }
+  @inlinable public func removeChild(_ out: Module___SwiftSoup.Node) throws {
+        try Validate.isTrue(val: out.parentNode === self)
+        let index: Int = out.siblingIndex
+        childNodes.remove(at: index)
+        reindexChildren(index)
+        out.parentNode = nil
+    }
+  @inlinable public func addChildren(_ children: Module___SwiftSoup.Node...) throws {
+         
+        try addChildren(children)
+    }
+  @inlinable public func addChildren(_ children: [Module___SwiftSoup.Node]) throws {
+         
+        for child in children {
+            try reparentChild(child)
+            childNodes.append(child)
+            child.setSiblingIndex(childNodes.count - 1)
+        }
+    }
+  @inlinable public func addChildren(_ index: Swift.Int, _ children: Module___SwiftSoup.Node...) throws {
+        try addChildren(index, children)
+    }
+  @inlinable public func addChildren(_ index: Swift.Int, _ children: [Module___SwiftSoup.Node]) throws {
+        for i in (0..<children.count).reversed() {
+            let input: Node = children[i]
+            try reparentChild(input)
+            childNodes.insert(input, at: index)
+            reindexChildren(index)
+        }
+    }
+  @inlinable public func reparentChild(_ child: Module___SwiftSoup.Node) throws {
+        try child.parentNode?.removeChild(child)
+        try child.setParentNode(self)
+    }
+  @usableFromInline
+  internal func reindexChildren(_ start: Swift.Int)
+  open func siblingNodes() -> Swift.Array<Module___SwiftSoup.Node>
+  @inlinable open func nextSibling() -> Module___SwiftSoup.Node? {
+        guard hasNextSibling() else { return nil }
+        guard let siblings: Array<Node> = parent()?.getChildNodes() else {
+            return nil
+        }
+        return siblings[siblingIndex + 1]
+    }
+  @inlinable open func hasNextSibling() -> Swift.Bool {
+        guard let parent = parent() else {
+            return false
+        }
+        return parent.childNodeSize() > siblingIndex + 1
+    }
+  open func previousSibling() -> Module___SwiftSoup.Node?
+  public func setSiblingIndex(_ siblingIndex: Swift.Int)
+  @discardableResult
+  open func traverse(_ nodeVisitor: any Module___SwiftSoup.NodeVisitor) throws -> Module___SwiftSoup.Node
+  open func outerHtml() throws -> Swift.String
+  public func outerHtml(_ accum: Module___SwiftSoup.StringBuilder) throws
+  open func html(_ appendable: Module___SwiftSoup.StringBuilder) throws -> Module___SwiftSoup.StringBuilder
+  public func indent(_ accum: Module___SwiftSoup.StringBuilder, _ depth: Swift.Int, _ out: Module___SwiftSoup.OutputSettings)
+  open func equals(_ o: Module___SwiftSoup.Node) -> Swift.Bool
+  open func hasSameValue(_ o: Module___SwiftSoup.Node) throws -> Swift.Bool
+  public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  public func copy(clone: Module___SwiftSoup.Node) -> Module___SwiftSoup.Node
+  public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  public static func == (lhs: Module___SwiftSoup.Node, rhs: Module___SwiftSoup.Node) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  @objc deinit
+  open var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___SwiftSoup.Node : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension Module___SwiftSoup.Node : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension Module___SwiftSoup.Node {
+  @inlinable internal func markQueryIndexDirty() {
+        var current: Node? = self
+        while let node = current {
+            node.isQueryIndexDirty = true
+            current = node.parentNode
+        }
+    }
+  @usableFromInline
+  internal func rebuildQueryIndexesForAllTags()
+  @usableFromInline
+  internal func rebuildQueryIndexesForThisNodeOnly()
+  @inlinable internal func updateQueryIndex(for nodes: [Module___SwiftSoup.Node], adding: Swift.Bool) {
+        markQueryIndexDirty()
+    }
+}
+open class NodeTraversor {
+  public init(_ visitor: any Module___SwiftSoup.NodeVisitor)
+  open func traverse(_ root: Module___SwiftSoup.Node?) throws
+  @objc deinit
+}
+public protocol NodeVisitor {
+  func head(_ node: Module___SwiftSoup.Node, _ depth: Swift.Int) throws
+  func tail(_ node: Module___SwiftSoup.Node, _ depth: Swift.Int) throws
+}
+public class OrderedSet<T> where T : Swift.Hashable {
+  public typealias Index = Swift.Int
+  public init()
+  @objc deinit
+  public init<S>(sequence: S) where T == S.Element, S : Swift.Sequence
+  required public init(arrayLiteral elements: T...)
+  public func index(of object: T) -> Module___SwiftSoup.OrderedSet<T>.Index?
+  public func append(_ object: T)
+  public func append<S>(contentsOf sequence: S) where T == S.Element, S : Swift.Sequence
+  public func remove(_ object: T)
+  public func remove<S>(_ objects: S) where T == S.Element, S : Swift.Sequence
+  public func removeObject(at index: Module___SwiftSoup.OrderedSet<T>.Index)
+  public func removeAllObjects()
+  public func swapObject(_ first: T, with second: T)
+  public func intersects<S>(_ other: S) -> Swift.Bool where T == S.Element, S : Swift.Sequence
+  public func isSubset<S>(of sequence: S) -> Swift.Bool where T == S.Element, S : Swift.Sequence
+  public func moveObject(_ object: T, toIndex index: Module___SwiftSoup.OrderedSet<T>.Index)
+  public func moveObject(at index: Module___SwiftSoup.OrderedSet<T>.Index, to toIndex: Module___SwiftSoup.OrderedSet<T>.Index)
+  public func insert(_ object: T, at index: Module___SwiftSoup.OrderedSet<T>.Index)
+  public func insert<S>(_ objects: S, at index: Module___SwiftSoup.OrderedSet<T>.Index) where T == S.Element, S : Swift.Sequence
+  public var last: T? {
+    get
+  }
+}
+extension Module___SwiftSoup.OrderedSet : Swift.ExpressibleByArrayLiteral {
+  public typealias ArrayLiteralElement = T
+}
+extension Module___SwiftSoup.OrderedSet {
+  public var count: Swift.Int {
+    get
+  }
+  public var isEmpty: Swift.Bool {
+    get
+  }
+  public var first: T? {
+    get
+  }
+  public func index(after i: Swift.Int) -> Swift.Int
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public subscript(index: Module___SwiftSoup.OrderedSet<T>.Index) -> T {
+    get
+    set
+  }
+}
+extension Module___SwiftSoup.OrderedSet : Swift.Sequence {
+  public typealias Iterator = Module___SwiftSoup.OrderedSetGenerator<T>
+  public func makeIterator() -> Module___SwiftSoup.OrderedSet<T>.Iterator
+  public typealias Element = Module___SwiftSoup.OrderedSetGenerator<T>.Element
+}
+public struct OrderedSetGenerator<T> : Swift.IteratorProtocol where T : Swift.Hashable {
+  public typealias Element = T
+  public init(set: Module___SwiftSoup.OrderedSet<T>)
+  public mutating func next() -> Module___SwiftSoup.OrderedSetGenerator<T>.Element?
+}
+public func + <T, S>(lhs: Module___SwiftSoup.OrderedSet<T>, rhs: S) -> Module___SwiftSoup.OrderedSet<T> where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+public func += <T, S>(lhs: inout Module___SwiftSoup.OrderedSet<T>, rhs: S) where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+public func - <T, S>(lhs: Module___SwiftSoup.OrderedSet<T>, rhs: S) -> Module___SwiftSoup.OrderedSet<T> where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+public func -= <T, S>(lhs: inout Module___SwiftSoup.OrderedSet<T>, rhs: S) where T : Swift.Hashable, T == S.Element, S : Swift.Sequence
+extension Module___SwiftSoup.OrderedSet : Swift.Equatable {
+}
+public func == <T>(lhs: Module___SwiftSoup.OrderedSet<T>, rhs: Module___SwiftSoup.OrderedSet<T>) -> Swift.Bool where T : Swift.Hashable
+extension Module___SwiftSoup.OrderedSet : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class ParseError {
+  open func getErrorMessage() -> Swift.String
+  open func getPosition() -> Swift.Int
+  open func toString() -> Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ParseErrorList {
+  open func add(_ e: Module___SwiftSoup.ParseError)
+  open func add(_ index: Swift.Int, _ element: Module___SwiftSoup.ParseError)
+  @objc deinit
+}
+open class ParseSettings {
+  public static let htmlDefault: Module___SwiftSoup.ParseSettings
+  public static let preserveCase: Module___SwiftSoup.ParseSettings
+  public init(_ tag: Swift.Bool, _ attribute: Swift.Bool)
+  open func normalizeTag(_ name: [Swift.UInt8]) -> [Swift.UInt8]
+  open func normalizeTag(_ name: Swift.String) -> Swift.String
+  open func normalizeAttribute(_ name: [Swift.UInt8]) -> [Swift.UInt8]
+  open func normalizeAttribute(_ name: Swift.String) -> Swift.String
+  open func normalizeAttributes(_ attributes: Module___SwiftSoup.Attributes) throws -> Module___SwiftSoup.Attributes
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Parser {
+  public func parseInput(_ html: [Swift.UInt8], _ baseUri: [Swift.UInt8]) throws -> Module___SwiftSoup.Document
+  public func parseInput(_ html: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+  public func getTreeBuilder() -> Module___SwiftSoup.TreeBuilder
+  @discardableResult
+  public func setTreeBuilder(_ treeBuilder: Module___SwiftSoup.TreeBuilder) -> Module___SwiftSoup.Parser
+  public func isTrackErrors() -> Swift.Bool
+  @discardableResult
+  public func setTrackErrors(_ maxErrors: Swift.Int) -> Module___SwiftSoup.Parser
+  public func getErrors() -> Module___SwiftSoup.ParseErrorList
+  @discardableResult
+  public func settings(_ settings: Module___SwiftSoup.ParseSettings) -> Module___SwiftSoup.Parser
+  public func settings() -> Module___SwiftSoup.ParseSettings
+  public static func parse(_ html: [Swift.UInt8], _ baseUri: [Swift.UInt8]) throws -> Module___SwiftSoup.Document
+  public static func parse(_ html: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+  public static func parseFragment(_ fragmentHtml: [Swift.UInt8], _ context: Module___SwiftSoup.Element?, _ baseUri: [Swift.UInt8]) throws -> Swift.Array<Module___SwiftSoup.Node>
+  public static func parseFragment(_ fragmentHtml: Swift.String, _ context: Module___SwiftSoup.Element?, _ baseUri: [Swift.UInt8]) throws -> Swift.Array<Module___SwiftSoup.Node>
+  public static func parseXmlFragment(_ fragmentXml: [Swift.UInt8], _ baseUri: [Swift.UInt8]) throws -> Swift.Array<Module___SwiftSoup.Node>
+  public static func parseXmlFragment(_ fragmentXml: Swift.String, _ baseUri: Swift.String) throws -> Swift.Array<Module___SwiftSoup.Node>
+  public static func parseBodyFragment(_ bodyHtml: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+  public static func unescapeEntities(_ string: [Swift.UInt8], _ inAttribute: Swift.Bool) throws -> [Swift.UInt8]
+  public static func unescapeEntities(_ string: Swift.String, _ inAttribute: Swift.Bool) throws -> Swift.String
+  public static func parseBodyFragmentRelaxed(_ bodyHtml: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+  public static func htmlParser() -> Module___SwiftSoup.Parser
+  public static func xmlParser() -> Module___SwiftSoup.Parser
+  @objc deinit
+}
+@inline(__always) public func testBit(_ mask: (Swift.UInt64, Swift.UInt64, Swift.UInt64, Swift.UInt64), _ b: Swift.UInt8) -> Swift.Bool
+public struct ParsingStrings : Swift.Hashable, Swift.Equatable {
+  public let multiByteByteLookups: [(Swift.UInt64, Swift.UInt64, Swift.UInt64, Swift.UInt64)]
+  public let multiByteSet: Swift.Set<Swift.ArraySlice<Swift.UInt8>>
+  public let multiByteByteLookupsCount: Swift.Int
+  public var singleByteMask: (Swift.UInt64, Swift.UInt64, Swift.UInt64, Swift.UInt64)
+  public init(_ strings: [Swift.String])
+  public init(_ strings: [[Swift.UInt8]])
+  public init(_ strings: [Swift.UnicodeScalar])
+  public static func == (lhs: Module___SwiftSoup.ParsingStrings, rhs: Module___SwiftSoup.ParsingStrings) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  @inlinable public func contains(_ bytes: [Swift.UInt8]) -> Swift.Bool {
+        return contains(ArraySlice(bytes))
+    }
+  @inlinable public func contains(_ slice: Swift.ArraySlice<Swift.UInt8>) -> Swift.Bool {
+        var index = 0
+        for byte in slice {
+            if index >= multiByteByteLookupsCount || !testBit(multiByteByteLookups[index], byte) {
+                return false
+            }
+            index &+= 1
+        }
+        return multiByteSet.contains(slice)
+    }
+  @inlinable public func contains(_ byte: Swift.UInt8) -> Swift.Bool {
+        let idx = Int(byte >> 6)
+        let shift = byte & 63
+        
+         
+        let val: UInt64
+        switch idx {
+        case 0: val = singleByteMask.0
+        case 1: val = singleByteMask.1
+        case 2: val = singleByteMask.2
+        default: val = singleByteMask.3
+        }
+        
+         
+        return (val & (1 << shift)) != 0
+    }
+  @inlinable public func contains(_ scalar: Swift.UnicodeScalar) -> Swift.Bool {
+         
+        if scalar.value < 0x80 {
+            return contains(UInt8(scalar.value))
+        }
+        
+        var buffer = [UInt8](repeating: 0, count: 4)
+        var length = 0
+        for b in scalar.utf8 {
+            buffer[length] = b
+            length &+= 1
+        }
+        let slice = buffer[..<length]
+        
+         
+        return containsTrie(slice)
+    }
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___SwiftSoup.ParsingStrings {
+  public func containsTrie(_ slice: Swift.ArraySlice<Swift.UInt8>) -> Swift.Bool
+}
+public struct Pattern {
+  public static let CASE_INSENSITIVE: Swift.Int
+  public static func compile(_ s: Swift.String) -> Module___SwiftSoup.Pattern
+  public static func compile(_ s: Swift.String, _ op: Swift.Int) -> Module___SwiftSoup.Pattern
+  public func validate() throws
+  public func matcher(in text: Swift.String) -> Module___SwiftSoup.Matcher
+  public func toString() -> Swift.String
+}
+@_hasMissingDesignatedInitializers public class Matcher {
+  public var count: Swift.Int {
+    get
+  }
+  @discardableResult
+  public func find() -> Swift.Bool
+  public func group(_ i: Swift.Int) -> Swift.String?
+  public func group() -> Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class QueryParser {
+  public static func parse(_ query: Swift.String) throws -> Module___SwiftSoup.Evaluator
+  public func parse() throws -> Module___SwiftSoup.Evaluator
+  @objc deinit
+}
+public class SimpleDictionary<KeyType, ValueType> where KeyType : Swift.Hashable {
+  public typealias DictionaryType = [KeyType : ValueType]
+  public var values: Module___SwiftSoup.SimpleDictionary<KeyType, ValueType>.DictionaryType {
+    get
+  }
+  public init()
+  public var count: Swift.Int {
+    get
+  }
+  public func remove(_ key: KeyType)
+  public func contains(_ key: KeyType) -> Swift.Bool
+  public func put(_ value: ValueType, forKey key: KeyType)
+  public func get(_ key: KeyType) -> ValueType?
+  @objc deinit
+}
+extension Swift.ArraySlice where Element == Swift.UInt8 {
+  @inline(__always) public func lowercased() -> Swift.ArraySlice<Swift.UInt8>
+}
+extension Swift.Array : Swift.Comparable where Element == Swift.UInt8 {
+  @inline(__always) public func lowercased() -> [Swift.UInt8]
+  public static func < (lhs: [Swift.UInt8], rhs: [Swift.UInt8]) -> Swift.Bool
+  public func trim() -> [Swift.UInt8]
+}
+extension Swift.ArraySlice : Swift.Comparable where Element == Swift.UInt8 {
+  public static func < (lhs: Swift.ArraySlice<Swift.UInt8>, rhs: Swift.ArraySlice<Swift.UInt8>) -> Swift.Bool
+}
+extension Swift.String {
+  @inline(__always) public var utf8Array: [Swift.UInt8] {
+    get
+  }
+  @inline(__always) public var utf8ArraySlice: Swift.ArraySlice<Swift.UInt8> {
+    get
+  }
+  public func trim() -> Swift.String
+  @inlinable internal static func toHexString(n: Swift.Int) -> Swift.String {
+        return String(format: "%2x", n)
+    }
+}
+extension Swift.String.Encoding {
+  public func displayName() -> Swift.String
+  public enum EncodingMIMETypeError : Swift.Error, Foundation.LocalizedError {
+    case noIANAEquivalent(Swift.String.Encoding)
+    public var errorDescription: Swift.String? {
+      get
+    }
+  }
+  public func mimeName() throws -> Swift.String
+}
+open class StringBuilder {
+  public var buffer: [Swift.UInt8]
+  public init(string: Swift.String? = nil)
+  public init(_ size: Swift.Int)
+  open func toString() -> Swift.String
+  open var xlength: Swift.Int {
+    get
+  }
+  open var isEmpty: Swift.Bool {
+    get
+  }
+  @discardableResult
+  @inline(__always) open func append(_ string: Swift.String) -> Module___SwiftSoup.StringBuilder
+  @inline(__always) open func append(_ chr: Swift.Character)
+  @inline(__always) open func appendCodePoints(_ chr: [Swift.Character])
+  @inline(__always) open func appendCodePoint(_ ch: Swift.Int)
+  @inlinable open func appendCodePoint(_ ch: Swift.UnicodeScalar) {
+        let val = ch.value
+        if val < 0x80 {
+             
+            buffer.append(UInt8(val))
+        } else if val < 0x800 {
+             
+            buffer.append(contentsOf: [
+                UInt8(0xC0 | (val >> 6)),
+                UInt8(0x80 | (val & 0x3F))
+            ])
+        } else if val < 0x10000 {
+             
+            buffer.append(contentsOf: [
+                UInt8(0xE0 | (val >> 12)),
+                UInt8(0x80 | ((val >> 6) & 0x3F)),
+                UInt8(0x80 | (val & 0x3F))
+            ])
+        } else {
+             
+            buffer.append(contentsOf: [
+                UInt8(0xF0 | (val >> 18)),
+                UInt8(0x80 | ((val >> 12) & 0x3F)),
+                UInt8(0x80 | ((val >> 6) & 0x3F)),
+                UInt8(0x80 | (val & 0x3F))
+            ])
+        }
+    }
+  @inlinable open func appendCodePoints(_ chr: [Swift.UnicodeScalar]) {
+        for chr in chr {
+            appendCodePoint(chr)
+        }
+    }
+  @discardableResult
+  @inlinable open func append(_ value: Swift.ArraySlice<Swift.UInt8>) -> Module___SwiftSoup.StringBuilder {
+        buffer.append(contentsOf: value)
+        return self
+    }
+  @discardableResult
+  @inlinable open func append(_ value: [Swift.UInt8]) -> Module___SwiftSoup.StringBuilder {
+        buffer.append(contentsOf: value)
+        return self
+    }
+  @discardableResult
+  @inlinable open func append(_ value: Swift.UInt8) -> Module___SwiftSoup.StringBuilder {
+        buffer.append(value)
+        return self
+    }
+  @discardableResult
+  @inlinable open func append(_ value: Swift.UnicodeScalar) -> Module___SwiftSoup.StringBuilder {
+        appendCodePoint(value)
+        return self
+    }
+  @discardableResult
+  open func appendLine(_ string: Swift.String) -> Module___SwiftSoup.StringBuilder
+  @discardableResult
+  open func appendLine<T>(_ value: T) -> Module___SwiftSoup.StringBuilder where T : Swift.CustomStringConvertible
+  @discardableResult
+  @inlinable open func clear() -> Module___SwiftSoup.StringBuilder {
+        buffer.removeAll(keepingCapacity: true)
+        return self
+    }
+  @objc deinit
+}
+@inlinable public func += (lhs: Module___SwiftSoup.StringBuilder, rhs: Swift.String) {
+    lhs.append(rhs)
+}
+@inlinable public func += <T>(lhs: Module___SwiftSoup.StringBuilder, rhs: T) where T : Swift.CustomStringConvertible {
+    lhs.append(rhs.description)
+}
+@inlinable public func + (lhs: Module___SwiftSoup.StringBuilder, rhs: Module___SwiftSoup.StringBuilder) -> Module___SwiftSoup.StringBuilder {
+    return StringBuilder(string: lhs.toString() + rhs.toString())
+}
+@_hasMissingDesignatedInitializers open class StringUtil {
+  public static let spaceUTF8: [Swift.UInt8]
+  public static let backslashTUTF8: [Swift.UInt8]
+  public static let backslashNUTF8: [Swift.UInt8]
+  public static let backslashFUTF8: [Swift.UInt8]
+  public static let backslashRUTF8: [Swift.UInt8]
+  public static let backshashRBackslashNUTF8: [Swift.UInt8]
+  public static func join(_ strings: [Swift.String], sep: Swift.String) -> Swift.String
+  public static func join(_ strings: Swift.Set<Swift.String>, sep: Swift.String) -> Swift.String
+  public static func join(_ strings: Module___SwiftSoup.OrderedSet<Swift.String>, sep: Swift.String) -> Swift.String
+  public static func padding(_ width: Swift.Int) -> Swift.String
+  public static func isBlank(_ string: Swift.String) -> Swift.Bool
+  public static func isNumeric(_ string: Swift.String) -> Swift.Bool
+  public static func isWhitespace(_ c: Swift.Character) -> Swift.Bool
+  @inlinable public static func isWhitespace(_ bytes: [Swift.UInt8]) -> Swift.Bool {
+        return bytes == Self.spaceUTF8 ||
+        bytes == Self.backslashTUTF8 ||
+        bytes == Self.backslashNUTF8 ||
+        bytes == Self.backslashFUTF8 ||
+        bytes == Self.backslashRUTF8 ||
+        bytes == Self.backshashRBackslashNUTF8
+    }
+  public static func normaliseWhitespace(_ string: Swift.String) -> Swift.String
+  public static func normaliseWhitespace(_ string: [Swift.UInt8]) -> Swift.String
+  public static func appendNormalisedWhitespace(_ accum: Module___SwiftSoup.StringBuilder, string: Swift.String, stripLeading: Swift.Bool)
+  public static func appendNormalisedWhitespace(_ accum: Module___SwiftSoup.StringBuilder, string: [Swift.UInt8], stripLeading: Swift.Bool)
+  public static func resolve(_ base: Foundation.URL, relUrl: Swift.String) -> Foundation.URL?
+  public static func resolve(_ baseUrl: Swift.String, relUrl: Swift.String) -> Swift.String
+  @objc deinit
+}
+public class StructuralEvaluator : Module___SwiftSoup.Evaluator {
+  public init(_ evaluator: Module___SwiftSoup.Evaluator)
+  @_inheritsConvenienceInitializers public class Root : Module___SwiftSoup.Evaluator {
+    override public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) -> Swift.Bool
+    override public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers public class Has : Module___SwiftSoup.StructuralEvaluator {
+    override public init(_ evaluator: Module___SwiftSoup.Evaluator)
+    override public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers public class Not : Module___SwiftSoup.StructuralEvaluator {
+    override public init(_ evaluator: Module___SwiftSoup.Evaluator)
+    override public func matches(_ root: Module___SwiftSoup.Element, _ node: Module___SwiftSoup.Element) -> Swift.Bool
+    override public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers public class Parent : Module___SwiftSoup.StructuralEvaluator {
+    override public init(_ evaluator: Module___SwiftSoup.Evaluator)
+    override public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) -> Swift.Bool
+    override public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers public class ImmediateParent : Module___SwiftSoup.StructuralEvaluator {
+    override public init(_ evaluator: Module___SwiftSoup.Evaluator)
+    override public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) -> Swift.Bool
+    override public func toString() -> Swift.String
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers public class PreviousSibling : Module___SwiftSoup.StructuralEvaluator {
+    override public init(_ evaluator: Module___SwiftSoup.Evaluator)
+    override public func matches(_ root: Module___SwiftSoup.Element, _ element: Module___SwiftSoup.Element) throws -> Swift.Bool
+    override public func toString() -> Swift.String
+    @objc deinit
+  }
+  @objc deinit
+}
+public func parse(_ html: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+public func parse(_ html: Swift.String, _ baseUri: Swift.String, _ parser: Module___SwiftSoup.Parser) throws -> Module___SwiftSoup.Document
+public func parse(_ html: Swift.String) throws -> Module___SwiftSoup.Document
+public func parseBodyFragment(_ bodyHtml: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+public func parseBodyFragment(_ bodyHtml: Swift.String) throws -> Module___SwiftSoup.Document
+public func clean(_ bodyHtml: Swift.String, _ baseUri: Swift.String, _ whitelist: Module___SwiftSoup.Whitelist) throws -> Swift.String?
+public func clean(_ bodyHtml: Swift.String, _ whitelist: Module___SwiftSoup.Whitelist) throws -> Swift.String?
+public func clean(_ bodyHtml: Swift.String, _ baseUri: Swift.String, _ whitelist: Module___SwiftSoup.Whitelist, _ outputSettings: Module___SwiftSoup.OutputSettings) throws -> Swift.String?
+public func isValid(_ bodyHtml: Swift.String, _ whitelist: Module___SwiftSoup.Whitelist) throws -> Swift.Bool
+open class Tag : Swift.Hashable {
+  public init(_ tagName: [Swift.UInt8])
+  convenience public init(_ tagName: Swift.String)
+  open func getName() -> Swift.String
+  open func getNameNormal() -> Swift.String
+  open func getNameUTF8() -> [Swift.UInt8]
+  open func getNameNormalUTF8() -> [Swift.UInt8]
+  public static func valueOf(_ tagName: Swift.String, _ settings: Module___SwiftSoup.ParseSettings) throws -> Module___SwiftSoup.Tag
+  public static func valueOf(_ tagName: [Swift.UInt8], _ settings: Module___SwiftSoup.ParseSettings) throws -> Module___SwiftSoup.Tag
+  public static func valueOf(_ tagName: Swift.String) throws -> Module___SwiftSoup.Tag
+  public static func valueOf(_ tagName: [Swift.UInt8]) throws -> Module___SwiftSoup.Tag
+  open func isBlock() -> Swift.Bool
+  open func formatAsBlock() -> Swift.Bool
+  open func canContainBlock() -> Swift.Bool
+  open func isInline() -> Swift.Bool
+  open func isData() -> Swift.Bool
+  open func isEmpty() -> Swift.Bool
+  open func isSelfClosing() -> Swift.Bool
+  open func isKnownTag() -> Swift.Bool
+  public static func isKnownTag(_ tagName: [Swift.UInt8]) -> Swift.Bool
+  public func preserveWhitespace() -> Swift.Bool
+  public func isFormListed() -> Swift.Bool
+  public func isFormSubmittable() -> Swift.Bool
+  public static func == (lhs: Module___SwiftSoup.Tag, rhs: Module___SwiftSoup.Tag) -> Swift.Bool
+  public func equals(_ tag: Module___SwiftSoup.Tag) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  open func toString() -> Swift.String
+  @objc deinit
+  open var hashValue: Swift.Int {
+    get
+  }
+}
+open class TextNode : Module___SwiftSoup.Node {
+  public init(_ text: [Swift.UInt8], _ baseUri: [Swift.UInt8]?)
+  convenience public init(_ text: Swift.String, _ baseUri: Swift.String?)
+  override public func nodeNameUTF8() -> [Swift.UInt8]
+  override public func nodeName() -> Swift.String
+  open func text() -> Swift.String
+  @discardableResult
+  public func text(_ text: Swift.String) -> Module___SwiftSoup.TextNode
+  open func getWholeText() -> Swift.String
+  open func getWholeTextUTF8() -> [Swift.UInt8]
+  open func isBlank() -> Swift.Bool
+  open func splitText(_ offset: Swift.Int) throws -> Module___SwiftSoup.TextNode
+  open func splitText(utf8Offset: Swift.Int) throws -> Module___SwiftSoup.TextNode
+  public static func createFromEncoded(_ encodedText: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.TextNode
+  @inlinable public static func normaliseWhitespace(_ text: Swift.String) -> Swift.String {
+        return StringUtil.normaliseWhitespace(text)
+    }
+  @inlinable public static func normaliseWhitespace(_ text: [Swift.UInt8]) -> Swift.String {
+        return StringUtil.normaliseWhitespace(text)
+    }
+  public static func stripLeadingWhitespace(_ text: Swift.String) -> Swift.String
+  @inlinable public static func lastCharIsWhitespace(_ sb: Module___SwiftSoup.StringBuilder) -> Swift.Bool {
+        return sb.buffer.last == 0x20   
+    }
+  override open func attr(_ attributeKey: [Swift.UInt8]) throws -> [Swift.UInt8]
+  override open func attr(_ attributeKey: Swift.String) throws -> Swift.String
+  override open func getAttributes() -> Module___SwiftSoup.Attributes
+  override open func attr(_ attributeKey: [Swift.UInt8], _ attributeValue: [Swift.UInt8]) throws -> Module___SwiftSoup.Node
+  override open func attr(_ attributeKey: Swift.String, _ attributeValue: Swift.String) throws -> Module___SwiftSoup.Node
+  override open func hasAttr(_ attributeKey: Swift.String) -> Swift.Bool
+  override open func removeAttr(_ attributeKey: [Swift.UInt8]) throws -> Module___SwiftSoup.Node
+  override open func removeAttr(_ attributeKey: Swift.String) throws -> Module___SwiftSoup.Node
+  override open func absUrl(_ attributeKey: Swift.String) throws -> Swift.String
+  override open func absUrl<T>(_ attributeKey: T) throws -> [Swift.UInt8] where T : Swift.Collection, T.Element == Swift.UInt8
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class Token {
+  @discardableResult
+  public func reset() -> Module___SwiftSoup.Token
+  @inlinable internal static func reset(_ sb: Module___SwiftSoup.StringBuilder) {
+        sb.clear()
+    }
+  open func toString() throws -> Swift.String
+  public enum TokenType {
+    case Doctype
+    case StartTag
+    case EndTag
+    case Comment
+    case Char
+    case EOF
+    public static func == (a: Module___SwiftSoup.Token.TokenType, b: Module___SwiftSoup.Token.TokenType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+extension Module___SwiftSoup.Token : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+open class TokenQueue {
+  public init(_ data: Swift.String)
+  open func isEmpty() -> Swift.Bool
+  open func peek() -> Swift.Character
+  open func addFirst(_ c: Swift.Character)
+  open func addFirst(_ seq: Swift.String)
+  open func matches(_ seq: Swift.String) -> Swift.Bool
+  open func matchesCS(_ seq: Swift.String) -> Swift.Bool
+  open func matchesAny(_ seq: [Swift.String]) -> Swift.Bool
+  open func matchesAny(_ seq: Swift.String...) -> Swift.Bool
+  open func matchesAny(_ seq: Swift.Character...) -> Swift.Bool
+  open func matchesStartTag() -> Swift.Bool
+  @discardableResult
+  open func matchChomp(_ seq: Swift.String) -> Swift.Bool
+  open func matchesWhitespace() -> Swift.Bool
+  open func matchesWord() -> Swift.Bool
+  open func advance()
+  open func consume() -> Swift.Character
+  open func consume(_ seq: Swift.String) throws
+  @discardableResult
+  open func consumeTo(_ seq: Swift.String) -> Swift.String
+  open func consumeToIgnoreCase(_ seq: Swift.String) -> Swift.String
+  open func consumeToAny(_ seq: Swift.String...) -> Swift.String
+  open func consumeToAny(_ seq: [Swift.String]) -> Swift.String
+  open func chompTo(_ seq: Swift.String) -> Swift.String
+  open func chompToIgnoreCase(_ seq: Swift.String) -> Swift.String
+  open func chompBalanced(_ open: Swift.Character, _ close: Swift.Character) -> Swift.String
+  public static func unescape(_ input: Swift.String) -> Swift.String
+  @discardableResult
+  open func consumeWhitespace() -> Swift.Bool
+  @discardableResult
+  open func consumeWord() -> Swift.String
+  open func consumeTagName() -> Swift.String
+  open func consumeElementSelector() -> Swift.String
+  open func consumeCssIdentifier() -> Swift.String
+  open func consumeAttributeKey() -> Swift.String
+  open func remainder() -> Swift.String
+  open func toString() -> Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class TokeniserStateVars {
+  public static let nullScalr: Swift.UnicodeScalar
+  public static let nullScalrUTF8: [Swift.UInt8]
+  public static let nullScalrUTF8Slice: Swift.ArraySlice<Swift.UInt8>
+  @objc deinit
+}
+public class TreeBuilder {
+  public var reader: Module___SwiftSoup.CharacterReader
+  public var doc: Module___SwiftSoup.Document
+  public var stack: Swift.Array<Module___SwiftSoup.Element>
+  public var baseUri: [Swift.UInt8]
+  public var currentToken: Module___SwiftSoup.Token?
+  public var errors: Module___SwiftSoup.ParseErrorList
+  public var settings: Module___SwiftSoup.ParseSettings
+  public func defaultSettings() -> Module___SwiftSoup.ParseSettings
+  public init()
+  public func initialiseParse(_ input: [Swift.UInt8], _ baseUri: [Swift.UInt8], _ errors: Module___SwiftSoup.ParseErrorList, _ settings: Module___SwiftSoup.ParseSettings)
+  public func runParser() throws
+  @discardableResult
+  public func process(_ token: Module___SwiftSoup.Token) throws -> Swift.Bool
+  @discardableResult
+  public func processStartTag(_ name: [Swift.UInt8]) throws -> Swift.Bool
+  @discardableResult
+  public func processStartTag(_ name: Swift.String) throws -> Swift.Bool
+  @discardableResult
+  public func processStartTag(_ name: [Swift.UInt8], _ attrs: Module___SwiftSoup.Attributes) throws -> Swift.Bool
+  @discardableResult
+  public func processStartTag(_ name: Swift.String, _ attrs: Module___SwiftSoup.Attributes) throws -> Swift.Bool
+  @discardableResult
+  public func processEndTag(_ name: [Swift.UInt8]) throws -> Swift.Bool
+  @discardableResult
+  public func processEndTag(_ name: Swift.String) throws -> Swift.Bool
+  public func currentElement() -> Module___SwiftSoup.Element?
+  @objc deinit
+}
+public enum UTF8Arrays {
+  public static let whitespace: [Swift.UInt8]
+  public static let bang: [Swift.UInt8]
+  public static let equalSign: [Swift.UInt8]
+  public static let ampersand: [Swift.UInt8]
+  public static let hyphen: [Swift.UInt8]
+  public static let underscore: [Swift.UInt8]
+  public static let semicolon: [Swift.UInt8]
+  public static let questionMark: [Swift.UInt8]
+  public static let forwardSlash: [Swift.UInt8]
+  public static let selfClosingTagEnd: [Swift.UInt8]
+  public static let endTagStart: [Swift.UInt8]
+  public static let tagStart: [Swift.UInt8]
+  public static let tagEnd: [Swift.UInt8]
+  public static let attributeEqualsQuoteMark: [Swift.UInt8]
+  public static let quoteMark: [Swift.UInt8]
+  public static let html: [Swift.UInt8]
+  public static let head: [Swift.UInt8]
+  public static let meta: [Swift.UInt8]
+  public static let body: [Swift.UInt8]
+  public static let cite: [Swift.UInt8]
+  public static let a: [Swift.UInt8]
+  public static let p: [Swift.UInt8]
+  public static let li: [Swift.UInt8]
+  public static let span: [Swift.UInt8]
+  public static let img: [Swift.UInt8]
+  public static let action: [Swift.UInt8]
+  public static let prompt: [Swift.UInt8]
+  public static let comment: [Swift.UInt8]
+  public static let hash: [Swift.UInt8]
+  public static let hashRoot: [Swift.UInt8]
+  public static let ruby: [Swift.UInt8]
+  public static let rb: [Swift.UInt8]
+  public static let rp: [Swift.UInt8]
+  public static let rt: [Swift.UInt8]
+  public static let rtc: [Swift.UInt8]
+  public static let page: [Swift.UInt8]
+  public static let class_: [Swift.UInt8]
+  public static let table: [Swift.UInt8]
+  public static let tbody: [Swift.UInt8]
+  public static let th: [Swift.UInt8]
+  public static let tr: [Swift.UInt8]
+  public static let td: [Swift.UInt8]
+  public static let thead: [Swift.UInt8]
+  public static let tfoot: [Swift.UInt8]
+  public static let optgroup: [Swift.UInt8]
+  public static let select: [Swift.UInt8]
+  public static let form: [Swift.UInt8]
+  public static let plaintext: [Swift.UInt8]
+  public static let button: [Swift.UInt8]
+  public static let image: [Swift.UInt8]
+  public static let value: [Swift.UInt8]
+  public static let nobr: [Swift.UInt8]
+  public static let input: [Swift.UInt8]
+  public static let type: [Swift.UInt8]
+  public static let hidden: [Swift.UInt8]
+  public static let caption: [Swift.UInt8]
+  public static let hr: [Swift.UInt8]
+  public static let abbr: [Swift.UInt8]
+  public static let svg: [Swift.UInt8]
+  public static let isindex: [Swift.UInt8]
+  public static let label: [Swift.UInt8]
+  public static let xmp: [Swift.UInt8]
+  public static let textarea: [Swift.UInt8]
+  public static let iframe: [Swift.UInt8]
+  public static let noembed: [Swift.UInt8]
+  public static let option: [Swift.UInt8]
+  public static let math: [Swift.UInt8]
+  public static let data: [Swift.UInt8]
+  public static let strong: [Swift.UInt8]
+  public static let sarcasm: [Swift.UInt8]
+  public static let name: [Swift.UInt8]
+  public static let i: [Swift.UInt8]
+  public static let col: [Swift.UInt8]
+  public static let colgroup: [Swift.UInt8]
+  public static let em: [Swift.UInt8]
+  public static let small: [Swift.UInt8]
+  public static let frame: [Swift.UInt8]
+  public static let sub: [Swift.UInt8]
+  public static let sup: [Swift.UInt8]
+  public static let base: [Swift.UInt8]
+  public static let time: [Swift.UInt8]
+  public static let href: [Swift.UInt8]
+  public static let meter: [Swift.UInt8]
+  public static let noscript: [Swift.UInt8]
+  public static let b: [Swift.UInt8]
+  public static let noframes: [Swift.UInt8]
+  public static let style: [Swift.UInt8]
+  public static let title: [Swift.UInt8]
+  public static let script: [Swift.UInt8]
+  public static let br: [Swift.UInt8]
+  public static let frameset: [Swift.UInt8]
+  public static let blobColon: [Swift.UInt8]
+  public static let true_: [Swift.UInt8]
+}
+public enum UTF8ArraySlices {
+  public static let whitespace: Swift.Array<Swift.UInt8>.SubSequence
+  public static let bang: Swift.Array<Swift.UInt8>.SubSequence
+  public static let equalSign: Swift.Array<Swift.UInt8>.SubSequence
+  public static let ampersand: Swift.Array<Swift.UInt8>.SubSequence
+  public static let hyphen: Swift.Array<Swift.UInt8>.SubSequence
+  public static let underscore: Swift.Array<Swift.UInt8>.SubSequence
+  public static let semicolon: Swift.Array<Swift.UInt8>.SubSequence
+  public static let questionMark: Swift.Array<Swift.UInt8>.SubSequence
+  public static let forwardSlash: Swift.Array<Swift.UInt8>.SubSequence
+  public static let selfClosingTagEnd: Swift.Array<Swift.UInt8>.SubSequence
+  public static let endTagStart: Swift.Array<Swift.UInt8>.SubSequence
+  public static let tagStart: Swift.Array<Swift.UInt8>.SubSequence
+  public static let tagEnd: Swift.Array<Swift.UInt8>.SubSequence
+  public static let attributeEqualsQuoteMark: Swift.Array<Swift.UInt8>.SubSequence
+  public static let quoteMark: Swift.Array<Swift.UInt8>.SubSequence
+  public static let html: Swift.Array<Swift.UInt8>.SubSequence
+  public static let head: Swift.Array<Swift.UInt8>.SubSequence
+  public static let meta: Swift.Array<Swift.UInt8>.SubSequence
+  public static let body: Swift.Array<Swift.UInt8>.SubSequence
+  public static let cite: Swift.Array<Swift.UInt8>.SubSequence
+  public static let abbr: Swift.Array<Swift.UInt8>.SubSequence
+  public static let data: Swift.Array<Swift.UInt8>.SubSequence
+  public static let strong: Swift.Array<Swift.UInt8>.SubSequence
+  public static let sub: Swift.Array<Swift.UInt8>.SubSequence
+  public static let sup: Swift.Array<Swift.UInt8>.SubSequence
+  public static let b: Swift.Array<Swift.UInt8>.SubSequence
+  public static let i: Swift.Array<Swift.UInt8>.SubSequence
+  public static let meter: Swift.Array<Swift.UInt8>.SubSequence
+  public static let a: Swift.Array<Swift.UInt8>.SubSequence
+  public static let p: Swift.Array<Swift.UInt8>.SubSequence
+  public static let li: Swift.Array<Swift.UInt8>.SubSequence
+  public static let em: Swift.Array<Swift.UInt8>.SubSequence
+  public static let time: Swift.Array<Swift.UInt8>.SubSequence
+  public static let small: Swift.Array<Swift.UInt8>.SubSequence
+  public static let span: Swift.Array<Swift.UInt8>.SubSequence
+  public static let img: Swift.Array<Swift.UInt8>.SubSequence
+  public static let action: Swift.Array<Swift.UInt8>.SubSequence
+  public static let prompt: Swift.Array<Swift.UInt8>.SubSequence
+  public static let comment: Swift.Array<Swift.UInt8>.SubSequence
+  public static let hash: Swift.Array<Swift.UInt8>.SubSequence
+  public static let hashRoot: Swift.Array<Swift.UInt8>.SubSequence
+  public static let ruby: Swift.Array<Swift.UInt8>.SubSequence
+  public static let rb: Swift.Array<Swift.UInt8>.SubSequence
+  public static let rp: Swift.Array<Swift.UInt8>.SubSequence
+  public static let rt: Swift.Array<Swift.UInt8>.SubSequence
+  public static let rtc: Swift.Array<Swift.UInt8>.SubSequence
+  public static let page: Swift.Array<Swift.UInt8>.SubSequence
+  public static let class_: Swift.Array<Swift.UInt8>.SubSequence
+  public static let table: Swift.Array<Swift.UInt8>.SubSequence
+  public static let tbody: Swift.Array<Swift.UInt8>.SubSequence
+  public static let th: Swift.Array<Swift.UInt8>.SubSequence
+  public static let tr: Swift.Array<Swift.UInt8>.SubSequence
+  public static let td: Swift.Array<Swift.UInt8>.SubSequence
+  public static let thead: Swift.Array<Swift.UInt8>.SubSequence
+  public static let tfoot: Swift.Array<Swift.UInt8>.SubSequence
+  public static let optgroup: Swift.Array<Swift.UInt8>.SubSequence
+  public static let select: Swift.Array<Swift.UInt8>.SubSequence
+  public static let form: Swift.Array<Swift.UInt8>.SubSequence
+  public static let plaintext: Swift.Array<Swift.UInt8>.SubSequence
+  public static let button: Swift.Array<Swift.UInt8>.SubSequence
+  public static let image: Swift.Array<Swift.UInt8>.SubSequence
+  public static let value: Swift.Array<Swift.UInt8>.SubSequence
+  public static let nobr: Swift.Array<Swift.UInt8>.SubSequence
+  public static let input: Swift.Array<Swift.UInt8>.SubSequence
+  public static let type: Swift.Array<Swift.UInt8>.SubSequence
+  public static let hidden: Swift.Array<Swift.UInt8>.SubSequence
+  public static let caption: Swift.Array<Swift.UInt8>.SubSequence
+  public static let hr: Swift.Array<Swift.UInt8>.SubSequence
+  public static let svg: Swift.Array<Swift.UInt8>.SubSequence
+  public static let isindex: Swift.Array<Swift.UInt8>.SubSequence
+  public static let label: Swift.Array<Swift.UInt8>.SubSequence
+  public static let xmp: Swift.Array<Swift.UInt8>.SubSequence
+  public static let textarea: Swift.Array<Swift.UInt8>.SubSequence
+  public static let iframe: Swift.Array<Swift.UInt8>.SubSequence
+  public static let noembed: Swift.Array<Swift.UInt8>.SubSequence
+  public static let option: Swift.Array<Swift.UInt8>.SubSequence
+  public static let math: Swift.Array<Swift.UInt8>.SubSequence
+  public static let sarcasm: Swift.Array<Swift.UInt8>.SubSequence
+  public static let name: Swift.Array<Swift.UInt8>.SubSequence
+  public static let col: Swift.Array<Swift.UInt8>.SubSequence
+  public static let colgroup: Swift.Array<Swift.UInt8>.SubSequence
+  public static let frame: Swift.Array<Swift.UInt8>.SubSequence
+  public static let base: Swift.Array<Swift.UInt8>.SubSequence
+  public static let href: Swift.Array<Swift.UInt8>.SubSequence
+  public static let noscript: Swift.Array<Swift.UInt8>.SubSequence
+  public static let noframes: Swift.Array<Swift.UInt8>.SubSequence
+  public static let style: Swift.Array<Swift.UInt8>.SubSequence
+  public static let title: Swift.Array<Swift.UInt8>.SubSequence
+  public static let script: Swift.Array<Swift.UInt8>.SubSequence
+  public static let br: Swift.Array<Swift.UInt8>.SubSequence
+  public static let frameset: Swift.Array<Swift.UInt8>.SubSequence
+  public static let blobColon: Swift.Array<Swift.UInt8>.SubSequence
+  public static let true_: Swift.Array<Swift.UInt8>.SubSequence
+}
+extension Swift.Unicode.Scalar {
+  public static let Ampersand: Swift.UnicodeScalar
+  public static let LessThan: Swift.UnicodeScalar
+  public static let GreaterThan: Swift.UnicodeScalar
+  public static let Space: Swift.UnicodeScalar
+  public static let BackslashF: Swift.UnicodeScalar
+  public static let BackslashT: Swift.UnicodeScalar
+  public static let BackslashN: Swift.UnicodeScalar
+  public static let BackslashR: Swift.UnicodeScalar
+  public static let Slash: Swift.UnicodeScalar
+  public static let FormFeed: Swift.UnicodeScalar
+  public static let VerticalTab: Swift.UnicodeScalar
+}
+public struct Validate {
+  public static func notNull(obj: Any?) throws
+  public static func notNull(obj: Swift.AnyObject?, msg: Swift.String) throws
+  public static func isTrue(val: Swift.Bool) throws
+  public static func isTrue(val: Swift.Bool, msg: Swift.String) throws
+  public static func isFalse(val: Swift.Bool) throws
+  public static func isFalse(val: Swift.Bool, msg: Swift.String) throws
+  public static func noNullElements(objects: [Swift.AnyObject?]) throws
+  public static func noNullElements(objects: [Swift.AnyObject?], msg: Swift.String) throws
+  public static func notEmpty<T>(string: T?) throws where T : Swift.Collection, T.Element == Swift.UInt8
+  public static func notEmpty(string: Swift.String?) throws
+  public static func notEmpty(string: [Swift.UInt8]?, msg: Swift.String) throws
+  public static func notEmpty(string: Swift.String?, msg: Swift.String) throws
+  public static func fail(msg: Swift.String) throws
+  public static func exception(msg: Swift.String) throws
+}
+@_hasMissingDesignatedInitializers public class Whitelist {
+  public static func none() -> Module___SwiftSoup.Whitelist
+  public static func simpleText() throws -> Module___SwiftSoup.Whitelist
+  public static func basic() throws -> Module___SwiftSoup.Whitelist
+  public static func basicWithImages() throws -> Module___SwiftSoup.Whitelist
+  public static func relaxed() throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func addTags(_ tags: Swift.String...) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func removeTags(_ tags: Swift.String...) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func addAttributes(_ tag: Swift.String, _ keys: Swift.String...) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func removeAttributes(_ tag: Swift.String, _ keys: Swift.String...) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func addEnforcedAttribute(_ tag: Swift.String, _ key: Swift.String, _ value: Swift.String) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func removeEnforcedAttribute(_ tag: Swift.String, _ key: Swift.String) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func preserveRelativeLinks(_ preserve: Swift.Bool) -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func addProtocols(_ tag: Swift.String, _ key: Swift.String, _ protocols: Swift.String...) throws -> Module___SwiftSoup.Whitelist
+  @discardableResult
+  open func removeProtocols(_ tag: Swift.String, _ key: Swift.String, _ protocols: Swift.String...) throws -> Module___SwiftSoup.Whitelist
+  public func isSafeTag(_ tag: [Swift.UInt8]) -> Swift.Bool
+  public func isSafeAttribute(_ tagName: Swift.String, _ el: Module___SwiftSoup.Element, _ attr: Module___SwiftSoup.Attribute) throws -> Swift.Bool
+  public func getEnforcedAttributes(_ tagName: Swift.String) throws -> Module___SwiftSoup.Attributes
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class TagName : Module___SwiftSoup.TypedValue {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class AttributeKey : Module___SwiftSoup.TypedValue {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class AttributeValue : Module___SwiftSoup.TypedValue {
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class Protocol : Module___SwiftSoup.TypedValue {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class TypedValue {
+  public func toString() -> Swift.String
+  @objc deinit
+}
+extension Module___SwiftSoup.TypedValue : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  open var hashValue: Swift.Int {
+    get
+  }
+}
+public func == (lhs: Module___SwiftSoup.TypedValue, rhs: Module___SwiftSoup.TypedValue) -> Swift.Bool
+public class XmlDeclaration : Module___SwiftSoup.Node {
+  public init(_ name: [Swift.UInt8], _ baseUri: [Swift.UInt8], _ isProcessingInstruction: Swift.Bool)
+  convenience public init(_ name: Swift.String, _ baseUri: Swift.String, _ isProcessingInstruction: Swift.Bool)
+  override public func nodeNameUTF8() -> [Swift.UInt8]
+  override public func nodeName() -> Swift.String
+  public func name() -> Swift.String
+  public func getWholeDeclaration() throws -> Swift.String
+  override public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  override public func copy(parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  override public func copy(clone: Module___SwiftSoup.Node, parent: Module___SwiftSoup.Node?) -> Module___SwiftSoup.Node
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class XmlTreeBuilder : Module___SwiftSoup.TreeBuilder {
+  override public init()
+  override public func defaultSettings() -> Module___SwiftSoup.ParseSettings
+  public func parse(_ input: [Swift.UInt8], _ baseUri: [Swift.UInt8]) throws -> Module___SwiftSoup.Document
+  public func parse(_ input: Swift.String, _ baseUri: Swift.String) throws -> Module___SwiftSoup.Document
+  override public func initialiseParse(_ input: [Swift.UInt8], _ baseUri: [Swift.UInt8], _ errors: Module___SwiftSoup.ParseErrorList, _ settings: Module___SwiftSoup.ParseSettings)
+  override public func process(_ token: Module___SwiftSoup.Token) throws -> Swift.Bool
+  @objc deinit
+}
+extension Module___SwiftSoup.Document.QuirksMode : Swift.Equatable {}
+extension Module___SwiftSoup.Document.QuirksMode : Swift.Hashable {}
+extension Module___SwiftSoup.OutputSettings.Syntax : Swift.Equatable {}
+extension Module___SwiftSoup.OutputSettings.Syntax : Swift.Hashable {}
+extension Module___SwiftSoup.ExceptionType : Swift.Equatable {}
+extension Module___SwiftSoup.ExceptionType : Swift.Hashable {}
+extension Module___SwiftSoup.Token.TokenType : Swift.Equatable {}
+extension Module___SwiftSoup.Token.TokenType : Swift.Hashable {}

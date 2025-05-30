@@ -1,0 +1,34 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name FirebaseRemoteConfigInterop -package-name firebase_ios_sdk -module-alias Module___FirebaseRemoteConfigInterop=FirebaseRemoteConfigInterop -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Foundation
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+@_inheritsConvenienceInitializers @objc(FIRRemoteConfigConstants) final public class RemoteConfigConstants : ObjectiveC.NSObject {
+  @objc(FIRNamespaceGoogleMobilePlatform) public static let NamespaceGoogleMobilePlatform: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(FIRRemoteConfigInterop) public protocol RemoteConfigInterop {
+  @objc func registerRolloutsStateSubscriber(_ subscriber: any Module___FirebaseRemoteConfigInterop.RolloutsStateSubscriber, for namespace: Swift.String)
+}
+@objc(FIRRolloutAssignment) public class RolloutAssignment : ObjectiveC.NSObject {
+  @objc public var rolloutId: Swift.String
+  @objc public var variantId: Swift.String
+  @objc public var templateVersion: Swift.Int64
+  @objc public var parameterKey: Swift.String
+  @objc public var parameterValue: Swift.String
+  @objc public init(rolloutId: Swift.String, variantId: Swift.String, templateVersion: Swift.Int64, parameterKey: Swift.String, parameterValue: Swift.String)
+  @objc deinit
+}
+@objc(FIRRolloutsState) public class RolloutsState : ObjectiveC.NSObject {
+  @objc public var assignments: Swift.Set<Module___FirebaseRemoteConfigInterop.RolloutAssignment>
+  @objc public init(assignmentList: [Module___FirebaseRemoteConfigInterop.RolloutAssignment])
+  @objc deinit
+}
+@objc(FIRRolloutsStateSubscriber) public protocol RolloutsStateSubscriber {
+  @objc func rolloutsStateDidChange(_ rolloutsState: Module___FirebaseRemoteConfigInterop.RolloutsState)
+}

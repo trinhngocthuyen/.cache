@@ -1,0 +1,30 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name FirebaseCrashlyticsSwift -package-name firebase_ios_sdk -module-alias Module___FirebaseCrashlyticsSwift=FirebaseCrashlyticsSwift -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___FirebaseRemoteConfigInterop=FirebaseRemoteConfigInterop
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___FirebaseRemoteConfigInterop
+import Foundation
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+@objc(FIRCLSPersistenceLog) public protocol CrashlyticsPersistenceLog {
+  @objc func updateRolloutsStateToPersistence(rollouts: Foundation.Data, reportID: Swift.String)
+  @objc func debugLog(message: Swift.String)
+}
+@objc(FIRCLSRemoteConfigManager) public class CrashlyticsRemoteConfigManager : ObjectiveC.NSObject {
+  public static let maxRolloutAssignments: Swift.Int
+  public static let maxParameterValueLength: Swift.Int
+  @objc public var rolloutAssignment: [Module___FirebaseRemoteConfigInterop.RolloutAssignment] {
+    @objc get
+  }
+  @objc public init(remoteConfig: any Module___FirebaseRemoteConfigInterop.RemoteConfigInterop, persistenceDelegate: any Module___FirebaseCrashlyticsSwift.CrashlyticsPersistenceLog)
+  @objc public func updateRolloutsState(rolloutsState: Module___FirebaseRemoteConfigInterop.RolloutsState, reportID: Swift.String)
+  @objc public func getRolloutAssignmentsEncodedJsonString() -> Swift.String?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(FIRCLSwiftFileUtility) public class FileUtility : ObjectiveC.NSObject {
+  @objc public static func stringToHexConverter(for string: Swift.String) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}

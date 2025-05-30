@@ -1,9 +1,1625 @@
 {
   "ABIRoot": {
     "kind": "Root",
-    "name": "NO_MODULE",
-    "printedName": "NO_MODULE",
+    "name": "ReactiveExtensions_TestHelpers",
+    "printedName": "ReactiveExtensions_TestHelpers",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "ReactiveSwift",
+        "printedName": "ReactiveSwift",
+        "declKind": "Import",
+        "moduleName": "ReactiveExtensions_TestHelpers"
+      },
+      {
+        "kind": "Import",
+        "name": "XCTest",
+        "printedName": "XCTest",
+        "declKind": "Import",
+        "moduleName": "ReactiveExtensions_TestHelpers"
+      },
+      {
+        "kind": "Import",
+        "name": "ReactiveSwift",
+        "printedName": "ReactiveSwift",
+        "declKind": "Import",
+        "moduleName": "ReactiveExtensions_TestHelpers"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TestObserver",
+        "printedName": "TestObserver",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "events",
+            "printedName": "events",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[ReactiveSwift.Signal<τ_0_0, τ_0_1>.Event]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Event",
+                    "printedName": "ReactiveSwift.Signal<τ_0_0, τ_0_1>.Event",
+                    "usr": "s:13ReactiveSwift6SignalC5EventO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC6eventsSay0A5Swift6SignalC5EventOyxq__GGvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC6eventsSay0A5Swift6SignalC5EventOyxq__GGvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[ReactiveSwift.Signal<τ_0_0, τ_0_1>.Event]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Event",
+                        "printedName": "ReactiveSwift.Signal<τ_0_0, τ_0_1>.Event",
+                        "usr": "s:13ReactiveSwift6SignalC5EventO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC6eventsSay0A5Swift6SignalC5EventOyxq__GGvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC6eventsSay0A5Swift6SignalC5EventOyxq__GGvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "observer",
+            "printedName": "observer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImplicitlyUnwrappedOptional",
+                "printedName": "ReactiveSwift.Signal<τ_0_0, τ_0_1>.Observer?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Observer",
+                    "printedName": "ReactiveSwift.Signal<τ_0_0, τ_0_1>.Observer",
+                    "usr": "s:13ReactiveSwift6SignalC8ObserverC"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC8observer0A5Swift6SignalC0E0Cyxq__GSgvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC8observer0A5Swift6SignalC0E0Cyxq__GSgvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "ReactiveSwift.Signal<τ_0_0, τ_0_1>.Observer?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Observer",
+                        "printedName": "ReactiveSwift.Signal<τ_0_0, τ_0_1>.Observer",
+                        "usr": "s:13ReactiveSwift6SignalC8ObserverC"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC8observer0A5Swift6SignalC0E0Cyxq__GSgvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC8observer0A5Swift6SignalC0E0Cyxq__GSgvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TestObserver",
+                "printedName": "ReactiveExtensions_TestHelpers.TestObserver<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverCACyxq_Gycfc",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverCACyxq_Gycfc",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "values",
+            "printedName": "values",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[τ_0_0]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC6valuesSayxGvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC6valuesSayxGvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[τ_0_0]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC6valuesSayxGvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC6valuesSayxGvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "lastValue",
+            "printedName": "lastValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "τ_0_0?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC9lastValuexSgvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC9lastValuexSgvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "τ_0_0?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC9lastValuexSgvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC9lastValuexSgvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "didEmitValue",
+            "printedName": "didEmitValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC12didEmitValueSbvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC12didEmitValueSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC12didEmitValueSbvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC12didEmitValueSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "failedError",
+            "printedName": "failedError",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "τ_0_1?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC11failedErrorq_Sgvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC11failedErrorq_Sgvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "τ_0_1?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_1"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC11failedErrorq_Sgvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC11failedErrorq_Sgvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "didFail",
+            "printedName": "didFail",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC7didFailSbvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC7didFailSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC7didFailSbvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC7didFailSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "didComplete",
+            "printedName": "didComplete",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC11didCompleteSbvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC11didCompleteSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC11didCompleteSbvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC11didCompleteSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "didInterrupt",
+            "printedName": "didInterrupt",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC12didInterruptSbvp",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC12didInterruptSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC12didInterruptSbvg",
+                "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC12didInterruptSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidComplete",
+            "printedName": "assertDidComplete(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC17assertDidComplete_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC17assertDidComplete_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidFail",
+            "printedName": "assertDidFail(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC13assertDidFail_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC13assertDidFail_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidNotFail",
+            "printedName": "assertDidNotFail(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC16assertDidNotFail_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC16assertDidNotFail_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidInterrupt",
+            "printedName": "assertDidInterrupt(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC18assertDidInterrupt_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC18assertDidInterrupt_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidNotInterrupt",
+            "printedName": "assertDidNotInterrupt(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC21assertDidNotInterrupt_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC21assertDidNotInterrupt_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidNotComplete",
+            "printedName": "assertDidNotComplete(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC20assertDidNotComplete_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC20assertDidNotComplete_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidEmitValue",
+            "printedName": "assertDidEmitValue(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC18assertDidEmitValue_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC18assertDidEmitValue_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidNotEmitValue",
+            "printedName": "assertDidNotEmitValue(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC21assertDidNotEmitValue_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC21assertDidNotEmitValue_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidTerminate",
+            "printedName": "assertDidTerminate(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC18assertDidTerminate_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC18assertDidTerminate_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertDidNotTerminate",
+            "printedName": "assertDidNotTerminate(_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC21assertDidNotTerminate_4file4lineySS_s12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC21assertDidNotTerminate_4file4lineySS_s12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertValueCount",
+            "printedName": "assertValueCount(_:_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC16assertValueCount__4file4lineySi_SSSgs12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC16assertValueCount__4file4lineySi_SSSgs12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertValue",
+            "printedName": "assertValue(_:_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverCAASQRzrlE11assertValue__4file4lineyx_SSSgs12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverCAASQRzrlE11assertValue__4file4lineyx_SSSgs12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Equatable, τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Value : Swift.Equatable, Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertLastValue",
+            "printedName": "assertLastValue(_:_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverCAASQRzrlE15assertLastValue__4file4lineyx_SSSgs12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverCAASQRzrlE15assertLastValue__4file4lineyx_SSSgs12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Equatable, τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Value : Swift.Equatable, Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertValues",
+            "printedName": "assertValues(_:_:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[τ_0_0]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverCAASQRzrlE12assertValues__4file4lineySayxG_SSs12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverCAASQRzrlE12assertValues__4file4lineySayxG_SSs12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Equatable, τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Value : Swift.Equatable, Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assertFailed",
+            "printedName": "assertFailed(_:message:file:line:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_1"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "StaticString",
+                "printedName": "Swift.StaticString",
+                "hasDefaultArg": true,
+                "usr": "s:s12StaticStringV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt",
+                "printedName": "Swift.UInt",
+                "hasDefaultArg": true,
+                "usr": "s:Su"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverCAASQR_rlE12assertFailed_7message4file4lineyq__SSs12StaticStringVSutF",
+            "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverCAASQR_rlE12assertFailed_7message4file4lineyq__SSs12StaticStringVSutF",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Equatable, τ_0_1 : Swift.Error>",
+            "sugared_genericSig": "<Value, Error where Error : Swift.Equatable, Error : Swift.Error>",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:30ReactiveExtensions_TestHelpers0C8ObserverC",
+        "mangledName": "$s30ReactiveExtensions_TestHelpers0C8ObserverC",
+        "moduleName": "ReactiveExtensions_TestHelpers",
+        "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+        "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Event",
+        "printedName": "Event",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "isValue",
+            "printedName": "isValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE7isValueSbvp",
+            "mangledName": "$s13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE7isValueSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE7isValueSbvg",
+                "mangledName": "$s13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE7isValueSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isFailed",
+            "printedName": "isFailed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE8isFailedSbvp",
+            "mangledName": "$s13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE8isFailedSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE8isFailedSbvg",
+                "mangledName": "$s13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE8isFailedSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isInterrupted",
+            "printedName": "isInterrupted",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE13isInterruptedSbvp",
+            "mangledName": "$s13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE13isInterruptedSbvp",
+            "moduleName": "ReactiveExtensions_TestHelpers",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE13isInterruptedSbvg",
+                "mangledName": "$s13ReactiveSwift6SignalC5EventO0A22Extensions_TestHelpersE13isInterruptedSbvg",
+                "moduleName": "ReactiveExtensions_TestHelpers",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+                "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:13ReactiveSwift6SignalC5EventO",
+        "mangledName": "$s13ReactiveSwift6SignalC5EventO",
+        "moduleName": "ReactiveSwift",
+        "genericSig": "<τ_0_0, τ_0_1 where τ_0_1 : Swift.Error>",
+        "sugared_genericSig": "<Value, Error where Error : Swift.Error>",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isFromExtension": true,
+        "isExternal": true,
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "EventProtocol",
+            "printedName": "EventProtocol",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Value",
+                "printedName": "Value",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Error",
+                "printedName": "Error",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:13ReactiveSwift13EventProtocolP",
+            "mangledName": "$s13ReactiveSwift13EventProtocolP"
+          }
+        ]
+      }
+    ],
     "json_format_version": 8
   },
-  "ConstValues": []
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "Array",
+      "offset": 645,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 1933,
+      "length": 24,
+      "value": "\"Should have completed.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 2163,
+      "length": 21,
+      "value": "\"Should have failed.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 2385,
+      "length": 25,
+      "value": "\"Should not have failed.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 2617,
+      "length": 21,
+      "value": "\"Should have failed.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 2854,
+      "length": 25,
+      "value": "\"Should not have failed.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 3098,
+      "length": 27,
+      "value": "\"Should not have completed\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 3340,
+      "length": 41,
+      "value": "\"Should have emitted at least one value.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 3597,
+      "length": 37,
+      "value": "\"Should not have emitted any values.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 3859,
+      "length": 60,
+      "value": "\"Should have terminated, i.e. completed\/failed\/interrupted.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 4147,
+      "length": 64,
+      "value": "\"Should not have terminated, i.e. completed\/failed\/interrupted.\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 5458,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/thuyen\/projects\/kickstarter\/xccache\/packages\/umbrella\/.build\/checkouts\/Kickstarter-ReactiveExtensions\/Sources\/ReactiveExtensions-TestHelpers\/TestObserver.swift",
+      "kind": "StringLiteral",
+      "offset": 5736,
+      "length": 2,
+      "value": "\"\""
+    }
+  ]
 }

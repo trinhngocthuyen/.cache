@@ -1,0 +1,70 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name ApolloAPI -module-alias Module___ApolloAPI=ApolloAPI -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Foundation
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+indirect public enum InputValue {
+  case scalar(any Module___ApolloAPI.ScalarType)
+  case variable(Swift.String)
+  case list([Module___ApolloAPI.InputValue])
+  case object([Swift.String : Module___ApolloAPI.InputValue])
+  case none
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByNilLiteral {
+  @inlinable public init(nilLiteral: ()) {
+    self = .none
+  }
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByStringLiteral {
+  @inlinable public init(stringLiteral value: Swift.StringLiteralType) {
+    self = .scalar(value)
+  }
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByIntegerLiteral {
+  @inlinable public init(integerLiteral value: Swift.IntegerLiteralType) {
+    self = .scalar(value)
+  }
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByFloatLiteral {
+  @inlinable public init(floatLiteral value: Swift.FloatLiteralType) {
+    self = .scalar(value)
+  }
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByBooleanLiteral {
+  @inlinable public init(booleanLiteral value: Swift.BooleanLiteralType) {
+    self = .scalar(value)
+  }
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByArrayLiteral {
+  @inlinable public init(arrayLiteral elements: Module___ApolloAPI.InputValue...) {
+    self = .list(Array(elements))
+  }
+  public typealias ArrayLiteralElement = Module___ApolloAPI.InputValue
+}
+extension Module___ApolloAPI.InputValue : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Module___ApolloAPI.InputValue)...)
+  public typealias Key = Swift.String
+  public typealias Value = Module___ApolloAPI.InputValue
+}
+public protocol ScalarType {
+}
+extension Swift.String : Module___ApolloAPI.ScalarType {
+}
+extension Swift.Int : Module___ApolloAPI.ScalarType {
+}
+extension Swift.Float : Module___ApolloAPI.ScalarType {
+}
+extension Swift.Double : Module___ApolloAPI.ScalarType {
+}
+extension Swift.Bool : Module___ApolloAPI.ScalarType {
+}

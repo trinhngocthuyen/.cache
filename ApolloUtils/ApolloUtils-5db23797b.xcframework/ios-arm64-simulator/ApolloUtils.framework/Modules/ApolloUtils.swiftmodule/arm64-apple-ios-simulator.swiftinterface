@@ -1,0 +1,106 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name ApolloUtils -module-alias Module___ApolloUtils=ApolloUtils -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___CommonCrypto=CommonCrypto
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___CommonCrypto
+import Foundation
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+public struct ApolloExtension<Base> {
+  public let base: Base
+}
+public protocol ApolloCompatible {
+  associatedtype Base
+  var apollo: Module___ApolloUtils.ApolloExtension<Self.Base> { get }
+  static var apollo: Module___ApolloUtils.ApolloExtension<Self.Base>.Type { get }
+}
+extension Module___ApolloUtils.ApolloCompatible {
+  public var apollo: Module___ApolloUtils.ApolloExtension<Self> {
+    get
+  }
+  public static var apollo: Module___ApolloUtils.ApolloExtension<Self>.Type {
+    get
+  }
+}
+public protocol OptionalType : Swift.ExpressibleByNilLiteral {
+  associatedtype WrappedType
+  var underlying: Self.WrappedType? { get }
+}
+extension Swift.Optional : Module___ApolloUtils.OptionalType {
+  public var underlying: Wrapped? {
+    get
+  }
+  public typealias WrappedType = Wrapped
+}
+public protocol ResultType {
+  associatedtype SuccessType
+  associatedtype FailureType : Swift.Error
+  var underlying: Swift.Result<Self.SuccessType, Self.FailureType> { get }
+}
+extension Swift.Result : Module___ApolloUtils.ResultType {
+  public var underlying: Swift.Result<Success, Failure> {
+    get
+  }
+  public typealias FailureType = Failure
+  public typealias SuccessType = Success
+}
+public protocol DictionaryType : Swift.ExpressibleByDictionaryLiteral {
+  associatedtype KeyType : Swift.Hashable
+  associatedtype ValueType
+  var underlying: [Self.KeyType : Self.ValueType] { get }
+}
+extension Swift.Dictionary : Module___ApolloUtils.DictionaryType {
+  public var underlying: [Key : Value] {
+    get
+  }
+  public typealias KeyType = Key
+  public typealias ValueType = Value
+}
+public class Atomic<T> {
+  public init(_ value: T)
+  public var value: T {
+    get
+  }
+  public func mutate<U>(block: (inout T) -> U) -> U
+  @objc deinit
+}
+extension Module___ApolloUtils.Atomic where T == Swift.Int {
+  public func increment() -> T
+}
+extension Module___ApolloUtils.ApolloExtension where Base : Swift.Collection {
+  public var isNotEmpty: Swift.Bool {
+    get
+  }
+}
+extension Swift.Array : Module___ApolloUtils.ApolloCompatible {
+  public typealias Base = Swift.Array<Element>
+}
+extension Swift.Dictionary : Module___ApolloUtils.ApolloCompatible {
+  public typealias Base = Swift.Dictionary<Key, Value>
+}
+extension Module___ApolloUtils.ApolloExtension where Base : Module___ApolloUtils.OptionalType, Base.WrappedType : Swift.Collection {
+  public var isEmptyOrNil: Swift.Bool {
+    get
+  }
+  public var isNotEmpty: Swift.Bool {
+    get
+  }
+}
+extension Swift.Optional : Module___ApolloUtils.ApolloCompatible {
+  public typealias Base = Swift.Optional<Wrapped>
+}
+extension Module___ApolloUtils.ApolloExtension where Base == Swift.Bool? {
+  public var boolValue: Swift.Bool {
+    get
+  }
+}
+extension Swift.String : Module___ApolloUtils.ApolloCompatible {
+  public typealias Base = Swift.String
+}
+extension Module___ApolloUtils.ApolloExtension where Base == Swift.String {
+  public var sha256Hash: Swift.String {
+    get
+  }
+}

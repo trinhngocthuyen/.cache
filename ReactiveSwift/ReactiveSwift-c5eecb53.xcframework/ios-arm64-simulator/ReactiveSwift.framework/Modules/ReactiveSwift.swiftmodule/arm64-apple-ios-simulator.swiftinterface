@@ -1,0 +1,1260 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name ReactiveSwift -module-alias Module___ReactiveSwift=ReactiveSwift -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___Dispatch=Dispatch -module-alias Module___os=os -module-alias Module___MachO=MachO -module-alias Module___pthread=pthread -module-alias Module___Darwin=Darwin
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___Darwin
+import Module___Dispatch
+import Foundation
+import Module___MachO
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+import Module___os
+import Module___Darwin.POSIX.pthread
+final public class Action<Input, Output, Error> where Error : Swift.Error {
+  final public let lifetime: Module___ReactiveSwift.Lifetime
+  final public let events: Module___ReactiveSwift.Signal<Module___ReactiveSwift.Signal<Output, Error>.Event, Swift.Never>
+  final public let values: Module___ReactiveSwift.Signal<Output, Swift.Never>
+  final public let errors: Module___ReactiveSwift.Signal<Error, Swift.Never>
+  final public let disabledErrors: Module___ReactiveSwift.Signal<(), Swift.Never>
+  final public let completed: Module___ReactiveSwift.Signal<(), Swift.Never>
+  final public let isExecuting: Module___ReactiveSwift.Property<Swift.Bool>
+  final public let isEnabled: Module___ReactiveSwift.Property<Swift.Bool>
+  public init<State>(state: State, enabledIf isEnabled: @escaping (State.Value) -> Swift.Bool, execute: @escaping (State.Value, Input) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where State : Module___ReactiveSwift.PropertyProtocol
+  convenience public init<P>(state: P, execute: @escaping (P.Value, Input) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where P : Module___ReactiveSwift.PropertyProtocol
+  convenience public init<P>(enabledIf isEnabled: P, execute: @escaping (Input) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+  convenience public init<P, T>(unwrapping state: P, execute: @escaping (T, Input) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where P : Module___ReactiveSwift.PropertyProtocol, P.Value == T?
+  convenience public init<T, E>(validated state: Module___ReactiveSwift.ValidatingProperty<T, E>, execute: @escaping (T, Input) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where E : Swift.Error
+  convenience public init(execute: @escaping (Input) -> Module___ReactiveSwift.SignalProducer<Output, Error>)
+  @objc deinit
+  final public func apply(_ input: Input) -> Module___ReactiveSwift.SignalProducer<Output, Module___ReactiveSwift.ActionError<Error>>
+}
+extension Module___ReactiveSwift.Action : Module___ReactiveSwift.BindingTargetProvider {
+  final public var bindingTarget: Module___ReactiveSwift.BindingTarget<Input> {
+    get
+  }
+  public typealias Value = Input
+}
+extension Module___ReactiveSwift.Action where Input == () {
+  final public func apply() -> Module___ReactiveSwift.SignalProducer<Output, Module___ReactiveSwift.ActionError<Error>>
+  convenience public init<P, T>(unwrapping state: P, execute: @escaping (T) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where P : Module___ReactiveSwift.PropertyProtocol, P.Value == T?
+  convenience public init<T, E>(validated state: Module___ReactiveSwift.ValidatingProperty<T, E>, execute: @escaping (T) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where E : Swift.Error
+  convenience public init<P, T>(state: P, execute: @escaping (T) -> Module___ReactiveSwift.SignalProducer<Output, Error>) where P : Module___ReactiveSwift.PropertyProtocol, T == P.Value
+}
+public enum ActionError<Error> : Swift.Error where Error : Swift.Error {
+  case disabled
+  case producerFailed(Error)
+}
+extension Module___ReactiveSwift.ActionError where Error : Swift.Equatable {
+  public static func == (lhs: Module___ReactiveSwift.ActionError<Error>, rhs: Module___ReactiveSwift.ActionError<Error>) -> Swift.Bool
+}
+extension Module___ReactiveSwift.ActionError : Swift.Equatable where Error : Swift.Equatable {
+}
+final public class Atomic<Value> {
+  final public var value: Value {
+    get
+    set(newValue)
+  }
+  public init(_ value: Value)
+  @discardableResult
+  final public func modify<Result>(_ action: (inout Value) throws -> Result) rethrows -> Result
+  @discardableResult
+  final public func withValue<Result>(_ action: (Value) throws -> Result) rethrows -> Result
+  @discardableResult
+  final public func swap(_ newValue: Value) -> Value
+  @objc deinit
+}
+public struct Bag<Element> {
+  public struct Token {
+  }
+  public init()
+  public init<S>(_ elements: S) where Element == S.Element, S : Swift.Sequence
+  @discardableResult
+  public mutating func insert(_ value: Element) -> Module___ReactiveSwift.Bag<Element>.Token
+  @discardableResult
+  public mutating func remove(using token: Module___ReactiveSwift.Bag<Element>.Token) -> Element?
+}
+extension Module___ReactiveSwift.Bag : Swift.RandomAccessCollection {
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public subscript(index: Swift.Int) -> Element {
+    get
+  }
+  public func makeIterator() -> Module___ReactiveSwift.Bag<Element>.Iterator
+  public struct Iterator : Swift.IteratorProtocol {
+    public mutating func next() -> Element?
+  }
+  public typealias Index = Swift.Int
+  public typealias Indices = Swift.Range<Swift.Int>
+  public typealias SubSequence = Swift.Slice<Module___ReactiveSwift.Bag<Element>>
+}
+extension Module___ReactiveSwift.Signal {
+  @available(*, unavailable, message: "Use the `Signal.init` that accepts a two-argument generator.")
+  convenience public init(_ generator: (Module___ReactiveSwift.Signal<Value, Error>.Observer) -> (any Module___ReactiveSwift.Disposable)?)
+}
+extension Module___ReactiveSwift.Lifetime {
+  @discardableResult
+  @available(*, unavailable, message: "Use `observeEnded(_:)` with a method reference to `dispose()` instead.")
+  final public func add(_ d: (any Module___ReactiveSwift.Disposable)?) -> (any Module___ReactiveSwift.Disposable)?
+}
+public protocol Disposable : AnyObject {
+  var isDisposed: Swift.Bool { get }
+  func dispose()
+}
+final public class AnyDisposable : Module___ReactiveSwift.Disposable {
+  final public var isDisposed: Swift.Bool {
+    get
+  }
+  public init(_ action: @escaping () -> Swift.Void)
+  public init()
+  public init(_ disposable: any Module___ReactiveSwift.Disposable)
+  final public func dispose()
+  @objc deinit
+}
+final public class CompositeDisposable : Module___ReactiveSwift.Disposable {
+  final public var isDisposed: Swift.Bool {
+    get
+  }
+  public init<S>(_ disposables: S) where S : Swift.Sequence, S.Element == any Module___ReactiveSwift.Disposable
+  convenience public init<S>(_ disposables: S) where S : Swift.Sequence, S.Element == (any Module___ReactiveSwift.Disposable)?
+  convenience public init()
+  final public func dispose()
+  @discardableResult
+  final public func add(_ disposable: (any Module___ReactiveSwift.Disposable)?) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func add(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @objc deinit
+  @discardableResult
+  public static func += (lhs: Module___ReactiveSwift.CompositeDisposable, rhs: (any Module___ReactiveSwift.Disposable)?) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  public static func += (lhs: Module___ReactiveSwift.CompositeDisposable, rhs: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+final public class ScopedDisposable<Inner> : Module___ReactiveSwift.Disposable where Inner : Module___ReactiveSwift.Disposable {
+  final public let inner: Inner
+  final public var isDisposed: Swift.Bool {
+    get
+  }
+  public init(_ disposable: Inner)
+  @objc deinit
+  final public func dispose()
+}
+extension Module___ReactiveSwift.ScopedDisposable where Inner == Module___ReactiveSwift.AnyDisposable {
+  convenience public init(_ disposable: any Module___ReactiveSwift.Disposable)
+}
+extension Module___ReactiveSwift.ScopedDisposable where Inner == Module___ReactiveSwift.CompositeDisposable {
+  @discardableResult
+  public static func += (lhs: Module___ReactiveSwift.ScopedDisposable<Module___ReactiveSwift.CompositeDisposable>, rhs: (any Module___ReactiveSwift.Disposable)?) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  public static func += (lhs: Module___ReactiveSwift.ScopedDisposable<Module___ReactiveSwift.CompositeDisposable>, rhs: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+final public class SerialDisposable : Module___ReactiveSwift.Disposable {
+  final public var isDisposed: Swift.Bool {
+    get
+  }
+  final public var inner: (any Module___ReactiveSwift.Disposable)? {
+    get
+    set(disposable)
+  }
+  public init(_ disposable: (any Module___ReactiveSwift.Disposable)? = nil)
+  final public func dispose()
+  @objc deinit
+}
+extension Module___ReactiveSwift.ScopedDisposable where Inner == Module___ReactiveSwift.SerialDisposable {
+  final public var inner: (any Module___ReactiveSwift.Disposable)? {
+    get
+    set
+  }
+}
+extension Module___ReactiveSwift.Signal {
+  @frozen public enum Event {
+    case value(Value)
+    case failed(Error)
+    case completed
+    case interrupted
+    public var isCompleted: Swift.Bool {
+      get
+    }
+    public var isTerminating: Swift.Bool {
+      get
+    }
+    public func map<U>(_ f: (Value) -> U) -> Module___ReactiveSwift.Signal<U, Error>.Event
+    public func mapError<F>(_ f: (Error) -> F) -> Module___ReactiveSwift.Signal<Value, F>.Event where F : Swift.Error
+    public var value: Value? {
+      get
+    }
+    public var error: Error? {
+      get
+    }
+  }
+}
+extension Module___ReactiveSwift.Signal.Event where Value : Swift.Equatable, Error : Swift.Equatable {
+  public static func == (lhs: Module___ReactiveSwift.Signal<Value, Error>.Event, rhs: Module___ReactiveSwift.Signal<Value, Error>.Event) -> Swift.Bool
+}
+extension Module___ReactiveSwift.Signal.Event : Swift.Equatable where Value : Swift.Equatable, Error : Swift.Equatable {
+}
+extension Module___ReactiveSwift.Signal.Event : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public protocol EventProtocol {
+  associatedtype Value
+  associatedtype Error : Swift.Error
+  var event: Module___ReactiveSwift.Signal<Self.Value, Self.Error>.Event { get }
+}
+extension Module___ReactiveSwift.Signal.Event : Module___ReactiveSwift.EventProtocol {
+  public var event: Module___ReactiveSwift.Signal<Value, Error>.Event {
+    get
+  }
+}
+public enum LoggingEvent {
+  public enum Signal : Swift.String, Swift.CaseIterable {
+    case value, completed, failed, terminated, disposed, interrupted
+    @available(*, deprecated, message: "Use `allCases` instead.")
+    public static var allEvents: Swift.Set<Module___ReactiveSwift.LoggingEvent.Signal> {
+      get
+    }
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [Module___ReactiveSwift.LoggingEvent.Signal]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [Module___ReactiveSwift.LoggingEvent.Signal] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum SignalProducer : Swift.String, Swift.CaseIterable {
+    case starting, started, value, completed, failed, terminated, disposed, interrupted
+    @available(*, deprecated, message: "Use `allCases` instead.")
+    public static var allEvents: Swift.Set<Module___ReactiveSwift.LoggingEvent.SignalProducer> {
+      get
+    }
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [Module___ReactiveSwift.LoggingEvent.SignalProducer]
+    public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [Module___ReactiveSwift.LoggingEvent.SignalProducer] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public func defaultEventLog(identifier: Swift.String, event: Swift.String, fileName: Swift.String, functionName: Swift.String, lineNumber: Swift.Int)
+public typealias EventLogger = (_ identifier: Swift.String, _ event: Swift.String, _ fileName: Swift.String, _ functionName: Swift.String, _ lineNumber: Swift.Int) -> Swift.Void
+extension Module___ReactiveSwift.Signal {
+  final public func logEvents(identifier: Swift.String = "", events: Swift.Set<Module___ReactiveSwift.LoggingEvent.Signal> = Set(LoggingEvent.Signal.allCases), fileName: Swift.String = #file, functionName: Swift.String = #function, lineNumber: Swift.Int = #line, logger: @escaping Module___ReactiveSwift.EventLogger = defaultEventLog) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func logEvents(identifier: Swift.String = "", events: Swift.Set<Module___ReactiveSwift.LoggingEvent.SignalProducer> = Set(LoggingEvent.SignalProducer.allCases), fileName: Swift.String = #file, functionName: Swift.String = #function, lineNumber: Swift.Int = #line, logger: @escaping Module___ReactiveSwift.EventLogger = defaultEventLog) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+public struct FlattenStrategy {
+  public static let merge: Module___ReactiveSwift.FlattenStrategy
+  public static let concat: Module___ReactiveSwift.FlattenStrategy
+  public static func concurrent(limit: Swift.UInt) -> Module___ReactiveSwift.FlattenStrategy
+  public static let latest: Module___ReactiveSwift.FlattenStrategy
+  public static let race: Module___ReactiveSwift.FlattenStrategy
+  public static let throttle: Module___ReactiveSwift.FlattenStrategy
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.SignalProducerConvertible, Error == Value.Error {
+  final public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.Signal<Value.Value, Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.SignalProducerConvertible, Error == Swift.Never {
+  final public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.Signal<Value.Value, Value.Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.SignalProducerConvertible, Error == Swift.Never, Value.Error == Swift.Never {
+  final public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.Signal<Value.Value, Value.Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.SignalProducerConvertible, Value.Error == Swift.Never {
+  final public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.Signal<Value.Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.SignalProducerConvertible, Error == Value.Error {
+  public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.SignalProducer<Value.Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.SignalProducerConvertible, Error == Swift.Never {
+  public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.SignalProducer<Value.Value, Value.Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.SignalProducerConvertible, Error == Swift.Never, Value.Error == Swift.Never {
+  public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.SignalProducer<Value.Value, Value.Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.SignalProducerConvertible, Value.Error == Swift.Never {
+  public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.SignalProducer<Value.Value, Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Swift.Sequence {
+  final public func flatten() -> Module___ReactiveSwift.Signal<Value.Iterator.Element, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Swift.Sequence {
+  public func flatten() -> Module___ReactiveSwift.SignalProducer<Value.Iterator.Element, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func concat(_ next: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func concat<Next>(_ next: Next) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == Next.Value, Error == Next.Error, Next : Module___ReactiveSwift.SignalProducerConvertible
+  public func concat(value: Value) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func concat(error: Error) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func prefix(_ previous: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func prefix<Previous>(_ previous: Previous) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == Previous.Value, Error == Previous.Error, Previous : Module___ReactiveSwift.SignalProducerConvertible
+  public func prefix(value: Value) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  public static func merge<Seq>(_ signals: Seq) -> Module___ReactiveSwift.Signal<Value, Error> where Seq : Swift.Sequence, Seq.Element == Module___ReactiveSwift.Signal<Value, Error>
+  public static func merge(_ signals: Module___ReactiveSwift.Signal<Value, Error>...) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public static func merge<Seq>(_ producers: Seq) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Seq : Swift.Sequence, Seq.Element == Module___ReactiveSwift.SignalProducer<Value, Error>
+  public static func merge<A, B>(_ a: A, _ b: B) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value
+  public static func merge<A, B, C>(_ a: A, _ b: B, _ c: C) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value
+  public static func merge<A, B, C, D>(_ a: A, _ b: B, _ c: C, _ d: D) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value
+  public static func merge<A, B, C, D, E>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value, D.Error == E.Error, D.Value == E.Value
+  public static func merge<A, B, C, D, E, F>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value, D.Error == E.Error, D.Value == E.Value, E.Error == F.Error, E.Value == F.Value
+  public static func merge<A, B, C, D, E, F, G>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value, D.Error == E.Error, D.Value == E.Value, E.Error == F.Error, E.Value == F.Value, F.Error == G.Error, F.Value == G.Value
+  public static func merge<A, B, C, D, E, F, G, H>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value, D.Error == E.Error, D.Value == E.Value, E.Error == F.Error, E.Value == F.Value, F.Error == G.Error, F.Value == G.Value, G.Error == H.Error, G.Value == H.Value
+  public static func merge<A, B, C, D, E, F, G, H, I>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, I : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value, D.Error == E.Error, D.Value == E.Value, E.Error == F.Error, E.Value == F.Value, F.Error == G.Error, F.Value == G.Value, G.Error == H.Error, G.Value == H.Value, H.Error == I.Error, H.Value == I.Value
+  public static func merge<A, B, C, D, E, F, G, H, I, J>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I, _ j: J) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, I : Module___ReactiveSwift.SignalProducerConvertible, J : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, A.Value == B.Value, B.Error == C.Error, B.Value == C.Value, C.Error == D.Error, C.Value == D.Value, D.Error == E.Error, D.Value == E.Value, E.Error == F.Error, E.Value == F.Value, F.Error == G.Error, F.Value == G.Value, G.Error == H.Error, G.Value == H.Value, H.Error == I.Error, H.Value == I.Value, I.Error == J.Error, I.Value == J.Value
+}
+extension Module___ReactiveSwift.Signal {
+  final public func flatMap<U>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Error> where Error == Inner.Error, Inner : Module___ReactiveSwift.SignalProducerConvertible
+  final public func flatMap<U>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  final public func flatMap<U, F>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, F>) -> Module___ReactiveSwift.Signal<U, F> where F : Swift.Error
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Inner.Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible
+  final public func flatMap<U>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.Signal<U, Swift.Never>
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Swift.Never> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func flatMap<U>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Error> where Error == Inner.Error, Inner : Module___ReactiveSwift.SignalProducerConvertible
+  public func flatMap<U>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  public func flatMap<U>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+  public func flatMap<U, F>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Module___ReactiveSwift.SignalProducer<U, F>) -> Module___ReactiveSwift.SignalProducer<U, F> where F : Swift.Error
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Inner.Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible
+}
+extension Module___ReactiveSwift.Signal {
+  final public func flatMapError<F>(_ transform: @escaping (Error) -> Module___ReactiveSwift.SignalProducer<Value, F>) -> Module___ReactiveSwift.Signal<Value, F> where F : Swift.Error
+  final public func flatMapError<Inner>(_ transform: @escaping (Error) -> Inner) -> Module___ReactiveSwift.Signal<Value, Inner.Error> where Value == Inner.Value, Inner : Module___ReactiveSwift.SignalProducerConvertible
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func flatMapError<F>(_ transform: @escaping (Error) -> Module___ReactiveSwift.SignalProducer<Value, F>) -> Module___ReactiveSwift.SignalProducer<Value, F> where F : Swift.Error
+  public func flatMapError<Inner>(_ transform: @escaping (Error) -> Inner) -> Module___ReactiveSwift.SignalProducer<Value, Inner.Error> where Value == Inner.Value, Inner : Module___ReactiveSwift.SignalProducerConvertible
+}
+extension Foundation.NotificationCenter : Module___ReactiveSwift.ReactiveExtensionsProvider {
+}
+extension Module___ReactiveSwift.Reactive where Base : Foundation.NotificationCenter {
+  public func notifications(forName name: Foundation.Notification.Name?, object: Swift.AnyObject? = nil) -> Module___ReactiveSwift.Signal<Foundation.Notification, Swift.Never>
+}
+extension Foundation.URLSession : Module___ReactiveSwift.ReactiveExtensionsProvider {
+}
+extension Module___ReactiveSwift.Reactive where Base : Foundation.URLSession {
+  public func data(with request: Foundation.URLRequest) -> Module___ReactiveSwift.SignalProducer<(Foundation.Data, Foundation.URLResponse), any Swift.Error>
+}
+@_hasMissingDesignatedInitializers final public class Lifetime {
+  final public var ended: Module___ReactiveSwift.Signal<Swift.Never, Swift.Never> {
+    get
+  }
+  final public var hasEnded: Swift.Bool {
+    get
+  }
+  convenience public init(_ token: Module___ReactiveSwift.Lifetime.Token)
+  @discardableResult
+  final public func observeEnded(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  public static func += (lifetime: Module___ReactiveSwift.Lifetime, disposable: (any Module___ReactiveSwift.Disposable)?) -> (any Module___ReactiveSwift.Disposable)?
+  @objc deinit
+}
+extension Module___ReactiveSwift.Lifetime {
+  public static func make() -> (lifetime: Module___ReactiveSwift.Lifetime, token: Module___ReactiveSwift.Lifetime.Token)
+  public static let empty: Module___ReactiveSwift.Lifetime
+}
+extension Module___ReactiveSwift.Lifetime {
+  final public class Token {
+    public init()
+    final public func dispose()
+    @objc deinit
+  }
+}
+open class Observer<Value, Error> where Error : Swift.Error {
+  public init()
+  open func receive(_ value: Value)
+  open func terminate(_ termination: Module___ReactiveSwift.Termination<Error>)
+  @objc deinit
+}
+public enum Termination<Error> where Error : Swift.Error {
+  case failed(Error)
+  case completed
+  case interrupted
+}
+public protocol OptionalProtocol : Swift.ExpressibleByNilLiteral {
+  associatedtype Wrapped
+  init(reconstructing value: Self.Wrapped?)
+  var optional: Self.Wrapped? { get }
+}
+extension Swift.Optional : Module___ReactiveSwift.OptionalProtocol {
+  public var optional: Wrapped? {
+    get
+  }
+  public init(reconstructing value: Wrapped?)
+}
+public protocol PropertyProtocol : AnyObject, Module___ReactiveSwift.BindingSource {
+  var value: Self.Value { get }
+  var producer: Module___ReactiveSwift.SignalProducer<Self.Value, Swift.Never> { get }
+  var signal: Module___ReactiveSwift.Signal<Self.Value, Swift.Never> { get }
+}
+public protocol MutablePropertyProtocol : Module___ReactiveSwift.BindingTargetProvider, Module___ReactiveSwift.PropertyProtocol {
+  var value: Self.Value { get set }
+  var lifetime: Module___ReactiveSwift.Lifetime { get }
+}
+extension Module___ReactiveSwift.MutablePropertyProtocol {
+  public var bindingTarget: Module___ReactiveSwift.BindingTarget<Self.Value> {
+    get
+  }
+}
+public protocol ComposableMutablePropertyProtocol : Module___ReactiveSwift.MutablePropertyProtocol {
+  func withValue<Result>(_ action: (Self.Value) throws -> Result) rethrows -> Result
+  func modify<Result>(_ action: (inout Self.Value) throws -> Result) rethrows -> Result
+}
+extension Module___ReactiveSwift.PropertyProtocol {
+  public func map<U>(_ transform: @escaping (Self.Value) -> U) -> Module___ReactiveSwift.Property<U>
+  public func map<U>(value: U) -> Module___ReactiveSwift.Property<U>
+  public func map<U>(_ keyPath: Swift.KeyPath<Self.Value, U>) -> Module___ReactiveSwift.Property<U>
+  public func filter(initial: Self.Value, _ predicate: @escaping (Self.Value) -> Swift.Bool) -> Module___ReactiveSwift.Property<Self.Value>
+  public func combineLatest<P>(with other: P) -> Module___ReactiveSwift.Property<(Self.Value, P.Value)> where P : Module___ReactiveSwift.PropertyProtocol
+  public func zip<P>(with other: P) -> Module___ReactiveSwift.Property<(Self.Value, P.Value)> where P : Module___ReactiveSwift.PropertyProtocol
+  public func combinePrevious(_ initial: Self.Value) -> Module___ReactiveSwift.Property<(Self.Value, Self.Value)>
+  public func skipRepeats(_ isEquivalent: @escaping (Self.Value, Self.Value) -> Swift.Bool) -> Module___ReactiveSwift.Property<Self.Value>
+}
+extension Module___ReactiveSwift.PropertyProtocol where Self.Value : Swift.Equatable {
+  public func skipRepeats() -> Module___ReactiveSwift.Property<Self.Value>
+}
+extension Module___ReactiveSwift.PropertyProtocol where Self.Value : Module___ReactiveSwift.PropertyProtocol {
+  public func flatten(_ strategy: Module___ReactiveSwift.FlattenStrategy) -> Module___ReactiveSwift.Property<Self.Value.Value>
+}
+extension Module___ReactiveSwift.PropertyProtocol {
+  public func flatMap<P>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Self.Value) -> P) -> Module___ReactiveSwift.Property<P.Value> where P : Module___ReactiveSwift.PropertyProtocol
+  public func uniqueValues<Identity>(_ transform: @escaping (Self.Value) -> Identity) -> Module___ReactiveSwift.Property<Self.Value> where Identity : Swift.Hashable
+}
+extension Module___ReactiveSwift.PropertyProtocol where Self.Value : Swift.Hashable {
+  public func uniqueValues() -> Module___ReactiveSwift.Property<Self.Value>
+}
+extension Module___ReactiveSwift.PropertyProtocol {
+  public static func combineLatest<A, B>(_ a: A, _ b: B) -> Module___ReactiveSwift.Property<(A.Value, B.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C>(_ a: A, _ b: B, _ c: C) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D>(_ a: A, _ b: B, _ c: C, _ d: D) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D, E>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D, E, F>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D, E, F, G>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D, E, F, G, H>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, H : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D, E, F, G, H, I>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, H : Module___ReactiveSwift.PropertyProtocol, I : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<A, B, C, D, E, F, G, H, I, J>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I, _ j: J) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value, J.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, H : Module___ReactiveSwift.PropertyProtocol, I : Module___ReactiveSwift.PropertyProtocol, J : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func combineLatest<S>(_ properties: S) -> Module___ReactiveSwift.Property<[S.Iterator.Element.Value]>? where S : Swift.Sequence, S.Element : Module___ReactiveSwift.PropertyProtocol
+  public static func combineLatest<S>(_ properties: S, emptySentinel: [S.Iterator.Element.Value]) -> Module___ReactiveSwift.Property<[S.Iterator.Element.Value]> where S : Swift.Sequence, S.Element : Module___ReactiveSwift.PropertyProtocol
+  public static func zip<A, B>(_ a: A, _ b: B) -> Module___ReactiveSwift.Property<(Self.Value, B.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C>(_ a: A, _ b: B, _ c: C) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D>(_ a: A, _ b: B, _ c: C, _ d: D) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D, E>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D, E, F>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D, E, F, G>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D, E, F, G, H>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, H : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D, E, F, G, H, I>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, H : Module___ReactiveSwift.PropertyProtocol, I : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<A, B, C, D, E, F, G, H, I, J>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I, _ j: J) -> Module___ReactiveSwift.Property<(Self.Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value, J.Value)> where A : Module___ReactiveSwift.PropertyProtocol, B : Module___ReactiveSwift.PropertyProtocol, C : Module___ReactiveSwift.PropertyProtocol, D : Module___ReactiveSwift.PropertyProtocol, E : Module___ReactiveSwift.PropertyProtocol, F : Module___ReactiveSwift.PropertyProtocol, G : Module___ReactiveSwift.PropertyProtocol, H : Module___ReactiveSwift.PropertyProtocol, I : Module___ReactiveSwift.PropertyProtocol, J : Module___ReactiveSwift.PropertyProtocol, Self.Value == A.Value
+  public static func zip<S>(_ properties: S) -> Module___ReactiveSwift.Property<[S.Iterator.Element.Value]>? where S : Swift.Sequence, S.Element : Module___ReactiveSwift.PropertyProtocol
+  public static func zip<S>(_ properties: S, emptySentinel: [S.Iterator.Element.Value]) -> Module___ReactiveSwift.Property<[S.Iterator.Element.Value]> where S : Swift.Sequence, S.Element : Module___ReactiveSwift.PropertyProtocol
+}
+extension Module___ReactiveSwift.PropertyProtocol where Self.Value == Swift.Bool {
+  public func negate() -> Module___ReactiveSwift.Property<Self.Value>
+  public func and<P>(_ property: P) -> Module___ReactiveSwift.Property<Self.Value> where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+  public static func all<P, Properties>(_ properties: Properties) -> Module___ReactiveSwift.Property<Self.Value> where P : Module___ReactiveSwift.PropertyProtocol, P == Properties.Element, Properties : Swift.Collection, P.Value == Swift.Bool
+  public static func all<P>(_ properties: P...) -> Module___ReactiveSwift.Property<Self.Value> where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+  public func or<P>(_ property: P) -> Module___ReactiveSwift.Property<Self.Value> where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+  public static func any<P, Properties>(_ properties: Properties) -> Module___ReactiveSwift.Property<Self.Value> where P : Module___ReactiveSwift.PropertyProtocol, P == Properties.Element, Properties : Swift.Collection, P.Value == Swift.Bool
+  public static func any<P>(_ properties: P...) -> Module___ReactiveSwift.Property<Self.Value> where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+}
+@_hasMissingDesignatedInitializers @propertyWrapper final public class Property<Value> : Module___ReactiveSwift.PropertyProtocol {
+  final public var value: Value {
+    get
+  }
+  @inlinable final public var wrappedValue: Value {
+    get {
+		return value
+	}
+  }
+  @inlinable final public var projectedValue: Module___ReactiveSwift.Property<Value> {
+    get {
+		return self
+	}
+  }
+  final public let producer: Module___ReactiveSwift.SignalProducer<Value, Swift.Never>
+  final public let signal: Module___ReactiveSwift.Signal<Value, Swift.Never>
+  public init(value: Value)
+  public init<P>(capturing property: P) where Value == P.Value, P : Module___ReactiveSwift.PropertyProtocol
+  convenience public init<P>(_ property: P) where Value == P.Value, P : Module___ReactiveSwift.PropertyProtocol
+  convenience public init(initial: Value, then values: Module___ReactiveSwift.SignalProducer<Value, Swift.Never>)
+  convenience public init<Values>(initial: Value, then values: Values) where Value == Values.Value, Values : Module___ReactiveSwift.SignalProducerConvertible, Values.Error == Swift.Never
+  public typealias Error = Swift.Never
+  @objc deinit
+}
+extension Module___ReactiveSwift.Property where Value : Module___ReactiveSwift.OptionalProtocol {
+  convenience public init(initial: Value, then values: Module___ReactiveSwift.SignalProducer<Value.Wrapped, Swift.Never>)
+  convenience public init<Values>(initial: Value, then values: Values) where Values : Module___ReactiveSwift.SignalProducerConvertible, Value.Wrapped == Values.Value, Values.Error == Swift.Never
+}
+@propertyWrapper final public class MutableProperty<Value> : Module___ReactiveSwift.ComposableMutablePropertyProtocol {
+  final public var value: Value {
+    get
+    set
+  }
+  @inlinable final public var wrappedValue: Value {
+    get { value }
+    set { value = newValue }
+  }
+  @inlinable final public var projectedValue: Module___ReactiveSwift.MutableProperty<Value> {
+    get {
+		return self
+	}
+  }
+  final public let lifetime: Module___ReactiveSwift.Lifetime
+  final public let signal: Module___ReactiveSwift.Signal<Value, Swift.Never>
+  final public var producer: Module___ReactiveSwift.SignalProducer<Value, Swift.Never> {
+    get
+  }
+  public init(_ initialValue: Value)
+  convenience public init(wrappedValue: Value)
+  @discardableResult
+  final public func swap(_ newValue: Value) -> Value
+  @discardableResult
+  final public func modify<Result>(_ action: (inout Value) throws -> Result) rethrows -> Result
+  @discardableResult
+  final public func withValue<Result>(_ action: (Value) throws -> Result) rethrows -> Result
+  @objc deinit
+  public typealias Error = Swift.Never
+}
+public protocol ReactiveExtensionsProvider {
+}
+extension Module___ReactiveSwift.ReactiveExtensionsProvider {
+  public var reactive: Module___ReactiveSwift.Reactive<Self> {
+    get
+  }
+  public static var reactive: Module___ReactiveSwift.Reactive<Self>.Type {
+    get
+  }
+}
+public struct Reactive<Base> {
+  public let base: Base
+}
+extension Swift.Result : Module___ReactiveSwift.SignalProducerConvertible {
+  public var producer: Module___ReactiveSwift.SignalProducer<Success, Failure> {
+    get
+  }
+  public typealias Error = Failure
+  public typealias Value = Success
+}
+public protocol Scheduler : AnyObject {
+  @discardableResult
+  func schedule(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+public protocol DateScheduler : Module___ReactiveSwift.Scheduler {
+  var currentDate: Foundation.Date { get }
+  @discardableResult
+  func schedule(after date: Foundation.Date, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  func schedule(after date: Foundation.Date, interval: Module___Dispatch.DispatchTimeInterval, leeway: Module___Dispatch.DispatchTimeInterval, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.DateScheduler {
+  @discardableResult
+  public func schedule(after delay: Module___Dispatch.DispatchTimeInterval, interval: Module___Dispatch.DispatchTimeInterval, leeway: Module___Dispatch.DispatchTimeInterval = .seconds(0), action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+@available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, macCatalyst 13, *)
+extension Module___ReactiveSwift.DateScheduler {
+  public func sleep(for interval: Module___Dispatch.DispatchTimeInterval, leeway: Module___Dispatch.DispatchTimeInterval = .seconds(0)) async throws
+  public func sleep(until deadline: Foundation.Date, leeway: Module___Dispatch.DispatchTimeInterval = .seconds(0)) async throws
+  public func timer(interval: Module___Dispatch.DispatchTimeInterval, leeway: Module___Dispatch.DispatchTimeInterval = .seconds(0)) -> Module____Concurrency.AsyncStream<Foundation.Date>
+}
+final public class ImmediateScheduler : Module___ReactiveSwift.Scheduler {
+  public init()
+  @discardableResult
+  final public func schedule(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @objc deinit
+}
+final public class UIScheduler : Module___ReactiveSwift.Scheduler {
+  @objc deinit
+  public init()
+  @discardableResult
+  final public func schedule(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+@_hasMissingDesignatedInitializers final public class QueueScheduler : Module___ReactiveSwift.DateScheduler {
+  public static let main: Module___ReactiveSwift.QueueScheduler
+  final public var currentDate: Foundation.Date {
+    get
+  }
+  final public let queue: Module___Dispatch.DispatchQueue
+  @available(macOS, deprecated: 10.10, obsoleted: 10.11, message: "Use init(qos:name:targeting:) instead")
+  @available(iOS, deprecated: 8.0, obsoleted: 9.0, message: "Use init(qos:name:targeting:) instead.")
+  convenience public init(queue: Module___Dispatch.DispatchQueue, name: Swift.String = "org.reactivecocoa.ReactiveSwift.QueueScheduler")
+  convenience public init(qos: Module___Dispatch.DispatchQoS = .unspecified, name: Swift.String = "org.reactivecocoa.ReactiveSwift.QueueScheduler", targeting targetQueue: Module___Dispatch.DispatchQueue? = nil)
+  @discardableResult
+  final public func schedule(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func schedule(after date: Foundation.Date, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func schedule(after date: Foundation.Date, interval: Module___Dispatch.DispatchTimeInterval, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func schedule(after date: Foundation.Date, interval: Module___Dispatch.DispatchTimeInterval, leeway: Module___Dispatch.DispatchTimeInterval, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @objc deinit
+}
+final public class TestScheduler : Module___ReactiveSwift.DateScheduler {
+  final public var currentDate: Foundation.Date {
+    get
+  }
+  public init(startDate: Foundation.Date = Date(timeIntervalSinceReferenceDate: 0))
+  @discardableResult
+  final public func schedule(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func schedule(after delay: Module___Dispatch.DispatchTimeInterval, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func schedule(after date: Foundation.Date, action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  final public func schedule(after date: Foundation.Date, interval: Module___Dispatch.DispatchTimeInterval, leeway: Module___Dispatch.DispatchTimeInterval = .seconds(0), action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  final public func advance()
+  final public func advance(by interval: Module___Dispatch.DispatchTimeInterval)
+  final public func advance(by interval: Foundation.TimeInterval)
+  final public func advance(to newDate: Foundation.Date)
+  final public func run()
+  final public func rewind(by interval: Module___Dispatch.DispatchTimeInterval)
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, macCatalyst 13, *)
+  @Module____Concurrency.MainActor final public func advance() async
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, macCatalyst 13, *)
+  @Module____Concurrency.MainActor final public func advance(by interval: Module___Dispatch.DispatchTimeInterval) async
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, macCatalyst 13, *)
+  @Module____Concurrency.MainActor final public func advance(by interval: Foundation.TimeInterval) async
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, macCatalyst 13, *)
+  @Module____Concurrency.MainActor final public func advance(to newDate: Foundation.Date) async
+  @available(macOS 10.15, iOS 13, watchOS 6, tvOS 13, macCatalyst 13, *)
+  @Module____Concurrency.MainActor final public func run() async
+  @objc deinit
+}
+extension Module___ReactiveSwift.Signal {
+  @_hasMissingDesignatedInitializers final public class Observer : Module___ReactiveSwift.Observer<Value, Error> {
+    public typealias Action = (Module___ReactiveSwift.Signal<Value, Error>.Event) -> Swift.Void
+    public init(_ action: @escaping Module___ReactiveSwift.Signal<Value, Error>.Observer.Action)
+    convenience public init(value: ((Value) -> Swift.Void)? = nil, failed: ((Error) -> Swift.Void)? = nil, completed: (() -> Swift.Void)? = nil, interrupted: (() -> Swift.Void)? = nil)
+    @objc deinit
+    override final public func receive(_ value: Value)
+    override final public func terminate(_ termination: Module___ReactiveSwift.Termination<Error>)
+    final public func send(_ event: Module___ReactiveSwift.Signal<Value, Error>.Event)
+    final public func send(value: Value)
+    final public func send(error: Error)
+    final public func sendCompleted()
+    final public func sendInterrupted()
+  }
+}
+extension Module___ReactiveSwift.Signal.Observer {
+  @available(*, unavailable, renamed: "send(_:)")
+  final public var action: Module___ReactiveSwift.Signal<Value, Error>.Observer.Action {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class Signal<Value, Error> where Error : Swift.Error {
+  convenience public init(_ generator: (Module___ReactiveSwift.Signal<Value, Error>.Observer, Module___ReactiveSwift.Lifetime) -> Swift.Void)
+  public static func unserialized(_ generator: (Module___ReactiveSwift.Signal<Value, Error>.Observer, Module___ReactiveSwift.Lifetime) -> Swift.Void) -> Module___ReactiveSwift.Signal<Value, Error>
+  public static func reentrantUnserialized(_ generator: (Module___ReactiveSwift.Signal<Value, Error>.Observer, Module___ReactiveSwift.Lifetime) -> Swift.Void) -> Module___ReactiveSwift.Signal<Value, Error>
+  @discardableResult
+  final public func observe(_ observer: Module___ReactiveSwift.Signal<Value, Error>.Observer) -> (any Module___ReactiveSwift.Disposable)?
+  @objc deinit
+}
+extension Module___ReactiveSwift.Signal {
+  public static var never: Module___ReactiveSwift.Signal<Value, Error> {
+    get
+  }
+  public static var empty: Module___ReactiveSwift.Signal<Value, Error> {
+    get
+  }
+  public static func pipe(disposable: (any Module___ReactiveSwift.Disposable)? = nil) -> (output: Module___ReactiveSwift.Signal<Value, Error>, input: Module___ReactiveSwift.Signal<Value, Error>.Observer)
+  public static func unserializedPipe(disposable: (any Module___ReactiveSwift.Disposable)? = nil) -> (output: Module___ReactiveSwift.Signal<Value, Error>, input: Module___ReactiveSwift.Signal<Value, Error>.Observer)
+  public static func reentrantUnserializedPipe(disposable: (any Module___ReactiveSwift.Disposable)? = nil) -> (output: Module___ReactiveSwift.Signal<Value, Error>, input: Module___ReactiveSwift.Signal<Value, Error>.Observer)
+}
+public protocol SignalProtocol : AnyObject {
+  associatedtype Value
+  associatedtype Error : Swift.Error
+  var signal: Module___ReactiveSwift.Signal<Self.Value, Self.Error> { get }
+}
+extension Module___ReactiveSwift.Signal : Module___ReactiveSwift.SignalProtocol {
+  final public var signal: Module___ReactiveSwift.Signal<Value, Error> {
+    get
+  }
+}
+extension Module___ReactiveSwift.Signal : Module___ReactiveSwift.SignalProducerConvertible {
+  final public var producer: Module___ReactiveSwift.SignalProducer<Value, Error> {
+    get
+  }
+}
+extension Module___ReactiveSwift.Signal {
+  @discardableResult
+  final public func observe(_ action: @escaping Module___ReactiveSwift.Signal<Value, Error>.Observer.Action) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func observeResult(_ action: @escaping (Swift.Result<Value, Error>) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func observeCompleted(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func observeFailed(_ action: @escaping (Error) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  final public func observeInterrupted(_ action: @escaping () -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  @discardableResult
+  final public func observeValues(_ action: @escaping (Value) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.Signal {
+  final public func map<U>(_ transform: @escaping (Value) -> U) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func map<U>(value: U) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func map<U>(_ keyPath: Swift.KeyPath<Value, U>) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func mapError<F>(_ transform: @escaping (Error) -> F) -> Module___ReactiveSwift.Signal<Value, F> where F : Swift.Error
+  final public func lazyMap<U>(on scheduler: any Module___ReactiveSwift.Scheduler, transform: @escaping (Value) -> U) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func filter(_ isIncluded: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func compactMap<U>(_ transform: @escaping (Value) -> U?) -> Module___ReactiveSwift.Signal<U, Error>
+  @available(*, deprecated, renamed: "compactMap")
+  final public func filterMap<U>(_ transform: @escaping (Value) -> U?) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.OptionalProtocol {
+  final public func skipNil() -> Module___ReactiveSwift.Signal<Value.Wrapped, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func take(first count: Swift.Int) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func collect() -> Module___ReactiveSwift.Signal<[Value], Error>
+  final public func collect(count: Swift.Int) -> Module___ReactiveSwift.Signal<[Value], Error>
+  final public func collect(_ shouldEmit: @escaping (_ collectedValues: [Value]) -> Swift.Bool) -> Module___ReactiveSwift.Signal<[Value], Error>
+  final public func collect(_ shouldEmit: @escaping (_ collected: [Value], _ latest: Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<[Value], Error>
+  final public func collect(every interval: Module___Dispatch.DispatchTimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler, skipEmpty: Swift.Bool = false, discardWhenCompleted: Swift.Bool = true) -> Module___ReactiveSwift.Signal<[Value], Error>
+  final public func observe(on scheduler: any Module___ReactiveSwift.Scheduler) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func combineLatest<U>(with other: Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<(Value, U), Error>
+  final public func merge(with other: Module___ReactiveSwift.Signal<Value, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func delay(_ interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func skip(first count: Swift.Int) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func materialize() -> Module___ReactiveSwift.Signal<Module___ReactiveSwift.Signal<Value, Error>.Event, Swift.Never>
+  final public func materializeResults() -> Module___ReactiveSwift.Signal<Swift.Result<Value, Error>, Swift.Never>
+}
+extension Module___ReactiveSwift.Signal where Value : Module___ReactiveSwift.EventProtocol, Error == Swift.Never {
+  final public func dematerialize() -> Module___ReactiveSwift.Signal<Value.Value, Value.Error>
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  final public func dematerializeResults<Success, Failure>() -> Module___ReactiveSwift.Signal<Success, Failure> where Value == Swift.Result<Success, Failure>, Failure : Swift.Error
+}
+extension Module___ReactiveSwift.Signal {
+  final public func on(event: ((Module___ReactiveSwift.Signal<Value, Error>.Event) -> Swift.Void)? = nil, failed: ((Error) -> Swift.Void)? = nil, completed: (() -> Swift.Void)? = nil, interrupted: (() -> Swift.Void)? = nil, terminated: (() -> Swift.Void)? = nil, disposed: (() -> Swift.Void)? = nil, value: ((Value) -> Swift.Void)? = nil) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func sample<T>(with sampler: Module___ReactiveSwift.Signal<T, Swift.Never>) -> Module___ReactiveSwift.Signal<(Value, T), Error>
+  final public func sample(on sampler: Module___ReactiveSwift.Signal<(), Swift.Never>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func withLatest<U>(from samplee: Module___ReactiveSwift.Signal<U, Swift.Never>) -> Module___ReactiveSwift.Signal<(Value, U), Error>
+  final public func withLatest<U>(from samplee: Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.Signal<(Value, U), Error>
+  final public func withLatest<Samplee>(from samplee: Samplee) -> Module___ReactiveSwift.Signal<(Value, Samplee.Value), Error> where Samplee : Module___ReactiveSwift.SignalProducerConvertible, Samplee.Error == Swift.Never
+}
+extension Module___ReactiveSwift.Signal {
+  final public func take(during lifetime: Module___ReactiveSwift.Lifetime) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func take(until trigger: Module___ReactiveSwift.Signal<(), Swift.Never>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func skip(until trigger: Module___ReactiveSwift.Signal<(), Swift.Never>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func combinePrevious(_ initial: Value) -> Module___ReactiveSwift.Signal<(Value, Value), Error>
+  final public func combinePrevious() -> Module___ReactiveSwift.Signal<(Value, Value), Error>
+  final public func reduce<U>(_ initialResult: U, _ nextPartialResult: @escaping (U, Value) -> U) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func reduce<U>(into initialResult: U, _ nextPartialResult: @escaping (inout U, Value) -> Swift.Void) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func scan<U>(_ initialResult: U, _ nextPartialResult: @escaping (U, Value) -> U) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func scan<U>(into initialResult: U, _ nextPartialResult: @escaping (inout U, Value) -> Swift.Void) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func scanMap<State, U>(_ initialState: State, _ next: @escaping (State, Value) -> (State, U)) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func scanMap<State, U>(into initialState: State, _ next: @escaping (inout State, Value) -> U) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.Signal where Value : Swift.Equatable {
+  final public func skipRepeats() -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func skipRepeats(_ isEquivalent: @escaping (Value, Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func skip(while shouldContinue: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func take(untilReplacement signal: Module___ReactiveSwift.Signal<Value, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func take(last count: Swift.Int) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func take(while shouldContinue: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func take(until shouldContinue: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func zip<U>(with other: Module___ReactiveSwift.Signal<U, Error>) -> Module___ReactiveSwift.Signal<(Value, U), Error>
+  final public func throttle(_ interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func throttle<P>(while shouldThrottle: P, on scheduler: any Module___ReactiveSwift.Scheduler) -> Module___ReactiveSwift.Signal<Value, Error> where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+  final public func debounce(_ interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler, discardWhenCompleted: Swift.Bool = true) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func uniqueValues<Identity>(_ transform: @escaping (Value) -> Identity) -> Module___ReactiveSwift.Signal<Value, Error> where Identity : Swift.Hashable
+}
+extension Module___ReactiveSwift.Signal where Value : Swift.Hashable {
+  final public func uniqueValues() -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  public static func combineLatest<B>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>) -> Module___ReactiveSwift.Signal<(Value, B), Error>
+  public static func combineLatest<B, C>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C), Error>
+  public static func combineLatest<B, C, D>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D), Error>
+  public static func combineLatest<B, C, D, E>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E), Error>
+  public static func combineLatest<B, C, D, E, F>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F), Error>
+  public static func combineLatest<B, C, D, E, F, G>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G), Error>
+  public static func combineLatest<B, C, D, E, F, G, H>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>, _ h: Module___ReactiveSwift.Signal<H, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G, H), Error>
+  public static func combineLatest<B, C, D, E, F, G, H, I>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>, _ h: Module___ReactiveSwift.Signal<H, Error>, _ i: Module___ReactiveSwift.Signal<I, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G, H, I), Error>
+  public static func combineLatest<B, C, D, E, F, G, H, I, J>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>, _ h: Module___ReactiveSwift.Signal<H, Error>, _ i: Module___ReactiveSwift.Signal<I, Error>, _ j: Module___ReactiveSwift.Signal<J, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G, H, I, J), Error>
+  public static func combineLatest<S>(_ signals: S) -> Module___ReactiveSwift.Signal<[Value], Error> where S : Swift.Sequence, S.Element == Module___ReactiveSwift.Signal<Value, Error>
+  public static func zip<B>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>) -> Module___ReactiveSwift.Signal<(Value, B), Error>
+  public static func zip<B, C>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C), Error>
+  public static func zip<B, C, D>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D), Error>
+  public static func zip<B, C, D, E>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E), Error>
+  public static func zip<B, C, D, E, F>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F), Error>
+  public static func zip<B, C, D, E, F, G>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G), Error>
+  public static func zip<B, C, D, E, F, G, H>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>, _ h: Module___ReactiveSwift.Signal<H, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G, H), Error>
+  public static func zip<B, C, D, E, F, G, H, I>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>, _ h: Module___ReactiveSwift.Signal<H, Error>, _ i: Module___ReactiveSwift.Signal<I, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G, H, I), Error>
+  public static func zip<B, C, D, E, F, G, H, I, J>(_ a: Module___ReactiveSwift.Signal<Value, Error>, _ b: Module___ReactiveSwift.Signal<B, Error>, _ c: Module___ReactiveSwift.Signal<C, Error>, _ d: Module___ReactiveSwift.Signal<D, Error>, _ e: Module___ReactiveSwift.Signal<E, Error>, _ f: Module___ReactiveSwift.Signal<F, Error>, _ g: Module___ReactiveSwift.Signal<G, Error>, _ h: Module___ReactiveSwift.Signal<H, Error>, _ i: Module___ReactiveSwift.Signal<I, Error>, _ j: Module___ReactiveSwift.Signal<J, Error>) -> Module___ReactiveSwift.Signal<(Value, B, C, D, E, F, G, H, I, J), Error>
+  public static func zip<S>(_ signals: S) -> Module___ReactiveSwift.Signal<[Value], Error> where S : Swift.Sequence, S.Element == Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func timeout(after interval: Foundation.TimeInterval, raising error: Error, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  final public func promoteError<F>(_: F.Type = F.self) -> Module___ReactiveSwift.Signal<Value, F> where F : Swift.Error
+  final public func promoteError(_: Error.Type = Error.self) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func timeout<NewError>(after interval: Foundation.TimeInterval, raising error: NewError, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.Signal<Value, NewError> where NewError : Swift.Error
+}
+extension Module___ReactiveSwift.Signal where Value == Swift.Never {
+  final public func promoteValue<U>(_: U.Type = U.self) -> Module___ReactiveSwift.Signal<U, Error>
+  final public func promoteValue(_: Value.Type = Value.self) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal where Value == Swift.Bool {
+  final public func negate() -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func and(_ signal: Module___ReactiveSwift.Signal<Value, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  public static func all<BooleansCollection>(_ booleans: BooleansCollection) -> Module___ReactiveSwift.Signal<Value, Error> where BooleansCollection : Swift.Collection, BooleansCollection.Element == Module___ReactiveSwift.Signal<Swift.Bool, Error>
+  public static func all(_ booleans: Module___ReactiveSwift.Signal<Value, Error>...) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func or(_ signal: Module___ReactiveSwift.Signal<Value, Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  public static func any<BooleansCollection>(_ booleans: BooleansCollection) -> Module___ReactiveSwift.Signal<Value, Error> where BooleansCollection : Swift.Collection, BooleansCollection.Element == Module___ReactiveSwift.Signal<Swift.Bool, Error>
+  public static func any(_ booleans: Module___ReactiveSwift.Signal<Value, Error>...) -> Module___ReactiveSwift.Signal<Value, Error>
+}
+extension Module___ReactiveSwift.Signal {
+  final public func attempt(_ action: @escaping (Value) -> Swift.Result<(), Error>) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func attemptMap<U>(_ transform: @escaping (Value) -> Swift.Result<U, Error>) -> Module___ReactiveSwift.Signal<U, Error>
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  final public func attempt(_ action: @escaping (Value) throws -> Swift.Void) -> Module___ReactiveSwift.Signal<Value, any Swift.Error>
+  final public func attemptMap<U>(_ transform: @escaping (Value) throws -> U) -> Module___ReactiveSwift.Signal<U, any Swift.Error>
+}
+extension Module___ReactiveSwift.Signal where Error == any Swift.Error {
+  final public func attempt(_ action: @escaping (Value) throws -> Swift.Void) -> Module___ReactiveSwift.Signal<Value, Error>
+  final public func attemptMap<U>(_ transform: @escaping (Value) throws -> U) -> Module___ReactiveSwift.Signal<U, Error>
+}
+public struct SignalProducer<Value, Error> where Error : Swift.Error {
+  public typealias ProducedSignal = Module___ReactiveSwift.Signal<Value, Error>
+  public init<T>(_ base: T) where Value == T.Value, Error == T.Error, T : Module___ReactiveSwift.SignalProducerConvertible
+  public init(_ signal: Module___ReactiveSwift.Signal<Value, Error>)
+  public init(_ startHandler: @escaping (Module___ReactiveSwift.Signal<Value, Error>.Observer, Module___ReactiveSwift.Lifetime) -> Swift.Void)
+  public static func unserialized(_ startHandler: @escaping (Module___ReactiveSwift.Signal<Value, Error>.Observer, Module___ReactiveSwift.Lifetime) -> Swift.Void) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public init(value: Value)
+  public init(_ action: @escaping () -> Value)
+  public init(_ action: @escaping () -> Swift.Result<Value, Error>)
+  public init(error: Error)
+  public init(result: Swift.Result<Value, Error>)
+  public init<S>(_ values: S) where Value == S.Element, S : Swift.Sequence
+  public init(values first: Value, _ second: Value, _ tail: Value...)
+  public static var empty: Module___ReactiveSwift.SignalProducer<Value, Error> {
+    get
+  }
+  public static var never: Module___ReactiveSwift.SignalProducer<Value, Error> {
+    get
+  }
+  @discardableResult
+  public func startWithSignal<Result>(_ setup: (_ signal: Module___ReactiveSwift.Signal<Value, Error>, _ interruptHandle: any Module___ReactiveSwift.Disposable) -> Result) -> Result
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  public init(value: Value)
+  public init<S>(_ values: S) where Value == S.Element, S : Swift.Sequence
+  public init(values first: Value, _ second: Value, _ tail: Value...)
+}
+extension Module___ReactiveSwift.SignalProducer where Error == any Swift.Error {
+  public init(_ action: @escaping () throws -> Value)
+}
+public protocol SignalProducerConvertible<Value, Error> {
+  associatedtype Value
+  associatedtype Error : Swift.Error
+  var producer: Module___ReactiveSwift.SignalProducer<Self.Value, Self.Error> { get }
+}
+public protocol SignalProducerProtocol<Value, Error> {
+  associatedtype Value
+  associatedtype Error : Swift.Error
+  var producer: Module___ReactiveSwift.SignalProducer<Self.Value, Self.Error> { get }
+}
+extension Module___ReactiveSwift.SignalProducer : Module___ReactiveSwift.SignalProducerConvertible, Module___ReactiveSwift.SignalProducerProtocol {
+  public var producer: Module___ReactiveSwift.SignalProducer<Value, Error> {
+    get
+  }
+}
+extension Module___ReactiveSwift.SignalProducer {
+  @discardableResult
+  public func start(_ observer: Module___ReactiveSwift.Signal<Value, Error>.Observer = .init()) -> any Module___ReactiveSwift.Disposable
+  @discardableResult
+  public func start(_ action: @escaping Module___ReactiveSwift.Signal<Value, Error>.Observer.Action) -> any Module___ReactiveSwift.Disposable
+  @discardableResult
+  public func startWithResult(_ action: @escaping (Swift.Result<Value, Error>) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+  @discardableResult
+  public func startWithCompleted(_ action: @escaping () -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+  @discardableResult
+  public func startWithFailed(_ action: @escaping (Error) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+  @discardableResult
+  public func startWithInterrupted(_ action: @escaping () -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  @discardableResult
+  public func startWithValues(_ action: @escaping (Value) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func lift<U, F>(_ transform: @escaping (Module___ReactiveSwift.Signal<Value, Error>) -> Module___ReactiveSwift.Signal<U, F>) -> Module___ReactiveSwift.SignalProducer<U, F> where F : Swift.Error
+  public func lift<U, F, V, G>(_ transform: @escaping (Module___ReactiveSwift.Signal<Value, Error>) -> (Module___ReactiveSwift.Signal<U, F>) -> Module___ReactiveSwift.Signal<V, G>) -> (Module___ReactiveSwift.SignalProducer<U, F>) -> Module___ReactiveSwift.SignalProducer<V, G> where F : Swift.Error, G : Swift.Error
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func map<U>(_ transform: @escaping (Value) -> U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func map<U>(value: U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func map<U>(_ keyPath: Swift.KeyPath<Value, U>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func mapError<F>(_ transform: @escaping (Error) -> F) -> Module___ReactiveSwift.SignalProducer<Value, F> where F : Swift.Error
+  public func lazyMap<U>(on scheduler: any Module___ReactiveSwift.Scheduler, transform: @escaping (Value) -> U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func filter(_ isIncluded: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func compactMap<U>(_ transform: @escaping (Value) -> U?) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  @available(*, deprecated, renamed: "compactMap")
+  public func filterMap<U>(_ transform: @escaping (Value) -> U?) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func take(first count: Swift.Int) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func collect() -> Module___ReactiveSwift.SignalProducer<[Value], Error>
+  public func collect(count: Swift.Int) -> Module___ReactiveSwift.SignalProducer<[Value], Error>
+  public func collect(_ shouldEmit: @escaping (_ values: [Value]) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<[Value], Error>
+  public func collect(_ shouldEmit: @escaping (_ collected: [Value], _ latest: Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<[Value], Error>
+  public func collect(every interval: Module___Dispatch.DispatchTimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler, skipEmpty: Swift.Bool = false, discardWhenCompleted: Swift.Bool = true) -> Module___ReactiveSwift.SignalProducer<[Value], Error>
+  public func observe(on scheduler: any Module___ReactiveSwift.Scheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func combineLatest<U>(with other: Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<(Value, U), Error>
+  public func combineLatest<Other>(with other: Other) -> Module___ReactiveSwift.SignalProducer<(Value, Other.Value), Error> where Error == Other.Error, Other : Module___ReactiveSwift.SignalProducerConvertible
+  public func merge(with other: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func merge<Other>(with other: Other) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == Other.Value, Error == Other.Error, Other : Module___ReactiveSwift.SignalProducerConvertible
+  public func delay(_ interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func skip(first count: Swift.Int) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func materialize() -> Module___ReactiveSwift.SignalProducer<Module___ReactiveSwift.SignalProducer<Value, Error>.ProducedSignal.Event, Swift.Never>
+  public func materializeResults() -> Module___ReactiveSwift.SignalProducer<Swift.Result<Value, Error>, Swift.Never>
+  public func sample<U>(with sampler: Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.SignalProducer<(Value, U), Error>
+  public func sample<Sampler>(with sampler: Sampler) -> Module___ReactiveSwift.SignalProducer<(Value, Sampler.Value), Error> where Sampler : Module___ReactiveSwift.SignalProducerConvertible, Sampler.Error == Swift.Never
+  public func sample(on sampler: Module___ReactiveSwift.SignalProducer<(), Swift.Never>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func sample<Sampler>(on sampler: Sampler) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Sampler : Module___ReactiveSwift.SignalProducerConvertible, Sampler.Error == Swift.Never, Sampler.Value == ()
+  public func withLatest<U>(from samplee: Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.SignalProducer<(Value, U), Error>
+  public func withLatest<Samplee>(from samplee: Samplee) -> Module___ReactiveSwift.SignalProducer<(Value, Samplee.Value), Error> where Samplee : Module___ReactiveSwift.SignalProducerConvertible, Samplee.Error == Swift.Never
+  public func take(during lifetime: Module___ReactiveSwift.Lifetime) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func take(until trigger: Module___ReactiveSwift.SignalProducer<(), Swift.Never>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func take<Trigger>(until trigger: Trigger) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Trigger : Module___ReactiveSwift.SignalProducerConvertible, Trigger.Error == Swift.Never, Trigger.Value == ()
+  public func skip(until trigger: Module___ReactiveSwift.SignalProducer<(), Swift.Never>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func skip<Trigger>(until trigger: Trigger) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Trigger : Module___ReactiveSwift.SignalProducerConvertible, Trigger.Error == Swift.Never, Trigger.Value == ()
+  public func combinePrevious(_ initial: Value) -> Module___ReactiveSwift.SignalProducer<(Value, Value), Error>
+  public func combinePrevious() -> Module___ReactiveSwift.SignalProducer<(Value, Value), Error>
+  public func reduce<U>(_ initialResult: U, _ nextPartialResult: @escaping (U, Value) -> U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func reduce<U>(into initialResult: U, _ nextPartialResult: @escaping (inout U, Value) -> Swift.Void) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func scan<U>(_ initialResult: U, _ nextPartialResult: @escaping (U, Value) -> U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func scan<U>(into initialResult: U, _ nextPartialResult: @escaping (inout U, Value) -> Swift.Void) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func scanMap<State, U>(_ initialState: State, _ next: @escaping (State, Value) -> (State, U)) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func scanMap<State, U>(into initialState: State, _ next: @escaping (inout State, Value) -> U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func skipRepeats(_ isEquivalent: @escaping (Value, Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func skip(while shouldContinue: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func take(untilReplacement replacement: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func take<Replacement>(untilReplacement replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == Replacement.Value, Error == Replacement.Error, Replacement : Module___ReactiveSwift.SignalProducerConvertible
+  public func take(last count: Swift.Int) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func take(until shouldContinue: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func take(while shouldContinue: @escaping (Value) -> Swift.Bool) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func zip<U>(with other: Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<(Value, U), Error>
+  public func zip<Other>(with other: Other) -> Module___ReactiveSwift.SignalProducer<(Value, Other.Value), Error> where Error == Other.Error, Other : Module___ReactiveSwift.SignalProducerConvertible
+  public func attempt(_ action: @escaping (Value) -> Swift.Result<(), Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func attemptMap<U>(_ action: @escaping (Value) -> Swift.Result<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func throttle(_ interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func throttle<P>(while shouldThrottle: P, on scheduler: any Module___ReactiveSwift.Scheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error> where P : Module___ReactiveSwift.PropertyProtocol, P.Value == Swift.Bool
+  public func debounce(_ interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler, discardWhenCompleted: Swift.Bool = true) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func timeout(after interval: Foundation.TimeInterval, raising error: Error, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.OptionalProtocol {
+  public func skipNil() -> Module___ReactiveSwift.SignalProducer<Value.Wrapped, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Module___ReactiveSwift.EventProtocol, Error == Swift.Never {
+  public func dematerialize() -> Module___ReactiveSwift.SignalProducer<Value.Value, Value.Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  public func dematerializeResults<Success, Failure>() -> Module___ReactiveSwift.SignalProducer<Success, Failure> where Value == Swift.Result<Success, Failure>, Failure : Swift.Error
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  public func promoteError<F>(_: F.Type = F.self) -> Module___ReactiveSwift.SignalProducer<Value, F> where F : Swift.Error
+  public func promoteError(_: Error.Type = Error.self) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func timeout<NewError>(after interval: Foundation.TimeInterval, raising error: NewError, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, NewError> where NewError : Swift.Error
+  public func attempt(_ action: @escaping (Value) throws -> Swift.Void) -> Module___ReactiveSwift.SignalProducer<Value, any Swift.Error>
+  public func attemptMap<U>(_ action: @escaping (Value) throws -> U) -> Module___ReactiveSwift.SignalProducer<U, any Swift.Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Error == any Swift.Error {
+  public func attempt(_ action: @escaping (Value) throws -> Swift.Void) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func attemptMap<U>(_ transform: @escaping (Value) throws -> U) -> Module___ReactiveSwift.SignalProducer<U, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Never {
+  public func promoteValue<U>(_: U.Type = U.self) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func promoteValue(_: Value.Type = Value.self) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Swift.Equatable {
+  public func skipRepeats() -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func uniqueValues<Identity>(_ transform: @escaping (Value) -> Identity) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Identity : Swift.Hashable
+}
+extension Module___ReactiveSwift.SignalProducer where Value : Swift.Hashable {
+  public func uniqueValues() -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func on(starting: (() -> Swift.Void)? = nil, started: (() -> Swift.Void)? = nil, event: ((Module___ReactiveSwift.SignalProducer<Value, Error>.ProducedSignal.Event) -> Swift.Void)? = nil, failed: ((Error) -> Swift.Void)? = nil, completed: (() -> Swift.Void)? = nil, interrupted: (() -> Swift.Void)? = nil, terminated: (() -> Swift.Void)? = nil, disposed: (() -> Swift.Void)? = nil, value: ((Value) -> Swift.Void)? = nil) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func start(on scheduler: any Module___ReactiveSwift.Scheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public static func combineLatest<A, B>(_ a: A, _ b: B) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error
+  public static func combineLatest<A, B, C>(_ a: A, _ b: B, _ c: C) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error
+  public static func combineLatest<A, B, C, D>(_ a: A, _ b: B, _ c: C, _ d: D) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error
+  public static func combineLatest<A, B, C, D, E>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error
+  public static func combineLatest<A, B, C, D, E, F>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error
+  public static func combineLatest<A, B, C, D, E, F, G>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error
+  public static func combineLatest<A, B, C, D, E, F, G, H>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error, G.Error == H.Error
+  public static func combineLatest<A, B, C, D, E, F, G, H, I>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, I : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error, G.Error == H.Error, H.Error == I.Error
+  public static func combineLatest<A, B, C, D, E, F, G, H, I, J>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I, _ j: J) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value, J.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, I : Module___ReactiveSwift.SignalProducerConvertible, J : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error, G.Error == H.Error, H.Error == I.Error, I.Error == J.Error
+  public static func combineLatest<S>(_ producers: S) -> Module___ReactiveSwift.SignalProducer<[Value], Error> where Value == S.Element.Value, Error == S.Element.Error, S : Swift.Sequence, S.Element : Module___ReactiveSwift.SignalProducerConvertible
+  public static func combineLatest<S>(_ producers: S, emptySentinel: [S.Iterator.Element.Value]) -> Module___ReactiveSwift.SignalProducer<[Value], Error> where Value == S.Element.Value, Error == S.Element.Error, S : Swift.Sequence, S.Element : Module___ReactiveSwift.SignalProducerConvertible
+  public static func zip<A, B>(_ a: A, _ b: B) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error
+  public static func zip<A, B, C>(_ a: A, _ b: B, _ c: C) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error
+  public static func zip<A, B, C, D>(_ a: A, _ b: B, _ c: C, _ d: D) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error
+  public static func zip<A, B, C, D, E>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error
+  public static func zip<A, B, C, D, E, F>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error
+  public static func zip<A, B, C, D, E, F, G>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error
+  public static func zip<A, B, C, D, E, F, G, H>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error, G.Error == H.Error
+  public static func zip<A, B, C, D, E, F, G, H, I>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, I : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error, G.Error == H.Error, H.Error == I.Error
+  public static func zip<A, B, C, D, E, F, G, H, I, J>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I, _ j: J) -> Module___ReactiveSwift.SignalProducer<(Value, B.Value, C.Value, D.Value, E.Value, F.Value, G.Value, H.Value, I.Value, J.Value), Error> where Value == A.Value, Error == A.Error, A : Module___ReactiveSwift.SignalProducerConvertible, B : Module___ReactiveSwift.SignalProducerConvertible, C : Module___ReactiveSwift.SignalProducerConvertible, D : Module___ReactiveSwift.SignalProducerConvertible, E : Module___ReactiveSwift.SignalProducerConvertible, F : Module___ReactiveSwift.SignalProducerConvertible, G : Module___ReactiveSwift.SignalProducerConvertible, H : Module___ReactiveSwift.SignalProducerConvertible, I : Module___ReactiveSwift.SignalProducerConvertible, J : Module___ReactiveSwift.SignalProducerConvertible, A.Error == B.Error, B.Error == C.Error, C.Error == D.Error, D.Error == E.Error, E.Error == F.Error, F.Error == G.Error, G.Error == H.Error, H.Error == I.Error, I.Error == J.Error
+  public static func zip<S>(_ producers: S) -> Module___ReactiveSwift.SignalProducer<[Value], Error> where Value == S.Element.Value, Error == S.Element.Error, S : Swift.Sequence, S.Element : Module___ReactiveSwift.SignalProducerConvertible
+  public static func zip<S>(_ producers: S, emptySentinel: [S.Iterator.Element.Value]) -> Module___ReactiveSwift.SignalProducer<[Value], Error> where Value == S.Element.Value, Error == S.Element.Error, S : Swift.Sequence, S.Element : Module___ReactiveSwift.SignalProducerConvertible
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func `repeat`(_ count: Swift.Int) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func retry(upTo count: Swift.Int) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func retry(upTo count: Swift.Int, interval: Foundation.TimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func then<U>(_ replacement: Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func then<Replacement>(_ replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Replacement.Value, Error> where Replacement : Module___ReactiveSwift.SignalProducerConvertible, Replacement.Error == Swift.Never
+  public func then<U>(_ replacement: Module___ReactiveSwift.SignalProducer<U, Error>) -> Module___ReactiveSwift.SignalProducer<U, Error>
+  public func then<Replacement>(_ replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Replacement.Value, Error> where Error == Replacement.Error, Replacement : Module___ReactiveSwift.SignalProducerConvertible
+  public func then(_ replacement: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func then<Replacement>(_ replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Value == Replacement.Value, Error == Replacement.Error, Replacement : Module___ReactiveSwift.SignalProducerConvertible
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  public func then<U, F>(_ replacement: Module___ReactiveSwift.SignalProducer<U, F>) -> Module___ReactiveSwift.SignalProducer<U, F> where F : Swift.Error
+  public func then<Replacement>(_ replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Replacement.Value, Replacement.Error> where Replacement : Module___ReactiveSwift.SignalProducerConvertible
+  public func then<U>(_ replacement: Module___ReactiveSwift.SignalProducer<U, Swift.Never>) -> Module___ReactiveSwift.SignalProducer<U, Swift.Never>
+  public func then<Replacement>(_ replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Replacement.Value, Swift.Never> where Replacement : Module___ReactiveSwift.SignalProducerConvertible, Replacement.Error == Swift.Never
+  public func then(_ replacement: Module___ReactiveSwift.SignalProducer<Value, Swift.Never>) -> Module___ReactiveSwift.SignalProducer<Value, Swift.Never>
+  public func then<Replacement>(_ replacement: Replacement) -> Module___ReactiveSwift.SignalProducer<Value, Swift.Never> where Value == Replacement.Value, Replacement : Module___ReactiveSwift.SignalProducerConvertible, Replacement.Error == Swift.Never
+}
+extension Module___ReactiveSwift.SignalProducer {
+  public func first() -> Swift.Result<Value, Error>?
+  public func single() -> Swift.Result<Value, Error>?
+  public func last() -> Swift.Result<Value, Error>?
+  public func wait() -> Swift.Result<(), Error>
+  public func replayLazily(upTo capacity: Swift.Int) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Bool {
+  public func negate() -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func and(_ booleans: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func and<Booleans>(_ booleans: Booleans) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Error == Booleans.Error, Booleans : Module___ReactiveSwift.SignalProducerConvertible, Booleans.Value == Swift.Bool
+  public static func all<BooleansCollection>(_ booleans: BooleansCollection) -> Module___ReactiveSwift.SignalProducer<Value, Error> where BooleansCollection : Swift.Collection, BooleansCollection.Element == Module___ReactiveSwift.SignalProducer<Swift.Bool, Error>
+  public static func all(_ booleans: Module___ReactiveSwift.SignalProducer<Value, Error>...) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public static func all<Booleans, BooleansCollection>(_ booleans: BooleansCollection) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Error == Booleans.Error, Booleans : Module___ReactiveSwift.SignalProducerConvertible, Booleans == BooleansCollection.Element, BooleansCollection : Swift.Collection, Booleans.Value == Swift.Bool
+  public func or(_ booleans: Module___ReactiveSwift.SignalProducer<Value, Error>) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public func or<Booleans>(_ booleans: Booleans) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Error == Booleans.Error, Booleans : Module___ReactiveSwift.SignalProducerConvertible, Booleans.Value == Swift.Bool
+  public static func any<BooleansCollection>(_ booleans: BooleansCollection) -> Module___ReactiveSwift.SignalProducer<Value, Error> where BooleansCollection : Swift.Collection, BooleansCollection.Element == Module___ReactiveSwift.SignalProducer<Swift.Bool, Error>
+  public static func any(_ booleans: Module___ReactiveSwift.SignalProducer<Value, Error>...) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public static func any<Booleans, BooleansCollection>(_ booleans: BooleansCollection) -> Module___ReactiveSwift.SignalProducer<Value, Error> where Error == Booleans.Error, Booleans : Module___ReactiveSwift.SignalProducerConvertible, Booleans == BooleansCollection.Element, BooleansCollection : Swift.Collection, Booleans.Value == Swift.Bool
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Foundation.Date, Error == Swift.Never {
+  public static func timer(interval: Module___Dispatch.DispatchTimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+  public static func timer(interval: Module___Dispatch.DispatchTimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler, leeway: Module___Dispatch.DispatchTimeInterval) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  public static func interval<S>(_ values: S, interval: Module___Dispatch.DispatchTimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<S.Element, Error> where Value == S.Element, S : Swift.Sequence
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Int, Error == Swift.Never {
+  public static func interval(_ interval: Module___Dispatch.DispatchTimeInterval, on scheduler: any Module___ReactiveSwift.DateScheduler) -> Module___ReactiveSwift.SignalProducer<Value, Error>
+}
+precedencegroup BindingPrecedence {
+  associativity: right
+  higherThan: AssignmentPrecedence
+}
+infix operator <~ : BindingPrecedence
+public protocol BindingSource : Module___ReactiveSwift.SignalProducerConvertible where Self.Error == Swift.Never {
+}
+extension Module___ReactiveSwift.Signal : Module___ReactiveSwift.BindingSource where Error == Swift.Never {
+}
+extension Module___ReactiveSwift.SignalProducer : Module___ReactiveSwift.BindingSource where Error == Swift.Never {
+}
+public protocol BindingTargetProvider {
+  associatedtype Value
+  var bindingTarget: Module___ReactiveSwift.BindingTarget<Self.Value> { get }
+}
+extension Module___ReactiveSwift.BindingTargetProvider {
+  @discardableResult
+  public static func <~ <Source>(provider: Self, source: Source) -> (any Module___ReactiveSwift.Disposable)? where Source : Module___ReactiveSwift.BindingSource, Self.Value == Source.Value
+  @discardableResult
+  public static func <~ <Source>(provider: Self, source: Source) -> (any Module___ReactiveSwift.Disposable)? where Source : Module___ReactiveSwift.BindingSource, Self.Value == Source.Value?
+}
+extension Module___ReactiveSwift.Signal.Observer {
+  @discardableResult
+  public static func <~ <Source>(observer: Module___ReactiveSwift.Signal<Value, Error>.Observer, source: Source) -> any Module___ReactiveSwift.Disposable where Value == Source.Value, Source : Module___ReactiveSwift.BindingSource
+}
+public struct BindingTarget<Value> : Module___ReactiveSwift.BindingTargetProvider {
+  public let lifetime: Module___ReactiveSwift.Lifetime
+  public let action: (Value) -> Swift.Void
+  public var bindingTarget: Module___ReactiveSwift.BindingTarget<Value> {
+    get
+  }
+  public init(on scheduler: any Module___ReactiveSwift.Scheduler = ImmediateScheduler(), lifetime: Module___ReactiveSwift.Lifetime, action: @escaping (Value) -> Swift.Void)
+  public init<Object>(on scheduler: any Module___ReactiveSwift.Scheduler = ImmediateScheduler(), lifetime: Module___ReactiveSwift.Lifetime, object: Object, keyPath: Swift.WritableKeyPath<Object, Value>) where Object : AnyObject
+}
+extension Swift.Optional : Module___ReactiveSwift.BindingTargetProvider where Wrapped : Module___ReactiveSwift.BindingTargetProvider {
+  public typealias Value = Wrapped.Value
+  public var bindingTarget: Module___ReactiveSwift.BindingTarget<Wrapped.Value> {
+    get
+  }
+}
+extension Module___ReactiveSwift.SignalProducer {
+  @available(*, unavailable, message: "Transform the error to `Never` beforehand, or use `startWithResult` instead")
+  @discardableResult
+  public func startWithValues(_ action: @escaping (Value) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+}
+extension Module___ReactiveSwift.Signal {
+  @available(*, unavailable, message: "Transform the error to `Never` beforehand, or use `observeResult` instead")
+  @discardableResult
+  final public func observeValues(_ action: @escaping (Value) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "`Result.success` is never delivered - value type `Never` is uninstantiable (Use at runtime would trap)")
+  public func startWithResult(_ action: @escaping (Swift.Result<Value, Error>) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Never, Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Observer is never called - value type `Never` and error type `Never` are uninstantiable (Use at runtime would trap)")
+  public func startWithResult(_ action: @escaping (Swift.Result<Value, Error>) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+  @discardableResult
+  @available(*, deprecated, message: "Observer is never called - value type `Never` is uninstantiable (Use at runtime would trap)")
+  public func startWithValues(_ action: @escaping (Value) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Observer is never called - error type `Never` is uninstantiable (Use at runtime would trap)")
+  public func startWithFailed(_ action: @escaping (Error) -> Swift.Void) -> any Module___ReactiveSwift.Disposable
+}
+extension Module___ReactiveSwift.Signal where Value == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "`Result.success` is never delivered - value type `Never` is uninstantiable (Use at runtime would trap)")
+  final public func observeResult(_ action: @escaping (Swift.Result<Value, Error>) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.Signal where Value == Swift.Never, Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Observer is never called - value type `Never` and error type `Never` are uninstantiable (Use at runtime would trap)")
+  final public func observeResult(_ action: @escaping (Swift.Result<Value, Error>) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+  @discardableResult
+  @available(*, deprecated, message: "Observer is never called - value type `Never` is uninstantiable (Use at runtime would trap)")
+  final public func observeValues(_ action: @escaping (Value) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Observer is never invoked - error type `Never` is uninstantiable (Use at runtime would trap)")
+  final public func observeFailed(_ action: @escaping (Error) -> Swift.Void) -> (any Module___ReactiveSwift.Disposable)?
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` is uninstantiable (Use at runtime would trap)")
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Error> where Error == Inner.Error, Inner : Module___ReactiveSwift.SignalProducerConvertible
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` is uninstantiable (Use at runtime would trap)")
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.SignalProducer where Value == Swift.Never, Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` and error type `Never` are uninstantiable (Use at runtime would trap)")
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Inner.Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` and error type `Never` are uninstantiable (Use at runtime would trap)")
+  public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.SignalProducer<Inner.Value, Inner.Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.SignalProducer where Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteError` instead - error type `Never` is uninstantiable (Use at runtime would trap)")
+  public func flatMapError<NewError>(_ transform: @escaping (Error) -> Module___ReactiveSwift.SignalProducer<Value, NewError>) -> Module___ReactiveSwift.SignalProducer<Value, NewError> where NewError : Swift.Error
+}
+extension Module___ReactiveSwift.Signal where Value == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` is uninstantiable (Use at runtime would trap)")
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Error> where Error == Inner.Error, Inner : Module___ReactiveSwift.SignalProducerConvertible
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` is uninstantiable (Use at runtime would trap)")
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.Signal where Value == Swift.Never, Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` and error type `Never` are uninstantiable (Use at runtime would trap)")
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Inner.Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteValue` instead - value type `Never` and error type `Never` are uninstantiable (Use at runtime would trap)")
+  final public func flatMap<Inner>(_ strategy: Module___ReactiveSwift.FlattenStrategy, _ transform: @escaping (Value) -> Inner) -> Module___ReactiveSwift.Signal<Inner.Value, Inner.Error> where Inner : Module___ReactiveSwift.SignalProducerConvertible, Inner.Error == Swift.Never
+}
+extension Module___ReactiveSwift.Signal where Error == Swift.Never {
+  @discardableResult
+  @available(*, deprecated, message: "Use `promoteError` instead - error type `Never` is uninstantiable (Use at runtime would trap)")
+  final public func flatMapError<NewError>(_ transform: @escaping (Error) -> Module___ReactiveSwift.SignalProducer<Value, NewError>) -> Module___ReactiveSwift.Signal<Value, NewError> where NewError : Swift.Error
+}
+final public class ValidatingProperty<Value, ValidationError> : Module___ReactiveSwift.MutablePropertyProtocol where ValidationError : Swift.Error {
+  final public let result: Module___ReactiveSwift.Property<Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Result>
+  final public var value: Value {
+    get
+    set
+  }
+  final public let producer: Module___ReactiveSwift.SignalProducer<Value, Swift.Never>
+  final public let signal: Module___ReactiveSwift.Signal<Value, Swift.Never>
+  final public let lifetime: Module___ReactiveSwift.Lifetime
+  public init<Inner>(_ inner: Inner, _ validator: @escaping (Value) -> Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Decision) where Value == Inner.Value, Inner : Module___ReactiveSwift.ComposableMutablePropertyProtocol
+  convenience public init(_ initial: Value, _ validator: @escaping (Value) -> Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Decision)
+  convenience public init<Other>(_ inner: Module___ReactiveSwift.MutableProperty<Value>, with other: Other, _ validator: @escaping (Value, Other.Value) -> Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Decision) where Other : Module___ReactiveSwift.PropertyProtocol
+  convenience public init<Other>(_ initial: Value, with other: Other, _ validator: @escaping (Value, Other.Value) -> Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Decision) where Other : Module___ReactiveSwift.PropertyProtocol
+  convenience public init<U, E>(_ initial: Value, with other: Module___ReactiveSwift.ValidatingProperty<U, E>, _ validator: @escaping (Value, U) -> Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Decision) where E : Swift.Error
+  convenience public init<U, E>(_ inner: Module___ReactiveSwift.MutableProperty<Value>, with other: Module___ReactiveSwift.ValidatingProperty<U, E>, _ validator: @escaping (Value, U) -> Module___ReactiveSwift.ValidatingProperty<Value, ValidationError>.Decision) where E : Swift.Error
+  public enum Decision {
+    case valid
+    case coerced(Value, ValidationError?)
+    case invalid(ValidationError)
+  }
+  public enum Result {
+    case valid(Value)
+    case coerced(replacement: Value, proposed: Value, error: ValidationError?)
+    case invalid(Value, ValidationError)
+    public var isInvalid: Swift.Bool {
+      get
+    }
+    public var value: Value? {
+      get
+    }
+    public var error: ValidationError? {
+      get
+    }
+  }
+  public typealias Error = Swift.Never
+  @objc deinit
+}
+extension Module___ReactiveSwift.LoggingEvent.Signal : Swift.Equatable {}
+extension Module___ReactiveSwift.LoggingEvent.Signal : Swift.Hashable {}
+extension Module___ReactiveSwift.LoggingEvent.Signal : Swift.RawRepresentable {}
+extension Module___ReactiveSwift.LoggingEvent.SignalProducer : Swift.Equatable {}
+extension Module___ReactiveSwift.LoggingEvent.SignalProducer : Swift.Hashable {}
+extension Module___ReactiveSwift.LoggingEvent.SignalProducer : Swift.RawRepresentable {}

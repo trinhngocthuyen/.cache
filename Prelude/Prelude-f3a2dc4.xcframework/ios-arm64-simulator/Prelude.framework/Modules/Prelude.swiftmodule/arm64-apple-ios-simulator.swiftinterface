@@ -1,0 +1,402 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name Prelude -module-alias Module___Prelude=Prelude -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___CoreGraphics=CoreGraphics
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Module___CoreGraphics
+import Swift
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+extension Swift.Array where Element : Module___Prelude.OptionalType {
+  public func compact() -> [Element.Wrapped]
+}
+extension Swift.Array where Element : Module___Prelude.Semigroup {
+  public func sconcat(_ initial: Element) -> Element
+}
+extension Swift.Array {
+  public var randomElement: Element? {
+    get
+  }
+  public func distincts(_ eq: (Element, Element) -> Swift.Bool) -> Swift.Array<Element>
+  public func groupedBy<K>(_ grouping: (Element) -> K) -> [K : [Element]] where K : Swift.Hashable
+  public func sorted(comparator: Module___Prelude.Comparator<Element>) -> Swift.Array<Element>
+}
+extension Swift.Array where Element : Swift.Equatable {
+  public func distincts() -> Swift.Array<Element>
+}
+extension Swift.Array : Module___Prelude.Semigroup {
+  public func op(_ other: Swift.Array<Element>) -> Swift.Array<Element>
+}
+public func isTrue(_ b: Swift.Bool) -> Swift.Bool
+public func isFalse(_ b: Swift.Bool) -> Swift.Bool
+public func negate(_ b: Swift.Bool) -> Swift.Bool
+public func clamp<T>(_ min: T, _ max: T) -> (T) -> T where T : Swift.Comparable
+public struct Comparator<A> {
+  public let compare: (A, A) -> Module___Prelude.Ordering
+  public init(compare: @escaping (A, A) -> Module___Prelude.Ordering)
+  public var isOrdered: (A, A) -> Swift.Bool {
+    get
+  }
+  public var reversed: Module___Prelude.Comparator<A> {
+    get
+  }
+}
+extension Module___Prelude.Comparator : Module___Prelude.Monoid {
+  public static func identity() -> Module___Prelude.Comparator<A>
+  public func op(_ other: Module___Prelude.Comparator<A>) -> Module___Prelude.Comparator<A>
+}
+extension Swift.Dictionary where Value : Module___Prelude.OptionalType {
+  public func compact() -> [Key : Value.Wrapped]
+}
+extension Swift.Dictionary {
+  public func withAllValuesFrom(_ other: Swift.Dictionary<Key, Value>) -> Swift.Dictionary<Key, Value>
+  public static func keyValuePairs(_ pairs: [(Key, Value)]) -> Swift.Dictionary<Key, Value>
+  public func transformedKeys(_ f: (Key) -> Key) -> Swift.Dictionary<Key, Value>
+}
+extension Swift.Dictionary where Key : Module___Prelude.Semigroup {
+  public func prefixedKeys(_ prefix: Key) -> Swift.Dictionary<Key, Value>
+}
+public protocol EitherType {
+  associatedtype A
+  associatedtype B
+  init(left: Self.A)
+  init(right: Self.B)
+  init(_ left: Self.A)
+  init(_ right: Self.B)
+  var left: Self.A? { get }
+  var right: Self.B? { get }
+}
+extension Module___Prelude.EitherType {
+  public static func left(_ e: Self) -> Self.A?
+  public static func right(_ e: Self) -> Self.B?
+  public var isLeft: Swift.Bool {
+    get
+  }
+  public var isRight: Swift.Bool {
+    get
+  }
+}
+public func == <E>(lhs: E, rhs: E) -> Swift.Bool where E : Module___Prelude.EitherType, E.A : Swift.Equatable, E.B : Swift.Equatable
+public enum Either<A, B> : Module___Prelude.EitherType {
+  case left(A)
+  case right(B)
+  public init(left: A)
+  public init(right: B)
+  public init(_ left: A)
+  public init(_ right: B)
+  public var left: A? {
+    get
+  }
+  public var right: B? {
+    get
+  }
+  public func map<C>(_ f: (B) -> C) -> Module___Prelude.Either<A, C>
+  public func flatMap<C>(_ f: (B) -> Module___Prelude.Either<A, C>) -> Module___Prelude.Either<A, C>
+  public func mapLeft<C>(_ f: (A) -> C) -> Module___Prelude.Either<C, B>
+  public func flatMapLeft<C>(_ f: (A) -> Module___Prelude.Either<C, B>) -> Module___Prelude.Either<C, B>
+  public func ifLeft<C>(_ ifLeft: (A) -> C, ifRight: (B) -> C) -> C
+}
+extension Module___Prelude.Either where A == B.A, B : Module___Prelude.EitherType {
+  public func flatten() -> B
+}
+extension Module___Prelude.Either where A : Module___Prelude.EitherType, B == A.B {
+  public func flattenLeft() -> A
+}
+public func either<A, B, C>(ifLeft: @escaping (A) -> C, ifRight: @escaping (B) -> C) -> (Module___Prelude.Either<A, B>) -> C
+public func isLeft<E>(_ either: E) -> Swift.Bool where E : Module___Prelude.EitherType
+public func isRight<E>(_ either: E) -> Swift.Bool where E : Module___Prelude.EitherType
+public func lefts<E>(_ eithers: [E]) -> [E.A] where E : Module___Prelude.EitherType
+public func rights<E>(_ eithers: [E]) -> [E.B] where E : Module___Prelude.EitherType
+public enum Empty {
+}
+extension Module___Prelude.Empty : Swift.Equatable {
+}
+public func == (lhs: Module___Prelude.Empty, rhs: Module___Prelude.Empty) -> Swift.Bool
+public func |> <A, B>(x: A, f: (A) -> B) -> B
+public func ||> <A, B>(xs: [A], f: (A) -> B) -> [B]
+public func ?|> <A, B>(x: A?, f: (A) -> B) -> B?
+@available(*, deprecated)
+public func • <A, B, C>(g: @escaping (B) -> C, f: @escaping (A) -> B) -> (A) -> C
+public func >>> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C
+public func <<< <A, B, C>(g: @escaping (B) -> C, f: @escaping (A) -> B) -> (A) -> C
+public func <> <A>(f: @escaping (A) -> A, g: @escaping (A) -> A) -> (A) -> A
+public func id<A>(_ x: A) -> A
+public func const<A, B>(_ b: B) -> (A) -> B
+public struct Lens<Whole, Part> {
+  public let view: (Whole) -> Part
+  public let set: (Part, Whole) -> Whole
+  public init(view: @escaping (Whole) -> Part, set: @escaping (Part, Whole) -> Whole)
+  public func over(_ f: @escaping (Part) -> Part) -> (Whole) -> Whole
+  public func compose<Subpart>(_ rhs: Module___Prelude.Lens<Part, Subpart>) -> Module___Prelude.Lens<Whole, Subpart>
+}
+extension Module___Prelude.Lens where Part : Swift.Comparable {
+  public var comparator: Module___Prelude.Comparator<Whole> {
+    get
+  }
+}
+public func .~ <Whole, Part>(lens: Module___Prelude.Lens<Whole, Part>, part: Part) -> (Whole) -> Whole
+public func ^* <Whole, Part>(whole: Whole, lens: Module___Prelude.Lens<Whole, Part>) -> Part
+@available(*, deprecated)
+public func • <A, B, C>(lhs: Module___Prelude.Lens<A, B>, rhs: Module___Prelude.Lens<B, C>) -> Module___Prelude.Lens<A, C>
+public func .. <A, B, C>(lhs: Module___Prelude.Lens<A, B>, rhs: Module___Prelude.Lens<B, C>) -> Module___Prelude.Lens<A, C>
+public func >•> <A, B, C>(lhs: Module___Prelude.Lens<A, B?>, rhs: Module___Prelude.Lens<B, C?>) -> Module___Prelude.Lens<A, C?>
+public func %~ <Whole, Part>(lens: Module___Prelude.Lens<Whole, Part>, f: @escaping (Part) -> Part) -> (Whole) -> Whole
+public func %~~ <Whole, Part>(lens: Module___Prelude.Lens<Whole, Part>, f: @escaping (Part, Whole) -> Part) -> (Whole) -> Whole
+public func <>~ <Whole, Part>(lens: Module___Prelude.Lens<Whole, Part>, a: Part) -> (Whole) -> Whole where Part : Module___Prelude.Semigroup
+public func lens<Whole, Part>(_ keyPath: Swift.WritableKeyPath<Whole, Part>) -> Module___Prelude.Lens<Whole, Part>
+public func .~ <Whole, Part>(keyPath: Swift.WritableKeyPath<Whole, Part>, part: Part) -> (Whole) -> Whole
+public func .~ <Whole, Part>(keyPath: Swift.WritableKeyPath<Whole, Part?>, part: Part) -> (Whole) -> Whole
+public func %~ <Whole, Part>(keyPath: Swift.WritableKeyPath<Whole, Part>, f: @escaping (Part) -> Part) -> (Whole) -> Whole
+public func %~ <Whole, Part>(keyPath: Swift.WritableKeyPath<Whole, Part?>, f: @escaping (Part?) -> Part) -> (Whole) -> Whole
+public func %~~ <Whole, Part>(keyPath: Swift.WritableKeyPath<Whole, Part>, f: @escaping (Part, Whole) -> Part) -> (Whole) -> Whole
+public func <>~ <Whole, Part>(keyPath: Swift.WritableKeyPath<Whole, Part>, a: Part) -> (Whole) -> Whole where Part : Module___Prelude.Semigroup
+extension Swift.KeyPath {
+  public var view: (Root) -> Value {
+    get
+  }
+}
+public protocol LensObject {
+}
+public struct LensHolder<Object> where Object : Module___Prelude.LensObject {
+}
+extension Module___Prelude.LensObject {
+  public static var lens: Module___Prelude.LensHolder<Self> {
+    get
+  }
+}
+public protocol Monoid : Module___Prelude.Semigroup {
+  static func identity() -> Self
+}
+public protocol NonEmpty {
+  associatedtype Collection : Swift.Collection
+  var head: Self.Collection.Element { get }
+  var tail: Self.Collection { get }
+}
+extension Module___Prelude.NonEmpty {
+  public var count: Swift.Int {
+    get
+  }
+  public var first: Self.Collection.Element {
+    get
+  }
+}
+extension Module___Prelude.NonEmpty where Self.Collection : Swift.RandomAccessCollection {
+  public var last: Self.Collection.Element {
+    get
+  }
+}
+public struct NonEmptyArray<Element> : Module___Prelude.NonEmpty {
+  public let head: Element
+  public let tail: [Element]
+  public typealias Collection = [Element]
+}
+extension Module___Prelude.NonEmptyArray {
+  public init(_ head: Element, _ tail: Element...)
+}
+public func == <T>(lhs: Module___Prelude.NonEmptyArray<T>, rhs: Module___Prelude.NonEmptyArray<T>) -> Swift.Bool where T : Swift.Equatable
+public func != <T>(lhs: Module___Prelude.NonEmptyArray<T>, rhs: Module___Prelude.NonEmptyArray<T>) -> Swift.Bool where T : Swift.Equatable
+public func +| <T>(head: T, tail: [T]) -> Module___Prelude.NonEmptyArray<T>
+extension Swift.Array {
+  public init(_ nonEmpty: Module___Prelude.NonEmptyArray<Element>)
+}
+extension Module___Prelude.NonEmptyArray : Module___Prelude.Semigroup {
+  public func op(_ other: Module___Prelude.NonEmptyArray<Element>) -> Module___Prelude.NonEmptyArray<Element>
+}
+public struct NonEmptySet<Element> : Module___Prelude.NonEmpty where Element : Swift.Hashable {
+  public let head: Element
+  public let tail: Swift.Set<Element>
+  public typealias Collection = Swift.Set<Element>
+}
+extension Module___Prelude.NonEmptySet {
+  public init(_ head: Element, _ tail: Element...)
+}
+public func == <T>(lhs: Module___Prelude.NonEmptySet<T>, rhs: Module___Prelude.NonEmptySet<T>) -> Swift.Bool where T : Swift.Hashable
+public func != <T>(lhs: Module___Prelude.NonEmptySet<T>, rhs: Module___Prelude.NonEmptySet<T>) -> Swift.Bool where T : Swift.Hashable
+public func +| <T>(head: T, tail: Swift.Set<T>) -> Module___Prelude.NonEmptySet<T> where T : Swift.Hashable
+extension Swift.Array where Element : Swift.Hashable {
+  public init(_ nonEmpty: Module___Prelude.NonEmptySet<Element>)
+}
+extension Module___Prelude.NonEmptySet : Module___Prelude.Semigroup {
+  public func op(_ other: Module___Prelude.NonEmptySet<Element>) -> Module___Prelude.NonEmptySet<Element>
+}
+public protocol NumericType {
+  static func + (lhs: Self, rhs: Self) -> Self
+  static func - (lhs: Self, rhs: Self) -> Self
+  static func * (lhs: Self, rhs: Self) -> Self
+  func negate() -> Self
+  static func zero() -> Self
+  static func one() -> Self
+  init(_ v: Swift.Int)
+}
+extension Module___Prelude.NumericType {
+  public func negate() -> Self
+}
+extension Module___Prelude.NumericType where Self : Swift.Comparable {
+  public func abs() -> Self
+}
+extension CoreFoundation.CGFloat : Module___Prelude.NumericType {
+  public static func zero() -> CoreFoundation.CGFloat
+  public static func one() -> CoreFoundation.CGFloat
+}
+extension Swift.Double : Module___Prelude.NumericType {
+  public static func zero() -> Swift.Double
+  public static func one() -> Swift.Double
+}
+precedencegroup LeftApplyPrecedence {
+  associativity: left
+  higherThan: AssignmentPrecedence
+  lowerThan: TernaryPrecedence
+}
+precedencegroup FunctionCompositionPrecedence {
+  associativity: right
+  higherThan: LeftApplyPrecedence
+}
+precedencegroup LensCompositionPrecedence {
+  associativity: right
+  higherThan: LensSetPrecedence
+}
+precedencegroup LensSetPrecedence {
+  associativity: left
+  higherThan: FunctionCompositionPrecedence
+}
+infix operator |> : LeftApplyPrecedence
+infix operator ||> : LeftApplyPrecedence
+infix operator ?|> : LeftApplyPrecedence
+infix operator • : FunctionCompositionPrecedence
+infix operator .. : LensCompositionPrecedence
+infix operator <> : FunctionCompositionPrecedence
+prefix operator <>
+postfix operator <>
+infix operator ^* : LeftApplyPrecedence
+infix operator .~ : LensSetPrecedence
+infix operator %~ : LensSetPrecedence
+infix operator %~~ : LensSetPrecedence
+infix operator <>~ : LensSetPrecedence
+infix operator >•> : DefaultPrecedence
+infix operator >>> : FunctionCompositionPrecedence
+infix operator <<< : FunctionCompositionPrecedence
+infix operator +| : AdditionPrecedence
+public protocol OptionalType {
+  associatedtype Wrapped
+  var optional: Self.Wrapped? { get }
+}
+extension Swift.Optional : Module___Prelude.OptionalType {
+  public var optional: Wrapped? {
+    get
+  }
+}
+extension Module___Prelude.OptionalType {
+  public var isNil: Swift.Bool {
+    get
+  }
+  public var isSome: Swift.Bool {
+    get
+  }
+  public func forceUnwrap() -> Self.Wrapped
+  public func doIfSome(_ body: (Self.Wrapped) throws -> Swift.Void) rethrows
+  public func filter(_ predicate: (Self.Wrapped) -> Swift.Bool) -> Self.Wrapped?
+  public func coalesceWith(_ value: @autoclosure () -> Self.Wrapped) -> Self.Wrapped
+}
+public func flattenOptional<A>(_ x: A??) -> A?
+public func isNil<A>(_ x: A?) -> Swift.Bool
+public func isNotNil<A>(_ x: A?) -> Swift.Bool
+public func == <A>(lhs: [A?], rhs: [A?]) -> Swift.Bool where A : Swift.Equatable
+public func != <A>(lhs: [A?], rhs: [A?]) -> Swift.Bool where A : Swift.Equatable
+@available(*, deprecated, message: "Don’t use this. It was only necessary for Swift 2.3.")
+public func optionalize<A>(x: A?) -> A?
+public func zip<A, B>(_ a: A?, _ b: B?) -> (A, B)?
+public func zip<A, B, C>(_ a: A?, _ b: B?, _ c: C?) -> (A, B, C)?
+public func lift<A, B>(_ f: (A) -> B, _ x: A?) -> B?
+public func lift<A, B, C>(_ f: (A, B) -> C, _ x: A?, _ y: B?) -> C?
+public func lift<A, B, C, D>(_ f: (A, B, C) -> D, _ x: A?, _ y: B?, _ z: C?) -> D?
+public enum Ordering {
+  case lt
+  case eq
+  case gt
+  public var reversed: Module___Prelude.Ordering {
+    get
+  }
+  public static func == (a: Module___Prelude.Ordering, b: Module___Prelude.Ordering) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Module___Prelude.Ordering : Module___Prelude.Monoid {
+  public static func identity() -> Module___Prelude.Ordering
+  public func op(_ other: Module___Prelude.Ordering) -> Module___Prelude.Ordering
+}
+public protocol Semigroup {
+  func op(_ other: Self) -> Self
+}
+public func <> <S>(lhs: S, rhs: S) -> S where S : Module___Prelude.Semigroup
+prefix public func <> <S>(b: S) -> (S) -> S where S : Module___Prelude.Semigroup
+postfix public func <> <S>(a: S) -> (S) -> S where S : Module___Prelude.Semigroup
+extension Swift.Set : Module___Prelude.Semigroup {
+  public func op(_ other: Swift.Set<Element>) -> Swift.Set<Element>
+}
+public struct SomeError : Swift.Error {
+  public init()
+}
+extension Module___Prelude.SomeError : Swift.Equatable {
+}
+public func == (lhs: Module___Prelude.SomeError, rhs: Module___Prelude.SomeError) -> Swift.Bool
+extension Swift.String : Module___Prelude.Semigroup {
+  public func op(_ other: Swift.String) -> Swift.String
+}
+public func == <A, B>(lhs: [(A, B)], rhs: [(A, B)]) -> Swift.Bool where A : Swift.Equatable, B : Swift.Equatable
+public func first<A, B>(_ t: (A, B)) -> A
+public func second<A, B>(_ t: (A, B)) -> B
+public func first<A, B, C>(_ t: (A, B, C)) -> A
+public func second<A, B, C>(_ t: (A, B, C)) -> B
+public func third<A, B, C>(_ t: (A, B, C)) -> C
+public struct Unit {
+  public init()
+}
+extension Module___Prelude.Unit : Swift.Equatable {
+}
+public func == (lhs: Module___Prelude.Unit, rhs: Module___Prelude.Unit) -> Swift.Bool
+public func unpack<A, B, C>(_ ab: (A, B), c: C) -> (A, B, C)
+public func unpack<A, B, C>(_ a: A, bc: (B, C)) -> (A, B, C)
+public func unpack<A, B, C, D>(_ ab: (A, B), _ cd: (C, D)) -> (A, B, C, D)
+public protocol VectorType : Swift.Equatable {
+  associatedtype Scalar : Module___Prelude.NumericType
+  func scale(_ c: Self.Scalar) -> Self
+  func add(_ v: Self) -> Self
+  func subtract(_ v: Self) -> Self
+  func negateVector() -> Self
+  static func zero() -> Self
+}
+extension Module___Prelude.VectorType {
+  public func lerp(_ b: Self) -> (Self.Scalar) -> Self
+  public func subtract(_ v: Self) -> Self
+  public func negateVector() -> Self
+}
+public func lerp<V>(_ a: V, _ b: V) -> (V.Scalar) -> V where V : Module___Prelude.VectorType
+public func * <V>(v: V, c: V.Scalar) -> V where V : Module___Prelude.VectorType
+public func + <V>(v: V, w: V) -> V where V : Module___Prelude.VectorType
+extension Swift.Double : Module___Prelude.VectorType {
+  public typealias Scalar = Swift.Double
+  public func scale(_ c: Swift.Double) -> Swift.Double
+  public func add(_ v: Swift.Double) -> Swift.Double
+  public func zero() -> Swift.Double
+}
+extension CoreFoundation.CGFloat : Module___Prelude.VectorType {
+  public typealias Scalar = CoreFoundation.CGFloat
+  public func scale(_ c: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
+  public func add(_ v: CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
+}
+extension CoreFoundation.CGPoint : Module___Prelude.VectorType {
+  public typealias Scalar = CoreFoundation.CGFloat
+  public func scale(_ c: CoreFoundation.CGFloat) -> CoreFoundation.CGPoint
+  public func add(_ v: CoreFoundation.CGPoint) -> CoreFoundation.CGPoint
+  public static func zero() -> CoreFoundation.CGPoint
+}
+extension CoreFoundation.CGRect : Module___Prelude.VectorType {
+  public typealias Scalar = CoreFoundation.CGFloat
+  public func scale(_ c: CoreFoundation.CGRect.Scalar) -> CoreFoundation.CGRect
+  public func add(_ v: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  public static func zero() -> CoreFoundation.CGRect
+}
+extension Module___Prelude.Ordering : Swift.Equatable {}
+extension Module___Prelude.Ordering : Swift.Hashable {}

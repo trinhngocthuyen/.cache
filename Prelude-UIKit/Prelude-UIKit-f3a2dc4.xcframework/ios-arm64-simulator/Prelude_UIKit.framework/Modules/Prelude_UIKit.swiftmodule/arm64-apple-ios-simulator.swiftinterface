@@ -1,0 +1,1049 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -Onone -module-name Prelude_UIKit -module-alias Module___Prelude_UIKit=Prelude_UIKit -module-alias Module____StringProcessing=_StringProcessing -module-alias Module____SwiftConcurrencyShims=_SwiftConcurrencyShims -module-alias Module____Concurrency=_Concurrency -module-alias Module___SwiftOnoneSupport=SwiftOnoneSupport -module-alias Module___Prelude=Prelude -module-alias Module___UIKit=UIKit -module-alias Module___WebKit=WebKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
+import Foundation
+import Module___Prelude
+import Swift
+import Module___UIKit
+import Module___WebKit
+import Module____Concurrency
+import Module____StringProcessing
+import Module____SwiftConcurrencyShims
+extension ObjectiveC.NSObject : Module___Prelude.LensObject {
+}
+extension Module___UIKit.UIButton {
+  @Module____Concurrency.MainActor @preconcurrency public func setBackgroundColor(_ backgroundColor: Module___UIKit.UIColor, for state: Module___UIKit.UIControl.State)
+}
+extension Module___UIKit.UIEdgeInsets {
+  public init(all: CoreFoundation.CGFloat)
+  public init(topBottom: CoreFoundation.CGFloat, leftRight: CoreFoundation.CGFloat)
+  public init(topBottom: CoreFoundation.CGFloat)
+  public init(leftRight: CoreFoundation.CGFloat)
+  public init(left: CoreFoundation.CGFloat)
+  public init(bottom: CoreFoundation.CGFloat)
+  public init(right: CoreFoundation.CGFloat)
+  public init(top: CoreFoundation.CGFloat)
+  public var topBottom: (CoreFoundation.CGFloat, CoreFoundation.CGFloat) {
+    get
+  }
+  public var leftRight: (CoreFoundation.CGFloat, CoreFoundation.CGFloat) {
+    get
+  }
+}
+extension Module___UIKit.UIImage {
+  public static func pixel(ofColor color: Module___UIKit.UIColor) -> Module___UIKit.UIImage
+}
+extension Module___UIKit.UITraitCollection {
+  public var isRegularRegular: Swift.Bool {
+    get
+  }
+  public var isVerticallyCompact: Swift.Bool {
+    get
+  }
+}
+public protocol CALayerProtocol : Module___Prelude_UIKit.KSObjectProtocol {
+  var borderColor: CoreGraphics.CGColor? { get set }
+  var borderWidth: CoreFoundation.CGFloat { get set }
+  var cornerRadius: CoreFoundation.CGFloat { get set }
+  var masksToBounds: Swift.Bool { get set }
+  var shadowColor: CoreGraphics.CGColor? { get set }
+  var shadowOffset: CoreFoundation.CGSize { get set }
+  var shadowOpacity: Swift.Float { get set }
+  var shadowRadius: CoreFoundation.CGFloat { get set }
+  var shouldRasterize: Swift.Bool { get set }
+}
+extension QuartzCore.CALayer : Module___Prelude_UIKit.CALayerProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.CALayerProtocol {
+  public var borderColor: Module___Prelude.Lens<Object, CoreGraphics.CGColor?> {
+    get
+  }
+  public var borderWidth: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var cornerRadius: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var masksToBounds: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var shadowColor: Module___Prelude.Lens<Object, CoreGraphics.CGColor?> {
+    get
+  }
+  public var shadowOffset: Module___Prelude.Lens<Object, CoreFoundation.CGSize> {
+    get
+  }
+  public var shadowOpacity: Module___Prelude.Lens<Object, Swift.Float> {
+    get
+  }
+  public var shadowRadius: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var shouldRasterize: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+}
+extension CoreFoundation.CGPoint {
+  public enum lens {
+    public static let x: Module___Prelude.Lens<CoreFoundation.CGPoint, CoreFoundation.CGFloat>
+    public static let y: Module___Prelude.Lens<CoreFoundation.CGPoint, CoreFoundation.CGFloat>
+  }
+}
+extension CoreFoundation.CGRect {
+  public static let unit: CoreFoundation.CGRect
+  public enum lens {
+    public static let origin: Module___Prelude.Lens<CoreFoundation.CGRect, CoreFoundation.CGPoint>
+    public static let size: Module___Prelude.Lens<CoreFoundation.CGRect, CoreFoundation.CGSize>
+  }
+}
+extension Module___Prelude.Lens where Whole == CoreFoundation.CGRect, Part == CoreFoundation.CGPoint {
+  public var x: Module___Prelude.Lens<CoreFoundation.CGRect, CoreFoundation.CGFloat> {
+    get
+  }
+  public var y: Module___Prelude.Lens<CoreFoundation.CGRect, CoreFoundation.CGFloat> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole == CoreFoundation.CGRect, Part == CoreFoundation.CGSize {
+  public var width: Module___Prelude.Lens<CoreFoundation.CGRect, CoreFoundation.CGFloat> {
+    get
+  }
+  public var height: Module___Prelude.Lens<CoreFoundation.CGRect, CoreFoundation.CGFloat> {
+    get
+  }
+}
+extension CoreFoundation.CGSize {
+  public enum lens {
+    public static let width: Module___Prelude.Lens<CoreFoundation.CGSize, CoreFoundation.CGFloat>
+    public static let height: Module___Prelude.Lens<CoreFoundation.CGSize, CoreFoundation.CGFloat>
+  }
+}
+public protocol NSMutableParagraphStyleProtocol : ObjectiveC.NSObjectProtocol {
+  var alignment: Module___UIKit.NSTextAlignment { get set }
+}
+extension Module___UIKit.NSMutableParagraphStyle : Module___Prelude_UIKit.NSMutableParagraphStyleProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.NSMutableParagraphStyleProtocol {
+  public var alignment: Module___Prelude.Lens<Object, Module___UIKit.NSTextAlignment> {
+    get
+  }
+}
+public protocol KSObjectProtocol : ObjectiveC.NSObjectProtocol {
+  var accessibilityElementsHidden: Swift.Bool { get set }
+  var accessibilityElements: [Any]? { get set }
+  var accessibilityHint: Swift.String? { get set }
+  var accessibilityLabel: Swift.String? { get set }
+  var accessibilityNavigationStyle: Module___UIKit.UIAccessibilityNavigationStyle { get set }
+  var accessibilityTraits: Module___UIKit.UIAccessibilityTraits { get set }
+  var accessibilityValue: Swift.String? { get set }
+  var isAccessibilityElement: Swift.Bool { get set }
+  var shouldGroupAccessibilityChildren: Swift.Bool { get set }
+}
+public protocol NSTextContainerProtocol : Module___Prelude_UIKit.KSObjectProtocol {
+  var lineFragmentPadding: CoreFoundation.CGFloat { get set }
+}
+extension Module___UIKit.NSTextContainer : Module___Prelude_UIKit.NSTextContainerProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.NSTextContainerProtocol {
+  public var lineFragmentPadding: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.KSObjectProtocol {
+  public var isAccessibilityElement: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var accessibilityElementsHidden: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var accessibilityHint: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+  public var accessibilityLabel: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+  public var accessibilityTraits: Module___Prelude.Lens<Object, Module___UIKit.UIAccessibilityTraits> {
+    get
+  }
+  public var accessibilityValue: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+  public var shouldGroupAccessibilityChildren: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var accessibilityNavigationStyle: Module___Prelude.Lens<Object, Module___UIKit.UIAccessibilityNavigationStyle> {
+    get
+  }
+}
+extension Module___Prelude.LensHolder where Object : ObjectiveC.NSObject {
+  public var accessibilityElements: Module___Prelude.Lens<Object, [Any]?> {
+    get
+  }
+}
+public protocol UIActivityIndicatorViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var style: Module___UIKit.UIActivityIndicatorView.Style { get set }
+  var color: Module___UIKit.UIColor! { get set }
+  var hidesWhenStopped: Swift.Bool { get set }
+  var isAnimating: Swift.Bool { get }
+  func startAnimating()
+  func stopAnimating()
+}
+extension Module___UIKit.UIActivityIndicatorView : Module___Prelude_UIKit.UIActivityIndicatorViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIActivityIndicatorViewProtocol {
+  public var style: Module___Prelude.Lens<Object, Module___UIKit.UIActivityIndicatorView.Style> {
+    get
+  }
+  public var animating: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var color: Module___Prelude.Lens<Object, Module___UIKit.UIColor> {
+    get
+  }
+  public var hidesWhenStopped: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+}
+public protocol UIBarButtonItemProtocol : Module___Prelude_UIKit.UIBarItemProtocol {
+  var style: Module___UIKit.UIBarButtonItem.Style { get set }
+  var width: CoreFoundation.CGFloat { get set }
+  var possibleTitles: Swift.Set<Swift.String>? { get set }
+  var customView: Module___UIKit.UIView? { get set }
+  var action: ObjectiveC.Selector? { get set }
+  var target: Swift.AnyObject? { get set }
+  func setBackgroundImage(_ backgroundImage: Module___UIKit.UIImage?, for state: Module___UIKit.UIControl.State, barMetrics: Module___UIKit.UIBarMetrics)
+  func backgroundImage(for state: Module___UIKit.UIControl.State, barMetrics: Module___UIKit.UIBarMetrics) -> Module___UIKit.UIImage?
+  func setBackgroundImage(_ backgroundImage: Module___UIKit.UIImage?, for state: Module___UIKit.UIControl.State, style: Module___UIKit.UIBarButtonItem.Style, barMetrics: Module___UIKit.UIBarMetrics)
+  func backgroundImage(for state: Module___UIKit.UIControl.State, style: Module___UIKit.UIBarButtonItem.Style, barMetrics: Module___UIKit.UIBarMetrics) -> Module___UIKit.UIImage?
+  var tintColor: Module___UIKit.UIColor? { get set }
+  func setBackgroundVerticalPositionAdjustment(_ adjustment: CoreFoundation.CGFloat, for barMetrics: Module___UIKit.UIBarMetrics)
+  func backgroundVerticalPositionAdjustment(for barMetrics: Module___UIKit.UIBarMetrics) -> CoreFoundation.CGFloat
+  func setTitlePositionAdjustment(_ adjustment: Module___UIKit.UIOffset, for barMetrics: Module___UIKit.UIBarMetrics)
+  func titlePositionAdjustment(for barMetrics: Module___UIKit.UIBarMetrics) -> Module___UIKit.UIOffset
+  func setBackButtonBackgroundImage(_ backgroundImage: Module___UIKit.UIImage?, for state: Module___UIKit.UIControl.State, barMetrics: Module___UIKit.UIBarMetrics)
+  func backButtonBackgroundImage(for state: Module___UIKit.UIControl.State, barMetrics: Module___UIKit.UIBarMetrics) -> Module___UIKit.UIImage?
+  func setBackButtonTitlePositionAdjustment(_ adjustment: Module___UIKit.UIOffset, for barMetrics: Module___UIKit.UIBarMetrics)
+  func backButtonTitlePositionAdjustment(for barMetrics: Module___UIKit.UIBarMetrics) -> Module___UIKit.UIOffset
+  func setBackButtonBackgroundVerticalPositionAdjustment(_ adjustment: CoreFoundation.CGFloat, for barMetrics: Module___UIKit.UIBarMetrics)
+  func backButtonBackgroundVerticalPositionAdjustment(for barMetrics: Module___UIKit.UIBarMetrics) -> CoreFoundation.CGFloat
+}
+extension Module___UIKit.UIBarButtonItem : Module___Prelude_UIKit.UIBarButtonItemProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIBarButtonItemProtocol {
+  public var style: Module___Prelude.Lens<Object, Module___UIKit.UIBarButtonItem.Style> {
+    get
+  }
+  public var width: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var possibleTitles: Module___Prelude.Lens<Object, Swift.Set<Swift.String>?> {
+    get
+  }
+  public var customView: Module___Prelude.Lens<Object, Module___UIKit.UIView?> {
+    get
+  }
+  public var targetAction: Module___Prelude.Lens<Object, (Swift.AnyObject, ObjectiveC.Selector)?> {
+    get
+  }
+  public func backgroundImage(forState state: Module___UIKit.UIControl.State, barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public func backgroundImage(forState state: Module___UIKit.UIControl.State, style: Module___UIKit.UIBarButtonItem.Style, barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public var tintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public func backgroundVerticalPositionAdjustment(forBarMetrics barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, CoreFoundation.CGFloat>
+  public func titlePositionAdjustment(forBarMetrics barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, Module___UIKit.UIOffset>
+  public func backButtonBackgroundImage(forState state: Module___UIKit.UIControl.State, barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public func backButtonTitlePositionAdjustment(forBarMetrics barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, Module___UIKit.UIOffset>
+  public func backButtonBackgroundVerticalPositionAdjustment(forBarMetrics barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, CoreFoundation.CGFloat>
+}
+public protocol UIBarItemProtocol : Module___Prelude_UIKit.KSObjectProtocol {
+  var isEnabled: Swift.Bool { get set }
+  var title: Swift.String? { get set }
+  var image: Module___UIKit.UIImage? { get set }
+  var imageInsets: Module___UIKit.UIEdgeInsets { get set }
+  var landscapeImagePhone: Module___UIKit.UIImage? { get set }
+  var landscapeImagePhoneInsets: Module___UIKit.UIEdgeInsets { get set }
+  var tag: Swift.Int { get set }
+  func titleTextAttributes(for state: Module___UIKit.UIControl.State) -> [Foundation.NSAttributedString.Key : Any]?
+  func setTitleTextAttributes(_ attributes: [Foundation.NSAttributedString.Key : Any]?, for state: Module___UIKit.UIControl.State)
+}
+extension Module___UIKit.UIBarItem : Module___Prelude_UIKit.UIBarItemProtocol {
+  @Module____Concurrency.MainActor @preconcurrency public func titleTextAttributes(for state: Module___UIKit.UIControl.State) -> [Foundation.NSAttributedString.Key : Any]?
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIBarItemProtocol {
+  public var image: Module___Prelude.Lens<Object, Module___UIKit.UIImage?> {
+    get
+  }
+  public func titleTextAttributes(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, [Foundation.NSAttributedString.Key : Any]?>
+  public var imageInsets: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var isEnabled: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var landscapeImagePhone: Module___Prelude.Lens<Object, Module___UIKit.UIImage?> {
+    get
+  }
+  public var landscapeImagePhoneInsets: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var tag: Module___Prelude.Lens<Object, Swift.Int> {
+    get
+  }
+  public var title: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+}
+public protocol UIButtonProtocol : Module___Prelude_UIKit.UIControlProtocol {
+  var adjustsImageWhenDisabled: Swift.Bool { get set }
+  var adjustsImageWhenHighlighted: Swift.Bool { get set }
+  func attributedTitle(for state: Module___UIKit.UIControl.State) -> Foundation.NSAttributedString?
+  func backgroundImage(for state: Module___UIKit.UIControl.State) -> Module___UIKit.UIImage?
+  var contentEdgeInsets: Module___UIKit.UIEdgeInsets { get set }
+  var imageEdgeInsets: Module___UIKit.UIEdgeInsets { get set }
+  func image(for state: Module___UIKit.UIControl.State) -> Module___UIKit.UIImage?
+  var imageView: Module___UIKit.UIImageView? { get }
+  func setAttributedTitle(_ title: Foundation.NSAttributedString?, for state: Module___UIKit.UIControl.State)
+  func setBackgroundColor(_ backgroundColor: Module___UIKit.UIColor, for state: Module___UIKit.UIControl.State)
+  func setBackgroundImage(_ backgroundImage: Module___UIKit.UIImage?, for state: Module___UIKit.UIControl.State)
+  func setImage(_ image: Module___UIKit.UIImage?, for: Module___UIKit.UIControl.State)
+  func setTitle(_ title: Swift.String?, for: Module___UIKit.UIControl.State)
+  func setTitleColor(_ color: Module___UIKit.UIColor?, for: Module___UIKit.UIControl.State)
+  func titleColor(for state: Module___UIKit.UIControl.State) -> Module___UIKit.UIColor?
+  var titleEdgeInsets: Module___UIKit.UIEdgeInsets { get set }
+  func title(for state: Module___UIKit.UIControl.State) -> Swift.String?
+  var titleLabel: Module___UIKit.UILabel? { get }
+}
+extension Module___UIKit.UIButton : Module___Prelude_UIKit.UIButtonProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIButtonProtocol {
+  public var adjustsImageWhenDisabled: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var adjustsImageWhenHighlighted: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public func attributedTitle(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Foundation.NSAttributedString>
+  public func backgroundColor(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Module___UIKit.UIColor>
+  public func backgroundImage(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public var contentEdgeInsets: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var imageEdgeInsets: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public func image(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public var imageView: Module___Prelude.Lens<Object, Module___UIKit.UIImageView?> {
+    get
+  }
+  public func titleColor(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Module___UIKit.UIColor>
+  public var titleEdgeInsets: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var titleLabel: Module___Prelude.Lens<Object, Module___UIKit.UILabel> {
+    get
+  }
+  public func title(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Swift.String?>
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UIButtonProtocol, Part == Module___UIKit.UILabel {
+  public var font: Module___Prelude.Lens<Whole, Module___UIKit.UIFont> {
+    get
+  }
+  public var lineBreakMode: Module___Prelude.Lens<Whole, Module___UIKit.NSLineBreakMode> {
+    get
+  }
+  public var numberOfLines: Module___Prelude.Lens<Whole, Swift.Int> {
+    get
+  }
+  public var textAlignment: Module___Prelude.Lens<Whole, Module___UIKit.NSTextAlignment> {
+    get
+  }
+}
+public typealias TargetSelectorControlEvent = (Any, ObjectiveC.Selector, Module___UIKit.UIControl.Event)
+public protocol UIControlProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  func actions(forTarget target: Any?, forControlEvent controlEvent: Module___UIKit.UIControl.Event) -> [Swift.String]?
+  func addTarget(_ target: Any?, action: ObjectiveC.Selector, for controlEvents: Module___UIKit.UIControl.Event)
+  var allControlEvents: Module___UIKit.UIControl.Event { get }
+  var allTargets: Swift.Set<Swift.AnyHashable> { get }
+  var contentHorizontalAlignment: Module___UIKit.UIControl.ContentHorizontalAlignment { get set }
+  var contentVerticalAlignment: Module___UIKit.UIControl.ContentVerticalAlignment { get set }
+  var isEnabled: Swift.Bool { get set }
+  var isHighlighted: Swift.Bool { get set }
+  func removeTarget(_ target: Any?, action: ObjectiveC.Selector?, for controlEvents: Module___UIKit.UIControl.Event)
+  var isSelected: Swift.Bool { get set }
+}
+extension Module___UIKit.UIControl : Module___Prelude_UIKit.UIControlProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIControlProtocol {
+  public var targets: Module___Prelude.Lens<Object, [Module___Prelude_UIKit.TargetSelectorControlEvent]> {
+    get
+  }
+  public var contentHorizontalAlignment: Module___Prelude.Lens<Object, Module___UIKit.UIControl.ContentHorizontalAlignment> {
+    get
+  }
+  public var contentVerticalAlignment: Module___Prelude.Lens<Object, Module___UIKit.UIControl.ContentVerticalAlignment> {
+    get
+  }
+  public var isEnabled: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var isHighlighted: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var isSelected: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+}
+extension Module___UIKit.UIEdgeInsets {
+  public enum lens {
+    public static let bottom: Module___Prelude.Lens<Module___UIKit.UIEdgeInsets, CoreFoundation.CGFloat>
+    public static let left: Module___Prelude.Lens<Module___UIKit.UIEdgeInsets, CoreFoundation.CGFloat>
+    public static let leftRight: Module___Prelude.Lens<Module___UIKit.UIEdgeInsets, (CoreFoundation.CGFloat, CoreFoundation.CGFloat)>
+    public static let right: Module___Prelude.Lens<Module___UIKit.UIEdgeInsets, CoreFoundation.CGFloat>
+    public static let top: Module___Prelude.Lens<Module___UIKit.UIEdgeInsets, CoreFoundation.CGFloat>
+    public static let topBottom: Module___Prelude.Lens<Module___UIKit.UIEdgeInsets, (CoreFoundation.CGFloat, CoreFoundation.CGFloat)>
+  }
+}
+public protocol UIImageViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var image: Module___UIKit.UIImage? { get set }
+}
+extension Module___UIKit.UIImageView : Module___Prelude_UIKit.UIImageViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIImageViewProtocol {
+  public var image: Module___Prelude.Lens<Object, Module___UIKit.UIImage?> {
+    get
+  }
+}
+public protocol UILabelProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var adjustsFontSizeToFitWidth: Swift.Bool { get set }
+  var attributedText: Foundation.NSAttributedString? { get set }
+  var font: Module___UIKit.UIFont! { get set }
+  var lineBreakMode: Module___UIKit.NSLineBreakMode { get set }
+  var minimumScaleFactor: CoreFoundation.CGFloat { get set }
+  var numberOfLines: Swift.Int { get set }
+  var text: Swift.String? { get set }
+  var textAlignment: Module___UIKit.NSTextAlignment { get set }
+  var textColor: Module___UIKit.UIColor! { get set }
+}
+extension Module___UIKit.UILabel : Module___Prelude_UIKit.UILabelProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UILabelProtocol {
+  public var adjustsFontSizeToFitWidth: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var attributedText: Module___Prelude.Lens<Object, Foundation.NSAttributedString?> {
+    get
+  }
+  public var font: Module___Prelude.Lens<Object, Module___UIKit.UIFont> {
+    get
+  }
+  public var lineBreakMode: Module___Prelude.Lens<Object, Module___UIKit.NSLineBreakMode> {
+    get
+  }
+  public var minimumScaleFactor: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var numberOfLines: Module___Prelude.Lens<Object, Swift.Int> {
+    get
+  }
+  public var text: Module___Prelude.Lens<Object, Swift.String> {
+    get
+  }
+  public var textAlignment: Module___Prelude.Lens<Object, Module___UIKit.NSTextAlignment> {
+    get
+  }
+  public var textColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor> {
+    get
+  }
+}
+public protocol UINavigationBarProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  func backgroundImage(for barMetrics: Module___UIKit.UIBarMetrics) -> Module___UIKit.UIImage?
+  var barTintColor: Module___UIKit.UIColor? { get set }
+  func setBackgroundImage(_ backgroundImage: Module___UIKit.UIImage?, for barMetrics: Module___UIKit.UIBarMetrics)
+  var shadowImage: Module___UIKit.UIImage? { get set }
+  var titleTextAttributes: [Foundation.NSAttributedString.Key : Any]? { get set }
+  var isTranslucent: Swift.Bool { get set }
+  @available(iOS 13.0, *)
+  var standardAppearance: Module___UIKit.UINavigationBarAppearance { get set }
+  @available(iOS 13.0, *)
+  var scrollEdgeAppearance: Module___UIKit.UINavigationBarAppearance? { get set }
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UINavigationBarProtocol {
+  public func backgroundImage(for barMetrics: Module___UIKit.UIBarMetrics) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public var barTintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public var isTranslucent: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var shadowImage: Module___Prelude.Lens<Object, Module___UIKit.UIImage?> {
+    get
+  }
+  public var titleTextAttributes: Module___Prelude.Lens<Object, [Foundation.NSAttributedString.Key : Any]> {
+    get
+  }
+  @available(iOS 13.0, *)
+  public var standardAppearance: Module___Prelude.Lens<Object, Module___UIKit.UINavigationBarAppearance> {
+    get
+  }
+  @available(iOS 13.0, *)
+  public var scrollEdgeAppearance: Module___Prelude.Lens<Object, Module___UIKit.UINavigationBarAppearance?> {
+    get
+  }
+}
+public protocol UINavigationControllerProtocol : Module___Prelude_UIKit.UIViewControllerProtocol {
+  var navigationBar: Module___UIKit.UINavigationBar { get }
+  var isNavigationBarHidden: Swift.Bool { get set }
+  func setNavigationBarHidden(_ hidden: Swift.Bool, animated: Swift.Bool)
+  var viewControllers: [Module___UIKit.UIViewController] { get set }
+}
+extension Module___UIKit.UINavigationController : Module___Prelude_UIKit.UINavigationControllerProtocol {
+}
+extension Module___UIKit.UINavigationBar : Module___Prelude_UIKit.UINavigationBarProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UINavigationControllerProtocol {
+  public var isNavigationBarHidden: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var navigationBar: Module___Prelude.Lens<Object, Module___UIKit.UINavigationBar> {
+    get
+  }
+  public func setNavigationBarHidden(animated: Swift.Bool) -> Module___Prelude.Lens<Object, Swift.Bool>
+  public var viewControllers: Module___Prelude.Lens<Object, [Module___UIKit.UIViewController]> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UINavigationControllerProtocol, Part == Module___UIKit.UINavigationBar {
+  public var barTintColor: Module___Prelude.Lens<Whole, Module___UIKit.UIColor?> {
+    get
+  }
+}
+public protocol UINavigationItemProtocol : Module___Prelude_UIKit.KSObjectProtocol {
+  var title: Swift.String? { get set }
+}
+extension Module___UIKit.UINavigationItem : Module___Prelude_UIKit.UINavigationItemProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UINavigationItemProtocol {
+  public var title: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+}
+public protocol UIProgressViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var progressViewStyle: Module___UIKit.UIProgressView.Style { get set }
+  var progress: Swift.Float { get set }
+}
+extension Module___UIKit.UIProgressView : Module___Prelude_UIKit.UIProgressViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIProgressViewProtocol {
+  public var progressViewStyle: Module___Prelude.Lens<Object, Module___UIKit.UIProgressView.Style> {
+    get
+  }
+  public var progress: Module___Prelude.Lens<Object, Swift.Float> {
+    get
+  }
+}
+public protocol UIScrollViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var canCancelContentTouches: Swift.Bool { get set }
+  var decelerationRate: Module___UIKit.UIScrollView.DecelerationRate { get set }
+  var delaysContentTouches: Swift.Bool { get set }
+  var keyboardDismissMode: Module___UIKit.UIScrollView.KeyboardDismissMode { get set }
+  var isScrollEnabled: Swift.Bool { get set }
+  var scrollIndicatorInsets: Module___UIKit.UIEdgeInsets { get set }
+  var scrollsToTop: Swift.Bool { get set }
+  var showsHorizontalScrollIndicator: Swift.Bool { get set }
+  var showsVerticalScrollIndicator: Swift.Bool { get set }
+}
+extension Module___UIKit.UIScrollView : Module___Prelude_UIKit.UIScrollViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIScrollViewProtocol {
+  public var canCancelContentTouches: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var decelerationRate: Module___Prelude.Lens<Object, Module___UIKit.UIScrollView.DecelerationRate> {
+    get
+  }
+  public var delaysContentTouches: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var isScrollEnabled: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var keyboardDismissMode: Module___Prelude.Lens<Object, Module___UIKit.UIScrollView.KeyboardDismissMode> {
+    get
+  }
+  public var scrollIndicatorInsets: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var scrollsToTop: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var showsHorizontalScrollIndicator: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var showsVerticalScrollIndicator: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+}
+public protocol UIStackViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  func addArrangedSubview(_ view: Module___UIKit.UIView)
+  var alignment: Module___UIKit.UIStackView.Alignment { get set }
+  var arrangedSubviews: [Module___UIKit.UIView] { get }
+  var axis: Module___UIKit.NSLayoutConstraint.Axis { get set }
+  var isBaselineRelativeArrangement: Swift.Bool { get set }
+  var distribution: Module___UIKit.UIStackView.Distribution { get set }
+  var isLayoutMarginsRelativeArrangement: Swift.Bool { get set }
+  var spacing: CoreFoundation.CGFloat { get set }
+}
+extension Module___UIKit.UIStackView : Module___Prelude_UIKit.UIStackViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIStackViewProtocol {
+  public var alignment: Module___Prelude.Lens<Object, Module___UIKit.UIStackView.Alignment> {
+    get
+  }
+  public var arrangedSubviews: Module___Prelude.Lens<Object, [Module___UIKit.UIView]> {
+    get
+  }
+  public var axis: Module___Prelude.Lens<Object, Module___UIKit.NSLayoutConstraint.Axis> {
+    get
+  }
+  public var isBaselineRelativeArrangement: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var distribution: Module___Prelude.Lens<Object, Module___UIKit.UIStackView.Distribution> {
+    get
+  }
+  public var isLayoutMarginsRelativeArrangement: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var spacing: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+}
+public protocol UIStepperProtocol : Module___Prelude_UIKit.UIControlProtocol {
+  func decrementImage(for state: Module___UIKit.UIControl.State) -> Module___UIKit.UIImage?
+  func incrementImage(for state: Module___UIKit.UIControl.State) -> Module___UIKit.UIImage?
+  func setDecrementImage(_ image: Module___UIKit.UIImage?, for: Module___UIKit.UIControl.State)
+  func setIncrementImage(_ image: Module___UIKit.UIImage?, for: Module___UIKit.UIControl.State)
+}
+extension Module___UIKit.UIStepper : Module___Prelude_UIKit.UIStepperProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIStepperProtocol {
+  public func decrementImage(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+  public func incrementImage(for state: Module___UIKit.UIControl.State) -> Module___Prelude.Lens<Object, Module___UIKit.UIImage?>
+}
+public protocol UISwitchProtocol : Module___Prelude_UIKit.UIControlProtocol {
+  var isOn: Swift.Bool { get set }
+  var onTintColor: Module___UIKit.UIColor? { get set }
+  var thumbTintColor: Module___UIKit.UIColor? { get set }
+  var tintColor: Module___UIKit.UIColor! { get set }
+}
+extension Module___UIKit.UISwitch : Module___Prelude_UIKit.UISwitchProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UISwitchProtocol {
+  public var isOn: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var onTintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public var thumbTintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public var tintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor> {
+    get
+  }
+}
+public protocol UITabBarItemProtocol : Module___Prelude_UIKit.UIBarItemProtocol {
+  var selectedImage: Module___UIKit.UIImage? { get set }
+  var titlePositionAdjustment: Module___UIKit.UIOffset { get set }
+}
+extension Module___UIKit.UITabBarItem : Module___Prelude_UIKit.UITabBarItemProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITabBarItemProtocol {
+  public var selectedImage: Module___Prelude.Lens<Object, Module___UIKit.UIImage?> {
+    get
+  }
+  public var titlePositionAdjustment: Module___Prelude.Lens<Object, Module___UIKit.UIOffset> {
+    get
+  }
+}
+public protocol UITabBarProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var barTintColor: Module___UIKit.UIColor? { get set }
+}
+extension Module___UIKit.UITabBar : Module___Prelude_UIKit.UITabBarProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITabBarProtocol {
+  public var barTintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+}
+public protocol UITableViewCellProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var contentView: Module___UIKit.UIView { get }
+  var selectionStyle: Module___UIKit.UITableViewCell.SelectionStyle { get set }
+}
+extension Module___UIKit.UITableViewCell : Module___Prelude_UIKit.UITableViewCellProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITableViewCellProtocol {
+  public var contentView: Module___Prelude.Lens<Object, Module___UIKit.UIView> {
+    get
+  }
+  public var selectionStyle: Module___Prelude.Lens<Object, Module___UIKit.UITableViewCell.SelectionStyle> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UITableViewCellProtocol, Part == Module___UIKit.UIView {
+  public var layoutMargins: Module___Prelude.Lens<Whole, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+}
+public protocol UITableViewControllerProtocol : Module___Prelude_UIKit.UIViewControllerProtocol {
+  var tableView: Module___UIKit.UITableView! { get set }
+}
+extension Module___UIKit.UITableViewController : Module___Prelude_UIKit.UITableViewControllerProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITableViewControllerProtocol {
+  public var tableView: Module___Prelude.Lens<Object, Module___UIKit.UITableView> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UITableViewControllerProtocol, Part == Module___UIKit.UITableView {
+  public var rowHeight: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var estimatedRowHeight: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var separatorStyle: Module___Prelude.Lens<Whole, Module___UIKit.UITableViewCell.SeparatorStyle> {
+    get
+  }
+}
+public protocol UITableViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var allowsMultipleSelection: Swift.Bool { get set }
+  var allowsMultipleSelectionDuringEditing: Swift.Bool { get set }
+  var allowsSelection: Swift.Bool { get set }
+  var allowsSelectionDuringEditing: Swift.Bool { get set }
+  var backgroundView: Module___UIKit.UIView? { get set }
+  var estimatedRowHeight: CoreFoundation.CGFloat { get set }
+  var rowHeight: CoreFoundation.CGFloat { get set }
+  var separatorInset: Module___UIKit.UIEdgeInsets { get set }
+  var separatorColor: Module___UIKit.UIColor? { get set }
+  var separatorEffect: Module___UIKit.UIVisualEffect? { get set }
+  var separatorStyle: Module___UIKit.UITableViewCell.SeparatorStyle { get set }
+}
+extension Module___UIKit.UITableView : Module___Prelude_UIKit.UITableViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITableViewProtocol {
+  public var allowsMultipleSelection: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var allowsMultipleSelectionDuringEditing: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var allowsSelection: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var allowsSelectionDuringEditing: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var backgroundView: Module___Prelude.Lens<Object, Module___UIKit.UIView?> {
+    get
+  }
+  public var estimatedRowHeight: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var rowHeight: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var separatorInset: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var separatorColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public var separatorEffect: Module___Prelude.Lens<Object, Module___UIKit.UIVisualEffect?> {
+    get
+  }
+  public var separatorStyle: Module___Prelude.Lens<Object, Module___UIKit.UITableViewCell.SeparatorStyle> {
+    get
+  }
+}
+public protocol UITextFieldProtocol : Module___Prelude_UIKit.UIControlProtocol, Module___Prelude_UIKit.UITextInputTraitsProtocol {
+  var borderStyle: Module___UIKit.UITextField.BorderStyle { get set }
+  var font: Module___UIKit.UIFont? { get set }
+  var placeholder: Swift.String? { get set }
+  var textAlignment: Module___UIKit.NSTextAlignment { get set }
+  var textColor: Module___UIKit.UIColor? { get set }
+  var text: Swift.String? { get set }
+}
+extension Module___UIKit.UITextField : Module___Prelude_UIKit.UITextFieldProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITextFieldProtocol {
+  public var borderStyle: Module___Prelude.Lens<Object, Module___UIKit.UITextField.BorderStyle> {
+    get
+  }
+  public var font: Module___Prelude.Lens<Object, Module___UIKit.UIFont?> {
+    get
+  }
+  public var placeholder: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+  public var textAlignment: Module___Prelude.Lens<Object, Module___UIKit.NSTextAlignment> {
+    get
+  }
+  public var textColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public var text: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+}
+public protocol UITextInputTraitsProtocol : ObjectiveC.NSObjectProtocol {
+  var autocapitalizationType: Module___UIKit.UITextAutocapitalizationType { get set }
+  var autocorrectionType: Module___UIKit.UITextAutocorrectionType { get set }
+  var keyboardAppearance: Module___UIKit.UIKeyboardAppearance { get set }
+  var keyboardType: Module___UIKit.UIKeyboardType { get set }
+  var returnKeyType: Module___UIKit.UIReturnKeyType { get set }
+  var isSecureTextEntry: Swift.Bool { get set }
+  var spellCheckingType: Module___UIKit.UITextSpellCheckingType { get set }
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITextInputTraitsProtocol {
+  public var autocapitalizationType: Module___Prelude.Lens<Object, Module___UIKit.UITextAutocapitalizationType> {
+    get
+  }
+  public var autocorrectionType: Module___Prelude.Lens<Object, Module___UIKit.UITextAutocorrectionType> {
+    get
+  }
+  public var keyboardAppearance: Module___Prelude.Lens<Object, Module___UIKit.UIKeyboardAppearance> {
+    get
+  }
+  public var keyboardType: Module___Prelude.Lens<Object, Module___UIKit.UIKeyboardType> {
+    get
+  }
+  public var returnKeyType: Module___Prelude.Lens<Object, Module___UIKit.UIReturnKeyType> {
+    get
+  }
+  public var secureTextEntry: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var spellCheckingType: Module___Prelude.Lens<Object, Module___UIKit.UITextSpellCheckingType> {
+    get
+  }
+}
+public protocol UITextViewProtocol : Module___Prelude_UIKit.UIScrollViewProtocol, Module___Prelude_UIKit.UITextInputTraitsProtocol {
+  var dataDetectorTypes: Module___UIKit.UIDataDetectorTypes { get set }
+  var font: Module___UIKit.UIFont? { get set }
+  var text: Swift.String! { get set }
+  var textAlignment: Module___UIKit.NSTextAlignment { get set }
+  var textColor: Module___UIKit.UIColor? { get set }
+  var textContainer: Module___UIKit.NSTextContainer { get }
+  var textContainerInset: Module___UIKit.UIEdgeInsets { get set }
+}
+extension Module___UIKit.UITextView : Module___Prelude_UIKit.UITextViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UITextViewProtocol {
+  public var dataDetectorTypes: Module___Prelude.Lens<Object, Module___UIKit.UIDataDetectorTypes> {
+    get
+  }
+  public var font: Module___Prelude.Lens<Object, Module___UIKit.UIFont?> {
+    get
+  }
+  public var text: Module___Prelude.Lens<Object, Swift.String> {
+    get
+  }
+  public var textAlignment: Module___Prelude.Lens<Object, Module___UIKit.NSTextAlignment> {
+    get
+  }
+  public var textColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor?> {
+    get
+  }
+  public var textContainer: Module___Prelude.Lens<Object, Module___UIKit.NSTextContainer> {
+    get
+  }
+  public var textContainerInset: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UITextViewProtocol, Part == Module___UIKit.NSTextContainer {
+  public var lineFragmentPadding: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+}
+public protocol UITraitEnvironmentProtocol : ObjectiveC.NSObjectProtocol {
+  var traitCollection: Module___UIKit.UITraitCollection { get }
+}
+public protocol UIViewControllerProtocol : Module___Prelude.LensObject, Module___Prelude_UIKit.UITraitEnvironmentProtocol {
+  var navigationController: Module___UIKit.UINavigationController? { get }
+  var navigationItem: Module___UIKit.UINavigationItem { get }
+  var title: Swift.String? { get set }
+  var view: Module___UIKit.UIView! { get set }
+}
+extension Module___UIKit.UIViewController : Module___Prelude_UIKit.UIViewControllerProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIViewControllerProtocol {
+  public var navigationController: Module___Prelude.Lens<Object, Module___UIKit.UINavigationController?> {
+    get
+  }
+  public var navigationItem: Module___Prelude.Lens<Object, Module___UIKit.UINavigationItem> {
+    get
+  }
+  public var title: Module___Prelude.Lens<Object, Swift.String?> {
+    get
+  }
+  public var view: Module___Prelude.Lens<Object, Module___UIKit.UIView> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UIViewControllerProtocol, Part == Module___UIKit.UIView {
+  public var backgroundColor: Module___Prelude.Lens<Whole, Module___UIKit.UIColor> {
+    get
+  }
+  public var layoutMargins: Module___Prelude.Lens<Whole, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var tintColor: Module___Prelude.Lens<Whole, Module___UIKit.UIColor> {
+    get
+  }
+}
+public protocol UIViewProtocol : Module___Prelude.LensObject, Module___Prelude_UIKit.KSObjectProtocol, Module___Prelude_UIKit.UITraitEnvironmentProtocol {
+  func addConstraints(_ constraints: [Module___UIKit.NSLayoutConstraint])
+  var alpha: CoreFoundation.CGFloat { get set }
+  var backgroundColor: Module___UIKit.UIColor? { get set }
+  var clipsToBounds: Swift.Bool { get set }
+  var constraints: [Module___UIKit.NSLayoutConstraint] { get }
+  func contentCompressionResistancePriority(for axis: Module___UIKit.NSLayoutConstraint.Axis) -> Module___UIKit.UILayoutPriority
+  func contentHuggingPriority(for axis: Module___UIKit.NSLayoutConstraint.Axis) -> Module___UIKit.UILayoutPriority
+  var contentMode: Module___UIKit.UIView.ContentMode { get set }
+  var frame: CoreFoundation.CGRect { get set }
+  var isHidden: Swift.Bool { get set }
+  var layer: QuartzCore.CALayer { get }
+  var layoutMargins: Module___UIKit.UIEdgeInsets { get set }
+  var preservesSuperviewLayoutMargins: Swift.Bool { get set }
+  func removeConstraints(_ constraints: [Module___UIKit.NSLayoutConstraint])
+  var semanticContentAttribute: Module___UIKit.UISemanticContentAttribute { get set }
+  func setContentCompressionResistancePriority(_ priority: Module___UIKit.UILayoutPriority, for axis: Module___UIKit.NSLayoutConstraint.Axis)
+  func setContentHuggingPriority(_ priority: Module___UIKit.UILayoutPriority, for axis: Module___UIKit.NSLayoutConstraint.Axis)
+  var tag: Swift.Int { get set }
+  var tintColor: Module___UIKit.UIColor! { get set }
+  var translatesAutoresizingMaskIntoConstraints: Swift.Bool { get set }
+  var isUserInteractionEnabled: Swift.Bool { get set }
+}
+extension Module___UIKit.UIView : Module___Prelude_UIKit.UIViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.UIViewProtocol {
+  public var alpha: Module___Prelude.Lens<Object, CoreFoundation.CGFloat> {
+    get
+  }
+  public var backgroundColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor> {
+    get
+  }
+  public var clipsToBounds: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var constraints: Module___Prelude.Lens<Object, [Module___UIKit.NSLayoutConstraint]> {
+    get
+  }
+  public func contentCompressionResistancePriority(for axis: Module___UIKit.NSLayoutConstraint.Axis) -> Module___Prelude.Lens<Object, Module___UIKit.UILayoutPriority>
+  public func contentHuggingPriority(for axis: Module___UIKit.NSLayoutConstraint.Axis) -> Module___Prelude.Lens<Object, Module___UIKit.UILayoutPriority>
+  public var contentMode: Module___Prelude.Lens<Object, Module___UIKit.UIView.ContentMode> {
+    get
+  }
+  public var frame: Module___Prelude.Lens<Object, CoreFoundation.CGRect> {
+    get
+  }
+  public var isHidden: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var isUserInteractionEnabled: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var layer: Module___Prelude.Lens<Object, QuartzCore.CALayer> {
+    get
+  }
+  public var layoutMargins: Module___Prelude.Lens<Object, Module___UIKit.UIEdgeInsets> {
+    get
+  }
+  public var preservesSuperviewLayoutMargins: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+  public var semanticContentAttribute: Module___Prelude.Lens<Object, Module___UIKit.UISemanticContentAttribute> {
+    get
+  }
+  public var tag: Module___Prelude.Lens<Object, Swift.Int> {
+    get
+  }
+  public var tintColor: Module___Prelude.Lens<Object, Module___UIKit.UIColor> {
+    get
+  }
+  public var translatesAutoresizingMaskIntoConstraints: Module___Prelude.Lens<Object, Swift.Bool> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UIViewProtocol, Part == CoreFoundation.CGRect {
+  public var origin: Module___Prelude.Lens<Whole, CoreFoundation.CGPoint> {
+    get
+  }
+  public var size: Module___Prelude.Lens<Whole, CoreFoundation.CGSize> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UIViewProtocol, Part == CoreFoundation.CGPoint {
+  public var x: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var y: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UIViewProtocol, Part == CoreFoundation.CGSize {
+  public var width: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var height: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.UIViewProtocol, Part == QuartzCore.CALayer {
+  public var borderColor: Module___Prelude.Lens<Whole, CoreGraphics.CGColor?> {
+    get
+  }
+  public var borderWidth: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var cornerRadius: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var masksToBounds: Module___Prelude.Lens<Whole, Swift.Bool> {
+    get
+  }
+  public var shadowColor: Module___Prelude.Lens<Whole, CoreGraphics.CGColor?> {
+    get
+  }
+  public var shadowOffset: Module___Prelude.Lens<Whole, CoreFoundation.CGSize> {
+    get
+  }
+  public var shadowOpacity: Module___Prelude.Lens<Whole, Swift.Float> {
+    get
+  }
+  public var shadowRadius: Module___Prelude.Lens<Whole, CoreFoundation.CGFloat> {
+    get
+  }
+  public var shouldRasterize: Module___Prelude.Lens<Whole, Swift.Bool> {
+    get
+  }
+}
+public protocol WKWebViewProtocol : Module___Prelude_UIKit.UIViewProtocol {
+  var scrollView: Module___UIKit.UIScrollView { get }
+}
+extension Module___WebKit.WKWebView : Module___Prelude_UIKit.WKWebViewProtocol {
+}
+extension Module___Prelude.LensHolder where Object : Module___Prelude_UIKit.WKWebViewProtocol {
+  public var scrollView: Module___Prelude.Lens<Object, Module___UIKit.UIScrollView> {
+    get
+  }
+}
+extension Module___Prelude.Lens where Whole : Module___Prelude_UIKit.WKWebViewProtocol, Part == Module___UIKit.UIScrollView {
+  public var delaysContentTouches: Module___Prelude.Lens<Whole, Swift.Bool> {
+    get
+  }
+}
